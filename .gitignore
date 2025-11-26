@@ -1,0 +1,26 @@
+# Add these to .gitignore if not already there
+echo ".DS_Store" >> .gitignore
+echo "DEVSECRETS.md" >> .gitignore
+```
+
+**Your .gitignore should contain at minimum:**
+```
+# CDK (should already be there)
+*.js
+!jest.config.js
+*.d.ts
+node_modules
+.cdk.staging
+cdk.out
+
+# Mac
+.DS_Store
+
+# Secrets
+DEVSECRETS.md
+.env
+*.pem
+
+# IDE
+.vscode/
+.idea/
