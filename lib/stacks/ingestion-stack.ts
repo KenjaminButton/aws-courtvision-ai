@@ -24,6 +24,20 @@ export class IngestionStack extends cdk.Stack {
       removalPolicy: cdk.RemovalPolicy.RETAIN, // Don't delete table if stack is deleted
     });
 
+    // Add Global Secondary Index for date-based queries
+    this.gamesTable.addGlobalSecondaryIndex({
+      indexName: 'GSI1',
+      partitionKey: {
+        name: 'GSI1PK',
+        type: dynamodb.AttributeType.STRING,
+      },
+      sortKey: {
+        name: 'GSI1SK',
+        type: dynamodb.AttributeType.STRING,
+      },
+      projectionType: dynamodb.ProjectionType.ALL,
+    });
+
     // Output the table name
     new cdk.CfnOutput(this, 'GamesTableName', {
       value: this.gamesTable.tableName,

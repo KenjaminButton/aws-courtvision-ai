@@ -64,3 +64,33 @@ courtvision-ai/
 ### Next Steps (Day 2 continued)
 - Add GSI (Global Secondary Index)
 - Test manual item creation
+### AWS Resources Deployed (Updated)
+- DynamoDB Table: `courtvision-games`
+  - Partition key: PK, Sort key: SK
+  - GSI1: GSI1PK (partition), GSI1SK (sort) ✅
+  - Streams: Enabled
+  - Billing: On-demand
+
+### Day 2 Complete ✅
+- DynamoDB table created and verified
+- GSI added for date-based queries
+- Test item creation confirmed
+
+---
+
+### AWS Resources Deployed (Updated)
+- DynamoDB Table: `courtvision-games`
+  - Partition key: PK, Sort key: SK
+  - GSI1: GSI1PK (partition), GSI1SK (sort) ✅
+  - Streams: Enabled
+  - Billing: On-demand
+
+### Day 2 Complete ✅
+- DynamoDB table created and verified
+- GSI added for date-based queries
+- Test item creation confirmed
+
+---
+
+## Day 3 - S3 Buckets (Next)
+[To be completed]
