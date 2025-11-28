@@ -108,20 +108,20 @@ Start ONE chat for this entire phase. Upload the blueprint at the start.
 ### Day 4: Ingestion Lambda - ESPN Fetcher
 **Time: 3-4 hours**
 
-- [ ] Create Lambda function: `courtvision-ingest`
-- [ ] Write ESPN API fetch logic:
+- [x] Create Lambda function: `courtvision-ingest`
+- [x] Write ESPN API fetch logic:
   ```python
   def fetch_scoreboard():
       url = "https://site.api.espn.com/apis/site/v2/sports/basketball/womens-college-basketball/scoreboard"
       response = requests.get(url)
       return response.json()
   ```
-- [ ] Parse ESPN response into internal format
-- [ ] Add environment variables:
+- [x] Parse ESPN response into internal format
+- [x] Add environment variables:
   - `DATA_SOURCE`: "live"
   - `DYNAMODB_TABLE`: table name
   - `S3_BUCKET`: recordings bucket
-- [ ] Local testing with sample ESPN response
+- [x] Local testing with sample ESPN response
 
 **Checkpoint:** Lambda runs locally, parses ESPN JSON correctly
 

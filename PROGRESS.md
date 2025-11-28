@@ -135,3 +135,28 @@ courtvision-ai/
 **Checkpoint:** Lambda runs locally, parses ESPN JSON correctly
 
 ---
+
+## Day 5 - Ingestion Lambda (DynamoDB Write) ✅ (In Progress)
+
+### What We Built
+- DynamoDB storage functions: `store_game_metadata()` and `store_current_score()`
+- Updated handler to store all parsed games
+- Successfully tested locally with real AWS DynamoDB
+
+### Test Results
+- ✅ 7 games parsed from ESPN API
+- ✅ 14 items stored in DynamoDB (metadata + score for each game)
+- ✅ Local test with boto3 successful
+
+### Data Schema Working
+```
+PK: GAME#2025-11-27#DUKE-BLUE-DEVILS-UCLA-BRUINS
+SK: METADATA | SCORE#CURRENT
+```
+
+### Next Steps
+- Deploy Lambda to AWS
+- Test with manual AWS invocation
+- Set up EventBridge schedule (Day 7)
+
+---
