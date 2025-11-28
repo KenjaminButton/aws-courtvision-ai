@@ -1,9 +1,12 @@
 import * as cdk from 'aws-cdk-lib';
 import * as dynamodb from 'aws-cdk-lib/aws-dynamodb';
+import * as s3 from 'aws-cdk-lib/aws-s3';
 import { Construct } from 'constructs';
 
 export class IngestionStack extends cdk.Stack {
   public readonly gamesTable: dynamodb.Table;
+    public readonly recordingsBucket: s3.Bucket;
+    public readonly frontendBucket: s3.Bucket;
 
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
@@ -37,6 +40,52 @@ export class IngestionStack extends cdk.Stack {
       },
       projectionType: dynamodb.ProjectionType.ALL,
     });
+
+// S3 bucket for game recordings
+    this.recordingsBucket = new s3.Bucket(this, 'RecordingsBucket', {
+      bucketName: `courtvision-recordings-${cdk.Stack.of(this).account}`,
+      versioned: true, // Enable versioning
+      lifecycleRules: [
+        {
+          id: 'MoveToIA',
+          transitions: [
+            {
+              storageClass: s3.StorageClass.INFREQUENT_ACCESS,
+              transitionAfter: cdk.Duration.days(30),
+            },
+          ],
+        },
+      ],
+      removalPolicy: cdk.RemovalPolicy.RETAIN, // Don't delete bucket if stack deleted
+      autoDeleteObjects: false,
+    });
+
+    // S3 bucket for frontend
+    this.frontendBucket = new s3.Bucket(this, 'FrontendBucket', {
+      bucketName: `courtvision-frontend-${cdk.Stack.of(this).account}`,
+      websiteIndexDocument: 'index.html',
+      websiteErrorDocument: 'index.html', // For React Router
+
+      removalPolicy: cdk.RemovalPolicy.RETAIN,
+      autoDeleteObjects: false,
+    });
+
+    // Outputs for the buckets
+    new cdk.CfnOutput(this, 'RecordingsBucketName', {
+      value: this.recordingsBucket.bucketName,
+      description: 'S3 bucket for game recordings',
+    });
+
+    new cdk.CfnOutput(this, 'FrontendBucketName', {
+      value: this.frontendBucket.bucketName,
+      description: 'S3 bucket for frontend',
+    });
+
+    new cdk.CfnOutput(this, 'FrontendBucketWebsiteURL', {
+      value: this.frontendBucket.bucketWebsiteUrl,
+      description: 'Frontend website URL',
+    });
+
 
     // Output the table name
     new cdk.CfnOutput(this, 'GamesTableName', {
