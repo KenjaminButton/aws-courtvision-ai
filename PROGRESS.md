@@ -108,3 +108,30 @@ courtvision-ai/
 **All infrastructure foundation in place!**
 
 ---
+
+## Day 4 - Ingestion Lambda (ESPN Fetcher) ✅ (Completed)
+
+### What We Built
+- Lambda function that fetches ESPN scoreboard data
+- Parser that converts ESPN format to our internal format
+- Successfully tested with 7 completed games
+
+### Files Created
+- `lambda/ingestion/handler.py` - Main Lambda handler
+- `lambda/ingestion/requirements.txt` - Python dependencies
+- `lambda/ingestion/.venv/` - Virtual environment (gitignored)
+
+### Functions Implemented
+- `fetch_espn_scoreboard()` - Fetches from ESPN API ✅
+- `parse_game_data()` - Parses ESPN game data ✅
+- `handler()` - Main Lambda entry point ✅
+
+### Test Results
+- ESPN API connection: ✅ Working
+- Data parsing: ✅ 7/7 games parsed successfully
+- Status detection: ✅ Correctly identifies game state
+
+### Day 4 Complete ✅
+**Checkpoint:** Lambda runs locally, parses ESPN JSON correctly
+
+---

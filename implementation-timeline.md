@@ -42,13 +42,13 @@ Start ONE chat for this entire phase. Upload the blueprint at the start.
 ### Day 1: Project Setup
 **Time: 2-3 hours**
 
-- [ ] Create new GitHub repository
-- [ ] Initialize CDK project (TypeScript)
+- [x] Create new GitHub repository
+- [x] Initialize CDK project (TypeScript)
   ```bash
   mkdir courtvision-ai && cd courtvision-ai
   npx cdk init app --language typescript
   ```
-- [ ] Set up project structure:
+- [x] Set up project structure:
   ```
   courtvision-ai/
   ├── lib/
@@ -65,8 +65,8 @@ Start ONE chat for this entire phase. Upload the blueprint at the start.
   ├── frontend/
   └── tests/
   ```
-- [ ] Configure AWS credentials for dev account
-- [ ] First CDK deploy (empty stack, just verify it works)
+- [x] Configure AWS credentials for dev account
+- [x] First CDK deploy (empty stack, just verify it works)
 
 **Checkpoint:** `cdk deploy` succeeds with empty stack
 
@@ -75,15 +75,15 @@ Start ONE chat for this entire phase. Upload the blueprint at the start.
 ### Day 2: DynamoDB Table
 **Time: 2-3 hours**
 
-- [ ] Create DynamoDB table in CDK:
+- [x] Create DynamoDB table in CDK:
   - Table name: `courtvision-games`
   - Partition key: `PK` (String)
   - Sort key: `SK` (String)
   - Billing: On-demand
   - Stream: NEW_AND_OLD_IMAGES
-- [ ] Add GSI for date-based queries
-- [ ] Deploy and verify in AWS Console
-- [ ] Test manual item creation via Console
+- [x] Add GSI for date-based queries
+- [x] Deploy and verify in AWS Console
+- [x] Test manual item creation via Console
 
 **Checkpoint:** DynamoDB table visible in Console, can create/read items
 
@@ -92,14 +92,14 @@ Start ONE chat for this entire phase. Upload the blueprint at the start.
 ### Day 3: S3 Buckets
 **Time: 1-2 hours**
 
-- [ ] Create S3 bucket for game recordings
+- [x] Create S3 bucket for game recordings
   - Bucket name: `courtvision-recordings-{account-id}`
   - Enable versioning
   - Lifecycle rule: Move to IA after 30 days
-- [ ] Create S3 bucket for frontend (later)
+- [x] Create S3 bucket for frontend (later)
   - Bucket name: `courtvision-frontend-{account-id}`
   - Static website hosting enabled
-- [ ] Deploy and verify
+- [x] Deploy and verify
 
 **Checkpoint:** Both S3 buckets visible in Console
 

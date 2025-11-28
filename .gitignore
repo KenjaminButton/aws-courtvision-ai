@@ -17,3 +17,13 @@ DEVSECRETS.md
 # IDE
 .vscode/
 .idea/
+
+# Python
+.venv
+venv/
+*.pyc
+__pycache__/
+
+
+
+
