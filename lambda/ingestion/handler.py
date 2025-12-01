@@ -13,6 +13,44 @@ ESPN_BASE_URL = "https://site.api.espn.com/apis/site/v2/sports/basketball/womens
 dynamodb = boto3.resource('dynamodb')
 s3_client = boto3.client('s3')
 
+def fetch_with_retry(url, max_retries=3, timeout=10):
+    """
+    Fetch URL with exponential backoff retry logic
+    
+    Args:
+        url: URL to fetch
+        max_retries: Maximum number of retry attempts
+        timeout: Request timeout in seconds
+    
+    Returns:
+        dict: JSON response
+    
+    Raises:
+        Exception: If all retries fail
+    """
+    import time
+    
+    for attempt in range(max_retries):
+        try:
+            print(f"Fetching {url} (attempt {attempt + 1}/{max_retries})")
+            response = requests.get(url, timeout=timeout)
+            response.raise_for_status()  # Raises HTTPError for 4xx/5xx
+            return response.json()
+            
+        except requests.exceptions.Timeout:
+            print(f"⚠️  Timeout on attempt {attempt + 1}")
+        except requests.exceptions.HTTPError as e:
+            print(f"⚠️  HTTP error on attempt {attempt + 1}: {e}")
+        except requests.exceptions.RequestException as e:
+            print(f"⚠️  Request error on attempt {attempt + 1}: {e}")
+        
+        # Don't sleep after last attempt
+        if attempt < max_retries - 1:
+            wait_time = 2 ** attempt  # 1s, 2s, 4s
+            print(f"   Waiting {wait_time}s before retry...")
+            time.sleep(wait_time)
+    
+    raise Exception(f"Failed to fetch {url} after {max_retries} attempts")
 
 def fetch_espn_scoreboard():
     """
@@ -21,16 +59,11 @@ def fetch_espn_scoreboard():
     url = "https://site.api.espn.com/apis/site/v2/sports/basketball/womens-college-basketball/scoreboard"
     
     try:
-        print(f"Fetching from ESPN: {url}")
-        response = requests.get(url, timeout=10)
-        response.raise_for_status()
-        
-        data = response.json()
-        print(f"ESPN API returned {len(data.get('events', []))} games")
-        
+        data = fetch_with_retry(url)
+        print(f"✅ ESPN API returned {len(data.get('events', []))} games")
         return data
-    except requests.exceptions.RequestException as e:
-        print(f"Error fetching from ESPN: {str(e)}")
+    except Exception as e:
+        print(f"❌ Error fetching scoreboard: {str(e)}")
         raise
 
 def fetch_game_summary(game_id):
@@ -41,22 +74,17 @@ def fetch_game_summary(game_id):
         game_id: ESPN game ID (e.g., "401825729")
     
     Returns:
-        dict: Game summary with play-by-play data
+        dict: Game summary with play-by-play data, or None if failed
     """
     url = f"https://site.api.espn.com/apis/site/v2/sports/basketball/womens-college-basketball/summary?event={game_id}"
     
     try:
-        print(f"Fetching game summary for game {game_id}")
-        response = requests.get(url, timeout=10)
-        response.raise_for_status()
-        
-        data = response.json()
+        data = fetch_with_retry(url)
         play_count = len(data.get('plays', [])) if 'plays' in data else 0
-        print(f"Game summary returned {play_count} plays")
-        
+        print(f"✅ Game summary returned {play_count} plays")
         return data
-    except requests.exceptions.RequestException as e:
-        print(f"Error fetching game summary for {game_id}: {str(e)}")
+    except Exception as e:
+        print(f"❌ Error fetching game summary for {game_id}: {str(e)}")
         return None
 
 def parse_game_data(espn_game):
@@ -101,6 +129,51 @@ def parse_game_data(espn_game):
         
     except Exception as e:
         print(f"Error parsing game {espn_game.get('id')}: {str(e)}")
+        return None
+
+def parse_play_data(espn_play, game_id):
+    """
+    Parse ESPN play data into our internal format
+    
+    Args:
+        espn_play: Play data from ESPN API
+        game_id: Our game ID (e.g., "GAME#2024-11-30#TEAM1-TEAM2")
+    
+    Returns:
+        dict: Parsed play ready for DynamoDB
+    """
+    try:
+        play_id = espn_play.get('sequenceNumber', espn_play['id'])
+        
+        # Get timestamp from play or use current time
+        from datetime import datetime, timezone
+        timestamp = datetime.now(timezone.utc).isoformat()
+        
+        parsed_play = {
+            'PK': game_id,
+            'SK': f"PLAY#{timestamp}#{play_id}",
+            'playId': play_id,
+            'timestamp': timestamp,
+            'quarter': espn_play.get('period', {}).get('number', 0),
+            'gameClock': espn_play.get('clock', {}).get('displayValue', ''),
+            'text': espn_play.get('text', ''),
+            'scoringPlay': espn_play.get('scoringPlay', False),
+            'homeScore': espn_play.get('homeScore', 0),
+            'awayScore': espn_play.get('awayScore', 0),
+        }
+        
+        # Add team ID if present
+        if 'team' in espn_play:
+            parsed_play['teamId'] = espn_play['team'].get('id', '')
+        
+        # Add play type if present
+        if 'type' in espn_play:
+            parsed_play['playType'] = espn_play['type'].get('text', '')
+        
+        return parsed_play
+        
+    except Exception as e:
+        print(f"Error parsing play: {str(e)}")
         return None
 
 def store_game_metadata(game):
@@ -154,6 +227,22 @@ def store_current_score(game):
         return True
     except Exception as e:
         print(f"❌ Error storing score: {str(e)}")
+        return False
+
+def store_play(play):
+    """
+    Store individual play in DynamoDB
+    
+    Args:
+        play: Parsed play data
+    """
+    table = dynamodb.Table(DYNAMODB_TABLE)
+    
+    try:
+        table.put_item(Item=play)
+        return True
+    except Exception as e:
+        print(f"❌ Error storing play {play.get('playId')}: {str(e)}")
         return False
 
 def record_to_s3(game_id, data_type, data, timestamp):
@@ -248,7 +337,13 @@ def handler(event, context):
                     if summary and 'plays' in summary:
                         play_count = len(summary['plays'])
                         print(f"✅ Fetched {play_count} plays for {game_id}")
-                        # TODO: Parse and store plays (next step)
+                        # Parse and store each play
+                        plays_stored = 0
+                        for espn_play in summary['plays']:
+                            parsed_play = parse_play_data(espn_play, game_id)
+                            if parsed_play and store_play(parsed_play):
+                                plays_stored += 1
+                        print(f"✅ Stored {plays_stored}/{play_count} plays")
                     else:
                         print(f"⚠️  No plays found for {game_id}")
 

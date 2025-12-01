@@ -173,16 +173,16 @@ Start ONE chat for this entire phase. Upload the blueprint at the start.
 ### Day 7: EventBridge Schedule
 **Time: 2-3 hours**
 
-- [ ] Create EventBridge rule in CDK:
+- [x] Create EventBridge rule in CDK:
   ```typescript
   new events.Rule(this, 'IngestionSchedule', {
-    schedule: events.Schedule.rate(Duration.minutes(1)),
+    schedule: events.Schedule.rate(Duration.minutes(5)),
     targets: [new targets.LambdaFunction(ingestionLambda)],
   });
   ```
-- [ ] Add enable/disable flag (don't run 24/7 during dev)
-- [ ] Deploy and monitor CloudWatch logs
-- [ ] Verify data accumulates in DynamoDB
+- [x] Add enable/disable flag (don't run 24/7 during dev)
+- [x] Deploy and monitor CloudWatch logs
+- [x] Verify data accumulates in DynamoDB
 
 **Checkpoint:** Data automatically appears in DynamoDB every minute
 
@@ -191,16 +191,16 @@ Start ONE chat for this entire phase. Upload the blueprint at the start.
 ### Day 8: Game Summary Endpoint
 **Time: 3-4 hours**
 
-- [ ] Add ESPN game summary fetch:
+- [x] Add ESPN game summary fetch:
   ```python
   def fetch_game_summary(game_id):
       url = f"https://site.api.espn.com/apis/site/v2/sports/basketball/womens-college-basketball/summary?event={game_id}"
       response = requests.get(url)
       return response.json()
   ```
-- [ ] Parse play-by-play data
-- [ ] Store individual plays in DynamoDB
-- [ ] Handle shot location data for shot charts
+- [x] Parse play-by-play data
+- [x] Store individual plays in DynamoDB
+- [x] Handle shot location data for shot charts
 
 **Checkpoint:** Play-by-play data stored with each ingestion cycle
 

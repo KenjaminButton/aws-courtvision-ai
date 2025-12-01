@@ -348,3 +348,98 @@ aws events describe-rule \
 **Checkpoint:** Data automatically appears in DynamoDB every 5 minutes when schedule is enabled
 
 ---
+
+## Day 8 - Game Summary Endpoint ✅ (Completed)
+
+### What We Built
+- Added `fetch_game_summary()` to get play-by-play data from ESPN
+- Added `parse_play_data()` to convert ESPN plays to our format
+- Added `store_play()` to save individual plays to DynamoDB
+- Integration only fetches summaries for active/completed games (status = 'in' or 'post')
+
+### Files Modified
+- `lambda/ingestion/handler.py` - Added 3 new functions + integration logic
+
+### Functions Added
+- `fetch_game_summary(game_id)` - Fetches detailed game data including plays
+- `parse_play_data(espn_play, game_id)` - Parses individual play into DynamoDB format
+- `store_play(play)` - Stores single play to DynamoDB
+
+### Play Data Structure
+```python
+{
+  'PK': 'GAME#2024-11-30#TEAM1-TEAM2',
+  'SK': 'PLAY#{timestamp}#{playId}',
+  'playId': '101904701',
+  'quarter': 1,
+  'gameClock': '9:52',
+  'text': 'Player made shot',
+  'scoringPlay': True/False,
+  'homeScore': 0,
+  'awayScore': 0,
+  'teamId': '26',
+  'playType': 'JumpShot'
+}
+```
+
+### Test Results
+- ✅ Tested with completed game (UCLA vs Fresno State, 11/30/2024)
+- ✅ Fetched 335 plays successfully
+- ✅ Stored 335/335 plays to DynamoDB
+- ✅ Verified in DynamoDB: 335 play items + 22 existing = 357 total items
+- ⏱️ Storage time: ~10-15 seconds for 335 plays (335 individual DynamoDB writes)
+
+### Key Implementation Details
+- Only fetches summaries for games with `statusState` = 'in' or 'post'
+- Pre-game (status = 'pre') skips summary fetch (no plays exist yet)
+- Each play stored individually (not batched - good for streaming updates)
+
+### Day 8 Complete ✅
+**Checkpoint:** Play-by-play data stored with each ingestion cycle
+
+---
+
+## Day 9 - Error Handling + Retry Logic ✅ (Completed)
+
+### What We Built
+- Added `fetch_with_retry()` function with exponential backoff
+- Updated `fetch_espn_scoreboard()` and `fetch_game_summary()` to use retry logic
+- Tested with simulated failures and real API calls
+
+### Files Modified
+- `lambda/ingestion/handler.py` - Added retry function, updated 2 fetch functions
+
+### Retry Logic Implementation
+```python
+def fetch_with_retry(url, max_retries=3, timeout=10):
+    # Exponential backoff: 1s, 2s, 4s
+    for attempt in range(max_retries):
+        try:
+            response = requests.get(url, timeout=timeout)
+            response.raise_for_status()
+            return response.json()
+        except (Timeout, HTTPError, RequestException):
+            wait_time = 2 ** attempt
+            time.sleep(wait_time)
+    raise Exception(f"Failed after {max_retries} attempts")
+```
+
+### Test Results
+- ✅ Simulated timeout recovery: Succeeded after 3 attempts (waited 1s, 2s)
+- ✅ Simulated complete failure: Failed gracefully after 3 attempts
+- ✅ Real API calls: Succeed on first attempt (no retries needed)
+- ✅ Deployed to Lambda: Working in production
+
+### CloudWatch Logs Confirmation
+```
+Fetching ... (attempt 1/3)
+✅ ESPN API returned 2 games
+Duration: 640.99 ms
+```
+
+### Day 9 Complete ✅
+**Checkpoint:** Lambda handles ESPN outages gracefully
+
+---
+
+

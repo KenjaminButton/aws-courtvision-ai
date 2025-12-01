@@ -61,6 +61,16 @@ if parsed_game:
         if summary and 'plays' in summary:
             play_count = len(summary['plays'])
             print(f"   ✅ Fetched {play_count} plays!")
+            
+            # Parse and store each play
+            game_id = parsed_game['PK']
+            plays_stored = 0
+            for espn_play in summary['plays']:
+                parsed_play = handler.parse_play_data(espn_play, game_id)
+                if parsed_play and handler.store_play(parsed_play):
+                    plays_stored += 1
+            
+            print(f"   ✅ Stored {plays_stored}/{play_count} plays to DynamoDB")
             print(f"\n   First play:")
             print(f"   {summary['plays'][0]['text']}")
         else:
