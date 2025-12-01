@@ -24,6 +24,5 @@ venv/
 *.pyc
 __pycache__/
 
-
-
-
+lambda/ingestion/package/
+lambda/ingestion/lambda-package.zip

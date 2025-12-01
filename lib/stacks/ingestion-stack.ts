@@ -1,6 +1,7 @@
 import * as cdk from 'aws-cdk-lib';
 import * as dynamodb from 'aws-cdk-lib/aws-dynamodb';
 import * as s3 from 'aws-cdk-lib/aws-s3';
+import * as lambda from 'aws-cdk-lib/aws-lambda';
 import { Construct } from 'constructs';
 
 export class IngestionStack extends cdk.Stack {
@@ -69,6 +70,27 @@ export class IngestionStack extends cdk.Stack {
       removalPolicy: cdk.RemovalPolicy.RETAIN,
       autoDeleteObjects: false,
     });
+
+    // Lambda function for data ingestion
+    const ingestionLambda = new lambda.Function(this, 'IngestionFunction', {
+      functionName: 'courtvision-ingest',
+      runtime: lambda.Runtime.PYTHON_3_12,
+      handler: 'handler.handler',
+      code: lambda.Code.fromAsset('lambda/ingestion/lambda-package.zip'),
+      timeout: cdk.Duration.seconds(30),
+      memorySize: 256,
+      environment: {
+        DATA_SOURCE: 'live',
+        DYNAMODB_TABLE: this.gamesTable.tableName,
+        S3_BUCKET: this.recordingsBucket.bucketName,
+      },
+    });
+
+    // Grant Lambda permissions to DynamoDB table
+    this.gamesTable.grantReadWriteData(ingestionLambda);
+    
+    // Grant Lambda permissions to S3 bucket
+    this.recordingsBucket.grantReadWrite(ingestionLambda);
 
     // Outputs for the buckets
     new cdk.CfnOutput(this, 'RecordingsBucketName', {
