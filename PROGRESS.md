@@ -263,30 +263,88 @@ cd package && zip -r ../lambda-package.zip . && cd ..
 
 ---
 
-## CRITICAL: AWS Region Permanent Fix
+## Day 7 - EventBridge Schedule ✅ (Completed)
 
-**Issue:** Region keeps defaulting to us-west-2 despite wanting us-east-1
+### What We Built
+- EventBridge rule that triggers Lambda every 5 minutes
+- Manual enable/disable control (starts disabled)
+- Tested automatic polling with 2 successful executions
 
-**Quick Fix (run these now):**
-```bash
-# 1. Set CLI default region
-aws configure set region us-east-1 --profile courtvision-dev
+### Files Modified
+- `lib/stacks/ingestion-stack.ts` - Added EventBridge rule and imports
 
-# 2. Verify it's set
-aws configure get region --profile courtvision-dev  # Should show: us-east-1
-
-# 3. Always add --region flag to AWS CLI commands
-aws lambda invoke --region us-east-1 --profile courtvision-dev ...
-```
-
-**CDK Fix:** Edit `bin/courtvision-ai.ts`, add explicit region:
+### Code Added
 ```typescript
-new CourtVisionIngestionStack(app, 'CourtVisionIngestionStack', {
-  env: {
-    account: process.env.CDK_DEFAULT_ACCOUNT,
-    region: 'us-east-1'  // ← ADD THIS
-  }
+import * as events from 'aws-cdk-lib/aws-events';
+import * as targets from 'aws-cdk-lib/aws-events-targets';
+
+// EventBridge rule
+const ingestionSchedule = new events.Rule(this, 'IngestionSchedule', {
+  schedule: events.Schedule.rate(cdk.Duration.minutes(5)),
+  description: 'Trigger ingestion Lambda every minute during games',
+  enabled: false, // Start disabled
 });
+ingestionSchedule.addTarget(new targets.LambdaFunction(ingestionLambda));
 ```
+
+### AWS Resources Deployed
+- **EventBridge Rule:** `CourtVisionIngestionStack-IngestionSchedule30858612-5Stq77YxdH7A`
+  - Schedule: `rate(5 minutes)`
+  - State: DISABLED (manual control)
+  - Target: courtvision-ingest Lambda
+
+### Manual Control Commands
+**Enable (start automatic polling):**
+```bash
+aws events enable-rule \
+  --name CourtVisionIngestionStack-IngestionSchedule30858612-5Stq77YxdH7A \
+  --region us-east-1 \
+  --profile courtvision-dev
+```
+
+**Disable (stop automatic polling):**
+```bash
+aws events disable-rule \
+  --name CourtVisionIngestionStack-IngestionSchedule30858612-5Stq77YxdH7A \
+  --region us-east-1 \
+  --profile courtvision-dev
+```
+
+**Check status:**
+```bash
+aws events describe-rule \
+  --name CourtVisionIngestionStack-IngestionSchedule30858612-5Stq77YxdH7A \
+  --region us-east-1 \
+  --profile courtvision-dev \
+  --query 'State' \
+  --output text
+```
+
+### Test Results
+- ✅ First execution: 21:38:32
+- ✅ Second execution: 21:43:31 (exactly 5 minutes later)
+- ✅ DynamoDB items: 22 (accumulated data)
+- ✅ S3 recordings: Multiple files created automatically
+
+### Key Decision: 5 Minutes + Replay Mode Strategy
+
+**Why 5 minutes (not 1-2 minutes):**
+- ESPN API is **unofficial/undocumented** - no published rate limits
+- 5 minutes = 12 API calls/hour (very conservative, safe from blocking)
+- 2 minutes = 30 calls/hour (moderate risk)
+- 1 minute = 60 calls/hour (high risk for unofficial API)
+
+**Production Strategy:**
+- **Development:** Manually enable for 1-2 hour testing sessions, record interesting games to S3
+- **Demos/Interviews:** Use replay mode exclusively (play recorded games at 5x-10x speed)
+- **If deployed to production:** Use time-based cron (6pm-11pm EST only) at 2-minute intervals
+
+**Benefits of this approach:**
+- Minimal ESPN API usage (avoid getting blocked)
+- Better demos (control which games to show, faster than real-time)
+- Interview talking point: "Used 5 minutes for unofficial API; with paid API like Sportradar, would use 30-60 seconds"
+
+### Day 7 Complete ✅
+**Checkpoint:** Data automatically appears in DynamoDB every 5 minutes when schedule is enabled
 
 ---

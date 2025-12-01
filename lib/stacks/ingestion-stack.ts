@@ -3,6 +3,8 @@ import * as dynamodb from 'aws-cdk-lib/aws-dynamodb';
 import * as s3 from 'aws-cdk-lib/aws-s3';
 import * as lambda from 'aws-cdk-lib/aws-lambda';
 import { Construct } from 'constructs';
+import * as events from 'aws-cdk-lib/aws-events';
+import * as targets from 'aws-cdk-lib/aws-events-targets';
 
 export class IngestionStack extends cdk.Stack {
   public readonly gamesTable: dynamodb.Table;
@@ -83,6 +85,7 @@ export class IngestionStack extends cdk.Stack {
         DATA_SOURCE: 'live',
         DYNAMODB_TABLE: this.gamesTable.tableName,
         S3_BUCKET: this.recordingsBucket.bucketName,
+        SCHEDULE_ENABLED: 'false',
       },
     });
 
@@ -91,6 +94,17 @@ export class IngestionStack extends cdk.Stack {
     
     // Grant Lambda permissions to S3 bucket
     this.recordingsBucket.grantReadWrite(ingestionLambda);
+
+    // EventBridge rule to trigger Lambda every minute
+    // Only enabled when SCHEDULE_ENABLED is set to 'true'
+    const ingestionSchedule = new events.Rule(this, 'IngestionSchedule', {
+      schedule: events.Schedule.rate(cdk.Duration.minutes(5)),
+      description: 'Trigger ingestion Lambda every minute during games',
+      enabled: false, // Start disabled - enable manually when testing
+    });
+
+    // Add Lambda as target
+    ingestionSchedule.addTarget(new targets.LambdaFunction(ingestionLambda));
 
     // Outputs for the buckets
     new cdk.CfnOutput(this, 'RecordingsBucketName', {

@@ -153,7 +153,7 @@ Start ONE chat for this entire phase. Upload the blueprint at the start.
 ### Day 6: Ingestion Lambda - S3 Recording
 **Time: 2-3 hours**
 
-- [ ] Add S3 recording logic:
+- [x] Add S3 recording logic:
   ```python
   def record_to_s3(game_id, raw_response):
       s3.put_object(
@@ -162,9 +162,9 @@ Start ONE chat for this entire phase. Upload the blueprint at the start.
           Body=json.dumps(raw_response)
       )
   ```
-- [ ] Record both raw ESPN response and parsed data
-- [ ] Test recording during Lambda execution
-- [ ] Verify files appear in S3
+- [x] Record both raw ESPN response and parsed data
+- [x] Test recording during Lambda execution
+- [x] Verify files appear in S3
 
 **Checkpoint:** Each Lambda run creates files in S3
 
