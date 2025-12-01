@@ -1,0 +1,2040 @@
+{
+  "leagues": [
+    {
+      "id": "54",
+      "uid": "s:40~l:54",
+      "name": "NCAA Women's Basketball",
+      "abbreviation": "NCAAW",
+      "midsizeName": "NCAAW Basketball",
+      "slug": "womens-college-basketball",
+      "season": {
+        "year": 2026,
+        "startDate": "2025-07-01T07:00Z",
+        "endDate": "2026-04-08T06:59Z",
+        "displayName": "2025-26",
+        "type": {
+          "id": "2",
+          "type": 2,
+          "name": "Regular Season",
+          "abbreviation": "reg"
+        }
+      },
+      "logos": [
+        {
+          "href": "https://a.espncdn.com/redesign/assets/img/icons/ESPN-icon-basketball.png",
+          "width": 500,
+          "height": 500,
+          "alt": "",
+          "rel": [
+            "full",
+            "default"
+          ],
+          "lastUpdated": "2021-08-03T15:56Z"
+        },
+        {
+          "href": "https://a.espncdn.com/redesign/assets/img/icons/ESPN-icon-basketball.png",
+          "width": 500,
+          "height": 500,
+          "alt": "",
+          "rel": [
+            "full",
+            "dark"
+          ],
+          "lastUpdated": "2021-08-03T15:56Z"
+        }
+      ],
+      "calendarType": "day",
+      "calendarIsWhitelist": true,
+      "calendarStartDate": "2025-07-01T07:00Z",
+      "calendarEndDate": "2026-04-08T06:59Z",
+      "calendar": [
+        "2025-11-03T08:00Z",
+        "2025-11-04T08:00Z",
+        "2025-11-05T08:00Z",
+        "2025-11-06T08:00Z",
+        "2025-11-07T08:00Z",
+        "2025-11-09T08:00Z",
+        "2025-11-10T08:00Z",
+        "2025-11-11T08:00Z",
+        "2025-11-12T08:00Z",
+        "2025-11-13T08:00Z",
+        "2025-11-14T08:00Z",
+        "2025-11-15T08:00Z",
+        "2025-11-16T08:00Z",
+        "2025-11-17T08:00Z",
+        "2025-11-18T08:00Z",
+        "2025-11-19T08:00Z",
+        "2025-11-20T08:00Z",
+        "2025-11-21T08:00Z",
+        "2025-11-22T08:00Z",
+        "2025-11-23T08:00Z",
+        "2025-11-24T08:00Z",
+        "2025-11-25T08:00Z",
+        "2025-11-26T08:00Z",
+        "2025-11-27T08:00Z",
+        "2025-11-28T08:00Z",
+        "2025-11-29T08:00Z",
+        "2025-11-30T08:00Z",
+        "2025-12-01T08:00Z",
+        "2025-12-02T08:00Z",
+        "2025-12-03T08:00Z",
+        "2025-12-04T08:00Z",
+        "2025-12-05T08:00Z",
+        "2025-12-06T08:00Z",
+        "2025-12-07T08:00Z",
+        "2025-12-08T08:00Z",
+        "2025-12-09T08:00Z",
+        "2025-12-10T08:00Z",
+        "2025-12-11T08:00Z",
+        "2025-12-13T08:00Z",
+        "2025-12-14T08:00Z",
+        "2025-12-15T08:00Z",
+        "2025-12-16T08:00Z",
+        "2025-12-17T08:00Z",
+        "2025-12-18T08:00Z",
+        "2025-12-19T08:00Z",
+        "2025-12-20T08:00Z",
+        "2025-12-21T08:00Z",
+        "2025-12-22T08:00Z",
+        "2025-12-28T08:00Z",
+        "2025-12-29T08:00Z",
+        "2025-12-31T08:00Z",
+        "2026-01-01T08:00Z",
+        "2026-01-03T08:00Z",
+        "2026-01-04T08:00Z",
+        "2026-01-05T08:00Z",
+        "2026-01-06T08:00Z",
+        "2026-01-07T08:00Z",
+        "2026-01-08T08:00Z",
+        "2026-01-11T08:00Z",
+        "2026-01-14T08:00Z",
+        "2026-01-15T08:00Z",
+        "2026-01-17T08:00Z",
+        "2026-01-18T08:00Z",
+        "2026-01-19T08:00Z",
+        "2026-01-21T08:00Z",
+        "2026-01-22T08:00Z",
+        "2026-01-24T08:00Z",
+        "2026-01-25T08:00Z",
+        "2026-01-26T08:00Z",
+        "2026-01-27T08:00Z",
+        "2026-01-28T08:00Z",
+        "2026-01-29T08:00Z",
+        "2026-01-31T08:00Z",
+        "2026-02-01T08:00Z",
+        "2026-02-02T08:00Z",
+        "2026-02-04T08:00Z",
+        "2026-02-05T08:00Z",
+        "2026-02-07T08:00Z",
+        "2026-02-08T08:00Z",
+        "2026-02-09T08:00Z",
+        "2026-02-10T08:00Z",
+        "2026-02-11T08:00Z",
+        "2026-02-12T08:00Z",
+        "2026-02-14T08:00Z",
+        "2026-02-15T08:00Z",
+        "2026-02-16T08:00Z",
+        "2026-02-18T08:00Z",
+        "2026-02-19T08:00Z",
+        "2026-02-21T08:00Z",
+        "2026-02-22T08:00Z",
+        "2026-02-23T08:00Z",
+        "2026-02-25T08:00Z",
+        "2026-02-26T08:00Z",
+        "2026-02-28T08:00Z",
+        "2026-03-01T08:00Z"
+      ]
+    }
+  ],
+  "day": {
+    "date": "2025-12-01"
+  },
+  "events": [
+    {
+      "id": "401825729",
+      "uid": "s:40~l:54~e:401825729",
+      "date": "2025-12-02T00:00Z",
+      "name": "Villanova Wildcats at West Virginia Mountaineers",
+      "shortName": "VILL @ WVU",
+      "season": {
+        "year": 2026,
+        "type": 2,
+        "slug": "regular-season"
+      },
+      "competitions": [
+        {
+          "id": "401825729",
+          "uid": "s:40~l:54~e:401825729~c:401825729",
+          "date": "2025-12-02T00:00Z",
+          "attendance": 0,
+          "type": {
+            "id": "1",
+            "abbreviation": "STD"
+          },
+          "timeValid": true,
+          "neutralSite": false,
+          "conferenceCompetition": false,
+          "playByPlayAvailable": false,
+          "recent": false,
+          "venue": {
+            "id": "2199",
+            "fullName": "WVU Coliseum",
+            "address": {
+              "city": "Morgantown",
+              "state": "WV"
+            },
+            "indoor": true
+          },
+          "competitors": [
+            {
+              "id": "277",
+              "uid": "s:40~l:54~t:277",
+              "type": "team",
+              "order": 0,
+              "homeAway": "home",
+              "team": {
+                "id": "277",
+                "uid": "s:40~l:54~t:277",
+                "location": "West Virginia",
+                "name": "Mountaineers",
+                "abbreviation": "WVU",
+                "displayName": "West Virginia Mountaineers",
+                "shortDisplayName": "West Virginia",
+                "color": "002855",
+                "alternateColor": "eaaa00",
+                "isActive": true,
+                "venue": {
+                  "id": "2199"
+                },
+                "links": [
+                  {
+                    "rel": [
+                      "clubhouse",
+                      "desktop",
+                      "team"
+                    ],
+                    "href": "https://www.espn.com/womens-college-basketball/team/_/id/277/west-virginia-mountaineers",
+                    "text": "Clubhouse",
+                    "isExternal": false,
+                    "isPremium": false
+                  },
+                  {
+                    "rel": [
+                      "clubhouse",
+                      "mobile",
+                      "team"
+                    ],
+                    "href": "https://m.espn.com/ncw/clubhouse?teamId=277",
+                    "text": "Clubhouse",
+                    "isExternal": false,
+                    "isPremium": false
+                  },
+                  {
+                    "rel": [
+                      "roster",
+                      "desktop",
+                      "team"
+                    ],
+                    "href": "https://www.espn.com/womens-college-basketball/team/roster/_/id/277",
+                    "text": "Roster",
+                    "isExternal": false,
+                    "isPremium": false
+                  },
+                  {
+                    "rel": [
+                      "stats",
+                      "desktop",
+                      "team"
+                    ],
+                    "href": "https://www.espn.com/womens-college-basketball/team/stats/_/id/277",
+                    "text": "Statistics",
+                    "isExternal": false,
+                    "isPremium": false
+                  },
+                  {
+                    "rel": [
+                      "schedule",
+                      "desktop",
+                      "team"
+                    ],
+                    "href": "https://www.espn.com/womens-college-basketball/team/schedule/_/id/277",
+                    "text": "Schedule",
+                    "isExternal": false,
+                    "isPremium": false
+                  }
+                ],
+                "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/277.png",
+                "conferenceId": "8"
+              },
+              "score": "0",
+              "curatedRank": {
+                "current": 25
+              },
+              "statistics": [
+                {
+                  "name": "rebounds",
+                  "abbreviation": "REB",
+                  "displayValue": "268",
+                  "rankDisplayValue": "Tied-400th"
+                },
+                {
+                  "name": "avgRebounds",
+                  "abbreviation": "REB",
+                  "displayValue": "38.3",
+                  "rankDisplayValue": "Tied-177th"
+                },
+                {
+                  "name": "assists",
+                  "abbreviation": "AST",
+                  "displayValue": "97",
+                  "rankDisplayValue": "Tied-184th"
+                },
+                {
+                  "name": "fieldGoalsAttempted",
+                  "abbreviation": "FGA",
+                  "displayValue": "390",
+                  "rankDisplayValue": "267th"
+                },
+                {
+                  "name": "fieldGoalsMade",
+                  "abbreviation": "FGM",
+                  "displayValue": "187",
+                  "rankDisplayValue": "Tied-150th"
+                },
+                {
+                  "name": "fieldGoalPct",
+                  "abbreviation": "FG%",
+                  "displayValue": "47.9",
+                  "rankDisplayValue": "28th"
+                },
+                {
+                  "name": "freeThrowPct",
+                  "abbreviation": "FT%",
+                  "displayValue": "69.3",
+                  "rankDisplayValue": "250th"
+                },
+                {
+                  "name": "freeThrowsAttempted",
+                  "abbreviation": "FTA",
+                  "displayValue": "205",
+                  "rankDisplayValue": "8th"
+                },
+                {
+                  "name": "freeThrowsMade",
+                  "abbreviation": "FTM",
+                  "displayValue": "142",
+                  "rankDisplayValue": "Tied-12th"
+                },
+                {
+                  "name": "points",
+                  "abbreviation": "PTS",
+                  "displayValue": "561",
+                  "rankDisplayValue": "106th"
+                },
+                {
+                  "name": "threePointFieldGoalsAttempted",
+                  "abbreviation": "3PA",
+                  "displayValue": "137",
+                  "rankDisplayValue": "Tied-233rd"
+                },
+                {
+                  "name": "threePointFieldGoalsMade",
+                  "abbreviation": "3PM",
+                  "displayValue": "45",
+                  "rankDisplayValue": "Tied-175th"
+                },
+                {
+                  "name": "avgPoints",
+                  "abbreviation": "PTS",
+                  "displayValue": "80.1",
+                  "rankDisplayValue": "37th"
+                },
+                {
+                  "name": "avgAssists",
+                  "abbreviation": "AST",
+                  "displayValue": "13.9",
+                  "rankDisplayValue": "Tied-164th"
+                },
+                {
+                  "name": "threePointFieldGoalPct",
+                  "abbreviation": "3P%",
+                  "displayValue": "32.8",
+                  "rankDisplayValue": "Tied-136th"
+                }
+              ],
+              "records": [
+                {
+                  "name": "overall",
+                  "abbreviation": "Season",
+                  "type": "total",
+                  "summary": "6-1"
+                },
+                {
+                  "name": "Home",
+                  "abbreviation": "Home",
+                  "type": "home",
+                  "summary": "4-0"
+                },
+                {
+                  "name": "Road",
+                  "abbreviation": "AWAY",
+                  "type": "road",
+                  "summary": "0-0"
+                },
+                {
+                  "name": "vs. Conf.",
+                  "abbreviation": "VS CONF",
+                  "type": "vsconf",
+                  "summary": "0-0"
+                }
+              ],
+              "leaders": [
+                {
+                  "name": "pointsPerGame",
+                  "displayName": "Points Per Game",
+                  "shortDisplayName": "PPG",
+                  "abbreviation": "PTS",
+                  "leaders": [
+                    {
+                      "displayValue": "16.1",
+                      "value": 16.14285659790039,
+                      "athlete": {
+                        "id": "4607456",
+                        "fullName": "Gia Cooke",
+                        "displayName": "Gia Cooke",
+                        "shortName": "G. Cooke",
+                        "links": [
+                          {
+                            "rel": [
+                              "playercard",
+                              "desktop",
+                              "athlete"
+                            ],
+                            "href": "https://www.espn.com/womens-college-basketball/player/_/id/4607456/gia-cooke"
+                          }
+                        ],
+                        "headshot": "https://a.espncdn.com/i/headshots/womens-college-basketball/players/full/4607456.png",
+                        "jersey": "3",
+                        "position": {
+                          "abbreviation": "G"
+                        },
+                        "team": {
+                          "id": "277"
+                        },
+                        "active": true
+                      },
+                      "team": {
+                        "id": "277"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "name": "reboundsPerGame",
+                  "displayName": "Rebounds Per Game",
+                  "shortDisplayName": "RPG",
+                  "abbreviation": "REB",
+                  "leaders": [
+                    {
+                      "displayValue": "6.1",
+                      "value": 6.142857074737549,
+                      "athlete": {
+                        "id": "5109726",
+                        "fullName": "Kierra Wheeler",
+                        "displayName": "Kierra Wheeler",
+                        "shortName": "K. Wheeler",
+                        "links": [
+                          {
+                            "rel": [
+                              "playercard",
+                              "desktop",
+                              "athlete"
+                            ],
+                            "href": "https://www.espn.com/womens-college-basketball/player/_/id/5109726/kierra-wheeler"
+                          }
+                        ],
+                        "headshot": "https://a.espncdn.com/i/headshots/womens-college-basketball/players/full/5109726.png",
+                        "jersey": "22",
+                        "position": {
+                          "abbreviation": "F"
+                        },
+                        "team": {
+                          "id": "277"
+                        },
+                        "active": true
+                      },
+                      "team": {
+                        "id": "277"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "name": "assistsPerGame",
+                  "displayName": "Assists Per Game",
+                  "shortDisplayName": "APG",
+                  "abbreviation": "AST",
+                  "leaders": [
+                    {
+                      "displayValue": "4.3",
+                      "value": 4.333333492279053,
+                      "athlete": {
+                        "id": "5108051",
+                        "fullName": "Jordan Harrison",
+                        "displayName": "Jordan Harrison",
+                        "shortName": "J. Harrison",
+                        "links": [
+                          {
+                            "rel": [
+                              "playercard",
+                              "desktop",
+                              "athlete"
+                            ],
+                            "href": "https://www.espn.com/womens-college-basketball/player/_/id/5108051/jordan-harrison"
+                          }
+                        ],
+                        "headshot": "https://a.espncdn.com/i/headshots/womens-college-basketball/players/full/5108051.png",
+                        "jersey": "10",
+                        "position": {
+                          "abbreviation": "G"
+                        },
+                        "team": {
+                          "id": "277"
+                        },
+                        "active": true
+                      },
+                      "team": {
+                        "id": "277"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "222",
+              "uid": "s:40~l:54~t:222",
+              "type": "team",
+              "order": 1,
+              "homeAway": "away",
+              "team": {
+                "id": "222",
+                "uid": "s:40~l:54~t:222",
+                "location": "Villanova",
+                "name": "Wildcats",
+                "abbreviation": "VILL",
+                "displayName": "Villanova Wildcats",
+                "shortDisplayName": "Villanova",
+                "color": "00205b",
+                "alternateColor": "13b5ea",
+                "isActive": true,
+                "venue": {
+                  "id": "1969"
+                },
+                "links": [
+                  {
+                    "rel": [
+                      "clubhouse",
+                      "desktop",
+                      "team"
+                    ],
+                    "href": "https://www.espn.com/womens-college-basketball/team/_/id/222/villanova-wildcats",
+                    "text": "Clubhouse",
+                    "isExternal": false,
+                    "isPremium": false
+                  },
+                  {
+                    "rel": [
+                      "clubhouse",
+                      "mobile",
+                      "team"
+                    ],
+                    "href": "https://m.espn.com/ncw/clubhouse?teamId=222",
+                    "text": "Clubhouse",
+                    "isExternal": false,
+                    "isPremium": false
+                  },
+                  {
+                    "rel": [
+                      "roster",
+                      "desktop",
+                      "team"
+                    ],
+                    "href": "https://www.espn.com/womens-college-basketball/team/roster/_/id/222",
+                    "text": "Roster",
+                    "isExternal": false,
+                    "isPremium": false
+                  },
+                  {
+                    "rel": [
+                      "stats",
+                      "desktop",
+                      "team"
+                    ],
+                    "href": "https://www.espn.com/womens-college-basketball/team/stats/_/id/222",
+                    "text": "Statistics",
+                    "isExternal": false,
+                    "isPremium": false
+                  },
+                  {
+                    "rel": [
+                      "schedule",
+                      "desktop",
+                      "team"
+                    ],
+                    "href": "https://www.espn.com/womens-college-basketball/team/schedule/_/id/222",
+                    "text": "Schedule",
+                    "isExternal": false,
+                    "isPremium": false
+                  }
+                ],
+                "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/222.png",
+                "conferenceId": "4"
+              },
+              "score": "0",
+              "curatedRank": {
+                "current": 99
+              },
+              "statistics": [
+                {
+                  "name": "rebounds",
+                  "abbreviation": "REB",
+                  "displayValue": "253",
+                  "rankDisplayValue": "Tied-477th"
+                },
+                {
+                  "name": "avgRebounds",
+                  "abbreviation": "REB",
+                  "displayValue": "36.1",
+                  "rankDisplayValue": "270th"
+                },
+                {
+                  "name": "assists",
+                  "abbreviation": "AST",
+                  "displayValue": "140",
+                  "rankDisplayValue": "Tied-29th"
+                },
+                {
+                  "name": "fieldGoalsAttempted",
+                  "abbreviation": "FGA",
+                  "displayValue": "423",
+                  "rankDisplayValue": "209th"
+                },
+                {
+                  "name": "fieldGoalsMade",
+                  "abbreviation": "FGM",
+                  "displayValue": "190",
+                  "rankDisplayValue": "Tied-141st"
+                },
+                {
+                  "name": "fieldGoalPct",
+                  "abbreviation": "FG%",
+                  "displayValue": "44.9",
+                  "rankDisplayValue": "77th"
+                },
+                {
+                  "name": "freeThrowPct",
+                  "abbreviation": "FT%",
+                  "displayValue": "76.1",
+                  "rankDisplayValue": "85th"
+                },
+                {
+                  "name": "freeThrowsAttempted",
+                  "abbreviation": "FTA",
+                  "displayValue": "92",
+                  "rankDisplayValue": "Tied-323rd"
+                },
+                {
+                  "name": "freeThrowsMade",
+                  "abbreviation": "FTM",
+                  "displayValue": "70",
+                  "rankDisplayValue": "Tied-291st"
+                },
+                {
+                  "name": "points",
+                  "abbreviation": "PTS",
+                  "displayValue": "513",
+                  "rankDisplayValue": "Tied-156th"
+                },
+                {
+                  "name": "threePointFieldGoalsAttempted",
+                  "abbreviation": "3PA",
+                  "displayValue": "178",
+                  "rankDisplayValue": "84th"
+                },
+                {
+                  "name": "threePointFieldGoalsMade",
+                  "abbreviation": "3PM",
+                  "displayValue": "63",
+                  "rankDisplayValue": "Tied-48th"
+                },
+                {
+                  "name": "avgPoints",
+                  "abbreviation": "PTS",
+                  "displayValue": "73.3",
+                  "rankDisplayValue": "Tied-102nd"
+                },
+                {
+                  "name": "avgAssists",
+                  "abbreviation": "AST",
+                  "displayValue": "20.0",
+                  "rankDisplayValue": "Tied-10th"
+                },
+                {
+                  "name": "threePointFieldGoalPct",
+                  "abbreviation": "3P%",
+                  "displayValue": "35.4",
+                  "rankDisplayValue": "79th"
+                }
+              ],
+              "records": [
+                {
+                  "name": "overall",
+                  "abbreviation": "Season",
+                  "type": "total",
+                  "summary": "5-2"
+                },
+                {
+                  "name": "Home",
+                  "abbreviation": "Home",
+                  "type": "home",
+                  "summary": "2-2"
+                },
+                {
+                  "name": "Road",
+                  "abbreviation": "AWAY",
+                  "type": "road",
+                  "summary": "2-0"
+                },
+                {
+                  "name": "vs. Conf.",
+                  "abbreviation": "VS CONF",
+                  "type": "vsconf",
+                  "summary": "0-0"
+                }
+              ],
+              "leaders": [
+                {
+                  "name": "pointsPerGame",
+                  "displayName": "Points Per Game",
+                  "shortDisplayName": "PPG",
+                  "abbreviation": "PTS",
+                  "leaders": [
+                    {
+                      "displayValue": "16.7",
+                      "value": 16.714284896850586,
+                      "athlete": {
+                        "id": "5240245",
+                        "fullName": "Jasmine Bascoe",
+                        "displayName": "Jasmine Bascoe",
+                        "shortName": "J. Bascoe",
+                        "links": [
+                          {
+                            "rel": [
+                              "playercard",
+                              "desktop",
+                              "athlete"
+                            ],
+                            "href": "https://www.espn.com/womens-college-basketball/player/_/id/5240245/jasmine-bascoe"
+                          }
+                        ],
+                        "headshot": "https://a.espncdn.com/i/headshots/womens-college-basketball/players/full/5240245.png",
+                        "jersey": "11",
+                        "position": {
+                          "abbreviation": "G"
+                        },
+                        "team": {
+                          "id": "222"
+                        },
+                        "active": true
+                      },
+                      "team": {
+                        "id": "222"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "name": "reboundsPerGame",
+                  "displayName": "Rebounds Per Game",
+                  "shortDisplayName": "RPG",
+                  "abbreviation": "REB",
+                  "leaders": [
+                    {
+                      "displayValue": "5.4",
+                      "value": 5.4285712242126465,
+                      "athlete": {
+                        "id": "5174764",
+                        "fullName": "Brynn McCurry",
+                        "displayName": "Brynn McCurry",
+                        "shortName": "B. McCurry",
+                        "links": [
+                          {
+                            "rel": [
+                              "playercard",
+                              "desktop",
+                              "athlete"
+                            ],
+                            "href": "https://www.espn.com/womens-college-basketball/player/_/id/5174764/brynn-mccurry"
+                          }
+                        ],
+                        "headshot": "https://a.espncdn.com/i/headshots/womens-college-basketball/players/full/5174764.png",
+                        "jersey": "13",
+                        "position": {
+                          "abbreviation": "F"
+                        },
+                        "team": {
+                          "id": "222"
+                        },
+                        "active": true
+                      },
+                      "team": {
+                        "id": "222"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "name": "assistsPerGame",
+                  "displayName": "Assists Per Game",
+                  "shortDisplayName": "APG",
+                  "abbreviation": "AST",
+                  "leaders": [
+                    {
+                      "displayValue": "4.0",
+                      "value": 4.0,
+                      "athlete": {
+                        "id": "5174764",
+                        "fullName": "Brynn McCurry",
+                        "displayName": "Brynn McCurry",
+                        "shortName": "B. McCurry",
+                        "links": [
+                          {
+                            "rel": [
+                              "playercard",
+                              "desktop",
+                              "athlete"
+                            ],
+                            "href": "https://www.espn.com/womens-college-basketball/player/_/id/5174764/brynn-mccurry"
+                          }
+                        ],
+                        "headshot": "https://a.espncdn.com/i/headshots/womens-college-basketball/players/full/5174764.png",
+                        "jersey": "13",
+                        "position": {
+                          "abbreviation": "F"
+                        },
+                        "team": {
+                          "id": "222"
+                        },
+                        "active": true
+                      },
+                      "team": {
+                        "id": "222"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "notes": [],
+          "status": {
+            "clock": 0.0,
+            "displayClock": "0:00",
+            "period": 0,
+            "type": {
+              "id": "1",
+              "name": "STATUS_SCHEDULED",
+              "state": "pre",
+              "completed": false,
+              "description": "Scheduled",
+              "detail": "Mon, December 1st at 7:00 PM EST",
+              "shortDetail": "12/1 - 7:00 PM EST"
+            }
+          },
+          "broadcasts": [
+            {
+              "market": "national",
+              "names": [
+                "ESPN+"
+              ]
+            }
+          ],
+          "format": {
+            "regulation": {
+              "periods": 4
+            }
+          },
+          "tickets": [
+            {
+              "summary": "Tickets as low as $12",
+              "numberAvailable": 72,
+              "links": [
+                {
+                  "href": "https://www.vividseats.com/west-virginia-mountaineers-womens-basketball-tickets-west-virginia-university-coliseum-12-1-2025--sports-ncaa-womens-basketball/production/6069443?wsUser=717"
+                },
+                {
+                  "href": "https://www.vividseats.com/venues/hope-coliseum-tickets.html?wsUser=717"
+                }
+              ]
+            }
+          ],
+          "startDate": "2025-12-02T00:00Z",
+          "broadcast": "ESPN+",
+          "geoBroadcasts": [
+            {
+              "type": {
+                "id": "4",
+                "shortName": "Streaming"
+              },
+              "market": {
+                "id": "1",
+                "type": "National"
+              },
+              "media": {
+                "shortName": "ESPN+",
+                "logo": "https://a.espncdn.com/guid/322a7e47-3cdb-3b5c-ab1b-678e1f2c27e5/logos/default.png",
+                "darkLogo": "https://a.espncdn.com/guid/322a7e47-3cdb-3b5c-ab1b-678e1f2c27e5/logos/default-dark.png"
+              },
+              "lang": "en",
+              "region": "us"
+            }
+          ],
+          "odds": [
+            {
+              "provider": {
+                "id": "100",
+                "name": "Draft Kings",
+                "priority": 1,
+                "logos": [
+                  {
+                    "href": "https://a.espncdn.com/i/betting/Draftkings_Light.svg",
+                    "rel": [
+                      "light"
+                    ]
+                  },
+                  {
+                    "href": "https://a.espncdn.com/i/betting/Draftkings_Dark.svg",
+                    "rel": [
+                      "dark"
+                    ]
+                  }
+                ]
+              },
+              "details": "WVU -12.5",
+              "overUnder": 134.5,
+              "spread": -12.5,
+              "awayTeamOdds": {
+                "favorite": false,
+                "underdog": true,
+                "team": {
+                  "id": "222",
+                  "uid": "s:40~l:54~t:222",
+                  "abbreviation": "VILL",
+                  "name": "Wildcats",
+                  "displayName": "Villanova Wildcats",
+                  "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/222.png"
+                },
+                "favoriteAtOpen": false
+              },
+              "homeTeamOdds": {
+                "favorite": true,
+                "underdog": false,
+                "team": {
+                  "id": "277",
+                  "uid": "s:40~l:54~t:277",
+                  "abbreviation": "WVU",
+                  "name": "Mountaineers",
+                  "displayName": "West Virginia Mountaineers",
+                  "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/277.png"
+                },
+                "favoriteAtOpen": true
+              },
+              "moneyline": {
+                "displayName": "Moneyline",
+                "shortDisplayName": "ML",
+                "home": {
+                  "close": {
+                    "odds": "-900",
+                    "link": {
+                      "language": "en-US",
+                      "rel": [
+                        "home",
+                        "desktop",
+                        "bets",
+                        "draft-kings"
+                      ],
+                      "href": "https://sportsbook.draftkings.com/gateway?s=__s__&wpcid=__wpcid__&wpsrc=413&wpcn=ESPN&wpscn=Widget&wpcrn=BetSlipDeepLink&wpscid=__wpscid__&wpcrid=xx&preurl=https%3A%2F%2Fsportsbook.draftkings.com%2Fevent%2F33232501%3Foutcomes%3D0ML82438367_1",
+                      "text": "Home Bet",
+                      "shortText": "Home Bet",
+                      "isExternal": true,
+                      "isPremium": false,
+                      "tracking": {
+                        "campaign": "betting-integrations",
+                        "tags": {
+                          "league": "womens-college-basketball",
+                          "sport": "basketball",
+                          "gameId": 401825729,
+                          "betSide": "home",
+                          "betType": "straight"
+                        }
+                      }
+                    }
+                  },
+                  "open": {
+                    "odds": "-900"
+                  }
+                },
+                "away": {
+                  "close": {
+                    "odds": "+600",
+                    "link": {
+                      "language": "en-US",
+                      "rel": [
+                        "away",
+                        "desktop",
+                        "bets",
+                        "draft-kings"
+                      ],
+                      "href": "https://sportsbook.draftkings.com/gateway?s=__s__&wpcid=__wpcid__&wpsrc=413&wpcn=ESPN&wpscn=Widget&wpcrn=BetSlipDeepLink&wpscid=__wpscid__&wpcrid=xx&preurl=https%3A%2F%2Fsportsbook.draftkings.com%2Fevent%2F33232501%3Foutcomes%3D0ML82438367_3",
+                      "text": "Away Bet",
+                      "shortText": "Away Bet",
+                      "isExternal": true,
+                      "isPremium": false,
+                      "tracking": {
+                        "campaign": "betting-integrations",
+                        "tags": {
+                          "league": "womens-college-basketball",
+                          "sport": "basketball",
+                          "gameId": 401825729,
+                          "betSide": "away",
+                          "betType": "straight"
+                        }
+                      }
+                    }
+                  },
+                  "open": {
+                    "odds": "+600"
+                  }
+                }
+              },
+              "pointSpread": {
+                "displayName": "Spread",
+                "shortDisplayName": "Spread",
+                "home": {
+                  "close": {
+                    "line": "-12.5",
+                    "odds": "-110",
+                    "link": {
+                      "language": "en-US",
+                      "rel": [
+                        "homeSpread",
+                        "desktop",
+                        "bets"
+                      ],
+                      "href": "https://sportsbook.draftkings.com/gateway?s=__s__&wpcid=__wpcid__&wpsrc=413&wpcn=ESPN&wpscn=Widget&wpcrn=BetSlipDeepLink&wpscid=__wpscid__&wpcrid=xx&preurl=https%3A%2F%2Fsportsbook.draftkings.com%2Fevent%2F33232501%3Foutcomes%3D0HC82438367N1250_1",
+                      "text": "Home Point Spread",
+                      "shortText": "Home Point Spread",
+                      "isExternal": true,
+                      "isPremium": false,
+                      "tracking": {
+                        "campaign": "betting-integrations",
+                        "tags": {
+                          "league": "womens-college-basketball",
+                          "sport": "basketball",
+                          "gameId": 401825729,
+                          "betSide": "none",
+                          "betType": "straight",
+                          "betDetails": "Spread:WVU-12.5"
+                        }
+                      }
+                    }
+                  },
+                  "open": {
+                    "line": "-12.5",
+                    "odds": "-110"
+                  }
+                },
+                "away": {
+                  "close": {
+                    "line": "+12.5",
+                    "odds": "-110",
+                    "link": {
+                      "language": "en-US",
+                      "rel": [
+                        "awaySpread",
+                        "desktop",
+                        "bets"
+                      ],
+                      "href": "https://sportsbook.draftkings.com/gateway?s=__s__&wpcid=__wpcid__&wpsrc=413&wpcn=ESPN&wpscn=Widget&wpcrn=BetSlipDeepLink&wpscid=__wpscid__&wpcrid=xx&preurl=https%3A%2F%2Fsportsbook.draftkings.com%2Fevent%2F33232501%3Foutcomes%3D0HC82438367P1250_3",
+                      "text": "Away Point Spread",
+                      "shortText": "Away Point Spread",
+                      "isExternal": true,
+                      "isPremium": false,
+                      "tracking": {
+                        "campaign": "betting-integrations",
+                        "tags": {
+                          "league": "womens-college-basketball",
+                          "sport": "basketball",
+                          "gameId": 401825729,
+                          "betSide": "none",
+                          "betType": "straight",
+                          "betDetails": "Spread:VILL+12.5"
+                        }
+                      }
+                    }
+                  },
+                  "open": {
+                    "line": "+12.5",
+                    "odds": "-110"
+                  }
+                }
+              },
+              "total": {
+                "displayName": "Total",
+                "shortDisplayName": "Total",
+                "over": {
+                  "close": {
+                    "line": "o134.5",
+                    "odds": "-110",
+                    "link": {
+                      "language": "en-US",
+                      "rel": [
+                        "over",
+                        "desktop",
+                        "bets"
+                      ],
+                      "href": "https://sportsbook.draftkings.com/gateway?s=__s__&wpcid=__wpcid__&wpsrc=413&wpcn=ESPN&wpscn=Widget&wpcrn=BetSlipDeepLink&wpscid=__wpscid__&wpcrid=xx&preurl=https%3A%2F%2Fsportsbook.draftkings.com%2Fevent%2F33232501%3Foutcomes%3D0OU82438367O13450_1",
+                      "text": "Over Odds",
+                      "shortText": "Over Odds",
+                      "isExternal": true,
+                      "isPremium": false,
+                      "tracking": {
+                        "campaign": "betting-integrations",
+                        "tags": {
+                          "league": "womens-college-basketball",
+                          "sport": "basketball",
+                          "gameId": 401825729,
+                          "betSide": "over",
+                          "betType": "straight",
+                          "betDetails": "Over:134.5"
+                        }
+                      }
+                    }
+                  },
+                  "open": {
+                    "line": "o134.5",
+                    "odds": "-110"
+                  }
+                },
+                "under": {
+                  "close": {
+                    "line": "u134.5",
+                    "odds": "-110",
+                    "link": {
+                      "language": "en-US",
+                      "rel": [
+                        "under",
+                        "desktop",
+                        "bets"
+                      ],
+                      "href": "https://sportsbook.draftkings.com/gateway?s=__s__&wpcid=__wpcid__&wpsrc=413&wpcn=ESPN&wpscn=Widget&wpcrn=BetSlipDeepLink&wpscid=__wpscid__&wpcrid=xx&preurl=https%3A%2F%2Fsportsbook.draftkings.com%2Fevent%2F33232501%3Foutcomes%3D0OU82438367U13450_3",
+                      "text": "Under Odds",
+                      "shortText": "Under Odds",
+                      "isExternal": true,
+                      "isPremium": false,
+                      "tracking": {
+                        "campaign": "betting-integrations",
+                        "tags": {
+                          "league": "womens-college-basketball",
+                          "sport": "basketball",
+                          "gameId": 401825729,
+                          "betSide": "under",
+                          "betType": "straight",
+                          "betDetails": "Under:134.5"
+                        }
+                      }
+                    }
+                  },
+                  "open": {
+                    "line": "u134.5",
+                    "odds": "-110"
+                  }
+                }
+              },
+              "link": {
+                "language": "en-US",
+                "rel": [
+                  "game",
+                  "desktop",
+                  "bets"
+                ],
+                "href": "https://sportsbook.draftkings.com/gateway?s=__s__&wpcid=__wpcid__&wpsrc=413&wpcn=ESPN&wpscn=Widget&wpcrn=BetSlipDeepLink&wpscid=__wpscid__&wpcrid=xx&preurl=https%3A%2F%2Fsportsbook.draftkings.com%2Fevent%2F33232501",
+                "text": "See More Odds",
+                "shortText": "Game",
+                "isExternal": true,
+                "isPremium": false,
+                "tracking": {
+                  "campaign": "betting-integrations",
+                  "tags": {
+                    "league": "womens-college-basketball",
+                    "sport": "basketball",
+                    "gameId": 401825729,
+                    "betSide": "none",
+                    "betType": "straight"
+                  }
+                }
+              },
+              "header": {
+                "logo": {
+                  "dark": "https://a.espncdn.com/i/espnbet/dark/espn-bet-square-off.svg",
+                  "light": "https://a.espncdn.com/i/espnbet/espn-bet-square-off.svg",
+                  "exclusivesLogoDark": "https://a.espncdn.com/i/espnbet/espn-bet-square-mint.svg",
+                  "exclusivesLogoLight": "https://a.espncdn.com/i/espnbet/espn-bet-square-mint.svg"
+                },
+                "text": "Game Odds"
+              },
+              "footer": {
+                "disclaimer": "Odds by DraftKings\nGAMBLING PROBLEM? CALL 1-800-GAMBLER, (800) 327-5050 or visit gamblinghelplinema.org (MA). Call 877-8-HOPENY/text HOPENY (467369) (NY).\nPlease Gamble Responsibly. 888-789-7777/visit ccpg.org (CT), or visit www.mdgamblinghelp.org (MD).\n21+ and present in most states. (18+ DC/KY/NH/WY). Void in ONT/OR/NH. Eligibility restrictions apply. On behalf of Boot Hill Casino & Resort (KS). Terms: sportsbook.draftkings.com/promos."
+              }
+            }
+          ],
+          "highlights": []
+        }
+      ],
+      "links": [
+        {
+          "language": "en-US",
+          "rel": [
+            "summary",
+            "desktop",
+            "event"
+          ],
+          "href": "https://www.espn.com/womens-college-basketball/game/_/gameId/401825729/villanova-west-virginia",
+          "text": "Gamecast",
+          "shortText": "Gamecast",
+          "isExternal": false,
+          "isPremium": false
+        }
+      ],
+      "status": {
+        "clock": 0.0,
+        "displayClock": "0:00",
+        "period": 0,
+        "type": {
+          "id": "1",
+          "name": "STATUS_SCHEDULED",
+          "state": "pre",
+          "completed": false,
+          "description": "Scheduled",
+          "detail": "Mon, December 1st at 7:00 PM EST",
+          "shortDetail": "12/1 - 7:00 PM EST"
+        }
+      }
+    },
+    {
+      "id": "401826680",
+      "uid": "s:40~l:54~e:401826680",
+      "date": "2025-12-02T02:00Z",
+      "name": "San Jos\u00e9 State Spartans at Washington Huskies",
+      "shortName": "SJSU @ WASH",
+      "season": {
+        "year": 2026,
+        "type": 2,
+        "slug": "regular-season"
+      },
+      "competitions": [
+        {
+          "id": "401826680",
+          "uid": "s:40~l:54~e:401826680~c:401826680",
+          "date": "2025-12-02T02:00Z",
+          "attendance": 0,
+          "type": {
+            "id": "1",
+            "abbreviation": "STD"
+          },
+          "timeValid": true,
+          "neutralSite": false,
+          "conferenceCompetition": false,
+          "playByPlayAvailable": false,
+          "recent": false,
+          "venue": {
+            "id": "782",
+            "fullName": "Alaska Airlines Arena",
+            "address": {
+              "city": "Seattle",
+              "state": "WA"
+            },
+            "indoor": true
+          },
+          "competitors": [
+            {
+              "id": "264",
+              "uid": "s:40~l:54~t:264",
+              "type": "team",
+              "order": 0,
+              "homeAway": "home",
+              "team": {
+                "id": "264",
+                "uid": "s:40~l:54~t:264",
+                "location": "Washington",
+                "name": "Huskies",
+                "abbreviation": "WASH",
+                "displayName": "Washington Huskies",
+                "shortDisplayName": "Washington",
+                "color": "33006f",
+                "alternateColor": "e8d3a2",
+                "isActive": true,
+                "venue": {
+                  "id": "782"
+                },
+                "links": [
+                  {
+                    "rel": [
+                      "clubhouse",
+                      "desktop",
+                      "team"
+                    ],
+                    "href": "https://www.espn.com/womens-college-basketball/team/_/id/264/washington-huskies",
+                    "text": "Clubhouse",
+                    "isExternal": false,
+                    "isPremium": false
+                  },
+                  {
+                    "rel": [
+                      "clubhouse",
+                      "mobile",
+                      "team"
+                    ],
+                    "href": "https://m.espn.com/ncw/clubhouse?teamId=264",
+                    "text": "Clubhouse",
+                    "isExternal": false,
+                    "isPremium": false
+                  },
+                  {
+                    "rel": [
+                      "roster",
+                      "desktop",
+                      "team"
+                    ],
+                    "href": "https://www.espn.com/womens-college-basketball/team/roster/_/id/264",
+                    "text": "Roster",
+                    "isExternal": false,
+                    "isPremium": false
+                  },
+                  {
+                    "rel": [
+                      "stats",
+                      "desktop",
+                      "team"
+                    ],
+                    "href": "https://www.espn.com/womens-college-basketball/team/stats/_/id/264",
+                    "text": "Statistics",
+                    "isExternal": false,
+                    "isPremium": false
+                  },
+                  {
+                    "rel": [
+                      "schedule",
+                      "desktop",
+                      "team"
+                    ],
+                    "href": "https://www.espn.com/womens-college-basketball/team/schedule/_/id/264",
+                    "text": "Schedule",
+                    "isExternal": false,
+                    "isPremium": false
+                  }
+                ],
+                "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/264.png",
+                "conferenceId": "7"
+              },
+              "score": "0",
+              "curatedRank": {
+                "current": 21
+              },
+              "statistics": [
+                {
+                  "name": "rebounds",
+                  "abbreviation": "REB",
+                  "displayValue": "310",
+                  "rankDisplayValue": "Tied-213th"
+                },
+                {
+                  "name": "avgRebounds",
+                  "abbreviation": "REB",
+                  "displayValue": "44.3",
+                  "rankDisplayValue": "30th"
+                },
+                {
+                  "name": "assists",
+                  "abbreviation": "AST",
+                  "displayValue": "97",
+                  "rankDisplayValue": "Tied-184th"
+                },
+                {
+                  "name": "fieldGoalsAttempted",
+                  "abbreviation": "FGA",
+                  "displayValue": "439",
+                  "rankDisplayValue": "Tied-178th"
+                },
+                {
+                  "name": "fieldGoalsMade",
+                  "abbreviation": "FGM",
+                  "displayValue": "198",
+                  "rankDisplayValue": "Tied-117th"
+                },
+                {
+                  "name": "fieldGoalPct",
+                  "abbreviation": "FG%",
+                  "displayValue": "45.1",
+                  "rankDisplayValue": "Tied-69th"
+                },
+                {
+                  "name": "freeThrowPct",
+                  "abbreviation": "FT%",
+                  "displayValue": "69.9",
+                  "rankDisplayValue": "227th"
+                },
+                {
+                  "name": "freeThrowsAttempted",
+                  "abbreviation": "FTA",
+                  "displayValue": "113",
+                  "rankDisplayValue": "Tied-242nd"
+                },
+                {
+                  "name": "freeThrowsMade",
+                  "abbreviation": "FTM",
+                  "displayValue": "79",
+                  "rankDisplayValue": "Tied-231st"
+                },
+                {
+                  "name": "points",
+                  "abbreviation": "PTS",
+                  "displayValue": "514",
+                  "rankDisplayValue": "Tied-154th"
+                },
+                {
+                  "name": "threePointFieldGoalsAttempted",
+                  "abbreviation": "3PA",
+                  "displayValue": "127",
+                  "rankDisplayValue": "Tied-261st"
+                },
+                {
+                  "name": "threePointFieldGoalsMade",
+                  "abbreviation": "3PM",
+                  "displayValue": "39",
+                  "rankDisplayValue": "Tied-239th"
+                },
+                {
+                  "name": "avgPoints",
+                  "abbreviation": "PTS",
+                  "displayValue": "73.4",
+                  "rankDisplayValue": "Tied-99th"
+                },
+                {
+                  "name": "avgAssists",
+                  "abbreviation": "AST",
+                  "displayValue": "13.9",
+                  "rankDisplayValue": "Tied-164th"
+                },
+                {
+                  "name": "threePointFieldGoalPct",
+                  "abbreviation": "3P%",
+                  "displayValue": "30.7",
+                  "rankDisplayValue": "209th"
+                }
+              ],
+              "records": [
+                {
+                  "name": "overall",
+                  "abbreviation": "Season",
+                  "type": "total",
+                  "summary": "7-0"
+                },
+                {
+                  "name": "Home",
+                  "abbreviation": "Home",
+                  "type": "home",
+                  "summary": "6-0"
+                },
+                {
+                  "name": "Road",
+                  "abbreviation": "AWAY",
+                  "type": "road",
+                  "summary": "1-0"
+                },
+                {
+                  "name": "vs. Conf.",
+                  "abbreviation": "VS CONF",
+                  "type": "vsconf",
+                  "summary": "0-0"
+                }
+              ],
+              "leaders": [
+                {
+                  "name": "pointsPerGame",
+                  "displayName": "Points Per Game",
+                  "shortDisplayName": "PPG",
+                  "abbreviation": "PTS",
+                  "leaders": [
+                    {
+                      "displayValue": "17.7",
+                      "value": 17.714284896850586,
+                      "athlete": {
+                        "id": "5175965",
+                        "fullName": "Sayvia Sellers",
+                        "displayName": "Sayvia Sellers",
+                        "shortName": "S. Sellers",
+                        "links": [
+                          {
+                            "rel": [
+                              "playercard",
+                              "desktop",
+                              "athlete"
+                            ],
+                            "href": "https://www.espn.com/womens-college-basketball/player/_/id/5175965/sayvia-sellers"
+                          }
+                        ],
+                        "headshot": "https://a.espncdn.com/i/headshots/womens-college-basketball/players/full/5175965.png",
+                        "jersey": "0",
+                        "position": {
+                          "abbreviation": "G"
+                        },
+                        "team": {
+                          "id": "264"
+                        },
+                        "active": true
+                      },
+                      "team": {
+                        "id": "264"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "name": "reboundsPerGame",
+                  "displayName": "Rebounds Per Game",
+                  "shortDisplayName": "RPG",
+                  "abbreviation": "REB",
+                  "leaders": [
+                    {
+                      "displayValue": "7.0",
+                      "value": 7.0,
+                      "athlete": {
+                        "id": "5239666",
+                        "fullName": "Avery Howell",
+                        "displayName": "Avery Howell",
+                        "shortName": "A. Howell",
+                        "links": [
+                          {
+                            "rel": [
+                              "playercard",
+                              "desktop",
+                              "athlete"
+                            ],
+                            "href": "https://www.espn.com/womens-college-basketball/player/_/id/5239666/avery-howell"
+                          }
+                        ],
+                        "headshot": "https://a.espncdn.com/i/headshots/womens-college-basketball/players/full/5239666.png",
+                        "jersey": "2",
+                        "position": {
+                          "abbreviation": "G"
+                        },
+                        "team": {
+                          "id": "264"
+                        },
+                        "active": true
+                      },
+                      "team": {
+                        "id": "264"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "name": "assistsPerGame",
+                  "displayName": "Assists Per Game",
+                  "shortDisplayName": "APG",
+                  "abbreviation": "AST",
+                  "leaders": [
+                    {
+                      "displayValue": "4.0",
+                      "value": 4.0,
+                      "athlete": {
+                        "id": "5175965",
+                        "fullName": "Sayvia Sellers",
+                        "displayName": "Sayvia Sellers",
+                        "shortName": "S. Sellers",
+                        "links": [
+                          {
+                            "rel": [
+                              "playercard",
+                              "desktop",
+                              "athlete"
+                            ],
+                            "href": "https://www.espn.com/womens-college-basketball/player/_/id/5175965/sayvia-sellers"
+                          }
+                        ],
+                        "headshot": "https://a.espncdn.com/i/headshots/womens-college-basketball/players/full/5175965.png",
+                        "jersey": "0",
+                        "position": {
+                          "abbreviation": "G"
+                        },
+                        "team": {
+                          "id": "264"
+                        },
+                        "active": true
+                      },
+                      "team": {
+                        "id": "264"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "23",
+              "uid": "s:40~l:54~t:23",
+              "type": "team",
+              "order": 1,
+              "homeAway": "away",
+              "team": {
+                "id": "23",
+                "uid": "s:40~l:54~t:23",
+                "location": "San Jos\u00e9 State",
+                "name": "Spartans",
+                "abbreviation": "SJSU",
+                "displayName": "San Jos\u00e9 State Spartans",
+                "shortDisplayName": "San Jos\u00e9 St",
+                "color": "005893",
+                "alternateColor": "fdba31",
+                "isActive": true,
+                "venue": {
+                  "id": "2192"
+                },
+                "links": [
+                  {
+                    "rel": [
+                      "clubhouse",
+                      "desktop",
+                      "team"
+                    ],
+                    "href": "https://www.espn.com/womens-college-basketball/team/_/id/23/san-jose-state-spartans",
+                    "text": "Clubhouse",
+                    "isExternal": false,
+                    "isPremium": false
+                  },
+                  {
+                    "rel": [
+                      "clubhouse",
+                      "mobile",
+                      "team"
+                    ],
+                    "href": "https://m.espn.com/ncw/clubhouse?teamId=23",
+                    "text": "Clubhouse",
+                    "isExternal": false,
+                    "isPremium": false
+                  },
+                  {
+                    "rel": [
+                      "roster",
+                      "desktop",
+                      "team"
+                    ],
+                    "href": "https://www.espn.com/womens-college-basketball/team/roster/_/id/23",
+                    "text": "Roster",
+                    "isExternal": false,
+                    "isPremium": false
+                  },
+                  {
+                    "rel": [
+                      "stats",
+                      "desktop",
+                      "team"
+                    ],
+                    "href": "https://www.espn.com/womens-college-basketball/team/stats/_/id/23",
+                    "text": "Statistics",
+                    "isExternal": false,
+                    "isPremium": false
+                  },
+                  {
+                    "rel": [
+                      "schedule",
+                      "desktop",
+                      "team"
+                    ],
+                    "href": "https://www.espn.com/womens-college-basketball/team/schedule/_/id/23",
+                    "text": "Schedule",
+                    "isExternal": false,
+                    "isPremium": false
+                  }
+                ],
+                "logo": "https://a.espncdn.com/i/teamlogos/ncaa/500/23.png",
+                "conferenceId": "44"
+              },
+              "score": "0",
+              "curatedRank": {
+                "current": 99
+              },
+              "statistics": [
+                {
+                  "name": "rebounds",
+                  "abbreviation": "REB",
+                  "displayValue": "215",
+                  "rankDisplayValue": "Tied-626th"
+                },
+                {
+                  "name": "avgRebounds",
+                  "abbreviation": "REB",
+                  "displayValue": "43.0",
+                  "rankDisplayValue": "Tied-44th"
+                },
+                {
+                  "name": "assists",
+                  "abbreviation": "AST",
+                  "displayValue": "50",
+                  "rankDisplayValue": "Tied-356th"
+                },
+                {
+                  "name": "fieldGoalsAttempted",
+                  "abbreviation": "FGA",
+                  "displayValue": "288",
+                  "rankDisplayValue": "355th"
+                },
+                {
+                  "name": "fieldGoalsMade",
+                  "abbreviation": "FGM",
+                  "displayValue": "94",
+                  "rankDisplayValue": "359th"
+                },
+                {
+                  "name": "fieldGoalPct",
+                  "abbreviation": "FG%",
+                  "displayValue": "32.6",
+                  "rankDisplayValue": "407th"
+                },
+                {
+                  "name": "freeThrowPct",
+                  "abbreviation": "FT%",
+                  "displayValue": "71.9",
+                  "rankDisplayValue": "Tied-185th"
+                },
+                {
+                  "name": "freeThrowsAttempted",
+                  "abbreviation": "FTA",
+                  "displayValue": "96",
+                  "rankDisplayValue": "Tied-307th"
+                },
+                {
+                  "name": "freeThrowsMade",
+                  "abbreviation": "FTM",
+                  "displayValue": "69",
+                  "rankDisplayValue": "Tied-297th"
+                },
+                {
+                  "name": "points",
+                  "abbreviation": "PTS",
+                  "displayValue": "282",
+                  "rankDisplayValue": "358th"
+                },
+                {
+                  "name": "threePointFieldGoalsAttempted",
+                  "abbreviation": "3PA",
+                  "displayValue": "117",
+                  "rankDisplayValue": "Tied-289th"
+                },
+                {
+                  "name": "threePointFieldGoalsMade",
+                  "abbreviation": "3PM",
+                  "displayValue": "25",
+                  "rankDisplayValue": "Tied-341st"
+                },
+                {
+                  "name": "avgPoints",
+                  "abbreviation": "PTS",
+                  "displayValue": "56.4",
+                  "rankDisplayValue": "348th"
+                },
+                {
+                  "name": "avgAssists",
+                  "abbreviation": "AST",
+                  "displayValue": "10.0",
+                  "rankDisplayValue": "Tied-359th"
+                },
+                {
+                  "name": "threePointFieldGoalPct",
+                  "abbreviation": "3P%",
+                  "displayValue": "21.4",
+                  "rankDisplayValue": "450th"
+                }
+              ],
+              "records": [
+                {
+                  "name": "overall",
+                  "abbreviation": "Season",
+                  "type": "total",
+                  "summary": "0-5"
+                },
+                {
+                  "name": "Home",
+                  "abbreviation": "Home",
+                  "type": "home",
+                  "summary": "0-1"
+                },
+                {
+                  "name": "Road",
+                  "abbreviation": "AWAY",
+                  "type": "road",
+                  "summary": "0-4"
+                },
+                {
+                  "name": "vs. Conf.",
+                  "abbreviation": "VS CONF",
+                  "type": "vsconf",
+                  "summary": "0-0"
+                }
+              ],
+              "leaders": [
+                {
+                  "name": "pointsPerGame",
+                  "displayName": "Points Per Game",
+                  "shortDisplayName": "PPG",
+                  "abbreviation": "PTS",
+                  "leaders": [
+                    {
+                      "displayValue": "12.6",
+                      "value": 12.600000381469727,
+                      "athlete": {
+                        "id": "5242475",
+                        "fullName": "Rylei Waugh",
+                        "displayName": "Rylei Waugh",
+                        "shortName": "R. Waugh",
+                        "links": [
+                          {
+                            "rel": [
+                              "playercard",
+                              "desktop",
+                              "athlete"
+                            ],
+                            "href": "https://www.espn.com/womens-college-basketball/player/_/id/5242475/rylei-waugh"
+                          }
+                        ],
+                        "headshot": "https://a.espncdn.com/i/headshots/womens-college-basketball/players/full/5242475.png",
+                        "jersey": "4",
+                        "position": {
+                          "abbreviation": "G"
+                        },
+                        "team": {
+                          "id": "23"
+                        },
+                        "active": true
+                      },
+                      "team": {
+                        "id": "23"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "name": "reboundsPerGame",
+                  "displayName": "Rebounds Per Game",
+                  "shortDisplayName": "RPG",
+                  "abbreviation": "REB",
+                  "leaders": [
+                    {
+                      "displayValue": "6.6",
+                      "value": 6.599999904632568,
+                      "athlete": {
+                        "id": "5175400",
+                        "fullName": "Amira Brown",
+                        "displayName": "Amira Brown",
+                        "shortName": "A. Brown",
+                        "links": [
+                          {
+                            "rel": [
+                              "playercard",
+                              "desktop",
+                              "athlete"
+                            ],
+                            "href": "https://www.espn.com/womens-college-basketball/player/_/id/5175400/amira-brown"
+                          }
+                        ],
+                        "headshot": "https://a.espncdn.com/i/headshots/womens-college-basketball/players/full/5175400.png",
+                        "jersey": "8",
+                        "position": {
+                          "abbreviation": "G"
+                        },
+                        "team": {
+                          "id": "23"
+                        },
+                        "active": true
+                      },
+                      "team": {
+                        "id": "23"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "name": "assistsPerGame",
+                  "displayName": "Assists Per Game",
+                  "shortDisplayName": "APG",
+                  "abbreviation": "AST",
+                  "leaders": [
+                    {
+                      "displayValue": "2.6",
+                      "value": 2.5999999046325684,
+                      "athlete": {
+                        "id": "5242475",
+                        "fullName": "Rylei Waugh",
+                        "displayName": "Rylei Waugh",
+                        "shortName": "R. Waugh",
+                        "links": [
+                          {
+                            "rel": [
+                              "playercard",
+                              "desktop",
+                              "athlete"
+                            ],
+                            "href": "https://www.espn.com/womens-college-basketball/player/_/id/5242475/rylei-waugh"
+                          }
+                        ],
+                        "headshot": "https://a.espncdn.com/i/headshots/womens-college-basketball/players/full/5242475.png",
+                        "jersey": "4",
+                        "position": {
+                          "abbreviation": "G"
+                        },
+                        "team": {
+                          "id": "23"
+                        },
+                        "active": true
+                      },
+                      "team": {
+                        "id": "23"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "notes": [],
+          "status": {
+            "clock": 0.0,
+            "displayClock": "0:00",
+            "period": 0,
+            "type": {
+              "id": "1",
+              "name": "STATUS_SCHEDULED",
+              "state": "pre",
+              "completed": false,
+              "description": "Scheduled",
+              "detail": "Mon, December 1st at 9:00 PM EST",
+              "shortDetail": "12/1 - 9:00 PM EST"
+            }
+          },
+          "broadcasts": [
+            {
+              "market": "national",
+              "names": [
+                "B1G+"
+              ]
+            }
+          ],
+          "format": {
+            "regulation": {
+              "periods": 4
+            }
+          },
+          "tickets": [
+            {
+              "summary": "Tickets as low as $18",
+              "numberAvailable": 47,
+              "links": [
+                {
+                  "href": "https://www.vividseats.com/washington-huskies-womens-basketball-tickets-alaska-airlines-arena-12-1-2025--sports-ncaa-womens-basketball/production/6056732?wsUser=717"
+                },
+                {
+                  "href": "https://www.vividseats.com/alaska-airlines-arena-tickets/venue/2076?wsUser=717"
+                }
+              ]
+            }
+          ],
+          "startDate": "2025-12-02T02:00Z",
+          "broadcast": "B1G+",
+          "geoBroadcasts": [
+            {
+              "type": {
+                "id": "4",
+                "shortName": "Streaming"
+              },
+              "market": {
+                "id": "1",
+                "type": "National"
+              },
+              "media": {
+                "shortName": "B1G+"
+              },
+              "lang": "en",
+              "region": "us"
+            }
+          ],
+          "highlights": []
+        }
+      ],
+      "links": [
+        {
+          "language": "en-US",
+          "rel": [
+            "summary",
+            "desktop",
+            "event"
+          ],
+          "href": "https://www.espn.com/womens-college-basketball/game/_/gameId/401826680/san-jose-st-washington",
+          "text": "Gamecast",
+          "shortText": "Gamecast",
+          "isExternal": false,
+          "isPremium": false
+        }
+      ],
+      "status": {
+        "clock": 0.0,
+        "displayClock": "0:00",
+        "period": 0,
+        "type": {
+          "id": "1",
+          "name": "STATUS_SCHEDULED",
+          "state": "pre",
+          "completed": false,
+          "description": "Scheduled",
+          "detail": "Mon, December 1st at 9:00 PM EST",
+          "shortDetail": "12/1 - 9:00 PM EST"
+        }
+      }
+    }
+  ],
+  "provider": {
+    "id": "100",
+    "name": "Draft Kings",
+    "priority": 1,
+    "logos": [
+      {
+        "href": "https://a.espncdn.com/i/betting/Draftkings_Light.svg",
+        "rel": [
+          "light"
+        ]
+      },
+      {
+        "href": "https://a.espncdn.com/i/betting/Draftkings_Dark.svg",
+        "rel": [
+          "dark"
+        ]
+      }
+    ]
+  },
+  "eventsDate": {
+    "date": "2025-12-02T00:00Z",
+    "seasonType": 2
+  }
+}

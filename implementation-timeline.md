@@ -130,8 +130,8 @@ Start ONE chat for this entire phase. Upload the blueprint at the start.
 ### Day 5: Ingestion Lambda - DynamoDB Write
 **Time: 3-4 hours**
 
-- [ ] Add DynamoDB write logic to Lambda
-- [ ] Implement game metadata storage:
+- [x] Add DynamoDB write logic to Lambda
+- [x] Implement game metadata storage:
   ```python
   def store_game_metadata(game):
       table.put_item(Item={
@@ -142,9 +142,9 @@ Start ONE chat for this entire phase. Upload the blueprint at the start.
           # ... other fields
       })
   ```
-- [ ] Implement current score storage
-- [ ] Deploy Lambda to AWS
-- [ ] Test with manual invocation
+- [x] Implement current score storage
+- [x] Deploy Lambda to AWS
+- [x] Test with manual invocation
 
 **Checkpoint:** Manual Lambda invoke writes game data to DynamoDB
 

@@ -1,1 +1,1 @@
-{"statusCode": 200, "body": "{\"message\": \"Ingestion successful\", \"data_source\": \"live\", \"games_parsed\": 9, \"games_stored\": 9, \"timestamp\": \"2025-12-01T06:15:31.334472\"}"}
+{"statusCode": 200, "body": "\"Processed 2 games\""}
