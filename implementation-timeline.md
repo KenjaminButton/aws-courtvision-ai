@@ -209,8 +209,8 @@ Start ONE chat for this entire phase. Upload the blueprint at the start.
 ### Day 9: Error Handling + Retry Logic
 **Time: 2-3 hours**
 
-- [ ] Add try/catch around ESPN API calls
-- [ ] Implement exponential backoff:
+- [x] Add try/catch around ESPN API calls
+- [x] Implement exponential backoff:
   ```python
   def fetch_with_retry(url, max_retries=3):
       for attempt in range(max_retries):
@@ -223,8 +223,8 @@ Start ONE chat for this entire phase. Upload the blueprint at the start.
               time.sleep(wait_time)
       raise Exception(f"Failed after {max_retries} attempts")
   ```
-- [ ] Add CloudWatch alarms for failures
-- [ ] Test with simulated failures
+- [x] Add CloudWatch alarms for failures
+- [x] Test with simulated failures
 
 **Checkpoint:** Lambda handles ESPN outages gracefully
 
