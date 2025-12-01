@@ -12,7 +12,7 @@ ESPN_BASE_URL = "https://site.api.espn.com/apis/site/v2/sports/basketball/womens
 
 dynamodb = boto3.resource('dynamodb')
 s3_client = boto3.client('s3')
-# ❌ REMOVED: table = dynamodb.Table(DYNAMODB_TABLE)  # This caused the error!
+
 
 def fetch_espn_scoreboard():
     """
@@ -32,6 +32,32 @@ def fetch_espn_scoreboard():
     except requests.exceptions.RequestException as e:
         print(f"Error fetching from ESPN: {str(e)}")
         raise
+
+def fetch_game_summary(game_id):
+    """
+    Fetch detailed game summary including play-by-play from ESPN API
+    
+    Args:
+        game_id: ESPN game ID (e.g., "401825729")
+    
+    Returns:
+        dict: Game summary with play-by-play data
+    """
+    url = f"https://site.api.espn.com/apis/site/v2/sports/basketball/womens-college-basketball/summary?event={game_id}"
+    
+    try:
+        print(f"Fetching game summary for game {game_id}")
+        response = requests.get(url, timeout=10)
+        response.raise_for_status()
+        
+        data = response.json()
+        play_count = len(data.get('plays', [])) if 'plays' in data else 0
+        print(f"Game summary returned {play_count} plays")
+        
+        return data
+    except requests.exceptions.RequestException as e:
+        print(f"Error fetching game summary for {game_id}: {str(e)}")
+        return None
 
 def parse_game_data(espn_game):
     """
@@ -213,6 +239,19 @@ def handler(event, context):
                 store_game_metadata(parsed_game)
                 store_current_score(parsed_game)
         
+                # Fetch detailed game summary if game is active or completed
+                game_state = parsed_game.get('statusState', '')
+                if game_state in ['in', 'post']:
+                    print(f"Game is {game_state}, fetching play-by-play data...")
+                    summary = fetch_game_summary(parsed_game['espnGameId'])
+                    
+                    if summary and 'plays' in summary:
+                        play_count = len(summary['plays'])
+                        print(f"✅ Fetched {play_count} plays for {game_id}")
+                        # TODO: Parse and store plays (next step)
+                    else:
+                        print(f"⚠️  No plays found for {game_id}")
+
         return {
             'statusCode': 200,
             'body': json.dumps(f'Processed {len(games)} games')
