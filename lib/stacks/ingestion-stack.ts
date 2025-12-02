@@ -16,37 +16,31 @@ export class IngestionStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
 
-    // Main DynamoDB table for all game data
     this.gamesTable = new dynamodb.Table(this, 'GamesTable', {
       tableName: 'courtvision-games',
-      partitionKey: {
-        name: 'PK',
-        type: dynamodb.AttributeType.STRING,
-      },
-      sortKey: {
-        name: 'SK',
-        type: dynamodb.AttributeType.STRING,
-      },
-      billingMode: dynamodb.BillingMode.PAY_PER_REQUEST, // On-demand pricing
-      stream: dynamodb.StreamViewType.NEW_AND_OLD_IMAGES, // Enable streams for AI triggers
-      removalPolicy: cdk.RemovalPolicy.RETAIN, // Don't delete table if stack is deleted
+      partitionKey: { name: 'PK', type: dynamodb.AttributeType.STRING },
+      sortKey: { name: 'SK', type: dynamodb.AttributeType.STRING },
+      billingMode: dynamodb.BillingMode.PAY_PER_REQUEST,
+      stream: dynamodb.StreamViewType.NEW_AND_OLD_IMAGES,
+      removalPolicy: cdk.RemovalPolicy.RETAIN,
     });
 
-    // Add Global Secondary Index for date-based queries
+    // GSI1 - For WebSocket connections by gameId (EXISTING - keep it!)
     this.gamesTable.addGlobalSecondaryIndex({
       indexName: 'GSI1',
-      partitionKey: {
-        name: 'GSI1PK',
-        type: dynamodb.AttributeType.STRING,
-      },
-      sortKey: {
-        name: 'GSI1SK',
-        type: dynamodb.AttributeType.STRING,
-      },
+      partitionKey: { name: 'GSI1PK', type: dynamodb.AttributeType.STRING },
+      sortKey: { name: 'GSI1SK', type: dynamodb.AttributeType.STRING },
       projectionType: dynamodb.ProjectionType.ALL,
     });
 
-// S3 bucket for game recordings
+    // GSI2 - For ESPN Game ID lookups (NEW - adding it!)
+    this.gamesTable.addGlobalSecondaryIndex({
+      indexName: 'GSI2',
+      partitionKey: { name: 'espnGameId', type: dynamodb.AttributeType.STRING },
+      projectionType: dynamodb.ProjectionType.ALL,
+    });
+
+    // S3 bucket for game recordings
     this.recordingsBucket = new s3.Bucket(this, 'RecordingsBucket', {
       bucketName: `courtvision-recordings-${cdk.Stack.of(this).account}`,
       versioned: true, // Enable versioning

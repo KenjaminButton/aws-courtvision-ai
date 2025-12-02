@@ -769,9 +769,85 @@ DynamoDB Update → Streams → Push Lambda → GSI1 Query → WebSocket Push �
 
 ---
 
+### Day 19 Extended: REST API for ESPN ID Lookups
 
+**Why:** Clean, shareable URLs using ESPN's numeric game IDs instead of encoded internal keys.
+
+**What We Built:**
+- REST API Gateway: `https://i0ui9626c5.execute-api.us-east-1.amazonaws.com/prod/`
+- API Lambda: Queries GSI2 by `espnGameId`, returns full game data
+- React integration: Fetches game by ESPN ID, then subscribes to WebSocket
+
+**Flow:**
+1. User visits `/game/401825729`
+2. React calls `GET /game/401825729`
+3. API queries GSI2, returns full gameId + metadata
+4. React subscribes to WebSocket with full gameId
+5. Real-time updates work as before
+
+**Key Files:**
+- `lambda/api/handler.py` - REST API Lambda
+- `lib/stacks/websocket-stack.ts` - Added REST API Gateway
+- `frontend/src/pages/GameView.tsx` - Fetch-then-subscribe pattern
+
+**Verified:** ✅ Clean URLs, ✅ Real-time updates working
 
 ---
+
+### Day 19 Extended: REST API for ESPN ID Lookups
+
+**Completed:** December 1-2, 2025
+
+**What We Built:**
+- REST API Gateway for game lookups by ESPN ID
+- API Lambda queries GSI2, returns full game data
+- React integration: fetch game metadata, then subscribe to WebSocket
+- Clean URLs: `/game/401825729` instead of URL-encoded internal keys
+
+**Key Achievement:** Professional URL structure with ESPN's numeric game IDs
+
+**Files:**
+- `lambda/api/handler.py` - REST API Lambda with GSI2 queries
+- `lib/stacks/websocket-stack.ts` - Added REST API Gateway
+- `frontend/src/pages/GameView.tsx` - Fetch-then-subscribe pattern
+
+---
+
+### Day 20: Pipeline Testing + ESPN API Investigation
+
+**Completed:** December 2, 2025
+
+**What We Tested:**
+- ✅ Full pipeline: ESPN → DynamoDB → WebSocket → React
+- ✅ Real-time updates working (< 2 seconds)
+- ✅ REST API + WebSocket integration
+- ✅ Clean ESPN ID URLs
+
+**ESPN API Investigation:**
+- Discovered: Public API returns Top 25 games only (~2-4 games/day)
+- Verified: Both ranked team games appear (Washington #21, West Virginia #25)
+- Conclusion: Sufficient for portfolio demo; production would need ESPN partnership
+
+**Phase 2 Status:** ✅ **COMPLETE**
+
+---
+
+## Phase 2 Summary
+
+**Deliverables Achieved:**
+✅ Live scores display in React  
+✅ WebSocket push updates in < 2 seconds  
+✅ End-to-end pipeline working  
+✅ REST API for clean URLs  
+✅ Real-time score changes verified  
+
+**Architecture:**
+- EventBridge triggers Lambda every 60 seconds
+- Ingestion → Kinesis → Processing → DynamoDB
+- DynamoDB Streams → Push Lambda → WebSocket → React
+- REST API for initial game lookup via ESPN ID
+
+**Next Phase:** Phase 3 - AI Features (Win Probability + Commentary)
 
 ---
 

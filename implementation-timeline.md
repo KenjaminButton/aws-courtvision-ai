@@ -410,17 +410,17 @@ Process raw data into game state and push live updates to a React frontend.
 ### Day 18: React Frontend - Setup
 **Time: 3-4 hours**
 
-- [ ] Create React app:
+- [x] Create React app:
   ```bash
   npx create-react-app frontend --template typescript
   cd frontend
   npm install tailwindcss recharts
   ```
-- [ ] Set up Tailwind CSS
-- [ ] Create basic page structure:
+- [x] Set up Tailwind CSS
+- [x] Create basic page structure:
   - Dashboard (game list)
   - Game view
-- [ ] Configure environment variables for API endpoints
+- [x] Configure environment variables for API endpoints
 
 **Checkpoint:** React app runs locally with Tailwind styling
 

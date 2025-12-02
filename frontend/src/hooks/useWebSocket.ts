@@ -1,0 +1,91 @@
+import { useState, useEffect, useRef } from 'react';
+
+interface GameState {
+  type: string;
+  gameId: string;
+  homeTeam?: string;
+  awayTeam?: string;
+  homeScore?: number;
+  awayScore?: number;
+  quarter?: string | null;
+  gameClock?: string;
+  status?: string;
+  lastUpdated?: string;
+}
+
+export function useWebSocket(gameId: string | undefined) {
+  const [gameState, setGameState] = useState<GameState | null>(null);
+  const [isConnected, setIsConnected] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const wsRef = useRef<WebSocket | null>(null);
+  const reconnectTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  useEffect(() => {
+    if (!gameId) return;
+
+    const wsUrl = process.env.REACT_APP_WEBSOCKET_URL;
+    if (!wsUrl) {
+      setError('WebSocket URL not configured');
+      return;
+    }
+
+    const connect = () => {
+      console.log('🔌 Connecting to WebSocket...');
+      const ws = new WebSocket(wsUrl);
+      wsRef.current = ws;
+
+      ws.onopen = () => {
+        console.log('✅ WebSocket connected');
+        setIsConnected(true);
+        setError(null);
+
+        // Subscribe to game updates
+        ws.send(JSON.stringify({ action: 'subscribe', gameId }));
+        console.log(`📡 Subscribed to ${gameId}`);
+      };
+
+      ws.onmessage = (event) => {
+        try {
+          const data = JSON.parse(event.data);
+          console.log('📨 Received:', data);
+
+          if (data.type === 'game_state' || data.type === 'score_update') {
+            setGameState(data);
+          }
+        } catch (err) {
+          console.error('Failed to parse message:', err);
+        }
+      };
+
+      ws.onerror = (error) => {
+        console.error('❌ WebSocket error:', error);
+        setError('WebSocket connection error');
+      };
+
+      ws.onclose = () => {
+        console.log('🔌 WebSocket disconnected');
+        setIsConnected(false);
+
+        // Attempt reconnection after 3 seconds
+        reconnectTimeoutRef.current = setTimeout(() => {
+          console.log('🔄 Attempting to reconnect...');
+          connect();
+        }, 3000);
+      };
+    };
+
+    connect();
+
+    // Cleanup on unmount
+    return () => {
+      if (reconnectTimeoutRef.current) {
+        clearTimeout(reconnectTimeoutRef.current);
+      }
+      if (wsRef.current) {
+        wsRef.current.close();
+      }
+    };
+  }, [gameId]);
+
+  return { gameState, isConnected, error };
+}
