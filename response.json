@@ -1,1 +1,1 @@
-{"statusCode": 200, "body": "\"Processed 2 games\""}
+{"statusCode": 200, "body": "{\"home_probability\": 0.99, \"away_probability\": 0.01}"}

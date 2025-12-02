@@ -998,6 +998,66 @@ Duration: 4.7 seconds
 
 ---
 
+## Day 25: Win Probability - Frontend ✅
+**Date:** December 2, 2025
+**Duration:** ~3 hours
+
+### Tasks Completed
+1. ✅ Created `WinProbabilityBar.tsx` component with animated gradient bar
+2. ✅ Created `WinProbabilityReasoning.tsx` component with AI analysis display
+3. ✅ Integrated components into `GameView.tsx`
+4. ✅ Updated `useWebSocket.ts` to handle win probability messages
+5. ✅ Fixed Push Lambda double GAME# prefix bug
+6. ✅ Deployed and tested end-to-end flow
+7. ✅ **Verified real-time win probability display working**
+
+### UI Features
+- **Gradient Bar:** Blue (home) to red (away) with percentages
+- **Smooth Animations:** 700ms transitions when probability updates
+- **AI Analysis Box:** Lightbulb icon, reasoning text, timestamp
+- **Team Labels:** Clear home/away team identification
+
+### Bug Fixes
+- **Push Lambda:** Fixed double `GAME#` prefix in `get_connections_for_game()`
+  - Was: `f'GAME#{game_id}'` (created `GAME#GAME#...`)
+  - Now: `game_id` (already has `GAME#` prefix)
+
+### Test Results
+```
+Game: Pennsylvania Quakers 63 - Texas Longhorns 81 (Final)
+Win Probability: 99% - 1%
+Reasoning: "18+ point leads maintained 99% of the time in Q1"
+WebSocket: Connected, messages received in <1 second
+```
+
+### Files Created
+- `frontend/src/components/WinProbabilityBar.tsx`
+- `frontend/src/components/WinProbabilityReasoning.tsx`
+
+### Files Modified
+- `frontend/src/pages/GameView.tsx` (integrated components)
+- `frontend/src/hooks/useWebSocket.ts` (handle win_probability messages)
+- `lambda/push/handler.py` (fixed double GAME# prefix bug)
+
+### Next Steps
+3. Dashboard / Game Listings 🏠
+Current state: Dashboard is a placeholder (just says "Game list will go here")
+The question: Should we build the dashboard now or later?
+Option A: Build Dashboard Now (Recommended)
+Pros:
+
+Makes the app actually usable
+Can see and click on today's games
+Better for demos/interviews
+Only takes ~2 hours
+
+When: Could do this as "Day 25.5" before moving to Day 26
+What it involves:
+
+Fetch today's games from REST API
+Display as clickable cards
+Filter by status (live, upcoming, completed)
+
 ---
 
 

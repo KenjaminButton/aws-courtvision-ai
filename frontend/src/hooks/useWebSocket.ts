@@ -11,6 +11,12 @@ interface GameState {
   gameClock?: string;
   status?: string;
   lastUpdated?: string;
+  winProbability?: {
+    homeProbability: number;
+    awayProbability: number;
+    reasoning: string;
+    calculatedAt: string;
+  };
 }
 
 export function useWebSocket(gameId: string | undefined) {
@@ -51,6 +57,19 @@ export function useWebSocket(gameId: string | undefined) {
 
           if (data.type === 'game_state' || data.type === 'score_update') {
             setGameState(data);
+          }
+          
+          // Handle win probability updates
+          if (data.type === 'win_probability') {
+            setGameState((prev) => ({
+              ...prev!,
+              winProbability: {
+                homeProbability: data.homeProbability,
+                awayProbability: data.awayProbability,
+                reasoning: data.reasoning,
+                calculatedAt: data.calculatedAt,
+              }
+            }));
           }
         } catch (err) {
           console.error('Failed to parse message:', err);
