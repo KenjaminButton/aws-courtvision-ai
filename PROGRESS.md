@@ -920,7 +920,50 @@ Duration: 2.03 ms
 
 ---
 
+## Day 23: Win Probability - Prompt Engineering ✅
+**Date:** December 2, 2025
+**Duration:** ~2 hours
 
+### Tasks Completed
+1. ✅ Submitted Anthropic use case form - approved instantly
+2. ✅ Created `test_win_probability.py` with comprehensive test scenarios
+3. ✅ Designed win probability prompt with structured JSON output
+4. ✅ Tested 4 game scenarios: close game, tied, blowout, nail-biter
+5. ✅ Verified JSON consistency and probability accuracy
+
+### Test Results
+- **Close Game (Q3, 6pt lead):** 78% - 22% ✅
+- **Tied Game (Q4 start):** 58% - 42% ✅
+- **Blowout (Q4, 23pt lead):** 99.9% - 0.1% ✅
+- **Nail-biter (Q4, <1min, 2pt lead):** 68% - 32% ✅
+
+All probabilities sum to 1.0, reasoning is contextually appropriate
+
+### Key Decisions
+- **Prompt format:** Structured with game state parameters and JSON response
+- **Context included:** Score, time, momentum, shooting percentages
+- **Reasoning required:** 2-3 sentence explanation of key factors
+- **No iteration needed:** First prompt version is production-ready
+
+### Files Created
+- `test_win_probability.py`
+
+### Next Steps
+- Day 24: Build Win Probability Lambda
+```
+
+---
+
+## Git Commit Message
+```
+feat(phase3): Day 23 - Win probability prompt engineering complete
+
+- Submit and approve Anthropic use case form for Bedrock access
+- Create test_win_probability.py with 4 game scenarios
+- Design structured JSON prompt for win probability calculation
+- Test edge cases: tied games, blowouts, close finishes, mid-game
+- Verify 100% JSON validity and probability accuracy across all tests
+- Production-ready prompt with multi-factor reasoning
 
 ---
 

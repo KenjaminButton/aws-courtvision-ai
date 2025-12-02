@@ -515,9 +515,9 @@ Add AI-powered win probability and commentary.
 ### Day 22: AI Orchestrator Lambda
 **Time: 3-4 hours**
 
-- [ ] Create Lambda: `courtvision-ai-orchestrator`
-- [ ] Trigger from DynamoDB Streams
-- [ ] Implement "should analyze" logic:
+- [x] Create Lambda: `courtvision-ai-orchestrator`
+- [x] Trigger from DynamoDB Streams
+- [x] Implement "should analyze" logic:
   ```python
   def should_trigger_ai(record):
       sk = record['SK']
@@ -533,7 +533,7 @@ Add AI-powered win probability and commentary.
       
       return False
   ```
-- [ ] Route to appropriate AI Lambda
+- [x] Route to appropriate AI Lambda
 
 **Checkpoint:** Orchestrator correctly identifies AI trigger events
 
