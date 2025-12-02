@@ -582,6 +582,41 @@ EventBridge (5 min) → Lambda (Ingestion) → DynamoDB + S3
 
 ---
 
+### Ingestion Lambda Fix: Player ID Extraction ✅
+**Completed:** December 1, 2025
+**Time:** 30 minutes
+
+**Issue:** Original parse_play_data function wasn't capturing player IDs from ESPN API
+
+**Investigation:**
+- Checked ESPN API directly: `curl https://site.api.espn.com/.../summary?event=401825729`
+- Confirmed ESPN provides player data in `participants` array for women's college basketball
+
+**ESPN Data Structure for Plays:**
+```json
+{
+  "participants": [
+    {
+      "athlete": {
+        "id": "5174764"  // ← Player ID
+      }
+    }
+  ],
+  "scoreValue": 2,  // Points scored (2 or 3)
+  "coordinate": {
+    "x": 23,  // Shot location
+    "y": 5
+  }
+}
+```
+
+**Fix Applied:**
+- Enhanced `parse_play_data()` to extract `playerId` from `participants[0].athlete.id`
+- Added `pointsScored` from `scoreValue` for scoring plays
+- Added `shotX` and `shotY` from `coordinate` for shot chart data
+
+**Verified:** New plays now contain playerId field (e.g., "4899446", "5239485")
+
 ---
 
 ---

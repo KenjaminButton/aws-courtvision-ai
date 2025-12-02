@@ -59,6 +59,50 @@ def store_play(play):
         print(f"❌ Error storing play {play.get('playId')}: {str(e)}")
         return False
 
+def update_player_stats(play):
+    """
+    Update player statistics in DynamoDB
+    
+    Args:
+        play: Dictionary containing play data with playerId, scoringPlay, etc.
+    """
+    # Skip if no player ID
+    if 'playerId' not in play:
+        return False
+    
+    try:
+        player_key = {
+            'PK': f"PLAYER#{play['playerId']}",
+            'SK': play['PK']  # Game ID as sort key
+        }
+        
+        # Build update expression based on play type
+        update_parts = []
+        attr_values = {}
+        
+        # Track points for scoring plays
+        if play.get('scoringPlay') and 'pointsScored' in play:
+            update_parts.append('points :p')
+            attr_values[':p'] = play['pointsScored']
+        
+        # If no stats to update, skip
+        if not update_parts:
+            return True
+        
+        # Update player stats
+        table.update_item(
+            Key=player_key,
+            UpdateExpression=f'ADD {", ".join(update_parts)}',
+            ExpressionAttributeValues=attr_values
+        )
+        
+        print(f"✅ Updated stats for player {play['playerId']}")
+        return True
+        
+    except Exception as e:
+        print(f"❌ Error updating player stats: {str(e)}")
+        return False
+
 def handler(event, context):
     """
     Processing Lambda - triggered by Kinesis stream
@@ -82,6 +126,9 @@ def handler(event, context):
             
             # Store the individual play
             store_play(play_data)
+            
+            # Update player statistics
+            update_player_stats(play_data)
             
             processed_count += 1
             
