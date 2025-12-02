@@ -1,6 +1,7 @@
 import * as cdk from 'aws-cdk-lib';
 import * as lambda from 'aws-cdk-lib/aws-lambda';
 import * as apigatewayv2 from 'aws-cdk-lib/aws-apigatewayv2';
+import * as apigateway from 'aws-cdk-lib/aws-apigateway';
 import * as dynamodb from 'aws-cdk-lib/aws-dynamodb';
 import { WebSocketLambdaIntegration } from 'aws-cdk-lib/aws-apigatewayv2-integrations';
 import { Construct } from 'constructs';
@@ -93,13 +94,47 @@ export class WebSocketStack extends cdk.Stack {
       retryAttempts: 3,
     }));
 
-    // Output
+    // REST API Lambda - for game lookups by ESPN ID
+    const apiLambda = new lambda.Function(this, 'ApiHandler', {
+      runtime: lambda.Runtime.PYTHON_3_12,
+      handler: 'handler.handler',
+      code: lambda.Code.fromAsset('lambda/api'),
+      timeout: cdk.Duration.seconds(10),
+      memorySize: 256,
+      environment: {
+        DYNAMODB_TABLE: props.gamesTable.tableName,
+      },
+    });
+
+    // Grant API Lambda read access to DynamoDB (for GSI2 queries)
+    props.gamesTable.grantReadData(apiLambda);
+
+    // REST API Gateway
+    const restApi = new apigateway.RestApi(this, 'GameApi', {
+      restApiName: 'CourtVision Game API',
+      description: 'REST API for game data lookups',
+      defaultCorsPreflightOptions: {
+        allowOrigins: apigateway.Cors.ALL_ORIGINS,
+        allowMethods: apigateway.Cors.ALL_METHODS,
+        allowHeaders: ['Content-Type', 'Authorization'],
+      },
+    });
+
+    // Add /game resource
+    const gameResource = restApi.root.addResource('game');
+    
+    // Add /game/{espnGameId} resource
+    const gameIdResource = gameResource.addResource('{espnGameId}');
+    
+    // Add GET method
+    gameIdResource.addMethod('GET', new apigateway.LambdaIntegration(apiLambda));
+
+    // Outputs
     new cdk.CfnOutput(this, 'PushLambdaName', {
       value: pushLambda.functionName,
       description: 'Push Lambda function name',
     });
 
-    // Outputs
     new cdk.CfnOutput(this, 'WebSocketURL', {
       value: this.webSocketStage.url,
       description: 'WebSocket API endpoint',
@@ -108,6 +143,11 @@ export class WebSocketStack extends cdk.Stack {
     new cdk.CfnOutput(this, 'WebSocketApiId', {
       value: this.webSocketApi.apiId,
       description: 'WebSocket API ID',
+    });
+
+    new cdk.CfnOutput(this, 'RestApiUrl', {
+      value: restApi.url,
+      description: 'REST API endpoint',
     });
   }
 }
