@@ -389,8 +389,8 @@ Process raw data into game state and push live updates to a React frontend.
 ### Day 17: WebSocket - Push Updates
 **Time: 3-4 hours**
 
-- [ ] Create push Lambda triggered by DynamoDB Streams
-- [ ] Find all connections for a game:
+- [x] Create push Lambda triggered by DynamoDB Streams
+- [x] Find all connections for a game:
   ```python
   def get_game_connections(game_id):
       response = table.query(
@@ -400,8 +400,8 @@ Process raw data into game state and push live updates to a React frontend.
       )
       return response['Items']
   ```
-- [ ] Push updates to all connected clients
-- [ ] Handle stale connections (GoneException)
+- [x] Push updates to all connected clients
+- [x] Handle stale connections (GoneException)
 
 **Checkpoint:** Score changes push to connected WebSocket clients
 
