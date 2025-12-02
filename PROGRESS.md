@@ -554,5 +554,16 @@ EventBridge (5 min) → Lambda (Ingestion) → DynamoDB + S3
 
 ---
 
+### Day 12: Processing Lambda - Setup ✅
+**Completed:** December 1, 2025
+**Time:** 2-3 hours
 
+- ✅ Created Processing Lambda (`courtvision-process`, Python 3.12, 512MB, 60s timeout)
+- ✅ Created ProcessingStack in CDK with Kinesis event source (batch size 10)
+- ✅ Updated main CDK app to connect Processing and Ingestion stacks
+- ✅ Deployed successfully (new stack: CourtVisionProcessingStack)
+- ✅ Verified Processing Lambda triggers on Kinesis records (processed 138 plays in batches of 10)
 
+**Checkpoint:** Processing Lambda triggers on Kinesis records ✅
+
+---

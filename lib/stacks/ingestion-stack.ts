@@ -11,6 +11,7 @@ export class IngestionStack extends cdk.Stack {
   public readonly gamesTable: dynamodb.Table;
     public readonly recordingsBucket: s3.Bucket;
     public readonly frontendBucket: s3.Bucket;
+    public readonly playStream: kinesis.Stream;
 
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
@@ -75,7 +76,7 @@ export class IngestionStack extends cdk.Stack {
     });
 
     // Kinesis Data Stream for buffering play-by-play events
-    const playStream = new kinesis.Stream(this, 'PlayStream', {
+    this.playStream = new kinesis.Stream(this, 'PlayStream', {
       streamName: 'courtvision-plays',
       shardCount: 1,
       retentionPeriod: cdk.Duration.hours(24), // Keep data for 24 hours
@@ -94,7 +95,7 @@ export class IngestionStack extends cdk.Stack {
         DYNAMODB_TABLE: this.gamesTable.tableName,
         S3_BUCKET: this.recordingsBucket.bucketName,
         SCHEDULE_ENABLED: 'false',
-        KINESIS_STREAM_NAME: playStream.streamName,
+        KINESIS_STREAM_NAME: this.playStream.streamName,
       },
     });
 
@@ -105,7 +106,7 @@ export class IngestionStack extends cdk.Stack {
     this.recordingsBucket.grantReadWrite(ingestionLambda);
 
     // Grant Lambda permissions to write to Kinesis
-    playStream.grantWrite(ingestionLambda);
+    this.playStream.grantWrite(ingestionLambda);
 
     // EventBridge rule to trigger Lambda every minute
     // Only enabled when SCHEDULE_ENABLED is set to 'true'
@@ -147,12 +148,12 @@ export class IngestionStack extends cdk.Stack {
     });
 
     new cdk.CfnOutput(this, 'PlayStreamName', {
-      value: playStream.streamName,
+      value: this.playStream.streamName,
       description: 'Kinesis stream for play-by-play events',
     });
 
     new cdk.CfnOutput(this, 'PlayStreamArn', {
-      value: playStream.streamArn,
+      value: this.playStream.streamArn,
       description: 'ARN of the play stream',
     });
     

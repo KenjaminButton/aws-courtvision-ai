@@ -264,15 +264,15 @@ Process raw data into game state and push live updates to a React frontend.
 ### Day 11: Kinesis Data Stream
 **Time: 2-3 hours**
 
-- [ ] Create Kinesis stream in CDK:
+- [x] Create Kinesis stream in CDK:
   ```typescript
   const playStream = new kinesis.Stream(this, 'PlayStream', {
     streamName: 'courtvision-plays',
     shardCount: 1,
   });
   ```
-- [ ] Modify Ingestion Lambda to send plays to Kinesis
-- [ ] Deploy and verify records appear in stream
+- [x] Modify Ingestion Lambda to send plays to Kinesis
+- [x] Deploy and verify records appear in stream
 
 **Checkpoint:** Kinesis stream receives play records
 
