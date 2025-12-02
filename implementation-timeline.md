@@ -364,7 +364,7 @@ Process raw data into game state and push live updates to a React frontend.
 ### Day 16: WebSocket - Subscribe to Games
 **Time: 3-4 hours**
 
-- [ ] Create subscribe route handler:
+- [x] Create subscribe route handler:
   ```python
   def handle_subscribe(event):
       connection_id = event['requestContext']['connectionId']
@@ -379,8 +379,8 @@ Process raw data into game state and push live updates to a React frontend.
           'connectedAt': datetime.now().isoformat()
       })
   ```
-- [ ] Return current game state on subscribe
-- [ ] Test subscription flow
+- [x] Return current game state on subscribe
+- [x] Test subscription flow
 
 **Checkpoint:** Client can subscribe to specific games
 

@@ -148,8 +148,11 @@ def handle_message(event, connection_id):
             # Update connection with game subscription
             table.update_item(
                 Key={'PK': 'WS#CONNECTION', 'SK': connection_id},
-                UpdateExpression='SET gameId = :gid',
-                ExpressionAttributeValues={':gid': game_id}
+                UpdateExpression='SET gameId = :gid, GSI1PK = :gid, GSI1SK = :cid',
+                ExpressionAttributeValues={
+                    ':gid': game_id,
+                    ':cid': connection_id
+                }
             )
             print(f"✅ {connection_id} subscribed to {game_id}")
             

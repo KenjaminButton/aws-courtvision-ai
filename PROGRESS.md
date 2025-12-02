@@ -698,6 +698,248 @@ EventBridge (5 min) → Lambda (Ingestion) → DynamoDB + S3
 
 ---
 
+### Day 17: WebSocket - Push Updates ✅
+**Date:** December 1, 2025
+**Time:** ~3-4 hours
+
+**What I Built:**
+- Created Push Lambda triggered by DynamoDB Streams for real-time updates
+- Fixed GSI1 population to enable querying connections by gameId
+- Implemented get_game_connections() using GSI1 to find all subscribed clients
+- Added push_to_connection() with API Gateway Management API
+- Implemented stale connection cleanup (handles GoneException)
+
+**Technical Details:**
+- Lambda: `CourtVisionWebSocketStack-PushHandler50B0D49E-CpvpZnvGNmIh`
+- Trigger: DynamoDB Streams on courtvision-games table
+- Filter: Only processes SCORE#CURRENT updates for GAME# items
+- GSI1 structure: GSI1PK = gameId, GSI1SK = connectionId
+- Push data type: `{"type": "score_update", "homeScore": X, "awayScore": Y, ...}`
+- Error handling: Automatically deletes stale connections on 410 GoneException
+
+**Verification:**
+- Connected client via wscat and subscribed to game ✅
+- Manually updated score in DynamoDB (85-60 with "TEST" clock) ✅
+- Push Lambda triggered by DynamoDB Streams ✅
+- Found 1 connection via GSI1 query ✅
+- Successfully pushed update to connected client ✅
+- Client received real-time score update in wscat ✅
+
+**Full Pipeline Tested:**
+```
+DynamoDB Update → Streams → Push Lambda → GSI1 Query → WebSocket Push → Client Receives
+```
+
+**Checkpoint:** ✅ Score changes push to connected WebSocket clients in real-time
+
+---
+
+---
+
+
+
+---
+
+---
+
+
+
+---
+
+---
+
+
+
+---
+
+---
+
+
+
+---
+
+---
+
+
+
+---
+
+---
+
+
+
+---
+
+---
+
+
+
+---
+
+---
+
+
+
+---
+
+---
+
+
+
+---
+
+---
+
+
+
+---
+
+---
+
+
+
+---
+
+---
+
+
+
+---
+
+---
+
+
+
+---
+
+---
+
+
+
+---
+
+---
+
+
+
+---
+
+---
+
+
+
+---
+
+---
+
+
+
+---
+
+---
+
+
+
+---
+
+---
+
+
+
+---
+
+---
+
+
+
+---
+
+---
+
+
+
+---
+
+---
+
+
+
+---
+
+---
+
+
+
+---
+
+---
+
+
+
+---
+
+---
+
+
+
+---
+
+---
+
+
+
+---
+
+---
+
+
+
+---
+
+---
+
+
+
+---
+
+---
+
+
+
+---
+
+---
+
+
+
+---
+
+---
+
+
+
+---
+
+---
+
+
+
+---
+
+---
+
+
+
+---
+
+---
+
+
+
+---
+
+---
+
 
 
 ---
