@@ -567,3 +567,31 @@ EventBridge (5 min) → Lambda (Ingestion) → DynamoDB + S3
 **Checkpoint:** Processing Lambda triggers on Kinesis records ✅
 
 ---
+
+### Day 13: Processing Lambda - Game State ✅
+**Completed:** December 1, 2025
+**Time:** 3-4 hours
+
+- ✅ Added DynamoDB client to Processing Lambda
+- ✅ Implemented update_current_score() function with DynamoDB UpdateItem
+- ✅ Implemented store_play() function with DynamoDB PutItem
+- ✅ Updated handler to call both functions for each play
+- ✅ Deployed and tested - verified plays stored and scores updated in DynamoDB
+
+**Checkpoint:** Game state updates correctly in DynamoDB ✅
+
+---
+
+---
+
+---
+
+---
+
+
+
+---
+
+
+
+---

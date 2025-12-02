@@ -233,12 +233,12 @@ Start ONE chat for this entire phase. Upload the blueprint at the start.
 ### Day 10: Phase 1 Review + Cleanup
 **Time: 2-3 hours**
 
-- [ ] Review all DynamoDB data structure
-- [ ] Verify S3 recordings are complete
-- [ ] Clean up any hardcoded values
-- [ ] Document what's built so far
-- [ ] **CRITICAL:** Export/save current CDK code
-- [ ] Take screenshots of working AWS Console views
+- [x] Review all DynamoDB data structure
+- [x] Verify S3 recordings are complete
+- [x] Clean up any hardcoded values
+- [x] Document what's built so far
+- [x] **CRITICAL:** Export/save current CDK code
+- [x] Take screenshots of working AWS Console views
 
 **Phase 1 Deliverable:** 
 - ESPN data flows into DynamoDB automatically
@@ -281,8 +281,8 @@ Process raw data into game state and push live updates to a React frontend.
 ### Day 12: Processing Lambda - Setup
 **Time: 2-3 hours**
 
-- [ ] Create Lambda function: `courtvision-process`
-- [ ] Configure Kinesis trigger:
+- [x] Create Lambda function: `courtvision-process`
+- [x] Configure Kinesis trigger:
   ```typescript
   processingLambda.addEventSource(
     new KinesisEventSource(playStream, {
@@ -291,8 +291,8 @@ Process raw data into game state and push live updates to a React frontend.
     })
   );
   ```
-- [ ] Basic handler that logs incoming records
-- [ ] Deploy and verify logs show Kinesis data
+- [x] Basic handler that logs incoming records
+- [x] Deploy and verify logs show Kinesis data
 
 **Checkpoint:** Processing Lambda triggers on Kinesis records
 
