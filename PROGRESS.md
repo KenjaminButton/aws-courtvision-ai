@@ -619,6 +619,28 @@ EventBridge (5 min) → Lambda (Ingestion) → DynamoDB + S3
 
 ---
 
+### Day 14: Processing Lambda - Player Stats ✅
+**Date:** December 1, 2025
+**Time:** ~3-4 hours
+
+**What I Built:**
+- Added player statistics tracking to Processing Lambda
+- Implemented `update_player_stats()` function
+- Uses DynamoDB ADD operation for accumulating points
+
+**Technical Details:**
+- PK: `PLAYER#{playerId}`
+- SK: `GAME#{date}#{matchup}`
+- Currently tracks: points (will expand to rebounds, assists, fouls later)
+- Integrated into processing pipeline after play storage
+
+**Verification:**
+- Player 4607456: 20 points tracked ✅
+- Player 5312737: 11 points tracked ✅
+- CloudWatch logs show successful updates
+
+**Checkpoint:** ✅ Player stats accumulate correctly during games
+
 ---
 
 ---

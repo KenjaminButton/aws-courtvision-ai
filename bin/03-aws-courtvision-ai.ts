@@ -3,6 +3,7 @@ import 'source-map-support/register';
 import * as cdk from 'aws-cdk-lib';
 import { IngestionStack } from '../lib/stacks/ingestion-stack';
 import { ProcessingStack } from '../lib/stacks/processing-stack';
+import { WebSocketStack } from '../lib/stacks/websocket-stack';
 
 const app = new cdk.App();
 
@@ -10,7 +11,7 @@ const app = new cdk.App();
 const ingestionStack = new IngestionStack(app, 'CourtVisionIngestionStack', {
   env: {
     account: process.env.CDK_DEFAULT_ACCOUNT,
-    region: process.env.CDK_DEFAULT_REGION,
+    region: 'us-east-1',
   },
 });
 
@@ -20,9 +21,18 @@ const processingStack = new ProcessingStack(app, 'CourtVisionProcessingStack', {
   gamesTable: ingestionStack.gamesTable,
   env: {
     account: process.env.CDK_DEFAULT_ACCOUNT,
-    region: process.env.CDK_DEFAULT_REGION,
+    region: 'us-east-1',
   },
 });
 
 // Processing stack depends on Ingestion stack
 processingStack.addDependency(ingestionStack);
+
+// WebSocket Stack
+const webSocketStack = new WebSocketStack(app, 'CourtVisionWebSocketStack', {
+  gamesTable: ingestionStack.gamesTable,
+  env: {
+    account: process.env.CDK_DEFAULT_ACCOUNT,
+    region: 'us-east-1',
+  },
+});
