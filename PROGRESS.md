@@ -950,20 +950,51 @@ All probabilities sum to 1.0, reasoning is contextually appropriate
 
 ### Next Steps
 - Day 24: Build Win Probability Lambda
-```
 
 ---
 
-## Git Commit Message
-```
-feat(phase3): Day 23 - Win probability prompt engineering complete
+## Day 24: Win Probability Lambda ✅
+**Date:** December 2, 2025
+**Duration:** ~3 hours
 
-- Submit and approve Anthropic use case form for Bedrock access
-- Create test_win_probability.py with 4 game scenarios
-- Design structured JSON prompt for win probability calculation
-- Test edge cases: tied games, blowouts, close finishes, mid-game
-- Verify 100% JSON validity and probability accuracy across all tests
-- Production-ready prompt with multi-factor reasoning
+### Tasks Completed
+1. ✅ Created Win Probability Lambda (`courtvision-ai-winprob`)
+2. ✅ Implemented game context gathering from DynamoDB
+3. ✅ Integrated Bedrock API for probability calculation
+4. ✅ Fixed cross-region inference profile permissions (wildcard resources)
+5. ✅ Updated Orchestrator to invoke Win Prob Lambda on score updates
+6. ✅ Deployed and tested end-to-end flow with live ESPN data
+7. ✅ Verified DynamoDB storage (CURRENT + historical records)
+
+### Test Results
+```
+Game: South Florida Bulls 0 - UConn Huskies 0
+✅ Win Probability: 35.0% - 65.0%
+✅ Stored win probability in DynamoDB
+Duration: 4.7 seconds
+```
+
+### Key Decisions
+- **Model:** `us.anthropic.claude-3-5-sonnet-20241022-v2:0` (cross-region inference profile)
+- **Permissions:** Wildcard for cross-region routing (`arn:aws:bedrock:*::foundation-model/*`)
+- **Storage:** Both CURRENT (latest) and timestamped historical records
+- **Invocation:** Async (`InvocationType='Event'`) to avoid blocking Orchestrator
+
+### Files Created
+- `lambda/ai/winprob/handler.py`
+
+### Files Modified
+- `lib/stacks/ai-stack.ts` (added Win Prob Lambda, Bedrock permissions)
+- `lambda/ai/orchestrator/handler.py` (added invocation logic)
+
+### Issues Resolved
+- ❌ Initial: Direct model ID not allowed → Must use inference profile
+- ❌ Cross-region routing: Profile routed to us-west-2 → Used wildcard permissions
+- ✅ Final: Working with wildcard Bedrock permissions
+
+### Next Steps
+- Day 25: Win Probability - Frontend display
+
 
 ---
 

@@ -26,8 +26,23 @@ export class AiStack extends cdk.Stack {
       },
     });
 
+    // Win Probability Lambda
+    const winProbLambda = new lambda.Function(this, 'WinProbFunction', {
+      functionName: 'courtvision-ai-winprob',
+      runtime: lambda.Runtime.PYTHON_3_12,
+      handler: 'handler.handler',
+      code: lambda.Code.fromAsset('lambda/ai/winprob'),
+      timeout: cdk.Duration.seconds(120),
+      memorySize: 1024,
+      environment: {
+        DYNAMODB_TABLE: props.gamesTable.tableName,
+      },
+    });
+
     // Grant DynamoDB read permissions
     props.gamesTable.grantReadData(orchestratorLambda);
+    // Grant DynamoDB read/write permissions
+    props.gamesTable.grantReadWriteData(winProbLambda);
 
     // Grant permission to invoke other Lambda functions (for future AI workers)
     orchestratorLambda.addToRolePolicy(new iam.PolicyStatement({
@@ -35,6 +50,19 @@ export class AiStack extends cdk.Stack {
       actions: ['lambda:InvokeFunction'],
       resources: [
         `arn:aws:lambda:${this.region}:${this.account}:function:courtvision-ai-*`
+      ],
+    }));
+
+    // Grant Bedrock access (wildcard for cross-region inference profiles)
+    winProbLambda.addToRolePolicy(new iam.PolicyStatement({
+      effect: iam.Effect.ALLOW,
+      actions: [
+        'bedrock:InvokeModel',
+        'bedrock:InvokeModelWithResponseStream'
+      ],
+      resources: [
+        'arn:aws:bedrock:*::foundation-model/*',
+        `arn:aws:bedrock:*:${this.account}:inference-profile/*`,
       ],
     }));
 
@@ -51,5 +79,11 @@ export class AiStack extends cdk.Stack {
       value: orchestratorLambda.functionName,
       description: 'AI Orchestrator Lambda function name',
     });
+
+    new cdk.CfnOutput(this, 'WinProbLambdaName', {
+      value: winProbLambda.functionName,
+      description: 'Win Probability Lambda function name',
+    });
+
   }
 }

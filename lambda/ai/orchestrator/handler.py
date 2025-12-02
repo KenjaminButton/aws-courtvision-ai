@@ -11,6 +11,31 @@ dynamodb = boto3.resource('dynamodb')
 table = dynamodb.Table(DYNAMODB_TABLE)
 lambda_client = boto3.client('lambda')
 
+def invoke_win_prob_lambda(game_id):
+    """
+    Invoke Win Probability Lambda for a game
+    
+    Args:
+        game_id: Game identifier (PK)
+    """
+    try:
+        payload = {
+            'game_id': game_id
+        }
+        
+        response = lambda_client.invoke(
+            FunctionName='courtvision-ai-winprob',
+            InvocationType='Event',  # Async invocation
+            Payload=json.dumps(payload)
+        )
+        
+        print(f"✅ Invoked Win Probability Lambda for {game_id}")
+        return True
+        
+    except Exception as e:
+        print(f"❌ Error invoking Win Prob Lambda: {str(e)}")
+        return False
+
 
 def should_trigger_ai(record):
     """
@@ -87,16 +112,17 @@ def handler(event, context):
             if analysis['should_analyze']:
                 print(f"📊 Trigger types: {analysis['trigger_types']}")
                 
-                # TODO: Route to appropriate AI Lambda functions
-                # For now, just log what we would do
+                # Route to appropriate AI Lambda functions
                 for trigger_type in analysis['trigger_types']:
                     if trigger_type == 'scoring_play':
-                        print("  → Would invoke: AI Commentary Lambda")
-                        print("  → Would invoke: Win Probability Lambda")
+                        print("  → Invoking: AI Commentary Lambda (TODO)")
+                        # Invoke Win Probability on scoring plays
+                        invoke_win_prob_lambda(new_image.get('PK', {}).get('S', ''))
                     elif trigger_type == 'score_update':
-                        print("  → Would invoke: Win Probability Lambda")
+                        print("  → Invoking: Win Probability Lambda")
+                        invoke_win_prob_lambda(new_image.get('PK', {}).get('S', ''))
                     elif trigger_type == 'game_final':
-                        print("  → Would invoke: Post-Game Summary Lambda")
+                        print("  → Invoking: Post-Game Summary Lambda (TODO)")
                 
                 analyzed_count += 1
         
