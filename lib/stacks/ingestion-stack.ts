@@ -5,6 +5,7 @@ import * as lambda from 'aws-cdk-lib/aws-lambda';
 import { Construct } from 'constructs';
 import * as events from 'aws-cdk-lib/aws-events';
 import * as targets from 'aws-cdk-lib/aws-events-targets';
+import * as kinesis from 'aws-cdk-lib/aws-kinesis';
 
 export class IngestionStack extends cdk.Stack {
   public readonly gamesTable: dynamodb.Table;
@@ -73,6 +74,13 @@ export class IngestionStack extends cdk.Stack {
       autoDeleteObjects: false,
     });
 
+    // Kinesis Data Stream for buffering play-by-play events
+    const playStream = new kinesis.Stream(this, 'PlayStream', {
+      streamName: 'courtvision-plays',
+      shardCount: 1,
+      retentionPeriod: cdk.Duration.hours(24), // Keep data for 24 hours
+    });
+
     // Lambda function for data ingestion
     const ingestionLambda = new lambda.Function(this, 'IngestionFunction', {
       functionName: 'courtvision-ingest',
@@ -86,6 +94,7 @@ export class IngestionStack extends cdk.Stack {
         DYNAMODB_TABLE: this.gamesTable.tableName,
         S3_BUCKET: this.recordingsBucket.bucketName,
         SCHEDULE_ENABLED: 'false',
+        KINESIS_STREAM_NAME: playStream.streamName,
       },
     });
 
@@ -94,6 +103,9 @@ export class IngestionStack extends cdk.Stack {
     
     // Grant Lambda permissions to S3 bucket
     this.recordingsBucket.grantReadWrite(ingestionLambda);
+
+    // Grant Lambda permissions to write to Kinesis
+    playStream.grantWrite(ingestionLambda);
 
     // EventBridge rule to trigger Lambda every minute
     // Only enabled when SCHEDULE_ENABLED is set to 'true'
@@ -133,5 +145,16 @@ export class IngestionStack extends cdk.Stack {
       value: this.gamesTable.tableArn,
       description: 'ARN of the games table',
     });
+
+    new cdk.CfnOutput(this, 'PlayStreamName', {
+      value: playStream.streamName,
+      description: 'Kinesis stream for play-by-play events',
+    });
+
+    new cdk.CfnOutput(this, 'PlayStreamArn', {
+      value: playStream.streamArn,
+      description: 'ARN of the play stream',
+    });
+    
   }
 }

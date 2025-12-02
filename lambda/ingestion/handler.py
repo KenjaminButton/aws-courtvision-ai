@@ -9,9 +9,13 @@ DATA_SOURCE = os.environ.get('DATA_SOURCE', 'live')
 DYNAMODB_TABLE = os.environ.get('DYNAMODB_TABLE')
 S3_BUCKET = os.environ.get('S3_BUCKET')
 ESPN_BASE_URL = "https://site.api.espn.com/apis/site/v2/sports/basketball/womens-college-basketball"
+KINESIS_STREAM_NAME = os.environ.get('KINESIS_STREAM_NAME')
+
 
 dynamodb = boto3.resource('dynamodb')
 s3_client = boto3.client('s3')
+kinesis_client = boto3.client('kinesis')
+
 
 def fetch_with_retry(url, max_retries=3, timeout=10):
     """
@@ -287,6 +291,31 @@ def record_to_s3(game_id, data_type, data, timestamp):
         print(f"❌ Failed to record to S3: {str(e)}")
         return False
 
+def send_to_kinesis(play_data):
+    """
+    Send play data to Kinesis stream
+    
+    Args:
+        play_data: Dictionary of play data
+    
+    Returns:
+        bool: True if successful
+    """
+    try:
+        response = kinesis_client.put_record(
+            StreamName=KINESIS_STREAM_NAME,
+            Data=json.dumps(play_data),
+            PartitionKey=play_data['PK']  # Use game ID as partition key
+        )
+        
+        print(f"✅ Sent play to Kinesis: {play_data.get('playId', 'unknown')}")
+        return True
+        
+    except Exception as e:
+        print(f"❌ Failed to send play to Kinesis: {str(e)}")
+        return False
+
+
 def handler(event, context):
     try:
         print("🏀 CourtVision Ingestion Lambda started")
@@ -337,13 +366,13 @@ def handler(event, context):
                     if summary and 'plays' in summary:
                         play_count = len(summary['plays'])
                         print(f"✅ Fetched {play_count} plays for {game_id}")
-                        # Parse and store each play
-                        plays_stored = 0
+                        # Parse and send each play to Kinesis
+                        plays_sent = 0
                         for espn_play in summary['plays']:
                             parsed_play = parse_play_data(espn_play, game_id)
-                            if parsed_play and store_play(parsed_play):
-                                plays_stored += 1
-                        print(f"✅ Stored {plays_stored}/{play_count} plays")
+                            if parsed_play and send_to_kinesis(parsed_play):
+                                plays_sent += 1
+                        print(f"✅ Sent {plays_sent}/{play_count} plays to Kinesis")
                     else:
                         print(f"⚠️  No plays found for {game_id}")
 
