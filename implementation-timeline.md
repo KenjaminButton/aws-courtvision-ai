@@ -301,8 +301,8 @@ Process raw data into game state and push live updates to a React frontend.
 ### Day 13: Processing Lambda - Game State
 **Time: 3-4 hours**
 
-- [ ] Parse Kinesis records into plays
-- [ ] Update current score in DynamoDB:
+- [x] Parse Kinesis records into plays
+- [x] Update current score in DynamoDB:
   ```python
   def update_score(play):
       table.update_item(
@@ -315,8 +315,8 @@ Process raw data into game state and push live updates to a React frontend.
           }
       )
   ```
-- [ ] Store individual plays
-- [ ] Test with sample data
+- [x] Store individual plays
+- [x] Test with sample data
 
 **Checkpoint:** Game state updates correctly in DynamoDB
 

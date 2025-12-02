@@ -174,6 +174,21 @@ def parse_play_data(espn_play, game_id):
         if 'type' in espn_play:
             parsed_play['playType'] = espn_play['type'].get('text', '')
         
+        # Extract player ID from participants array
+        if 'participants' in espn_play and len(espn_play['participants']) > 0:
+            first_participant = espn_play['participants'][0]
+            if 'athlete' in first_participant and 'id' in first_participant['athlete']:
+                parsed_play['playerId'] = first_participant['athlete']['id']
+        
+        # Add score value for scoring plays (2 or 3 points)
+        if espn_play.get('scoringPlay') and 'scoreValue' in espn_play:
+            parsed_play['pointsScored'] = espn_play['scoreValue']
+        
+        # Add shot coordinates if available
+        if 'coordinate' in espn_play:
+            parsed_play['shotX'] = espn_play['coordinate'].get('x')
+            parsed_play['shotY'] = espn_play['coordinate'].get('y')
+        
         return parsed_play
         
     except Exception as e:
