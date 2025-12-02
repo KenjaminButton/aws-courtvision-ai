@@ -492,10 +492,10 @@ Add AI-powered win probability and commentary.
 ### Day 21: Bedrock Setup
 **Time: 2-3 hours**
 
-- [ ] Enable Bedrock in AWS Console
-- [ ] Request access to Claude 3 Sonnet
-- [ ] Create IAM role for Bedrock access
-- [ ] Test Bedrock API from local script:
+- [x] Enable Bedrock in AWS Console
+- [x] Request access to Claude 3 Sonnet
+- [x] Create IAM role for Bedrock access
+- [x] Test Bedrock API from local script:
   ```python
   bedrock = boto3.client('bedrock-runtime')
   response = bedrock.invoke_model(

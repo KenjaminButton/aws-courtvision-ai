@@ -851,7 +851,35 @@ DynamoDB Update → Streams → Push Lambda → GSI1 Query → WebSocket Push �
 
 ---
 
+## Day 21: Bedrock Setup ✅
+**Date:** December 2, 2025
+**Duration:** ~1 hour
 
+### Tasks Completed
+1. ✅ Verified AWS Bedrock region (us-east-1)
+2. ✅ Created `test_bedrock.py` - local Bedrock API test script
+3. ✅ Fixed model ID to use inference profile (`us.anthropic.claude-3-5-sonnet-20241022-v2:0`)
+4. ✅ Successfully tested Bedrock API call - confirmed working
+5. ✅ Added Bedrock IAM permissions to Processing Lambda in CDK
+
+### Key Decisions
+- **Model ID:** Using `us.anthropic.claude-3-5-sonnet-20241022-v2:0` (cross-region inference profile)
+- **No manual model access needed:** AWS auto-enables models on first invoke
+- **Bedrock permissions added but not deployed yet:** Will deploy with AI Lambda functions in Day 22+
+
+### Files Modified
+- Created: `test_bedrock.py`
+- Modified: `lib/stacks/processing-stack.ts` (added Bedrock IAM policy)
+
+### Test Results
+```
+✅ Bedrock API call successful!
+Response: Bedrock is working
+📊 Token Usage: 27 input / 8 output tokens
+```
+
+### Next Steps
+- Day 22: Create AI Orchestrator Lambda (DynamoDB Streams trigger)
 
 ---
 

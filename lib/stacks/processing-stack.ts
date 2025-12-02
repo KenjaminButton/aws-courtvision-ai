@@ -5,6 +5,7 @@ import * as dynamodb from 'aws-cdk-lib/aws-dynamodb';
 import { KinesisEventSource } from 'aws-cdk-lib/aws-lambda-event-sources';
 import { StartingPosition } from 'aws-cdk-lib/aws-lambda';
 import { Construct } from 'constructs';
+import * as iam from 'aws-cdk-lib/aws-iam';
 
 interface ProcessingStackProps extends cdk.StackProps {
   playStream: kinesis.IStream;
@@ -30,6 +31,18 @@ export class ProcessingStack extends cdk.Stack {
 
     // Grant Lambda permissions to DynamoDB table
     props.gamesTable.grantReadWriteData(processingLambda);
+
+    // Grant Bedrock access to processing Lambda
+    processingLambda.addToRolePolicy(new iam.PolicyStatement({
+      effect: iam.Effect.ALLOW,
+      actions: [
+        'bedrock:InvokeModel',
+        'bedrock:InvokeModelWithResponseStream'
+      ],
+      resources: [
+        `arn:aws:bedrock:${this.region}::foundation-model/anthropic.claude-3-5-sonnet-20241022-v2:0`
+      ],
+    }));
 
     // Add Kinesis as event source
     processingLambda.addEventSource(
