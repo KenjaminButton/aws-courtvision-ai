@@ -345,7 +345,7 @@ Process raw data into game state and push live updates to a React frontend.
 ### Day 15: API Gateway WebSocket - Setup
 **Time: 3-4 hours**
 
-- [ ] Create WebSocket API in CDK:
+- [x] Create WebSocket API in CDK:
   ```typescript
   const webSocketApi = new apigatewayv2.WebSocketApi(this, 'GameSocket', {
     connectRouteOptions: { integration: new WebSocketLambdaIntegration('ConnectIntegration', connectHandler) },
@@ -353,9 +353,9 @@ Process raw data into game state and push live updates to a React frontend.
     defaultRouteOptions: { integration: new WebSocketLambdaIntegration('DefaultIntegration', defaultHandler) },
   });
   ```
-- [ ] Create connection handler Lambda
-- [ ] Store connections in DynamoDB
-- [ ] Deploy and test with wscat
+- [x] Create connection handler Lambda
+- [x] Store connections in DynamoDB
+- [x] Deploy and test with wscat
 
 **Checkpoint:** Can connect to WebSocket, connection stored in DynamoDB
 

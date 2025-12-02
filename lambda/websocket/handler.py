@@ -1,10 +1,13 @@
 import json
 import os
 import boto3
+from boto3.dynamodb.conditions import Key
+
 from datetime import datetime
 
 dynamodb = boto3.resource('dynamodb')
 table = dynamodb.Table(os.environ['DYNAMODB_TABLE'])
+apigateway_management_api = None
 
 def handler(event, context):
     """
@@ -62,6 +65,72 @@ def handle_disconnect(connection_id):
         print(f"❌ Error removing connection: {str(e)}")
         return {'statusCode': 500, 'body': 'Failed to disconnect'}
 
+def send_to_connection(connection_id, data, event):
+    """Send data to a specific WebSocket connection"""
+    global apigateway_management_api
+    
+    if apigateway_management_api is None:
+        # Initialize API Gateway Management API client
+        domain_name = event['requestContext']['domainName']
+        stage = event['requestContext']['stage']
+        endpoint_url = f"https://{domain_name}/{stage}"
+        
+        apigateway_management_api = boto3.client(
+            'apigatewaymanagementapi',
+            endpoint_url=endpoint_url
+        )
+    
+    try:
+        apigateway_management_api.post_to_connection(
+            ConnectionId=connection_id,
+            Data=json.dumps(data).encode('utf-8')
+        )
+        print(f"✅ Sent data to connection {connection_id}")
+        return True
+    except Exception as e:
+        print(f"❌ Failed to send to {connection_id}: {str(e)}")
+        return False
+
+def get_current_game_state(game_id):
+    """Fetch current game state from DynamoDB"""
+    try:
+        # Get game metadata
+        metadata_response = table.get_item(
+            Key={'PK': game_id, 'SK': 'METADATA'}
+        )
+        
+        # Get current score
+        score_response = table.get_item(
+            Key={'PK': game_id, 'SK': 'SCORE#CURRENT'}
+        )
+        
+        game_state = {
+            'type': 'game_state',
+            'gameId': game_id,
+        }
+        
+        # Add metadata if exists
+        if 'Item' in metadata_response:
+            metadata = metadata_response['Item']
+            game_state['homeTeam'] = metadata.get('homeTeam')
+            game_state['awayTeam'] = metadata.get('awayTeam')
+            game_state['status'] = metadata.get('status')
+            game_state['quarter'] = metadata.get('quarter')
+        
+        # Add score if exists
+        if 'Item' in score_response:
+            score = score_response['Item']
+            game_state['homeScore'] = int(score.get('homeScore', 0))
+            game_state['awayScore'] = int(score.get('awayScore', 0))
+            game_state['gameClock'] = score.get('gameClock')
+            game_state['lastUpdated'] = score.get('lastUpdated')
+        
+        print(f"✅ Retrieved game state for {game_id}")
+        return game_state
+        
+    except Exception as e:
+        print(f"❌ Error fetching game state: {str(e)}")
+        return {'type': 'error', 'message': 'Game not found'}
 
 def handle_message(event, connection_id):
     """Handle messages from client (e.g., subscribe to game)"""
@@ -83,6 +152,13 @@ def handle_message(event, connection_id):
                 ExpressionAttributeValues={':gid': game_id}
             )
             print(f"✅ {connection_id} subscribed to {game_id}")
+            
+            # Fetch current game state
+            game_state = get_current_game_state(game_id)
+            
+            # Send game state back to client
+            send_to_connection(connection_id, game_state, event)
+            
             return {'statusCode': 200, 'body': 'Subscribed'}
         
         return {'statusCode': 400, 'body': 'Unknown action'}

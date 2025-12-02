@@ -643,9 +643,58 @@ EventBridge (5 min) → Lambda (Ingestion) → DynamoDB + S3
 
 ---
 
+### Day 15: API Gateway WebSocket - Setup ✅
+**Date:** December 1, 2025
+**Time:** ~3-4 hours
+
+**What I Built:**
+- Created WebSocket API Gateway for real-time client connections
+- Built WebSocket Lambda handler with $connect, $disconnect, and $default routes
+- Implemented connection storage in DynamoDB with automatic TTL (24 hours)
+- Added subscribe action to associate connections with specific games
+
+**Technical Details:**
+- Lambda: `CourtVisionWebSocketStack-WebSocketHandler47C0AA1A-fL5S5U0A8qCy`
+- WebSocket URL: `wss://x54f0p0ve2.execute-api.us-east-1.amazonaws.com/prod`
+- API Gateway V2 (required for WebSocket support)
+- Connection schema: PK: `WS#CONNECTION`, SK: `{connectionId}`
+- Fixed region mismatch issue (CDK defaulting to us-west-2 instead of us-east-1)
+
+**Verification:**
+- Connected via wscat successfully ✅
+- Connection stored in DynamoDB with connectionId ✅
+- Subscribe action updated gameId field ✅
+- Disconnect properly removed connection from DynamoDB ✅
+- CloudWatch logs showed all route handlers working correctly ✅
+
+**Checkpoint:** ✅ WebSocket API deployed, clients can connect and subscribe to games
+
 ---
 
+### Day 16: WebSocket - Subscribe to Games ✅
+**Date:** December 1, 2025
+**Time:** ~3-4 hours
 
+**What I Built:**
+- Added WebSocket push capability using API Gateway Management API
+- Implemented get_current_game_state() to fetch metadata and current score from DynamoDB
+- Modified subscribe handler to return current game state to client after subscription
+- Added IAM permission for execute-api:ManageConnections
+
+**Technical Details:**
+- send_to_connection(): Uses apigatewaymanagementapi.post_to_connection() to push data
+- get_current_game_state(): Fetches METADATA and SCORE#CURRENT items, returns JSON
+- Returns game state including: homeTeam, awayTeam, status, quarter, scores, gameClock, lastUpdated
+- IAM policy added: `execute-api:ManageConnections` on WebSocket API connections
+- Game state type: `{"type": "game_state", ...}`
+
+**Verification:**
+- Connected via wscat and sent subscribe message ✅
+- Received full game state JSON back through WebSocket ✅
+- CloudWatch logs showed: "✅ Retrieved game state" and "✅ Sent data to connection" ✅
+- Game state included: Villanova 81, West Virginia 59, final status ✅
+
+**Checkpoint:** ✅ Client can subscribe to specific games and receive current game state
 
 ---
 

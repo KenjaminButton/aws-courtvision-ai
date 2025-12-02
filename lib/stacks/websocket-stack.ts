@@ -4,6 +4,8 @@ import * as apigatewayv2 from 'aws-cdk-lib/aws-apigatewayv2';
 import * as dynamodb from 'aws-cdk-lib/aws-dynamodb';
 import { WebSocketLambdaIntegration } from 'aws-cdk-lib/aws-apigatewayv2-integrations';
 import { Construct } from 'constructs';
+import * as iam from 'aws-cdk-lib/aws-iam';
+
 
 interface WebSocketStackProps extends cdk.StackProps {
   gamesTable: dynamodb.Table;
@@ -27,6 +29,15 @@ export class WebSocketStack extends cdk.Stack {
         DYNAMODB_TABLE: props.gamesTable.tableName,
       },
     });
+
+    // Grant Lambda permission to push messages to WebSocket connections
+    webSocketLambda.addToRolePolicy(new iam.PolicyStatement({
+      effect: iam.Effect.ALLOW,
+      actions: ['execute-api:ManageConnections'],
+      resources: [
+        `arn:aws:execute-api:${this.region}:${this.account}:*/*/@connections/*`,
+      ],
+    }));
 
     // Grant DynamoDB permissions
     props.gamesTable.grantReadWriteData(webSocketLambda);
