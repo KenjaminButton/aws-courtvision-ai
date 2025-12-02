@@ -4,6 +4,7 @@ import * as cdk from 'aws-cdk-lib';
 import { IngestionStack } from '../lib/stacks/ingestion-stack';
 import { ProcessingStack } from '../lib/stacks/processing-stack';
 import { WebSocketStack } from '../lib/stacks/websocket-stack';
+import { AiStack } from '../lib/stacks/ai-stack';
 
 const app = new cdk.App();
 
@@ -36,3 +37,11 @@ const webSocketStack = new WebSocketStack(app, 'CourtVisionWebSocketStack', {
     region: 'us-east-1',
   },
 });
+
+// Add this after the WebSocketStack is created
+const aiStack = new AiStack(app, 'CourtVisionAiStack', {
+  gamesTable: ingestionStack.gamesTable,
+  env: { account: process.env.CDK_DEFAULT_ACCOUNT, region: process.env.CDK_DEFAULT_REGION },
+});
+
+aiStack.addDependency(ingestionStack);
