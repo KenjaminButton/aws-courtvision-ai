@@ -39,6 +39,35 @@ export class AiStack extends cdk.Stack {
       },
     });
 
+    // Commentary Lambda
+    const commentaryLambda = new lambda.Function(this, 'CommentaryLambda', {
+      runtime: lambda.Runtime.PYTHON_3_12,
+      handler: 'handler.handler',
+      code: lambda.Code.fromAsset('lambda/ai/commentary'),
+      environment: {
+        DYNAMODB_TABLE: props.gamesTable.tableName,
+        WEBSOCKET_API_ENDPOINT: 'https://x54f0p0ve2.execute-api.us-east-1.amazonaws.com/prod',  // ADD THIS LINE
+      },
+      timeout: cdk.Duration.seconds(30),
+      memorySize: 1024,
+      description: 'Generate AI commentary for scoring plays',
+    });
+
+    // Grant DynamoDB permissions
+    props.gamesTable.grantReadWriteData(commentaryLambda);
+
+    // Grant Bedrock permissions
+    commentaryLambda.addToRolePolicy(new iam.PolicyStatement({
+      actions: ['bedrock:InvokeModel'],
+      resources: ['arn:aws:bedrock:us-east-1::foundation-model/anthropic.claude-3-sonnet-20240229-v1:0'],
+    }));
+
+    // Grant WebSocket execute permissions
+    commentaryLambda.addToRolePolicy(new iam.PolicyStatement({
+      actions: ['execute-api:ManageConnections', 'execute-api:Invoke'],
+      resources: ['arn:aws:execute-api:us-east-1:*:x54f0p0ve2/*'],
+    }));
+
     // Grant DynamoDB read permissions
     props.gamesTable.grantReadData(orchestratorLambda);
     // Grant DynamoDB read/write permissions
@@ -72,6 +101,13 @@ export class AiStack extends cdk.Stack {
       batchSize: 10,
       bisectBatchOnError: true,
       retryAttempts: 3,
+    }));
+
+    // Trigger Commentary Lambda from DynamoDB Stream
+    commentaryLambda.addEventSource(new DynamoEventSource(props.gamesTable, {
+      startingPosition: lambda.StartingPosition.LATEST,
+      batchSize: 10,
+      retryAttempts: 2,
     }));
 
     // Output

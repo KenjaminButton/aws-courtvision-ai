@@ -646,8 +646,8 @@ Add AI-powered win probability and commentary.
 ### Day 28: AI Commentary Lambda
 **Time: 3-4 hours**
 
-- [ ] Create Lambda: `courtvision-ai-commentary`
-- [ ] Build play context for prompt:
+- [x] Create Lambda: `courtvision-ai-commentary`
+- [x] Build play context for prompt:
   ```python
   def get_play_context(play, game_state):
       player_stats = get_player_game_stats(play['playerId'], play['gameId'])
@@ -659,11 +659,41 @@ Add AI-powered win probability and commentary.
           'recent_context': get_recent_plays_summary(play['gameId'], 5)
       }
   ```
-- [ ] Store commentary in DynamoDB
-- [ ] Push to WebSocket
+- [x] Store commentary in DynamoDB
+- [x] Push to WebSocket
 
 **Checkpoint:** Commentary generates for each scoring play
 
+---
+
+## **Now Day 28.5 Planning:**
+
+### **Day 28.5: Player Stats Tracking**
+
+**Goal:** Track minimal player stats (Points, FG%, 3PT%, Fouls) in Processing Lambda
+
+**Why in Processing Lambda?**
+- Processing Lambda already handles every play
+- It knows shot types, results, fouls
+- Commentary Lambda just needs to READ stats
+
+**What to Track:**
+- Points (total)
+- FG Made / FG Attempted
+- 3PT Made / 3PT Attempted  
+- Fouls
+
+**Storage Pattern:**
+```
+PK: PLAYER#{playerId}
+SK: GAME#{gameId}#STATS
+points: 15
+fgMade: 6
+fgAttempted: 12
+threeMade: 2
+threeAttempted: 5
+fouls: 2
+```
 ---
 
 ### Day 29: AI Commentary - Frontend

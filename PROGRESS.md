@@ -1185,66 +1185,65 @@ CRITICAL RULES:
 - Day 28: Build Commentary Lambda to generate commentary for live games
 - Integrate prompt with DynamoDB Streams trigger
 - Push commentary to WebSocket for real-time display
-```
 
 ---
 
-## Git Commit Message:
+## Day 28: AI Commentary Lambda (December 2, 2025)
+
+**Goal:** Build Lambda function to generate AI commentary for scoring plays
+
+**Status:** ✅ COMPLETE
+
+### Tasks Completed:
+1. ✅ Created Commentary Lambda (`lambda/ai/commentary/handler.py`)
+2. ✅ Implemented Bedrock integration with Claude 3 Sonnet
+3. ✅ Added validation to prevent hallucinations
+4. ✅ Connected DynamoDB Stream trigger (scoring plays only)
+5. ✅ Implemented commentary storage in DynamoDB
+6. ✅ Added WebSocket push functionality
+7. ✅ Deployed and tested end-to-end
+
+### Files Created/Modified:
+- `lambda/ai/commentary/handler.py` - Full Lambda implementation
+- `lib/stacks/ai-stack.ts` - Added Commentary Lambda to CDK
+
+### Key Features:
+- **Prompt Engineering:** Uses Day 27 tested prompt with strict validation rules
+- **Validation:** Blocks hallucinations (class years, positions not provided)
+- **Bedrock Model:** anthropic.claude-3-sonnet-20240229-v1:0
+- **Trigger:** DynamoDB Streams (INSERT events on PLAY# items with scoringPlay=true)
+- **Storage:** Stores in DynamoDB with SK pattern `AI#COMMENTARY#{timestamp}`
+- **WebSocket:** Pushes commentary to connected clients in real-time
+
+### Test Results:
+- ✅ Lambda triggers correctly on scoring plays
+- ✅ Bedrock generates 2-sentence commentary
+- ✅ Validation blocks hallucinations (tested with "guard" example)
+- ✅ Commentary stored successfully in DynamoDB
+- ✅ WebSocket push attempted (0 connections during test - expected)
+- ✅ Excitement calibration working (0.6-0.7 range for test plays)
+
+### Sample Output:
+```json
+{
+  "commentary": "Third Player from Santa Clara splashes home the three-ball! The Broncos have taken the lead, now up 15-12 over San Jose State.",
+  "excitement": 0.7
+}
 ```
-feat: Complete Day 27 AI commentary prompt engineering
 
-- Create commentary prompt with strict validation rules
-- Test manually in Bedrock console with 3 play types
-- Build automated test script for bulk validation
-- Test against 54 plays from live USC vs Saint Mary's game
-- Achieve 85% pass rate (46/54 plays validated)
-- Refine prompt to eliminate hallucinations and clichés
-- Calibrate excitement levels (0.3-0.9 range)
-- Add critical rules: max 2 sentences, no invented details
-- Block clichés: "from downtown", "ice water in veins", etc.
+### Known Limitations:
+- Player stats show 0 PTS/REB/AST (not tracked yet - Day 28.5 will fix)
+- No player milestone detection yet
+- No foul trouble context yet
 
-Test infrastructure:
-- tests/test-commentary.py - Automated validation script
-- tests/live-game-data.json - Live game data
-- tests/.venv/ - Isolated Python environment
+### Next Steps:
+- Day 28.5: Add player stats tracking in Processing Lambda
+- Day 29: Build frontend commentary display component
 
-Ready for Day 28: Build Commentary Lambda
-```
-
----
-
-## Day 28 Explained (Like You're 5 Years Old) 🏀
-
-### What We Have NOW:
-You have a **magic recipe** (the prompt) that turns boring "Player made shot" into exciting "Dunn drains the triple!"
-
-But right now, that recipe is just written on paper in a test kitchen (`tests/test-commentary.py`).
-
-### What Day 28 Does:
-**Put that recipe into the REAL kitchen** (a Lambda function) so it works automatically during games!
-
----
-
-### The Flow (Simple Version):
-```
-1. 🏀 Player scores in real game
-   ↓
-2. 📥 DynamoDB gets new play data
-   ↓
-3. 🔔 DynamoDB Stream says "Hey! New scoring play!"
-   ↓
-4. 🤖 Lambda wakes up: "I'll make commentary!"
-   ↓
-5. 💭 Lambda uses our prompt with Bedrock
-   ↓
-6. 📝 Bedrock returns: "Dunn drains the triple!"
-   ↓
-7. 💾 Lambda saves commentary to DynamoDB
-   ↓
-8. 📡 WebSocket pushes to frontend
-   ↓
-9. 🎉 User sees exciting commentary on screen!
-
+### AWS Resources:
+- Lambda: `courtvision-ai-commentary` (not explicitly named, CDK auto-generates)
+- Trigger: DynamoDB Stream on `courtvision-games` table
+- Permissions: Bedrock InvokeModel, DynamoDB Read/Write, WebSocket Execute
 
 ---
 
