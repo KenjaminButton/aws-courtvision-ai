@@ -21,6 +21,13 @@ def build_commentary_prompt(play_data, game_context):
     """
     Build the commentary prompt using our tested format from Day 27
     """
+    # Fetch player stats
+    player_stats = get_player_stats(play_data.get('playerId'), play_data.get('gameId'))
+    
+    # Format shooting stats
+    fg_stat = f"{player_stats.get('fgMade', 0)}-{player_stats.get('fgAttempted', 0)}"
+    three_stat = f"{player_stats.get('threeMade', 0)}-{player_stats.get('threeAttempted', 0)}"
+    
     prompt = f"""You are an enthusiastic women's college basketball commentator. Generate exciting play-by-play commentary for this event.
 
 Play Details:
@@ -32,7 +39,7 @@ Play Details:
 
 Game Context:
 - Quarter: {game_context['quarter']}, Time: {game_context['gameClock']}
-- Player's Game Stats: {game_context.get('playerPoints', 0)} PTS, {game_context.get('playerRebounds', 0)} REB, {game_context.get('playerAssists', 0)} AST
+- Player's Game Stats: {player_stats.get('points', 0)} PTS, {fg_stat} FG, {three_stat} 3PT, {player_stats.get('fouls', 0)} Fouls
 - Recent Context: {game_context.get('recentContext', 'Game in progress')}
 
 CRITICAL RULES:
@@ -114,6 +121,7 @@ def extract_play_from_stream(record):
     play_data = {
         'gameId': new_image['PK']['S'],
         'playId': new_image.get('playId', {}).get('S', ''),
+        'playerId': new_image.get('playerId', {}).get('S', ''),  # ADD THIS LINE
         'playerName': new_image.get('playerName', {}).get('S', 'Unknown'),
         'team': new_image.get('team', {}).get('S', 'Unknown'),
         'action': new_image.get('action', {}).get('S', 'Unknown'),
@@ -144,22 +152,60 @@ def get_game_context(game_id):
         
         metadata = metadata_response.get('Item', {})
         
-        return {
+        context = {
             'homeTeam': metadata.get('homeTeam', 'Home'),
             'awayTeam': metadata.get('awayTeam', 'Away'),
             'homeScore': int(score_data.get('homeScore', 0)),
             'awayScore': int(score_data.get('awayScore', 0)),
             'quarter': int(score_data.get('quarter', 1)),
             'gameClock': score_data.get('gameClockDisplay', '10:00'),
-            'playerPoints': 0,  # TODO: Get player stats in future
-            'playerRebounds': 0,
-            'playerAssists': 0,
             'recentContext': 'Game in progress'
         }
+        return context
     
     except Exception as e:
         print(f"❌ Error getting game context: {str(e)}")
         return None
+
+def get_player_stats(player_id, game_id):
+    """
+    Fetch player statistics for this game
+    Returns stats dict or defaults if not found
+    """
+    try:
+        response = table.get_item(
+            Key={
+                'PK': f"PLAYER#{player_id}",
+                'SK': f"{game_id}#STATS"
+            }
+        )
+        
+        if 'Item' in response:
+            stats = response['Item']
+            print(f"📊 Player stats: {stats.get('playerName', 'Unknown')} - {stats.get('points', 0)} PTS, {stats.get('fgMade', 0)}-{stats.get('fgAttempted', 0)} FG")
+            return stats
+        else:
+            # No stats yet (first play of game)
+            print(f"📊 No stats found for player {player_id} - returning defaults")
+            return {
+                'points': 0,
+                'fgMade': 0,
+                'fgAttempted': 0,
+                'threeMade': 0,
+                'threeAttempted': 0,
+                'fouls': 0
+            }
+    
+    except Exception as e:
+        print(f"❌ Error fetching player stats: {str(e)}")
+        return {
+            'points': 0,
+            'fgMade': 0,
+            'fgAttempted': 0,
+            'threeMade': 0,
+            'threeAttempted': 0,
+            'fouls': 0
+        }
 
 def store_commentary(game_id, play_id, commentary_data):
     """

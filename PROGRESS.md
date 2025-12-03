@@ -1247,7 +1247,82 @@ CRITICAL RULES:
 
 ---
 
+## Day 28.5: Player Stats Tracking (December 3, 2025)
 
+**Goal:** Track minimal player statistics in Processing Lambda so Commentary Lambda can reference real game stats
+
+**Status:** ✅ COMPLETE
+
+### Tasks Completed:
+1. ✅ Added `calculate_stats_delta()` function to Processing Lambda
+2. ✅ Updated `update_player_stats()` to store accumulated stats
+3. ✅ Added `get_player_stats()` function to Commentary Lambda
+4. ✅ Updated commentary prompt to include real player stats
+5. ✅ Fixed missing `playerId` bug in `extract_play_from_stream()`
+6. ✅ Tested end-to-end with multiple plays from same player
+
+### Files Modified:
+- `lambda/processing/handler.py` - Added stats calculation and storage
+- `lambda/ai/commentary/handler.py` - Added stats fetching, fixed playerId bug
+
+### Stats Tracked:
+- **Points** - Total points scored
+- **FG Made/Attempted** - Field goals for shooting percentages
+- **3PT Made/Attempted** - Three-pointers for hot shooting detection
+- **Fouls** - For foul trouble context
+
+### DynamoDB Schema:
+```json
+{
+  "PK": "PLAYER#99999",
+  "SK": "GAME#2025-12-03#TEST-GAME#STATS",
+  "playerId": "99999",
+  "playerName": "Stats Test Player",
+  "team": "Santa Clara",
+  "gameId": "GAME#2025-12-03#TEST-GAME",
+  "points": 13,
+  "fgMade": 5,
+  "fgAttempted": 5,
+  "threeMade": 2,
+  "threeAttempted": 2,
+  "fouls": 0,
+  "lastUpdated": "2025-12-03T21:17:24.033638Z"
+}
+```
+
+### Test Results:
+- ✅ Stats accumulate correctly across multiple plays (8→11→13 points)
+- ✅ Processing Lambda logs show per-play deltas (+3 pts, +2 pts)
+- ✅ Commentary Lambda logs show accumulated totals (13 PTS, 5-5 FG)
+- ✅ AI commentary references stats subtly ("hot shooting", "two more")
+- ✅ Missing attributes (fouls=0) handled gracefully with defaults
+
+### Sample Commentary Output:
+```
+Stats Test Player converts the layup for two more! The Broncos have ridden her hot shooting to build a double-digit lead over San Jose State.
+```
+
+**Prompt includes:** "13 PTS, 5-5 FG, 2-2 3PT, 0 Fouls"
+
+### Bug Fixed:
+- Commentary Lambda was passing `playerId=None` to `get_player_stats()`
+- Added missing `playerId` extraction from DynamoDB Stream record
+- Now correctly fetches accumulated stats for each player
+
+### Architecture Notes:
+- Processing Lambda writes stats (via Kinesis trigger)
+- Commentary Lambda reads stats (via DynamoDB get_item)
+- Clear separation of concerns: write vs read
+- Stats persist per game with pattern `PLAYER#{id}/GAME#{id}#STATS`
+
+### Known Limitations:
+- Commentary could be more explicit about stats (e.g., "That's her 13th point!")
+- Prompt tuning needed for better stat mentions (Day 30)
+- Not tracking rebounds/assists yet (future enhancement)
+
+### Next Steps:
+- Day 29: Build frontend commentary display component
+- Day 30: Tune commentary quality for better stat references
 
 ---
 
