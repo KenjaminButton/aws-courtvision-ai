@@ -41,6 +41,7 @@ DEVSECRETS.md
 
 # Python
 .venv
+.venv/
 venv/
 *.pyc
 __pycache__/

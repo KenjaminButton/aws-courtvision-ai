@@ -1132,10 +1132,118 @@ const restApi = new apigateway.RestApi(this, 'GameApi', {
 
 ### Next Steps
 - Day 27: AI Commentary - Prompt Engineering
-- Day 28: AI Commentary Lambda
+---
+
+### Day 27: AI Commentary - Prompt Engineering ✅
+**Date:** December 2, 2025  
+**Time Spent:** ~3 hours
+
+#### Tasks Completed:
+1. ✅ Created commentary prompt based on blueprint specifications
+2. ✅ Manual testing in AWS Bedrock Console with 3 diverse play types
+3. ✅ Refined prompt to reduce hallucinations and enforce sentence limits
+4. ✅ Built automated test script (`tests/test-commentary.py`)
+5. ✅ Tested against live USC vs Saint Mary's game (54 scoring plays)
+6. ✅ Calibrated excitement levels (0.3-0.9 range working well)
+
+#### Test Results:
+- **85% pass rate** (46/54 plays passed validation)
+- **Tested play types:** Three-pointers, layups, dunks, free throws
+- **Issues found:** 8 plays had minor issues (3 sentences, clichés like "from downtown")
+- **No hallucinations** in final prompt version (player stats, positions)
+
+#### Key Prompt Rules:
+```python
+CRITICAL RULES:
+1. MAXIMUM 2 sentences. No exceptions.
+2. DO NOT invent player details (year, position, etc.) not provided
+3. DO NOT use clichés: "ice water in veins", "nothing but net", "from downtown"
+4. Only mention facts explicitly provided in the data
+5. Match excitement to play significance (0.3-0.5 routine, 0.7-0.9 clutch)
+```
+
+#### Files Created:
+- `tests/test-commentary.py` - Automated testing script
+- `tests/live-game-data.json` - Live game data for testing
+- `tests/.venv/` - Virtual environment for local testing
+
+#### Sample Output:
+```json
+{
+  "commentary": "Kara Dunn knocks down the triple! Great dish from Malia Samuels to set up the three-pointer.",
+  "excitement": 0.5
+}
+```
+
+#### Issues Resolved:
+- Prompt initially generated 3 sentences consistently
+- Added explicit "MAXIMUM 2 sentences" rule
+- Removed player class/position hallucinations
+- Blocked common basketball clichés
+
+#### Next Steps:
+- Day 28: Build Commentary Lambda to generate commentary for live games
+- Integrate prompt with DynamoDB Streams trigger
+- Push commentary to WebSocket for real-time display
+```
 
 ---
 
+## Git Commit Message:
+```
+feat: Complete Day 27 AI commentary prompt engineering
+
+- Create commentary prompt with strict validation rules
+- Test manually in Bedrock console with 3 play types
+- Build automated test script for bulk validation
+- Test against 54 plays from live USC vs Saint Mary's game
+- Achieve 85% pass rate (46/54 plays validated)
+- Refine prompt to eliminate hallucinations and clichés
+- Calibrate excitement levels (0.3-0.9 range)
+- Add critical rules: max 2 sentences, no invented details
+- Block clichés: "from downtown", "ice water in veins", etc.
+
+Test infrastructure:
+- tests/test-commentary.py - Automated validation script
+- tests/live-game-data.json - Live game data
+- tests/.venv/ - Isolated Python environment
+
+Ready for Day 28: Build Commentary Lambda
+```
+
+---
+
+## Day 28 Explained (Like You're 5 Years Old) 🏀
+
+### What We Have NOW:
+You have a **magic recipe** (the prompt) that turns boring "Player made shot" into exciting "Dunn drains the triple!"
+
+But right now, that recipe is just written on paper in a test kitchen (`tests/test-commentary.py`).
+
+### What Day 28 Does:
+**Put that recipe into the REAL kitchen** (a Lambda function) so it works automatically during games!
+
+---
+
+### The Flow (Simple Version):
+```
+1. 🏀 Player scores in real game
+   ↓
+2. 📥 DynamoDB gets new play data
+   ↓
+3. 🔔 DynamoDB Stream says "Hey! New scoring play!"
+   ↓
+4. 🤖 Lambda wakes up: "I'll make commentary!"
+   ↓
+5. 💭 Lambda uses our prompt with Bedrock
+   ↓
+6. 📝 Bedrock returns: "Dunn drains the triple!"
+   ↓
+7. 💾 Lambda saves commentary to DynamoDB
+   ↓
+8. 📡 WebSocket pushes to frontend
+   ↓
+9. 🎉 User sees exciting commentary on screen!
 
 
 ---

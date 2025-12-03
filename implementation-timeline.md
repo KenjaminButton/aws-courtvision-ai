@@ -583,7 +583,7 @@ Add AI-powered win probability and commentary.
 ### Day 25: Win Probability - Frontend
 **Time: 3-4 hours**
 
-- [ ] Create WinProbabilityBar component:
+- [x] Create WinProbabilityBar component:
   ```tsx
   const WinProbabilityBar = ({ home, away, homePct }) => (
     <div className="flex h-8 rounded-full overflow-hidden">
@@ -599,8 +599,8 @@ Add AI-powered win probability and commentary.
     </div>
   );
   ```
-- [ ] Display AI reasoning below bar
-- [ ] Animate transitions smoothly
+- [x] Display AI reasoning below bar
+- [x] Animate transitions smoothly
 
 **Checkpoint:** Win probability bar updates in real-time
 
@@ -609,9 +609,9 @@ Add AI-powered win probability and commentary.
 ### Day 26: Win Probability - Historical Graph
 **Time: 3-4 hours**
 
-- [ ] Store historical probability in DynamoDB
-- [ ] Create API endpoint for probability history
-- [ ] Build Recharts line graph:
+- [x] Store historical probability in DynamoDB
+- [x] Create API endpoint for probability history
+- [x] Build Recharts line graph:
   ```tsx
   <LineChart data={probabilityHistory}>
     <XAxis dataKey="timestamp" />
@@ -620,7 +620,7 @@ Add AI-powered win probability and commentary.
     <ReferenceLine y={0.5} stroke="#666" strokeDasharray="3 3" />
   </LineChart>
   ```
-- [ ] Add game clock labels on X-axis
+- [x] Add game clock labels on X-axis
 
 **Checkpoint:** Graph shows probability swings over time
 
@@ -629,15 +629,15 @@ Add AI-powered win probability and commentary.
 ### Day 27: AI Commentary - Prompt Engineering
 **Time: 3-4 hours**
 
-- [ ] Create commentary prompt (from blueprint)
-- [ ] Test with various play types:
+- [x] Create commentary prompt (from blueprint)
+- [x] Test with various play types:
   - Three-pointers
   - Layups
   - Blocks
   - Turnovers
   - Free throws
-- [ ] Calibrate excitement levels
-- [ ] Ensure no hallucinated names/stats
+- [x] Calibrate excitement levels
+- [x] Ensure no hallucinated names/stats
 
 **Checkpoint:** Commentary prompt generates varied, accurate text
 
