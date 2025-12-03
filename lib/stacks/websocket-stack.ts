@@ -113,6 +113,10 @@ export class WebSocketStack extends cdk.Stack {
     const restApi = new apigateway.RestApi(this, 'GameApi', {
       restApiName: 'CourtVision Game API',
       description: 'REST API for game data lookups',
+      deploy: true,  
+      deployOptions: {
+        stageName: 'prod',
+      },
       defaultCorsPreflightOptions: {
         allowOrigins: apigateway.Cors.ALL_ORIGINS,
         allowMethods: apigateway.Cors.ALL_METHODS,
@@ -125,9 +129,15 @@ export class WebSocketStack extends cdk.Stack {
     
     // Add /game/{espnGameId} resource
     const gameIdResource = gameResource.addResource('{espnGameId}');
-    
-    // Add GET method
     gameIdResource.addMethod('GET', new apigateway.LambdaIntegration(apiLambda));
+
+    // Add /game/{espnGameId}/win-probability resource
+    const winProbResource = gameIdResource.addResource('win-probability');
+    winProbResource.addMethod('GET', new apigateway.LambdaIntegration(apiLambda));
+
+    // Add /games resource (for today's games list)
+    const gamesResource = restApi.root.addResource('games');
+    gamesResource.addMethod('GET', new apigateway.LambdaIntegration(apiLambda));
 
     // Outputs
     new cdk.CfnOutput(this, 'PushLambdaName', {
@@ -151,3 +161,4 @@ export class WebSocketStack extends cdk.Stack {
     });
   }
 }
+

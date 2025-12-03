@@ -4,6 +4,8 @@ import { useWebSocket } from '../hooks/useWebSocket';
 import LiveScore from '../components/LiveScore';
 import { WinProbabilityBar } from '../components/WinProbabilityBar';
 import { WinProbabilityReasoning } from '../components/WinProbabilityReasoning';
+import { WinProbabilityGraph } from '../components/WinProbabilityGraph';  // ADD THIS
+
 
 const GameView: React.FC = () => {
   const { espnGameId } = useParams<{ espnGameId: string }>();
@@ -103,7 +105,7 @@ const GameView: React.FC = () => {
               isConnected={isConnected}
             />
 
-            {/* Win Probability */}
+            {/* Win Probability - Current */}
             {winProbability && (
               <div className="mt-8">
                 <h2 className="text-2xl font-bold text-cv-teal mb-4">Win Probability</h2>
@@ -117,6 +119,13 @@ const GameView: React.FC = () => {
                   reasoning={winProbability.reasoning}
                   calculatedAt={winProbability.calculatedAt}
                 />
+              </div>
+            )}
+
+            {/* Win Probability Timeline - Always show if game has history */}
+            {espnGameId && (
+              <div className="mt-8">
+                <WinProbabilityGraph espnGameId={espnGameId} />
               </div>
             )}
           </>

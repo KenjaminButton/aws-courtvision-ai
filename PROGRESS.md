@@ -1060,9 +1060,83 @@ Filter by status (live, upcoming, completed)
 
 ---
 
+## Day 26: Win Probability Historical Graph ✅
+**Date:** December 2, 2025
+**Duration:** ~2 hours
 
+### Tasks Completed
+1. ✅ Added `get_win_prob_history()` function to API Lambda
+2. ✅ Created REST API route `/game/{espnGameId}/win-probability`
+3. ✅ Updated CDK websocket-stack.ts with new API Gateway route
+4. ✅ Fixed API Gateway auto-deployment issue (permanent fix)
+5. ✅ Created WinProbabilityGraph.tsx component with Recharts
+6. ✅ Integrated graph into GameView.tsx
+7. ✅ Implemented smart conditional rendering (bar vs graph)
+
+### API Endpoint Test Results
+```bash
+curl "https://i0ui9626c5.execute-api.us-east-1.amazonaws.com/prod/game/401817387/win-probability"
+
+Response: 40 historical probability records
+- Game start: 35% - 65%
+- Q1 lead: 12% - 88%
+- Q3 dominance: 2% - 98%
+- Q4 finish: 0.01% - 99.99%
+```
+
+### Key Features
+- **Timeline Graph:** Recharts line chart with 300px height
+- **Dual Lines:** Blue (home) and red (away) win percentages
+- **Reference Line:** 50% marker showing even odds
+- **Responsive:** Full-width container with proper scaling
+- **Smart Display:** Graph always shows if history exists; bar+analysis only for live games
+- **Data Count:** Shows "X probability calculations during game" below graph
+
+### Files Created
+- `frontend/src/components/WinProbabilityGraph.tsx` - Recharts timeline component
+
+### Files Modified
+- `lambda/api/handler.py` - Added `get_win_prob_history()` function and route handler
+- `lib/stacks/websocket-stack.ts` - Added win-probability resource and auto-deploy config
+- `frontend/src/pages/GameView.tsx` - Integrated graph with conditional rendering
+
+### Issues Resolved
+**Problem:** API Gateway routes configured but not deployed to `prod` stage
+- **Symptom:** 404 "Missing Authentication Token" despite route existing in configuration
+- **Root Cause:** CDK updates routes but doesn't auto-deploy without `deploy: true` setting
+- **Solution 1 (immediate):** Manual deployment via `aws apigateway create-deployment`
+- **Solution 2 (permanent):** Added `deploy: true` and `deployOptions` to RestApi in CDK
+- **Prevention:** All future route changes will auto-deploy to prod stage
+
+### CDK Auto-Deploy Fix
+Added to `websocket-stack.ts`:
+```typescript
+const restApi = new apigateway.RestApi(this, 'GameApi', {
+  // ... existing config
+  deploy: true,  // NEW
+  deployOptions: {  // NEW
+    stageName: 'prod',
+  },
+});
+```
+
+### Display Logic
+**Live Games (winProbability exists):**
+- Win Probability bar with current percentages
+- AI Analysis with reasoning and timestamp
+- Historical timeline graph
+
+**Completed Games (no current winProbability):**
+- Historical timeline graph only
+- Shows full game story from start to finish
+
+### Next Steps
+- Day 27: AI Commentary - Prompt Engineering
+- Day 28: AI Commentary Lambda
 
 ---
+
+
 
 ---
 

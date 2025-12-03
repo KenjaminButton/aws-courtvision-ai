@@ -197,13 +197,18 @@ def parse_play_data(espn_play, game_id):
 
 def store_game_metadata(game):
     """
-    Store game metadata in DynamoDB
+    Store game metadata in DynamoDB with GSI1 for date queries
     """
-    table = dynamodb.Table(DYNAMODB_TABLE)  # Initialize table here
+    table = dynamodb.Table(DYNAMODB_TABLE)
+    
+    # Extract date for GSI1 (format: YYYY-MM-DD)
+    game_date = game['date'].split('T')[0]  # Get date part from ISO timestamp
     
     item = {
         'PK': game['PK'],
         'SK': 'METADATA',
+        'GSI1PK': f"DATE#{game_date}",  # Add GSI1 partition key
+        'GSI1SK': game['PK'],           # Add GSI1 sort key
         'espnGameId': game['espnGameId'],
         'homeTeam': game['homeTeam'],
         'awayTeam': game['awayTeam'],
