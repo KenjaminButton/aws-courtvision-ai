@@ -1401,11 +1401,202 @@ Stats Test Player converts the layup for two more! The Broncos have ridden her h
 
 ---
 
+### Day 30a: Win Probability X-Axis - Game Minutes + Halftime Marker ✅
+**Date: December 4, 2025**
+**Time: ~2 hours**
 
+#### Problem Identified:
+- Win Probability graph X-axis showed "calculation count" (1, 2, 3...)
+- Meaningless to viewers and made blowouts look broken
+- No connection to actual game time
+- Different scale for every game
+
+#### Solution Implemented:
+Changed X-axis from "calculation count" to "game minutes" (0-40 for regulation, extends for OT)
+
+#### Technical Changes:
+
+**1. Win Prob Lambda (`lambda/ai/winprob/handler.py`):**
+- Added `calculate_game_minute(quarter, game_clock)` helper function
+  - Handles regulation: `(quarter - 1) * 10 + (10 - clock_total)`
+  - Handles overtime: `40 + (ot_period * 5) + (5 - clock_total)`
+  - Examples: Q1 at 7:00 = 3 min, Q3 at 5:00 = 25 min, OT1 at 2:00 = 43 min
+- Modified `get_game_context()` to calculate and include `game_minute`
+- Modified `store_win_probability()` to store `gameMinute` field in both CURRENT and historical records
+
+**2. API Lambda (`lambda/api/handler.py`):**
+- Updated win probability history formatter to include `gameMinute` in response
+- Added to GET /game/{espnGameId}/win-probability endpoint
+
+**3. Frontend (`frontend/src/components/WinProbabilityGraph.tsx`):**
+- Updated `HistoryPoint` interface to include `gameMinute: number`
+- Changed chart data mapping to use `point.gameMinute` instead of index
+- Added dynamic `maxMinute` calculation (40 for regulation, 45/50/55 for OT)
+- Updated XAxis:
+  - `dataKey="gameMinute"` instead of "index"
+  - `domain={[0, maxMinute]}`
+  - `type="number"`
+  - Label: "Game Minutes"
+- Added halftime reference line at minute 20 with yellow dashed line
+- Updated bottom text to show total minutes (indicates OT games)
+- **Added fallback logic:** Old data without `gameMinute` falls back to index (prevents breaking)
+
+#### Basketball Time Structure:
+```
+Regulation:
+- Quarter 1: Minutes 0-10
+- Quarter 2: Minutes 10-20 (Halftime at 20)
+- Quarter 3: Minutes 20-30
+- Quarter 4: Minutes 30-40
+
+Overtime:
+- OT1 (Q5): Minutes 40-45
+- OT2 (Q6): Minutes 45-50
+- OT3 (Q7): Minutes 50-55
+- Etc.
+```
+
+#### Deployment & Testing:
+- Deployed Win Prob Lambda via AWS CLI
+- Deployed API Lambda via AWS CLI
+- Manually triggered Win Prob Lambda via AWS Console
+- Verified new DynamoDB records contain `gameMinute` field
+- Example: Stanford game Q4 at 0:00 = `gameMinute: 40` ✅
+
+#### Files Modified:
+```
+lambda/ai/winprob/handler.py
+  - Lines 15-50: Added calculate_game_minute() function
+  - Lines 67-78: Modified get_game_context() to calculate gameMinute
+  - Lines 157-172: Modified store_win_probability() to store gameMinute
+
+lambda/api/handler.py
+  - Lines 250-265: Added gameMinute to formatted history response
+
+frontend/src/components/WinProbabilityGraph.tsx
+  - Line 8-14: Updated HistoryPoint interface
+  - Lines 59-68: Changed chartData mapping to use gameMinute
+  - Lines 70-76: Updated XAxis to use game minutes
+  - Line 89: Added halftime reference line
+  - Lines 97-99: Updated bottom text
+  - Added fallback: point.gameMinute ?? index + 1
+```
+
+#### Expected Results (Live Games):
+- **Close games:** Swinging probability lines across full 40 minutes
+- **Blowouts:** Flat line across 40 minutes (looks intentional, not broken)
+- **Overtime games:** Graph extends past 40 minutes automatically
+- **Halftime marker:** Yellow dashed line at minute 20 provides game context
+
+#### Caveats & Known Issues:
+- Old win probability records (from before this deployment) lack `gameMinute` field
+  - **Handled by:** Fallback logic in frontend (uses index for old data)
+  - **Impact:** Old games show mixed X-axis (some indexes, some minutes)
+  - **Resolution:** Will resolve naturally as new games replace old data
+- AI Orchestrator triggering frequency affects graph density
+  - Blowouts may have sparse data points (1-2 calculations)
+  - Close games should have 10-15+ data points
+
+#### Next Steps:
+- Monitor live games this afternoon to verify real-time behavior
+- Check if blowouts show flat lines across 40 minutes
+- Verify overtime games extend X-axis correctly
+- Consider increasing AI Orchestrator trigger frequency for better graph resolution
+
+**Checkpoint Achieved:** ✅ Win Probability graph displays game minutes with halftime marker! Ready for live game testing.
+
+**Related Issues:**
+- Shooting percentages still hardcoded (45%, 35%, 43%, 33%) - see Day 30b
 
 ---
+### Day 30b: Real Shooting Percentages + Team Mapping Fix ✅
+**Date: December 4, 2025**
+**Time: ~1.5 hours**
 
+#### Problems Identified:
+1. **Player stats had "Unknown" team:**
+   - Processing Lambda stored `play.get('team')` which doesn't exist
+   - Should be `play.get('teamId')` (ESPN provides team ID like "2633")
+   - Need to map team ID to team name using game metadata
 
+2. **Win Probability used hardcoded shooting percentages:**
+   - Every game used 45%, 35%, 43%, 33% regardless of actual performance
+   - AI probability reasoning inaccurate
+   - Misleading to users
+
+#### Solutions Implemented:
+
+**1. Processing Lambda - Team Mapping (`lambda/processing/handler.py`):**
+- Modified `update_player_stats()` function (lines 144-230)
+- Added team name resolution logic:
+  - Fetches game metadata (has homeTeam, awayTeam, homeTeamId, awayTeamId)
+  - Compares play's `teamId` to home/away team IDs
+  - Stores actual team name ("Stanford", "Tennessee") instead of "Unknown"
+- Changed line 170: `play.get('team')` → `play.get('teamId')`
+- Added logging: `"🔍 Team mapping: play team ID {play_team_id} → {team_name}"`
+
+**2. Win Prob Lambda - Real Shooting Stats (`lambda/ai/winprob/handler.py`):**
+- Added `get_team_player_stats(game_id, team_name)` function (after line 76)
+  - Queries all player stats for a game using GSI2 (gameId index)
+  - Filters by team name
+  - Aggregates: fgMade, fgAttempted, threeMade, threeAttempted
+  - Returns aggregated stats or None
+
+- Added `calculate_team_shooting(game_id, team_name)` function
+  - Calls `get_team_player_stats()`
+  - Calculates FG% and 3PT% from real data
+  - Fallback: Returns "Not yet available" if no stats exist
+  - Logs actual shooting stats for debugging
+
+- Modified `get_game_context()` (lines ~119-122)
+  - Removed hardcoded values (45.0, 35.0, 43.0, 33.0)
+  - Calls `calculate_team_shooting()` for both teams
+  - Passes real percentages (or "Not yet available") to Bedrock
+
+#### Fallback Strategy:
+Early in games when player stats don't exist yet:
+- Returns `{'fg_pct': 'Not yet available', '3pt_pct': 'Not yet available'}`
+- Bedrock AI adapts reasoning to weight other factors (score, time, momentum)
+- As game progresses and stats accumulate, seamlessly switches to real data
+- Honest approach vs. fake hardcoded values
+
+#### Deployment & Testing:
+- Deployed Processing Lambda: 2025-12-04T22:26:30Z
+- Deployed Win Prob Lambda: 2025-12-04T23:02:26Z
+- Deleted all player stats (had "Unknown" teams)
+- Will re-populate automatically when live games start
+
+#### Files Modified:
+```
+lambda/processing/handler.py
+  - Lines 144-230: Modified update_player_stats()
+  - Line 170: Changed play.get('team') to play.get('teamId')
+  - Added team name resolution from metadata
+
+lambda/ai/winprob/handler.py
+  - Lines 77-133: Added get_team_player_stats() function
+  - Lines 135-158: Added calculate_team_shooting() function
+  - Lines 160-176: Modified get_game_context() to use real shooting stats
+```
+
+#### Expected Results (Live Games):
+- Player stats will have correct team names ("Oklahoma", "NC State")
+- Win probability reasoning will cite actual shooting percentages
+- Example: "Oklahoma's 52% FG shooting vs NC State's 38% gives them momentum"
+- Early game: "Based on score differential and time remaining, as shooting stats are not yet available..."
+
+#### Verification Plan:
+When live games start (~3:00 PM PT):
+1. Check player stats in DynamoDB have correct team names
+2. Check Win Prob CloudWatch logs show real shooting percentages
+3. Verify AI reasoning mentions actual stats
+4. Compare stated percentages to ESPN box score
+
+**Checkpoint Achieved:** ✅ Real shooting percentages integrated! Ready for live game validation.
+
+**Related:**
+- Day 30a: Game minutes X-axis
+- Day 29: Player stats bug fixes
 
 ---
 

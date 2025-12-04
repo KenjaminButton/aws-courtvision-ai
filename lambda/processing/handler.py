@@ -156,15 +156,35 @@ def update_player_stats(play):
         if all(value == 0 for value in stats_delta.values()):
             return True
         
+        # *** NEW: Determine actual team name from game metadata ***
+        team_name = "Unknown"
+        try:
+            metadata_response = table.get_item(
+                Key={'PK': play['PK'], 'SK': 'METADATA'}
+            )
+            metadata = metadata_response.get('Item', {})
+            
+            play_team_id = play.get('teamId', '')
+            home_team_id = str(metadata.get('homeTeamId', ''))
+            away_team_id = str(metadata.get('awayTeamId', ''))
+            
+            if play_team_id == home_team_id:
+                team_name = metadata.get('homeTeam', 'Unknown')
+            elif play_team_id == away_team_id:
+                team_name = metadata.get('awayTeam', 'Unknown')
+            
+            print(f"🔍 Team mapping: play team ID {play_team_id} → {team_name}")
+        except Exception as e:
+            print(f"⚠️ Could not determine team name: {str(e)}")
+        
         player_key = {
             'PK': f"PLAYER#{play['playerId']}",
-            'SK': f"{play['PK']}#STATS"  # Updated SK pattern
+            'SK': f"{play['PK']}#STATS"
         }
         
         # Build update expression
         update_parts = []
         attr_values = {}
-        attr_names = {}
         
         if stats_delta['points'] > 0:
             update_parts.append('points :pts')
@@ -194,17 +214,17 @@ def update_player_stats(play):
         attr_values[':t'] = datetime.now().isoformat()
         attr_values[':pid'] = play['playerId']
         attr_values[':pname'] = play.get('playerName', 'Unknown')
-        attr_values[':team'] = play.get('team', 'Unknown')
+        attr_values[':team'] = team_name  # *** CHANGED: Use resolved team name ***
         attr_values[':gid'] = play['PK']
         
-        # Update player stats (ADD will create if doesn't exist)
+        # Update player stats
         table.update_item(
             Key=player_key,
             UpdateExpression=f'ADD {", ".join(update_parts)} SET lastUpdated = :t, playerId = :pid, playerName = :pname, team = :team, gameId = :gid',
             ExpressionAttributeValues=attr_values
         )
         
-        print(f"✅ Updated stats for {play.get('playerName', 'Unknown')}: +{stats_delta['points']} pts, {stats_delta['fgMade']}/{stats_delta['fgAttempted']} FG, {stats_delta['threeMade']}/{stats_delta['threeAttempted']} 3PT, +{stats_delta['fouls']} fouls")
+        print(f"✅ Updated stats for {play.get('playerName', 'Unknown')} ({team_name}): +{stats_delta['points']} pts, {stats_delta['fgMade']}/{stats_delta['fgAttempted']} FG, {stats_delta['threeMade']}/{stats_delta['threeAttempted']} 3PT, +{stats_delta['fouls']} fouls")
         return True
         
     except Exception as e:

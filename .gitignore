@@ -1,3 +1,5 @@
+DEVNOTES.md
+
 # Lambda dependencies (installed via pip)
 lambda/**/boto3/
 lambda/**/botocore/

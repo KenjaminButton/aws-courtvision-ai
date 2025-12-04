@@ -74,6 +74,81 @@ def calculate_game_minute(quarter, game_clock):
         print(f"⚠️ Error calculating game minute: {str(e)}")
         return 0.0
 
+
+def get_team_player_stats(game_id, team_name):
+    """
+    Query all player stats for a specific team in a game
+    
+    Args:
+        game_id: Game identifier (PK)
+        team_name: Team name to filter by (e.g., "Stanford")
+    
+    Returns:
+        dict: Aggregated team stats or None if no stats found
+    """
+    try:
+        # Query all player stats for this game
+        response = table.query(
+            IndexName='GSI2',
+            KeyConditionExpression='gameId = :gid',
+            ExpressionAttributeValues={':gid': game_id}
+        )
+        
+        players = response.get('Items', [])
+        
+        # Filter by team and aggregate
+        team_stats = {
+            'fgMade': 0,
+            'fgAttempted': 0,
+            'threeMade': 0,
+            'threeAttempted': 0
+        }
+        
+        for player in players:
+            if player.get('team') == team_name:
+                team_stats['fgMade'] += int(player.get('fgMade', 0))
+                team_stats['fgAttempted'] += int(player.get('fgAttempted', 0))
+                team_stats['threeMade'] += int(player.get('threeMade', 0))
+                team_stats['threeAttempted'] += int(player.get('threeAttempted', 0))
+        
+        return team_stats if team_stats['fgAttempted'] > 0 else None
+        
+    except Exception as e:
+        print(f"⚠️ Error querying team stats for {team_name}: {str(e)}")
+        return None
+
+
+def calculate_team_shooting(game_id, team_name):
+    """
+    Calculate shooting percentages for a team
+    
+    Args:
+        game_id: Game identifier
+        team_name: Team name (e.g., "Stanford")
+    
+    Returns:
+        dict: Shooting percentages or "Not yet available"
+    """
+    stats = get_team_player_stats(game_id, team_name)
+    
+    if stats and stats['fgAttempted'] > 0:
+        fg_pct = (stats['fgMade'] / stats['fgAttempted']) * 100
+        three_pct = (stats['threeMade'] / stats['threeAttempted']) * 100 if stats['threeAttempted'] > 0 else 0
+        
+        print(f"📊 {team_name} shooting: {fg_pct:.1f}% FG ({stats['fgMade']}/{stats['fgAttempted']}), {three_pct:.1f}% 3PT ({stats['threeMade']}/{stats['threeAttempted']})")
+        
+        return {
+            'fg_pct': round(fg_pct, 1),
+            '3pt_pct': round(three_pct, 1)
+        }
+    else:
+        print(f"⚠️ No shooting stats available yet for {team_name}")
+        return {
+            'fg_pct': 'Not yet available',
+            '3pt_pct': 'Not yet available'
+        }
+
+
 def get_game_context(game_id):
     """
     Fetch game state and calculate context for win probability
@@ -105,6 +180,10 @@ def get_game_context(game_id):
         quarter = int(score.get('quarter', 1))
         game_clock = score.get('gameClock', '10:00')
         game_minute = calculate_game_minute(quarter, game_clock)
+        # Calculate real shooting percentages
+        home_shooting = calculate_team_shooting(game_id, metadata.get('homeTeam', 'Home'))
+        away_shooting = calculate_team_shooting(game_id, metadata.get('awayTeam', 'Away'))
+
 
         context = {
             'home_team': metadata.get('homeTeam', 'Home'),
@@ -113,12 +192,12 @@ def get_game_context(game_id):
             'away_score': int(score.get('awayScore', 0)),
             'quarter': quarter,
             'time_remaining': game_clock,
-            'game_minute': game_minute,  # ADD THIS
+            'game_minute': game_minute,
             'recent_trend': recent_trend,
-            'home_fg_pct': 45.0,
-            'home_3pt_pct': 35.0,
-            'away_fg_pct': 43.0,
-            'away_3pt_pct': 33.0,
+            'home_fg_pct': home_shooting['fg_pct'],
+            'home_3pt_pct': home_shooting['3pt_pct'],
+            'away_fg_pct': away_shooting['fg_pct'],
+            'away_3pt_pct': away_shooting['3pt_pct'],
         }
         
         return context

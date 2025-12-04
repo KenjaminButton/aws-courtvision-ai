@@ -1,3 +1,9 @@
+#### Start Virtual Environment:
+```
+source .venv/bin/activate
+```
+
+
 ### Frontend Tree for CLI without unnecessary files
 ```
 tree -L 3 frontend -I 'node_modules|build|dist|coverage|.cache|*.log'
