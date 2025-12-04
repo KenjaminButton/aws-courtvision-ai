@@ -12,6 +12,7 @@ interface HistoryPoint {
   homeScore: number;
   awayScore: number;
   quarter: number;
+  gameMinute: number; 
 }
 
 export const WinProbabilityGraph: React.FC<WinProbabilityGraphProps> = ({ espnGameId }) => {
@@ -58,14 +59,20 @@ export const WinProbabilityGraph: React.FC<WinProbabilityGraphProps> = ({ espnGa
     );
   }
 
-  // Format data for Recharts (add index for X-axis)
+  // Format data for Recharts (use game minutes for X-axis)
   const chartData = history.map((point, index) => ({
-    index: index + 1,
-    homePct: (point.homeWinProbability * 100).toFixed(1),
-    awayPct: (point.awayWinProbability * 100).toFixed(1),
+    gameMinute: point.gameMinute !== undefined 
+      ? parseFloat(point.gameMinute.toFixed(1)) 
+      : index + 1,  // Fallback for old data without gameMinute
+    homePct: parseFloat((point.homeWinProbability * 100).toFixed(1)),
+    awayPct: parseFloat((point.awayWinProbability * 100).toFixed(1)),
     score: `${point.homeScore}-${point.awayScore}`,
     quarter: `Q${point.quarter}`,
   }));
+
+  // Determine max minute for X-axis (40 for regulation, 45/50/55 for OT)
+  const maxQuarter = Math.max(...history.map(p => p.quarter));
+  const maxMinute = maxQuarter <= 4 ? 40 : 40 + (maxQuarter - 4) * 5;
 
   return (
     <div className="mt-6">
@@ -74,9 +81,11 @@ export const WinProbabilityGraph: React.FC<WinProbabilityGraphProps> = ({ espnGa
         <LineChart data={chartData}>
           <CartesianGrid strokeDasharray="3 3" stroke="#334155" />
           <XAxis 
-            dataKey="index" 
+            dataKey="gameMinute"
+            domain={[0, maxMinute]}
+            type="number"
             stroke="#94a3b8"
-            label={{ value: 'Game Progression', position: 'insideBottom', offset: -5, fill: '#94a3b8' }}
+            label={{ value: 'Game Minutes', position: 'insideBottom', offset: -5, fill: '#94a3b8' }}
           />
           <YAxis 
             stroke="#94a3b8"
@@ -88,7 +97,7 @@ export const WinProbabilityGraph: React.FC<WinProbabilityGraphProps> = ({ espnGa
             labelStyle={{ color: '#94a3b8' }}
           />
           <Legend />
-          <ReferenceLine y={50} stroke="#64748b" strokeDasharray="5 5" />
+          <ReferenceLine x={20} stroke="#fbbf24" strokeDasharray="5 5" label={{ value: 'Halftime', position: 'top', fill: '#fbbf24' }} />
           <Line 
             type="monotone" 
             dataKey="homePct" 
@@ -108,7 +117,7 @@ export const WinProbabilityGraph: React.FC<WinProbabilityGraphProps> = ({ espnGa
         </LineChart>
       </ResponsiveContainer>
       <p className="text-xs text-gray-500 text-center mt-2">
-        {history.length} probability calculations during game
+        {history.length} probability calculations during game • {maxMinute} minute{maxMinute !== 40 ? 's (OT)' : 's'}
       </p>
     </div>
   );

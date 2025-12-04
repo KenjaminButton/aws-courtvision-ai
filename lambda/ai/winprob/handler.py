@@ -35,6 +35,44 @@ Respond in this exact JSON format:
 Consider: score differential, time remaining, momentum, shooting percentages, and historical comeback data. The probabilities must sum to 1.0.
 """
 
+def calculate_game_minute(quarter, game_clock):
+    """
+    Calculate elapsed game minutes from quarter and game clock
+    
+    Args:
+        quarter: Current quarter (1-4 for regulation, 5+ for OT)
+        game_clock: Game clock string (e.g., "7:23" or "3:45")
+    
+    Returns:
+        float: Game minutes elapsed
+    
+    Examples:
+        Q1 at 7:00 → 3.0 minutes
+        Q3 at 5:30 → 24.5 minutes
+        OT1 at 3:00 → 42.0 minutes
+    """
+    try:
+        # Parse clock (format: "MM:SS" or "M:SS")
+        if ':' in game_clock:
+            parts = game_clock.split(':')
+            clock_minutes = int(parts[0])
+            clock_seconds = int(parts[1])
+            clock_total = clock_minutes + (clock_seconds / 60.0)
+        else:
+            clock_total = 0.0
+        
+        # Regulation (Quarters 1-4)
+        if quarter <= 4:
+            return (quarter - 1) * 10 + (10 - clock_total)
+        
+        # Overtime (Quarters 5+)
+        else:
+            ot_period = quarter - 5  # 0 for OT1, 1 for OT2, etc.
+            return 40 + (ot_period * 5) + (5 - clock_total)
+    
+    except Exception as e:
+        print(f"⚠️ Error calculating game minute: {str(e)}")
+        return 0.0
 
 def get_game_context(game_id):
     """
@@ -64,18 +102,23 @@ def get_game_context(game_id):
         recent_trend = "Teams trading baskets"
         
         # Build game context
+        quarter = int(score.get('quarter', 1))
+        game_clock = score.get('gameClock', '10:00')
+        game_minute = calculate_game_minute(quarter, game_clock)
+
         context = {
             'home_team': metadata.get('homeTeam', 'Home'),
             'away_team': metadata.get('awayTeam', 'Away'),
             'home_score': int(score.get('homeScore', 0)),
             'away_score': int(score.get('awayScore', 0)),
-            'quarter': int(score.get('quarter', 1)),
-            'time_remaining': score.get('gameClock', '10:00'),
+            'quarter': quarter,
+            'time_remaining': game_clock,
+            'game_minute': game_minute,  # ADD THIS
             'recent_trend': recent_trend,
-            'home_fg_pct': 45.0,  # TODO: Calculate from plays
-            'home_3pt_pct': 35.0,  # TODO: Calculate from plays
-            'away_fg_pct': 43.0,  # TODO: Calculate from plays
-            'away_3pt_pct': 33.0,  # TODO: Calculate from plays
+            'home_fg_pct': 45.0,
+            'home_3pt_pct': 35.0,
+            'away_fg_pct': 43.0,
+            'away_3pt_pct': 33.0,
         }
         
         return context
@@ -155,6 +198,7 @@ def store_win_probability(game_id, probability_data, game_context):
             'homeScore': game_context['home_score'],
             'awayScore': game_context['away_score'],
             'quarter': game_context['quarter'],
+            'gameMinute': Decimal(str(game_context['game_minute'])),
             'calculatedAt': timestamp
         })
         
@@ -168,6 +212,7 @@ def store_win_probability(game_id, probability_data, game_context):
             'homeScore': game_context['home_score'],
             'awayScore': game_context['away_score'],
             'quarter': game_context['quarter'],
+            'gameMinute': Decimal(str(game_context['game_minute'])),
             'calculatedAt': timestamp
         })
         

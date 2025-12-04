@@ -288,7 +288,8 @@ def handler(event, context):
                 'awayWinProbability': float(record['awayWinProbability']),
                 'homeScore': int(record.get('homeScore', 0)),
                 'awayScore': int(record.get('awayScore', 0)),
-                'quarter': int(record.get('quarter', 1))
+                'quarter': int(record.get('quarter', 1)),
+                'gameMinute': float(record.get('gameMinute', 0))
             }
             for record in history
         ]
