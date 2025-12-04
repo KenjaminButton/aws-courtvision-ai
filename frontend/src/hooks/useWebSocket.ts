@@ -1,5 +1,12 @@
 import { useState, useEffect, useRef } from 'react';
 
+interface CommentaryItem {
+  commentary: string;
+  excitement: number;
+  timestamp: string;
+  playId: string;
+}
+
 interface GameState {
   type: string;
   gameId: string;
@@ -19,12 +26,18 @@ interface GameState {
   };
 }
 
-export function useWebSocket(gameId: string | undefined) {
+export function useWebSocket(gameId: string | undefined, initialCommentary: CommentaryItem[] = []) {
   const [gameState, setGameState] = useState<GameState | null>(null);
+  const [commentary, setCommentary] = useState<CommentaryItem[]>(initialCommentary);
   const [isConnected, setIsConnected] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const wsRef = useRef<WebSocket | null>(null);
   const reconnectTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  // Update commentary when initialCommentary changes
+  useEffect(() => {
+    setCommentary(initialCommentary);
+  }, [initialCommentary]);
 
   useEffect(() => {
     if (!gameId) return;
@@ -71,6 +84,27 @@ export function useWebSocket(gameId: string | undefined) {
               }
             }));
           }
+
+          // Handle AI commentary updates
+          if (data.type === 'commentary') {
+            const newCommentary: CommentaryItem = {
+              commentary: data.data.commentary,
+              excitement: data.data.excitement,
+              timestamp: data.data.generatedAt || new Date().toISOString(),
+              playId: data.data.playId || `commentary-${Date.now()}`,
+            };
+            
+            // Add to the beginning (newest first)
+            setCommentary((prev) => {
+              // Avoid duplicates
+              if (prev.some(c => c.playId === newCommentary.playId)) {
+                return prev;
+              }
+              return [newCommentary, ...prev];
+            });
+            
+            console.log('🎙️ New commentary:', newCommentary.commentary);
+          }
         } catch (err) {
           console.error('Failed to parse message:', err);
         }
@@ -106,5 +140,5 @@ export function useWebSocket(gameId: string | undefined) {
     };
   }, [gameId]);
 
-  return { gameState, isConnected, error };
+  return { gameState, commentary, isConnected, error };
 }

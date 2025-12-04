@@ -4,14 +4,22 @@ import { useWebSocket } from '../hooks/useWebSocket';
 import LiveScore from '../components/LiveScore';
 import { WinProbabilityBar } from '../components/WinProbabilityBar';
 import { WinProbabilityReasoning } from '../components/WinProbabilityReasoning';
-import { WinProbabilityGraph } from '../components/WinProbabilityGraph';  // ADD THIS
+import { WinProbabilityGraph } from '../components/WinProbabilityGraph';
+import { AICommentary } from '../components/AICommentary';
 
+interface CommentaryItem {
+  commentary: string;
+  excitement: number;
+  timestamp: string;
+  playId: string;
+}
 
 const GameView: React.FC = () => {
   const { espnGameId } = useParams<{ espnGameId: string }>();
   const [fullGameId, setFullGameId] = useState<string | undefined>(undefined);
   const [loading, setLoading] = useState(true);
   const [apiError, setApiError] = useState<string | null>(null);
+  const [historicalCommentary, setHistoricalCommentary] = useState<CommentaryItem[]>([]);
   
   // Win Probability state
   const [winProbability, setWinProbability] = useState<{
@@ -21,9 +29,10 @@ const GameView: React.FC = () => {
     calculatedAt: string;
   } | null>(null);
   
-  const { gameState, isConnected, error: wsError } = useWebSocket(fullGameId);
+  const { gameState, commentary, isConnected, error: wsError } = useWebSocket(fullGameId, historicalCommentary);
 
   // Fetch game data from REST API
+// Fetch game data from REST API
   useEffect(() => {
     if (!espnGameId) return;
 
@@ -53,10 +62,30 @@ const GameView: React.FC = () => {
     fetchGameData();
   }, [espnGameId]);
 
+  // Fetch historical commentary
+  useEffect(() => {
+    if (!espnGameId) return;
+
+    const fetchCommentary = async () => {
+      try {
+        const apiUrl = process.env.REACT_APP_API_URL;
+        const response = await fetch(`${apiUrl}/game/${espnGameId}/commentary`);
+        
+        if (response.ok) {
+          const data = await response.json();
+          setHistoricalCommentary(data.commentary);
+          console.log(`📚 Loaded ${data.commentary.length} historical commentary items`);
+        }
+      } catch (err) {
+        console.error('Failed to load commentary:', err);
+      }
+    };
+
+    fetchCommentary();
+  }, [espnGameId]);
+
   // Listen for win probability updates from WebSocket
   useEffect(() => {
-    // This will be populated by the WebSocket push Lambda
-    // For now, we'll add this listener when WebSocket integration is complete
     if (gameState?.winProbability) {
       setWinProbability(gameState.winProbability);
     }
@@ -105,6 +134,11 @@ const GameView: React.FC = () => {
               isConnected={isConnected}
             />
 
+            {/* AI Commentary */}
+            <div className="mt-8">
+              <AICommentary commentary={commentary} />
+            </div>
+
             {/* Win Probability - Current */}
             {winProbability && (
               <div className="mt-8">
@@ -122,7 +156,7 @@ const GameView: React.FC = () => {
               </div>
             )}
 
-            {/* Win Probability Timeline - Always show if game has history */}
+            {/* Win Probability Timeline */}
             {espnGameId && (
               <div className="mt-8">
                 <WinProbabilityGraph espnGameId={espnGameId} />
@@ -137,6 +171,7 @@ const GameView: React.FC = () => {
           <p className="text-xs text-gray-500 font-mono">Full Game ID: {fullGameId || 'Loading...'}</p>
           <p className="text-xs text-gray-500 font-mono">WebSocket: {isConnected ? 'Connected' : 'Disconnected'}</p>
           <p className="text-xs text-gray-500 font-mono">Win Prob: {winProbability ? 'Available' : 'Waiting...'}</p>
+          <p className="text-xs text-gray-500 font-mono">Commentary: {commentary.length} items</p>
         </div>
       </div>
     </div>

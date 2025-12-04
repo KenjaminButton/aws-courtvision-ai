@@ -744,9 +744,9 @@ Stats Test Player converts the layup for two more! The Broncos have ridden her h
 ### Day 29: AI Commentary - Frontend
 **Time: 3-4 hours**
 
-- [ ] Create AICommentary component
-- [ ] Scrolling feed of recent commentary
-- [ ] Style based on excitement level:
+- [x] Create AICommentary component
+- [x] Scrolling feed of recent commentary
+- [x] Style based on excitement level:
   ```tsx
   const excitementClass = excitement > 0.8 
     ? 'text-xl font-bold text-yellow-500' 
@@ -754,7 +754,7 @@ Stats Test Player converts the layup for two more! The Broncos have ridden her h
     ? 'text-lg font-semibold' 
     : 'text-base';
   ```
-- [ ] Animate new commentary appearing
+- [x] Animate new commentary appearing
 
 **Checkpoint:** Commentary feed updates in real-time with varied styling
 

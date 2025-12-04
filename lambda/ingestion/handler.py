@@ -180,6 +180,20 @@ def parse_play_data(espn_play, game_id):
             if 'athlete' in first_participant and 'id' in first_participant['athlete']:
                 parsed_play['playerId'] = first_participant['athlete']['id']
         
+        # Extract player name from text field (e.g., "Ashley Sofilkanich made Layup.")
+        text = espn_play.get('text', '')
+        if text and ' made ' in text.lower():
+            # Extract name before " made "
+            player_name = text.split(' made ')[0].strip()
+            parsed_play['playerName'] = player_name
+        elif text and ' missed ' in text.lower():
+            # Extract name before " missed "
+            player_name = text.split(' missed ')[0].strip()
+            parsed_play['playerName'] = player_name
+        else:
+            parsed_play['playerName'] = 'Unknown'
+        
+        
         # Add score value for scoring plays (2 or 3 points)
         if espn_play.get('scoringPlay') and 'scoreValue' in espn_play:
             parsed_play['pointsScored'] = espn_play['scoreValue']

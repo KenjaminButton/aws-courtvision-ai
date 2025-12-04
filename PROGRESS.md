@@ -1326,6 +1326,83 @@ Stats Test Player converts the layup for two more! The Broncos have ridden her h
 
 ---
 
+### Day 29: AI Commentary Frontend + Critical Bug Fixes ✅
+**Date: December 3-4, 2025**
+**Time: ~8 hours (extended session)**
+
+#### What We Built:
+- ✅ Created AICommentary.tsx React component
+  - Auto-scrolling feed with newest commentary at top
+  - Excitement-based styling (3 levels: high/medium/low)
+  - Gradient backgrounds and animations
+  - Empty state message
+- ✅ Added historical commentary loading via REST API
+  - GET /game/{espnGameId}/commentary endpoint
+  - Returns last 50 commentary items, newest first
+  - Frontend loads on page mount
+- ✅ WebSocket integration for live commentary
+  - Real-time updates pushed from Lambda
+  - Duplicate prevention by playId
+
+#### Critical Bugs Fixed:
+1. **"Unknown" Player Names Bug**
+   - **Problem:** ESPN API has no `action` field; Processing Lambda checked ghost field
+   - **Root Cause:** Ingestion Lambda stores `playType` and `text`, not `action`
+   - **Fix:** Changed Processing Lambda to check `text` field instead
+   - **Files Modified:** `lambda/processing/handler.py` (lines 28-63)
+
+2. **Player Stats Triple-Counting Bug**
+   - **Problem:** Zee Spearman showing 38 points instead of 13 (3x accumulation)
+   - **Root Cause:** Processing Lambda used `ADD` without deduplication; multiple ingestion runs counted same plays
+   - **Fix:** Added `play_already_processed()` check before processing
+   - **Files Modified:** `lambda/processing/handler.py` (added lines 115-130, modified handler function)
+
+3. **Missed Shots Not Tracked Bug**
+   - **Problem:** Players showing perfect shooting % (21-21 FG instead of 4-11)
+   - **Root Cause:** Processing Lambda checked `action` field for "miss" but field doesn't exist
+   - **Fix:** Changed to check `text` field (e.g., "Lara Somfai missed Jumper.")
+   - **Files Modified:** `lambda/processing/handler.py` (lines 56-63)
+
+4. **Dashboard Showing 0-0 Scores Bug**
+   - **Problem:** Dashboard fetched from METADATA (initial scores)
+   - **Fix:** API Lambda now also fetches SCORE#CURRENT for each game
+   - **Files Modified:** `lambda/api/handler.py` (get_todays_games function)
+
+5. **React Key Warnings**
+   - **Problem:** Duplicate playIds when same play processed multiple times
+   - **Fix:** Changed key from `playId` to `${playId}-${timestamp}`
+   - **Files Modified:** `frontend/src/components/AICommentary.tsx`
+
+#### Testing & Verification:
+- Deleted all DynamoDB data (3600+ items)
+- Re-ingested with fixes applied
+- Verified Zee Spearman stats: 13 PTS, 4-11 FG, 1-3 3PT ✅ (matches ESPN)
+- Confirmed commentary shows realistic player stats
+- No more duplicate key warnings in React
+
+#### Issues Identified (Not Fixed):
+- Win Probability X-axis uses "calculation count" instead of game minutes (addressed in Day 30)
+- Win Probability not triggering consistently for all games
+
+**Checkpoint Achieved:** ✅ AI Commentary displays with correct player names and realistic stats!
+
+**Files Modified:**
+- `lambda/processing/handler.py` (major refactor)
+- `lambda/api/handler.py` (dashboard scores)
+- `lambda/ingestion/handler.py` (player name extraction)
+- `frontend/src/components/AICommentary.tsx` (new component)
+- `frontend/src/hooks/useWebSocket.ts` (commentary handling)
+- `frontend/src/pages/GameView.tsx` (historical commentary fetch)
+- `frontend/tailwind.config.js` (slideIn animation)
+
+**Deployment:**
+- Manual Lambda updates via AWS CLI (CDK caching issues)
+- Processing Lambda timeout increased to 120 seconds
+
+---
+
+
+
 ---
 
 

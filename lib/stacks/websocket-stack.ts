@@ -135,6 +135,10 @@ export class WebSocketStack extends cdk.Stack {
     const winProbResource = gameIdResource.addResource('win-probability');
     winProbResource.addMethod('GET', new apigateway.LambdaIntegration(apiLambda));
 
+    // Add /game/{espnGameId}/commentary resource
+    const commentaryResource = gameIdResource.addResource('commentary');
+    commentaryResource.addMethod('GET', new apigateway.LambdaIntegration(apiLambda));
+
     // Add /games resource (for today's games list)
     const gamesResource = restApi.root.addResource('games');
     gamesResource.addMethod('GET', new apigateway.LambdaIntegration(apiLambda));

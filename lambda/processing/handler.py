@@ -26,14 +26,15 @@ def calculate_stats_delta(play):
     }
     
     # Get play details
-    action = play.get('action', '').lower()
+    text = play.get('text', '').lower()
+    play_type = play.get('playType', '').lower()
     scoring_play = play.get('scoringPlay', False)
     points_scored = play.get('pointsScored', 0)
     
-    # Detect play type from action string
-    is_three = 'three' in action or '3pt' in action or 'three_point' in action
-    is_free_throw = 'free' in action or 'free_throw' in action
-    is_foul = 'foul' in action
+    # Detect play type from text and playType
+    is_three = 'three' in text or '3pt' in text or 'three point' in text
+    is_free_throw = 'free throw' in text or 'free' in play_type
+    is_foul = 'foul' in text
     
     # Handle scoring plays
     if scoring_play and points_scored > 0:
@@ -55,8 +56,9 @@ def calculate_stats_delta(play):
         # else: points already added, no FG stats
     
     # Handle missed shots (non-scoring but has shot attempt)
-    elif not scoring_play and ('made' not in action.lower()):
-        if 'miss' in action or 'block' in action:
+    # Handle missed shots (non-scoring but has shot attempt)
+    elif not scoring_play:
+        if 'miss' in text or 'block' in text:
             if is_three:
                 stats_delta['fgAttempted'] = 1
                 stats_delta['threeAttempted'] = 1
@@ -115,6 +117,25 @@ def store_play(play):
     except Exception as e:
         print(f"❌ Error storing play {play.get('playId')}: {str(e)}")
         return False
+
+def play_already_processed(play):
+    """
+    Check if a play has already been stored in DynamoDB
+    
+    Args:
+        play: Dictionary containing play data with PK and SK
+    
+    Returns:
+        bool: True if play exists, False if new
+    """
+    try:
+        response = table.get_item(
+            Key={'PK': play['PK'], 'SK': play['SK']}
+        )
+        return 'Item' in response
+    except Exception as e:
+        print(f"⚠️ Error checking play existence: {str(e)}")
+        return False  # If error, assume new play
 
 def update_player_stats(play):
     """
@@ -207,6 +228,11 @@ def handler(event, context):
             # Kinesis data is base64 encoded
             payload = base64.b64decode(record['kinesis']['data'])
             play_data = json.loads(payload)
+            
+            # Check if play already processed (deduplication)
+            if play_already_processed(play_data):
+                print(f"⏭️  Skipping already processed play: {play_data.get('playId')}")
+                continue
             
             # Update current score in DynamoDB
             update_current_score(play_data)
