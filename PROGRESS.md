@@ -1600,6 +1600,146 @@ When live games start (~3:00 PM PT):
 
 ---
 
+## Day 30: Win Probability Enhancements + Real Shooting Stats
+**Date:** December 4, 2025
+**Status:** ✅ Complete
+
+### Goals
+1. Change Win Probability graph X-axis from calculation count to game minutes
+2. Fix player stats team mapping (showing "Unknown")
+3. Implement real shooting percentages instead of hardcoded values
+4. Fix dashboard display issues
+
+### Completed Features
+
+#### Win Probability - Game Minutes X-Axis
+- Added `calculate_game_minute()` function to Win Prob Lambda
+  - Handles regulation (0-40 minutes) and overtime periods
+  - Formula: Q1 at 7:00 = 3 min, Q3 at 5:00 = 25 min, OT1 at 2:00 = 43 min
+- Modified `get_game_context()` to calculate and include gameMinute
+- Updated `store_win_probability()` to store gameMinute in DynamoDB
+- Updated API Lambda to return gameMinute in history response
+- Frontend graph now displays 0-40 minute X-axis with halftime marker at 20 minutes
+- Dynamic max minute calculation (40 reg, 45/50/55 for OT)
+
+#### Real Shooting Percentages
+- Added `get_team_player_stats()` function to aggregate player stats by team
+- Added `calculate_team_shooting()` function to compute real FG% and 3PT%
+- Modified `get_game_context()` to use real shooting stats instead of hardcoded 45%/35%
+- Fallback logic: Returns "Not yet available" early in games when stats don't exist yet
+- AI reasoning now mentions actual shooting percentages (e.g., "45.5% FG, 66.7% 3PT")
+
+#### Player Stats Team Mapping Fix
+- Processing Lambda now resolves teamId to team name using game metadata
+- Fixed player stats showing "Unknown" team
+- Added logging: "🔍 Team mapping: play team ID {id} → {name}"
+- Re-ingested games to populate correct team names
+
+#### Dashboard Frontend Fixes
+- Fixed halftime games not appearing in "Live" section
+  - Changed filter from `status === 'STATUS_IN_PROGRESS'` to include STATUS_HALFTIME
+- GameCard badge now shows "LIVE" (green) for STATUS_HALFTIME games
+- Added date filter to hide yesterday's completed games
+  - Only shows finals from today's date
+  - Keeps recent context without cluttering dashboard
+
+#### Win Probability Graph Deduplication
+- Fixed doubled lines on graph (4 lines instead of 2)
+- Added deduplication logic in frontend to remove duplicate gameMinute entries
+- Keeps most recent calculation when multiple records exist for same minute
+- Compares gameMinute within 0.1 minute tolerance
+
+### Technical Details
+
+**DynamoDB Schema Updates:**
+- Win Probability records now include `gameMinute: number` field
+- Player stats now store actual team names (not "Unknown")
+
+**API Changes:**
+- `/game/{espnGameId}/win-probability` returns gameMinute in history
+- No breaking changes (frontend has fallback for old data)
+
+**Lambda Functions Modified:**
+- `courtvision-ai-winprob`: Game minute calculation, real shooting stats
+- `courtvision-process`: Team name resolution
+- `courtvision-api`: Win prob history includes gameMinute
+
+**Frontend Components Modified:**
+- `WinProbabilityGraph.tsx`: Game minutes X-axis, deduplication logic
+- `Dashboard.tsx`: Status filtering, date filtering
+- `GameCard.tsx`: STATUS_HALFTIME badge logic
+
+### Bug Fixes
+- **GSI2 Query Error:** Changed `get_team_player_stats()` from Query to Scan
+  - Player stats don't have espnGameId field, causing ValidationException
+  - Used FilterExpression on PK prefix and gameId instead
+- **Duplicate Win Prob Records:** Frontend deduplication prevents doubled graph lines
+- **Team Mapping:** Processing Lambda resolves teamId to name at write time
+
+### Testing Results
+- ✅ Win Prob graph shows 0-40 minute X-axis with halftime marker
+- ✅ Real shooting percentages appear in CloudWatch logs
+- ✅ AI reasoning mentions actual team shooting stats
+- ✅ Dashboard shows live halftime games with "LIVE" badge
+- ✅ Yesterday's games filtered from dashboard
+- ✅ Graph displays single lines (no duplicates)
+- ✅ Tested with live games: Texas vs UNC, LSU vs Duke
+
+### Live Game Verification
+**Games Tested:**
+- North Carolina @ Texas (STATUS_HALFTIME → STATUS_FINAL)
+- South Carolina @ Louisville (STATUS_HALFTIME)
+- LSU @ Duke (STATUS_IN_PROGRESS)
+- Notre Dame @ Ole Miss (STATUS_SCHEDULED → STATUS_IN_PROGRESS)
+
+**Win Prob Examples:**
+- Texas vs UNC: "Texas Longhorns shooting: 45.5% FG (5/11), 66.7% 3PT (2/3)"
+- LSU vs Duke: AI mentions "Duke shooting very poorly (14.3% FG)"
+
+### Files Modified
+```
+lambda/ai/winprob/handler.py
+lambda/processing/handler.py
+lambda/api/handler.py
+frontend/src/components/WinProbabilityGraph.tsx
+frontend/src/components/GameCard.tsx
+frontend/src/pages/Dashboard.tsx
+```
+
+### Deployment Commands
+```bash
+# Win Prob Lambda
+cd lambda/ai/winprob && zip -r /tmp/winprob.zip . && cd ../../..
+aws lambda update-function-code --function-name courtvision-ai-winprob --zip-file fileb:///tmp/winprob.zip --region us-east-1
+
+# Processing Lambda
+cd lambda/processing && zip -r /tmp/processing.zip . && cd ../..
+aws lambda update-function-code --function-name courtvision-process --zip-file fileb:///tmp/processing.zip --region us-east-1
+
+# API Lambda
+cd lambda/api && zip -r /tmp/api.zip . && cd ../..
+aws lambda update-function-code --function-name courtvision-api --zip-file fileb:///tmp/api.zip --region us-east-1
+
+# Frontend
+npm run build
+aws s3 sync build/ s3://courtvision-frontend-[account-id] --delete
+```
+
+### Next Steps (Phase 4)
+- Pattern detection (Day 36-38)
+- Shot charts (Day 41-43)
+- Post-game AI summary (Day 44-46)
+
+### Notes
+- Win Prob now uses real data instead of placeholders
+- Game minutes X-axis makes probability swings much more intuitive
+- Dashboard UX significantly improved with proper status badges
+- Foundation laid for Phase 4 features
+
+
+---
+
+
 ---
 
 

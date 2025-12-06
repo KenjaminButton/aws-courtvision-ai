@@ -1,6 +1,7 @@
 import json
 import os
 import boto3
+import time
 from datetime import datetime
 from decimal import Decimal
 
@@ -13,27 +14,39 @@ table = dynamodb.Table(DYNAMODB_TABLE)
 bedrock = boto3.client('bedrock-runtime', region_name='us-east-1')
 
 # Win Probability Prompt Template
-WIN_PROB_PROMPT = """You are a sports analytics expert calculating win probability for a women's college basketball game.
+WIN_PROB_PROMPT = """Calculate win probability for women's college basketball:
 
-Current Game State:
-- Home Team: {home_team} (Score: {home_score})
-- Away Team: {away_team} (Score: {away_score})
-- Time Remaining: Quarter {quarter}, {time_remaining} remaining
-- Recent Trend: {recent_trend}
-- Home Team Shooting: {home_fg_pct}% FG, {home_3pt_pct}% 3PT
-- Away Team Shooting: {away_fg_pct}% FG, {away_3pt_pct}% 3PT
+Home: {home_team} ({home_score} pts, {home_fg_pct}% FG, {home_3pt_pct}% 3PT)
+Away: {away_team} ({away_score} pts, {away_fg_pct}% FG, {away_3pt_pct}% 3PT)
+Time: Q{quarter}, {time_remaining} ({game_minute:.0f} min elapsed)
 
-Based on this game state, calculate the win probability for each team.
-
-Respond in this exact JSON format:
+Respond JSON only:
 {{
-  "home_probability": <float between 0 and 1>,
-  "away_probability": <float between 0 and 1>,
-  "reasoning": "<2-3 sentence explanation of the key factors>"
-}}
+  "home_probability": 0.XX,
+  "away_probability": 0.XX,
+  "reasoning": "<1-2 sentences>"
+}}"""
 
-Consider: score differential, time remaining, momentum, shooting percentages, and historical comeback data. The probabilities must sum to 1.0.
-"""
+# Global variable to track last calculation time per game
+last_calculation_times = {}
+
+def should_calculate_win_prob(game_id):
+    """
+    Throttle Win Probability calculations to max 1 per 2 minutes
+    
+    Returns:
+        bool: True if enough time has passed since last calculation
+    """
+    current_time = time.time()
+    last_calc = last_calculation_times.get(game_id, 0)
+    
+    # Allow calculation if 120 seconds (2 minutes) have passed
+    if current_time - last_calc >= 120:
+        last_calculation_times[game_id] = current_time
+        return True
+    
+    print(f"⏱️  Throttled Win Prob for {game_id} (last calc {int(current_time - last_calc)}s ago)")
+    return False
 
 def calculate_game_minute(quarter, game_clock):
     """
@@ -87,11 +100,13 @@ def get_team_player_stats(game_id, team_name):
         dict: Aggregated team stats or None if no stats found
     """
     try:
-        # Query all player stats for this game
-        response = table.query(
-            IndexName='GSI2',
-            KeyConditionExpression='gameId = :gid',
-            ExpressionAttributeValues={':gid': game_id}
+        # Scan for all player stats in this game
+        response = table.scan(
+            FilterExpression='begins_with(PK, :player_prefix) AND gameId = :gid',
+            ExpressionAttributeValues={
+                ':player_prefix': 'PLAYER#',
+                ':gid': game_id
+            }
         )
         
         players = response.get('Items', [])
@@ -224,7 +239,7 @@ def calculate_win_probability(game_context):
         # Bedrock request
         request_body = {
             "anthropic_version": "bedrock-2023-05-31",
-            "max_tokens": 300,
+            "max_tokens": 500,
             "messages": [
                 {
                     "role": "user",
@@ -236,12 +251,13 @@ def calculate_win_probability(game_context):
         print("🔄 Calling Bedrock for win probability...")
         
         response = bedrock.invoke_model(
-            modelId='us.anthropic.claude-3-5-sonnet-20241022-v2:0',
+            modelId='us.anthropic.claude-3-5-haiku-20241022-v1:0',
             body=json.dumps(request_body)
         )
         
         response_body = json.loads(response['body'].read())
         assistant_message = response_body['content'][0]['text']
+        
         
         # Parse JSON response
         result = json.loads(assistant_message)
@@ -320,6 +336,13 @@ def handler(event, context):
         
         print(f"Processing game: {game_id}")
         
+        # Throttle to prevent excessive calculations
+        if not should_calculate_win_prob(game_id):
+            return {
+                'statusCode': 200,
+                'body': json.dumps('Throttled - too soon since last calculation')
+            }
+        
         # Step 1: Gather game context
         game_context = get_game_context(game_id)
         if not game_context:
@@ -327,8 +350,32 @@ def handler(event, context):
         
         print(f"Game: {game_context['home_team']} {game_context['home_score']} - {game_context['away_team']} {game_context['away_score']}")
         
-        # Step 2: Calculate win probability
-        probability_data = calculate_win_probability(game_context)
+        # ADD THIS CHECK - If game is over, don't call Bedrock
+        if game_context['time_remaining'] == '0:00' or game_context['game_minute'] >= 40:
+            home_score = game_context['home_score']
+            away_score = game_context['away_score']
+            
+            if home_score > away_score:
+                winner = game_context['home_team']
+                probability_data = {
+                    'home_probability': 1.0,
+                    'away_probability': 0.0,
+                    'reasoning': f"Game is over. {winner} won {home_score}-{away_score}."
+                }
+            else:
+                winner = game_context['away_team']
+                probability_data = {
+                    'home_probability': 0.0,
+                    'away_probability': 1.0,
+                    'reasoning': f"Game is over. {winner} won {away_score}-{home_score}."
+                }
+            
+            print(f"🏁 Game over - deterministic result (no Bedrock call needed)")
+        else:
+            # Step 2: Calculate win probability (only if game is still in progress)
+            probability_data = calculate_win_probability(game_context)
+        
+        # Check if probability_data was set (either deterministic or from Bedrock)
         if not probability_data:
             return {'statusCode': 500, 'body': 'Failed to calculate probability'}
         

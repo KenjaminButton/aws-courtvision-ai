@@ -18,7 +18,7 @@ export const GameCard: React.FC<GameCardProps> = ({
   awayScore,
   status,
 }) => {
-  const isLive = status === 'STATUS_IN_PROGRESS';
+  const isLive = status === 'STATUS_IN_PROGRESS' || status === 'STATUS_HALFTIME';
   const isFinal = status === 'STATUS_FINAL';
 
   return (

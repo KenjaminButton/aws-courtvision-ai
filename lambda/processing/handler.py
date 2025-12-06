@@ -231,6 +231,79 @@ def update_player_stats(play):
         print(f"⚠️ Error updating player stats (non-critical): {str(e)}")
         return False
 
+def detect_scoring_run(recent_plays, home_team, away_team):
+    """
+    Detect scoring runs (8+ unanswered points or 10-2 differential)
+    
+    Args:
+        recent_plays: List of recent play dicts (last 15 plays)
+        home_team: Home team name
+        away_team: Away team name
+    
+    Returns:
+        dict with pattern info or None if no run detected
+    """
+    # Look at last 15 plays for scoring patterns
+    home_points = 0
+    away_points = 0
+    
+    for play in recent_plays:
+        if play.get('scoringPlay'):
+            if play.get('team') == home_team:
+                home_points += play.get('pointsScored', 0)
+            elif play.get('team') == away_team:
+                away_points += play.get('pointsScored', 0)
+    
+    # Check for scoring run (8+ unanswered or 10-2 differential)
+    if home_points >= 10 and away_points <= 2:
+        return {
+            'type': 'scoring_run',
+            'team': home_team,
+            'points_for': home_points,
+            'points_against': away_points,
+            'description': f"{home_team} on a {home_points}-{away_points} run"
+        }
+    elif away_points >= 10 and home_points <= 2:
+        return {
+            'type': 'scoring_run',
+            'team': away_team,
+            'points_for': away_points,
+            'points_against': home_points,
+            'description': f"{away_team} on a {away_points}-{home_points} run"
+        }
+    
+    return None
+
+def get_recent_plays(game_id, limit=15):
+    """
+    Query DynamoDB for the most recent plays in a game
+    
+    Args:
+        game_id: Game PK (e.g., "GAME#2025-12-15#UCONN-STANFORD")
+        limit: Number of recent plays to retrieve
+    
+    Returns:
+        List of play dictionaries (newest first)
+    """
+    try:
+        response = table.query(
+            KeyConditionExpression='PK = :pk AND begins_with(SK, :play)',
+            ExpressionAttributeValues={
+                ':pk': game_id,
+                ':play': 'PLAY#'
+            },
+            ScanIndexForward=False,  # Get newest first
+            Limit=limit
+        )
+        
+        plays = response.get('Items', [])
+        print(f"📋 Retrieved {len(plays)} recent plays for pattern detection")
+        return plays
+        
+    except Exception as e:
+        print(f"⚠️ Error getting recent plays: {str(e)}")
+        return []
+
 def handler(event, context):
     """
     Processing Lambda - triggered by Kinesis stream
@@ -262,6 +335,29 @@ def handler(event, context):
             
             # Update player statistics
             update_player_stats(play_data)
+            
+            # *** NEW: Pattern Detection ***
+            # Get recent plays for pattern analysis
+            recent_plays = get_recent_plays(play_data['PK'], limit=15)
+            
+            # Get game metadata for team names
+            try:
+                metadata_response = table.get_item(
+                    Key={'PK': play_data['PK'], 'SK': 'METADATA'}
+                )
+                metadata = metadata_response.get('Item', {})
+                home_team = metadata.get('homeTeam', 'Home')
+                away_team = metadata.get('awayTeam', 'Away')
+                
+                # Detect scoring run
+                pattern = detect_scoring_run(recent_plays, home_team, away_team)
+                
+                if pattern:
+                    print(f"🔥 Pattern detected: {pattern['description']}")
+                    # TODO: Store pattern in DynamoDB (Step 3)
+                
+            except Exception as e:
+                print(f"⚠️ Pattern detection error (non-critical): {str(e)}")
             
             processed_count += 1
             

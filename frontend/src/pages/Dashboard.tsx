@@ -34,9 +34,20 @@ const Dashboard: React.FC = () => {
     return () => clearInterval(interval);
   }, []);
 
-  const liveGames = games.filter(g => g.status === 'STATUS_IN_PROGRESS');
+  const liveGames = games.filter(g => 
+    g.status !== 'STATUS_SCHEDULED' && g.status !== 'STATUS_FINAL'
+  );
   const upcomingGames = games.filter(g => g.status === 'STATUS_SCHEDULED');
-  const completedGames = games.filter(g => g.status === 'STATUS_FINAL');
+  const completedGames = games.filter(g => {
+  if (g.status !== 'STATUS_FINAL') return false;
+  
+  // Only show finals from today (extract date from gameId)
+  // gameId format: "GAME#2025-12-05#TEAM1-TEAM2"
+  const gameDate = g.gameId.split('#')[1]; // "2025-12-05"
+  const today = new Date().toISOString().split('T')[0]; // "2025-12-05"
+  
+  return gameDate === today;
+  });
 
   if (loading) {
     return <div className="min-h-screen bg-cv-navy text-white p-8">Loading...</div>;

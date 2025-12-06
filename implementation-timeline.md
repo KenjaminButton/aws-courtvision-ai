@@ -763,11 +763,11 @@ Stats Test Player converts the layup for two more! The Broncos have ridden her h
 ### Day 30: Commentary Quality Tuning
 **Time: 2-3 hours**
 
-- [ ] Review generated commentary from test games
-- [ ] Identify repetitive patterns
-- [ ] Add variety instructions to prompt
-- [ ] Test milestone scenarios (20 pts, 30 pts, double-double)
-- [ ] Adjust excitement calibration
+- [x] Review generated commentary from test games
+- [x] Identify repetitive patterns
+- [x] Add variety instructions to prompt
+- [x] Test milestone scenarios (20 pts, 30 pts, double-double)
+- [x] Adjust excitement calibration
 
 **Checkpoint:** Commentary feels natural and varied
 
@@ -776,9 +776,9 @@ Stats Test Player converts the layup for two more! The Broncos have ridden her h
 ### Day 31-33: Integration Testing
 **Time: 3 days**
 
-- [ ] Day 31: Test full AI flow during live game
-- [ ] Day 32: Fix bugs, tune prompts based on real data
-- [ ] Day 33: Performance optimization (reduce Bedrock latency)
+- [x] Day 31: Test full AI flow during live game
+- [x] Day 32: Fix bugs, tune prompts based on real data
+- [x] Day 33: Performance optimization (reduce Bedrock latency)
 
 **Checkpoint:** AI features work reliably during live games
 

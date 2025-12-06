@@ -19,42 +19,24 @@ table = dynamodb.Table(TABLE_NAME)
 
 def build_commentary_prompt(play_data, game_context):
     """
-    Build the commentary prompt using our tested format from Day 27
+    Build optimized commentary prompt (Phase 3: reduced tokens)
     """
-    # Fetch player stats
     player_stats = get_player_stats(play_data.get('playerId'), play_data.get('gameId'))
     
-    # Format shooting stats
-    fg_stat = f"{player_stats.get('fgMade', 0)}-{player_stats.get('fgAttempted', 0)}"
-    three_stat = f"{player_stats.get('threeMade', 0)}-{player_stats.get('threeAttempted', 0)}"
-    
-    prompt = f"""You are an enthusiastic women's college basketball commentator. Generate exciting play-by-play commentary for this event.
+    prompt = f"""Generate play-by-play commentary:
 
-Play Details:
-- Player: {play_data.get('playerName', 'Unknown')} ({play_data.get('team', 'Unknown')})
-- Action: {play_data.get('action', 'Unknown')}
-- Description: {play_data.get('description', '')}
-- Points (if scoring): {play_data.get('pointsScored', 0)}
-- Current Score: {game_context['homeTeam']} {game_context['homeScore']} - {game_context['awayTeam']} {game_context['awayScore']}
+Player: {play_data.get('playerName', 'Unknown')} ({play_data.get('team', 'Unknown')})
+Action: {play_data.get('action', 'Unknown')} ({play_data.get('pointsScored', 0)} pts)
+Score: {game_context['homeTeam']} {game_context['homeScore']} - {game_context['awayTeam']} {game_context['awayScore']}
+Player stats: {player_stats.get('points', 0)} PTS this game
+Quarter {game_context['quarter']}, {game_context['gameClock']}
 
-Game Context:
-- Quarter: {game_context['quarter']}, Time: {game_context['gameClock']}
-- Player's Game Stats: {player_stats.get('points', 0)} PTS, {fg_stat} FG, {three_stat} 3PT, {player_stats.get('fouls', 0)} Fouls
-- Recent Context: {game_context.get('recentContext', 'Game in progress')}
+Write 1-2 exciting sentences. No clichés. Be specific.
 
-CRITICAL RULES:
-1. MAXIMUM 2 sentences. No exceptions.
-2. DO NOT mention player position (guard/forward/center) or class year (freshman/sophomore/junior/senior). These are NOT provided. Simply use the player's name.
-3. DO NOT use clichés: "ice water in veins", "nothing but net", "from downtown", "on fire", "lights out"
-4. Only mention facts explicitly provided in the data above
-5. Match excitement to play significance (routine basket = 0.3-0.5, clutch shot = 0.7-0.9)
-
-Generate natural, exciting commentary that sounds like a professional broadcaster.
-
-Respond in JSON format:
+JSON format:
 {{
-  "commentary": "<your commentary>",
-  "excitement": <float 0-1>
+  "commentary": "<your text>",
+  "excitement": 0.XX
 }}"""
     
     return prompt
@@ -83,10 +65,10 @@ def call_bedrock(prompt):
     """
     try:
         response = bedrock.invoke_model(
-            modelId='anthropic.claude-3-sonnet-20240229-v1:0',
+            modelId='us.anthropic.claude-3-5-haiku-20241022-v1:0',
             body=json.dumps({
                 'anthropic_version': 'bedrock-2023-05-31',
-                'max_tokens': 300,
+                'max_tokens': 150,  # CHANGED: Reduced (Haiku is more concise)
                 'messages': [{'role': 'user', 'content': prompt}]
             })
         )

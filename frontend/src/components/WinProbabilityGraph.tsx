@@ -60,15 +60,31 @@ export const WinProbabilityGraph: React.FC<WinProbabilityGraphProps> = ({ espnGa
   }
 
   // Format data for Recharts (use game minutes for X-axis)
-  const chartData = history.map((point, index) => ({
-    gameMinute: point.gameMinute !== undefined 
-      ? parseFloat(point.gameMinute.toFixed(1)) 
-      : index + 1,  // Fallback for old data without gameMinute
-    homePct: parseFloat((point.homeWinProbability * 100).toFixed(1)),
-    awayPct: parseFloat((point.awayWinProbability * 100).toFixed(1)),
-    score: `${point.homeScore}-${point.awayScore}`,
-    quarter: `Q${point.quarter}`,
-  }));
+  const chartData = history
+    // First, deduplicate by gameMinute (keep most recent)
+    .reduce((acc, point) => {
+      const existing = acc.find(p => 
+        Math.abs(p.gameMinute - point.gameMinute) < 0.1
+      );
+      if (!existing) {
+        acc.push(point);
+      } else if (point.timestamp > existing.timestamp) {
+        // Replace with newer calculation
+        const index = acc.indexOf(existing);
+        acc[index] = point;
+      }
+      return acc;
+    }, [] as HistoryPoint[])
+    // Then format for chart
+    .map((point, index) => ({
+      gameMinute: point.gameMinute !== undefined 
+        ? parseFloat(point.gameMinute.toFixed(1)) 
+        : index + 1,
+      homePct: parseFloat((point.homeWinProbability * 100).toFixed(1)),
+      awayPct: parseFloat((point.awayWinProbability * 100).toFixed(1)),
+      score: `${point.homeScore}-${point.awayScore}`,
+      quarter: `Q${point.quarter}`,
+    }));
 
   // Determine max minute for X-axis (40 for regulation, 45/50/55 for OT)
   const maxQuarter = Math.max(...history.map(p => p.quarter));

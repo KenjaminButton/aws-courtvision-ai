@@ -1,3 +1,10 @@
+
+
+1. Check Commentary logs when games start
+aws logs tail /aws/lambda/CourtVisionAiStack-CommentaryLambda6E85C950-UOXz9T5ecwrQ --follow
+
+2. Look for natural commentary without errors
+
 #### Start Virtual Environment:
 ```
 source .venv/bin/activate
