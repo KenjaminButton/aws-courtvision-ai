@@ -56,7 +56,6 @@ def calculate_stats_delta(play):
         # else: points already added, no FG stats
     
     # Handle missed shots (non-scoring but has shot attempt)
-    # Handle missed shots (non-scoring but has shot attempt)
     elif not scoring_play:
         if 'miss' in text or 'block' in text:
             if is_three:
@@ -156,26 +155,31 @@ def update_player_stats(play):
         if all(value == 0 for value in stats_delta.values()):
             return True
         
-        # *** NEW: Determine actual team name from game metadata ***
-        team_name = "Unknown"
-        try:
-            metadata_response = table.get_item(
-                Key={'PK': play['PK'], 'SK': 'METADATA'}
-            )
-            metadata = metadata_response.get('Item', {})
-            
-            play_team_id = play.get('teamId', '')
-            home_team_id = str(metadata.get('homeTeamId', ''))
-            away_team_id = str(metadata.get('awayTeamId', ''))
-            
-            if play_team_id == home_team_id:
-                team_name = metadata.get('homeTeam', 'Unknown')
-            elif play_team_id == away_team_id:
-                team_name = metadata.get('awayTeam', 'Unknown')
-            
-            print(f"🔍 Team mapping: play team ID {play_team_id} → {team_name}")
-        except Exception as e:
-            print(f"⚠️ Could not determine team name: {str(e)}")
+        # Use team name from play data (replay provides this), fallback to metadata lookup
+        team_name = play.get('team', 'Unknown')
+        
+        # Only do metadata lookup if team is Unknown
+        if team_name == 'Unknown' and play.get('teamId'):
+            try:
+                metadata_response = table.get_item(
+                    Key={'PK': play['PK'], 'SK': 'METADATA'}
+                )
+                metadata = metadata_response.get('Item', {})
+                
+                play_team_id = play.get('teamId', '')
+                home_team_id = str(metadata.get('homeTeamId', ''))
+                away_team_id = str(metadata.get('awayTeamId', ''))
+                
+                if play_team_id == home_team_id:
+                    team_name = metadata.get('homeTeam', 'Unknown')
+                elif play_team_id == away_team_id:
+                    team_name = metadata.get('awayTeam', 'Unknown')
+                
+                print(f"🔍 Looked up team from metadata: {play_team_id} → {team_name}")
+            except Exception as e:
+                print(f"⚠️ Metadata lookup failed: {str(e)}")
+        else:
+            print(f"✅ Using team from play data: {team_name}")
         
         player_key = {
             'PK': f"PLAYER#{play['playerId']}",
@@ -214,7 +218,7 @@ def update_player_stats(play):
         attr_values[':t'] = datetime.now().isoformat()
         attr_values[':pid'] = play['playerId']
         attr_values[':pname'] = play.get('playerName', 'Unknown')
-        attr_values[':team'] = team_name  # *** CHANGED: Use resolved team name ***
+        attr_values[':team'] = team_name
         attr_values[':gid'] = play['PK']
         
         # Update player stats
@@ -316,11 +320,15 @@ def handler(event, context):
         print(f"Received {len(event['Records'])} records from Kinesis")
         
         processed_count = 0
+        games_in_batch = set()
         
         for record in event['Records']:
             # Kinesis data is base64 encoded
             payload = base64.b64decode(record['kinesis']['data'])
             play_data = json.loads(payload)
+            
+            # Track which games are in this batch (for pattern detection later)
+            games_in_batch.add(play_data['PK'])
             
             # Check if play already processed (deduplication)
             if play_already_processed(play_data):
@@ -336,32 +344,75 @@ def handler(event, context):
             # Update player statistics
             update_player_stats(play_data)
             
-            # *** NEW: Pattern Detection ***
-            # Get recent plays for pattern analysis
-            recent_plays = get_recent_plays(play_data['PK'], limit=15)
-            
-            # Get game metadata for team names
+            processed_count += 1
+        
+        print(f"✅ Successfully processed {processed_count} plays")
+        
+        # *** MOVED: Pattern Detection (runs AFTER processing, even if all plays skipped) ***
+        print(f"🔍 Running pattern detection for {len(games_in_batch)} game(s)...")
+        
+        for game_id in games_in_batch:
             try:
+                # Get recent plays from DynamoDB (not from Kinesis batch)
+                recent_plays = get_recent_plays(game_id, limit=15)
+                
+                if len(recent_plays) < 5:
+                    print(f"⏭️  Skipping pattern detection for {game_id} (only {len(recent_plays)} plays)")
+                    continue
+                
+                # Get game metadata for team names
                 metadata_response = table.get_item(
-                    Key={'PK': play_data['PK'], 'SK': 'METADATA'}
+                    Key={'PK': game_id, 'SK': 'METADATA'}
                 )
+
+                print(f"   Metadata response keys: {list(metadata_response.keys())}")
+                if 'Item' in metadata_response:
+                    print(f"   Metadata Item keys: {list(metadata_response['Item'].keys())}")
+                else:
+                    print(f"   ⚠️ No 'Item' in metadata response!")
+
                 metadata = metadata_response.get('Item', {})
+
+                # *** ADD THIS DEBUG ***
+                print(f"   homeTeam raw value: {repr(metadata.get('homeTeam'))}")
+                print(f"   awayTeam raw value: {repr(metadata.get('awayTeam'))}")
+                # *** END DEBUG ***
+
+                # *** ADD UNIQUE DEBUG HERE ***
+                print(f"   🎯 PATTERN DETECTION homeTeam: {repr(metadata.get('homeTeam'))}")
+                print(f"   🎯 PATTERN DETECTION awayTeam: {repr(metadata.get('awayTeam'))}")
+                # *** END DEBUG ***
+
                 home_team = metadata.get('homeTeam', 'Home')
                 away_team = metadata.get('awayTeam', 'Away')
                 
+                # Begin Debug for team names being compared 
+                print(f"   Metadata teams: Home='{home_team}', Away='{away_team}'")
+                if len(recent_plays) > 0:
+                    print(f"   Sample plays (first 5):")
+                    for idx, play in enumerate(recent_plays[:5]):
+                        print(f"      {idx+1}. team='{play.get('team', 'N/A')}', scoring={play.get('scoringPlay', False)}, pts={play.get('pointsScored', 0)}")
+                # End Debug for team names being compared
+
                 # Detect scoring run
                 pattern = detect_scoring_run(recent_plays, home_team, away_team)
                 
+                # *** BEGIN DEBUG ***
+                if not pattern:
+                    # Count scoring plays to see what's happening
+                    scoring_plays = [p for p in recent_plays if p.get('scoringPlay')]
+                    home_scoring = [p for p in scoring_plays if p.get('team') == home_team]
+                    away_scoring = [p for p in scoring_plays if p.get('team') == away_team]
+                    home_pts = sum(p.get('pointsScored', 0) for p in home_scoring)
+                    away_pts = sum(p.get('pointsScored', 0) for p in away_scoring)
+                    print(f"   No pattern: {home_team} {home_pts} pts, {away_team} {away_pts} pts in last {len(scoring_plays)} scoring plays")
+                # *** END DEBUG ***
+                
                 if pattern:
                     print(f"🔥 Pattern detected: {pattern['description']}")
-                    # TODO: Store pattern in DynamoDB (Step 3)
                 
             except Exception as e:
-                print(f"⚠️ Pattern detection error (non-critical): {str(e)}")
-            
-            processed_count += 1
-            
-        print(f"✅ Successfully processed {processed_count} plays")
+                print(f"⚠️ Pattern detection error for {game_id}: {str(e)}")
         
         return {
             'statusCode': 200,

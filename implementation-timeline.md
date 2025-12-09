@@ -787,10 +787,10 @@ Stats Test Player converts the layup for two more! The Broncos have ridden her h
 ### Day 34-35: Phase 3 Review
 **Time: 2 days**
 
-- [ ] Document AI prompts and tuning decisions
-- [ ] Review costs (Bedrock usage)
-- [ ] Clean up code
-- [ ] **Record demo video of AI features**
+- [x] Document AI prompts and tuning decisions
+- [x] Review costs (Bedrock usage)
+- [x] Clean up code
+- [x] **Record demo video of AI features**
 
 **Phase 3 Deliverable:**
 - Win probability updates on significant events
