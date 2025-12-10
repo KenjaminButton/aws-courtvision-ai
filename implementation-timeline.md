@@ -816,8 +816,8 @@ Add pattern detection, shot charts, and post-game summaries.
 ### Day 36-38: Pattern Detection
 **Time: 3 days**
 
-- [ ] Day 36: Implement scoring run detection algorithm
-- [ ] Day 37: Implement hot streak + momentum shift detection
+- [x] Day 36: Implement scoring run detection algorithm
+- [x] Day 37: Implement hot streak + momentum shift detection
 - [ ] Day 38: Create pattern alert Lambda, store in DynamoDB
 
 **Checkpoint:** Patterns detected and stored during games
@@ -863,6 +863,11 @@ Add pattern detection, shot charts, and post-game summaries.
 - [ ] Test all features together during live games
 - [ ] Fix edge cases
 - [ ] Performance optimization
+- [ ] For production: You'd want to add logic to avoid reporting the same run multiple times:
+- Track the last pattern detected
+- Only report if it's been X plays since the last pattern
+- Or only report when a run "ends" (opponent scores)
+
 - [ ] **Record comprehensive demo video**
 
 **Phase 4 Deliverable:**

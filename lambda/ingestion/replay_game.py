@@ -2,6 +2,7 @@ import json
 import boto3
 import base64
 from datetime import datetime
+import time
 
 # Your existing config
 KINESIS_STREAM = 'courtvision-plays'
@@ -64,7 +65,7 @@ def parse_play_for_processing(play, game_id, home_team, away_team, home_team_id,
         'description': play_text,  # Add description field
         'homeScore': play.get('homeScore', 0),
         'awayScore': play.get('awayScore', 0),
-        'scoringPlay': play.get('scoringPlay', False) or play.get('scoreValue', 0) > 0,
+        'scoringPlay': play.get('scoringPlay', False),
         'pointsScored': play.get('scoreValue', 0),
         'teamId': team_id,
         'team': team_name if team_name else 'Unknown',
@@ -78,7 +79,7 @@ def parse_play_for_processing(play, game_id, home_team, away_team, home_team_id,
     
     # Determine action from play type
     text_lower = play_text.lower()
-    scored = play.get('scoreValue', 0) > 0
+    scored = play.get('scoringPlay', False)
     
     if 'three point' in text_lower or '3pt' in play_type:
         processed_play['action'] = 'made_three_pointer' if scored else 'missed_three_pointer'
@@ -164,10 +165,12 @@ def replay_game(file_path, batch_size=10, delay=0):
             
             if (i + 1) % batch_size == 0:
                 print(f"   Sent {sent_count}/{len(plays)} plays...")
+                if delay > 0:
+                    time.sleep(delay)
     
     print(f"✅ Replay complete! Sent {sent_count} plays to Kinesis")
     print(f"   Processing Lambda should now be running...")
 
 if __name__ == '__main__':
-    replay_game('iowa_rutgers_game.json', batch_size=20, delay=0)
+    replay_game('iowa_miami_game.json', batch_size=20, delay=0.5)
 

@@ -258,8 +258,8 @@ def detect_scoring_run(recent_plays, home_team, away_team):
             elif play.get('team') == away_team:
                 away_points += play.get('pointsScored', 0)
     
-    # Check for scoring run (8+ unanswered or 10-2 differential)
-    if home_points >= 10 and away_points <= 2:
+    # Check for scoring run (8+ unanswered or 8-2 differential)
+    if home_points >= 8 and away_points <= 2:
         return {
             'type': 'scoring_run',
             'team': home_team,
@@ -267,7 +267,7 @@ def detect_scoring_run(recent_plays, home_team, away_team):
             'points_against': away_points,
             'description': f"{home_team} on a {home_points}-{away_points} run"
         }
-    elif away_points >= 10 and home_points <= 2:
+    elif away_points >= 8 and home_points <= 2:
         return {
             'type': 'scoring_run',
             'team': away_team,
@@ -354,7 +354,7 @@ def handler(event, context):
         for game_id in games_in_batch:
             try:
                 # Get recent plays from DynamoDB (not from Kinesis batch)
-                recent_plays = get_recent_plays(game_id, limit=15)
+                recent_plays = get_recent_plays(game_id, limit=25)
                 
                 if len(recent_plays) < 5:
                     print(f"⏭️  Skipping pattern detection for {game_id} (only {len(recent_plays)} plays)")
