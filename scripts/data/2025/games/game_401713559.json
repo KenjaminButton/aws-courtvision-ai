@@ -1,0 +1,6867 @@
+{
+  "game_id": "401713559",
+  "fetched_at": "2025-12-11T18:46:03.420265Z",
+  "season": 2025,
+  "season_type": 2,
+  "date": "2024-11-21T00:00Z",
+  "neutral_site": true,
+  "conference_competition": false,
+  "attendance": null,
+  "status": "Final",
+  "venue": {
+    "name": null,
+    "city": null,
+    "state": null
+  },
+  "iowa": {
+    "team_id": "2294",
+    "name": "Iowa Hawkeyes",
+    "abbreviation": "IOWA",
+    "score": "71",
+    "winner": true,
+    "home_away": "home",
+    "rank": null,
+    "period_scores": [
+      "18",
+      "20",
+      "20",
+      "13"
+    ]
+  },
+  "opponent": {
+    "team_id": "2305",
+    "name": "Kansas Jayhawks",
+    "abbreviation": "KU",
+    "score": "58",
+    "winner": false,
+    "home_away": "away",
+    "rank": null,
+    "period_scores": [
+      "4",
+      "23",
+      "19",
+      "12"
+    ]
+  },
+  "boxscore": {
+    "KU": {
+      "fieldgoalsmade-fieldgoalsattempted": "19-52",
+      "fieldgoalpct": "37",
+      "threepointfieldgoalsmade-threepointfieldgoalsattempted": "7-21",
+      "threepointfieldgoalpct": "33",
+      "freethrowsmade-freethrowsattempted": "13-16",
+      "freethrowpct": "81",
+      "totalrebounds": "26",
+      "offensiverebounds": "2",
+      "defensiverebounds": "24",
+      "assists": "8",
+      "steals": "7",
+      "blocks": "0",
+      "turnovers": "16",
+      "teamturnovers": "0",
+      "totalturnovers": "16",
+      "technicalfouls": "0",
+      "totaltechnicalfouls": "0",
+      "turnoverpoints": "14",
+      "fastbreakpoints": "12",
+      "pointsinpaint": "18",
+      "fouls": "19",
+      "largestlead": "0"
+    },
+    "IOWA": {
+      "fieldgoalsmade-fieldgoalsattempted": "25-55",
+      "fieldgoalpct": "45",
+      "threepointfieldgoalsmade-threepointfieldgoalsattempted": "8-21",
+      "threepointfieldgoalpct": "38",
+      "freethrowsmade-freethrowsattempted": "13-18",
+      "freethrowpct": "72",
+      "totalrebounds": "33",
+      "offensiverebounds": "4",
+      "defensiverebounds": "29",
+      "assists": "15",
+      "steals": "6",
+      "blocks": "3",
+      "turnovers": "14",
+      "teamturnovers": "0",
+      "totalturnovers": "14",
+      "technicalfouls": "0",
+      "totaltechnicalfouls": "0",
+      "turnoverpoints": "7",
+      "fastbreakpoints": "0",
+      "pointsinpaint": "34",
+      "fouls": "17",
+      "largestlead": "17"
+    }
+  },
+  "player_stats": {
+    "opponent": [
+      {
+        "player_id": "5239467",
+        "name": "Regan Williams",
+        "jersey": "24",
+        "position": "F",
+        "starter": true,
+        "minutes": "19",
+        "points": "4",
+        "fieldgoalsmade-fieldgoalsattempted": "2-3",
+        "threepointfieldgoalsmade-threepointfieldgoalsattempted": "0-0",
+        "freethrowsmade-freethrowsattempted": "0-0",
+        "rebounds": "4",
+        "assists": "1",
+        "turnovers": "0",
+        "steals": "1",
+        "blocks": "0",
+        "offensiverebounds": "1",
+        "defensiverebounds": "3",
+        "fouls": "5"
+      },
+      {
+        "player_id": "5175749",
+        "name": "S'Mya Nichols",
+        "jersey": "12",
+        "position": "G",
+        "starter": true,
+        "minutes": "37",
+        "points": "26",
+        "fieldgoalsmade-fieldgoalsattempted": "6-18",
+        "threepointfieldgoalsmade-threepointfieldgoalsattempted": "2-6",
+        "freethrowsmade-freethrowsattempted": "12-14",
+        "rebounds": "5",
+        "assists": "4",
+        "turnovers": "4",
+        "steals": "2",
+        "blocks": "0",
+        "offensiverebounds": "0",
+        "defensiverebounds": "5",
+        "fouls": "3"
+      },
+      {
+        "player_id": "5175747",
+        "name": "Laia Conesa",
+        "jersey": "6",
+        "position": "G",
+        "starter": true,
+        "minutes": "22",
+        "points": "0",
+        "fieldgoalsmade-fieldgoalsattempted": "0-0",
+        "threepointfieldgoalsmade-threepointfieldgoalsattempted": "0-0",
+        "freethrowsmade-freethrowsattempted": "0-0",
+        "rebounds": "1",
+        "assists": "0",
+        "turnovers": "3",
+        "steals": "1",
+        "blocks": "0",
+        "offensiverebounds": "0",
+        "defensiverebounds": "1",
+        "fouls": "1"
+      },
+      {
+        "player_id": "5109873",
+        "name": "Elle Evans",
+        "jersey": "21",
+        "position": "G",
+        "starter": true,
+        "minutes": "38",
+        "points": "22",
+        "fieldgoalsmade-fieldgoalsattempted": "9-18",
+        "threepointfieldgoalsmade-threepointfieldgoalsattempted": "4-9",
+        "freethrowsmade-freethrowsattempted": "0-0",
+        "rebounds": "3",
+        "assists": "0",
+        "turnovers": "3",
+        "steals": "0",
+        "blocks": "0",
+        "offensiverebounds": "0",
+        "defensiverebounds": "3",
+        "fouls": "2"
+      },
+      {
+        "player_id": "5108548",
+        "name": "Sania Copeland",
+        "jersey": "22",
+        "position": "G",
+        "starter": true,
+        "minutes": "27",
+        "points": "3",
+        "fieldgoalsmade-fieldgoalsattempted": "1-3",
+        "threepointfieldgoalsmade-threepointfieldgoalsattempted": "0-1",
+        "freethrowsmade-freethrowsattempted": "1-2",
+        "rebounds": "1",
+        "assists": "1",
+        "turnovers": "1",
+        "steals": "0",
+        "blocks": "0",
+        "offensiverebounds": "0",
+        "defensiverebounds": "1",
+        "fouls": "2"
+      },
+      {
+        "player_id": "4898993",
+        "name": "Nadira Eltayeb",
+        "jersey": "33",
+        "position": "C",
+        "starter": false,
+        "minutes": "21",
+        "points": "0",
+        "fieldgoalsmade-fieldgoalsattempted": "0-2",
+        "threepointfieldgoalsmade-threepointfieldgoalsattempted": "0-0",
+        "freethrowsmade-freethrowsattempted": "0-0",
+        "rebounds": "6",
+        "assists": "0",
+        "turnovers": "5",
+        "steals": "1",
+        "blocks": "0",
+        "offensiverebounds": "1",
+        "defensiverebounds": "5",
+        "fouls": "3"
+      },
+      {
+        "player_id": "4898992",
+        "name": "Danai Papadopoulou",
+        "jersey": "14",
+        "position": "C",
+        "starter": false,
+        "minutes": "0",
+        "points": "0",
+        "fieldgoalsmade-fieldgoalsattempted": "0-0",
+        "threepointfieldgoalsmade-threepointfieldgoalsattempted": "0-0",
+        "freethrowsmade-freethrowsattempted": "0-0",
+        "rebounds": "0",
+        "assists": "0",
+        "turnovers": "0",
+        "steals": "0",
+        "blocks": "0",
+        "offensiverebounds": "0",
+        "defensiverebounds": "0",
+        "fouls": "0"
+      },
+      {
+        "player_id": "5239466",
+        "name": "Carla Osma",
+        "jersey": "16",
+        "position": "G",
+        "starter": false,
+        "minutes": "22",
+        "points": "0",
+        "fieldgoalsmade-fieldgoalsattempted": "0-2",
+        "threepointfieldgoalsmade-threepointfieldgoalsattempted": "0-1",
+        "freethrowsmade-freethrowsattempted": "0-0",
+        "rebounds": "2",
+        "assists": "2",
+        "turnovers": "0",
+        "steals": "1",
+        "blocks": "0",
+        "offensiverebounds": "0",
+        "defensiverebounds": "2",
+        "fouls": "2"
+      },
+      {
+        "player_id": "4703707",
+        "name": "Wyvette Mayberry",
+        "jersey": "0",
+        "position": "G",
+        "starter": false,
+        "minutes": "14",
+        "points": "3",
+        "fieldgoalsmade-fieldgoalsattempted": "1-6",
+        "threepointfieldgoalsmade-threepointfieldgoalsattempted": "1-4",
+        "freethrowsmade-freethrowsattempted": "0-0",
+        "rebounds": "2",
+        "assists": "0",
+        "turnovers": "0",
+        "steals": "1",
+        "blocks": "0",
+        "offensiverebounds": "0",
+        "defensiverebounds": "2",
+        "fouls": "1"
+      },
+      {
+        "player_id": "5239464",
+        "name": "Fredriecka Wallace",
+        "jersey": "10",
+        "position": "F",
+        "starter": false
+      },
+      {
+        "player_id": "5175750",
+        "name": "McKenzie Smith",
+        "jersey": "25",
+        "position": "F",
+        "starter": false
+      },
+      {
+        "player_id": "5239465",
+        "name": "Zoe Canfield",
+        "jersey": "15",
+        "position": "G",
+        "starter": false
+      },
+      {
+        "player_id": "5106181",
+        "name": "Brittany Harshaw",
+        "jersey": "23",
+        "position": "G",
+        "starter": false
+      },
+      {
+        "player_id": "4704350",
+        "name": "Jordan Webster",
+        "jersey": "32",
+        "position": "G",
+        "starter": false
+      }
+    ],
+    "iowa": [
+      {
+        "player_id": "4433538",
+        "name": "Addison O'Grady",
+        "jersey": "44",
+        "position": "F",
+        "starter": true,
+        "minutes": "22",
+        "points": "9",
+        "fieldgoalsmade-fieldgoalsattempted": "3-6",
+        "threepointfieldgoalsmade-threepointfieldgoalsattempted": "0-0",
+        "freethrowsmade-freethrowsattempted": "3-4",
+        "rebounds": "3",
+        "assists": "1",
+        "turnovers": "2",
+        "steals": "1",
+        "blocks": "1",
+        "offensiverebounds": "0",
+        "defensiverebounds": "3",
+        "fouls": "5"
+      },
+      {
+        "player_id": "4682968",
+        "name": "Hannah Stuelke",
+        "jersey": "45",
+        "position": "F",
+        "starter": true,
+        "minutes": "33",
+        "points": "16",
+        "fieldgoalsmade-fieldgoalsattempted": "6-12",
+        "threepointfieldgoalsmade-threepointfieldgoalsattempted": "0-1",
+        "freethrowsmade-freethrowsattempted": "4-5",
+        "rebounds": "10",
+        "assists": "4",
+        "turnovers": "4",
+        "steals": "0",
+        "blocks": "0",
+        "offensiverebounds": "3",
+        "defensiverebounds": "7",
+        "fouls": "1"
+      },
+      {
+        "player_id": "4898389",
+        "name": "Sydney Affolter",
+        "jersey": "3",
+        "position": "G",
+        "starter": true,
+        "minutes": "19",
+        "points": "2",
+        "fieldgoalsmade-fieldgoalsattempted": "1-2",
+        "threepointfieldgoalsmade-threepointfieldgoalsattempted": "0-0",
+        "freethrowsmade-freethrowsattempted": "0-0",
+        "rebounds": "6",
+        "assists": "1",
+        "turnovers": "1",
+        "steals": "0",
+        "blocks": "0",
+        "offensiverebounds": "0",
+        "defensiverebounds": "6",
+        "fouls": "5"
+      },
+      {
+        "player_id": "4433985",
+        "name": "Kylie Feuerbach",
+        "jersey": "4",
+        "position": "G",
+        "starter": true,
+        "minutes": "27",
+        "points": "5",
+        "fieldgoalsmade-fieldgoalsattempted": "2-7",
+        "threepointfieldgoalsmade-threepointfieldgoalsattempted": "0-4",
+        "freethrowsmade-freethrowsattempted": "1-3",
+        "rebounds": "4",
+        "assists": "2",
+        "turnovers": "1",
+        "steals": "3",
+        "blocks": "0",
+        "offensiverebounds": "0",
+        "defensiverebounds": "4",
+        "fouls": "1"
+      },
+      {
+        "player_id": "4433815",
+        "name": "Lucy Olsen",
+        "jersey": "33",
+        "position": "G",
+        "starter": true,
+        "minutes": "36",
+        "points": "16",
+        "fieldgoalsmade-fieldgoalsattempted": "5-11",
+        "threepointfieldgoalsmade-threepointfieldgoalsattempted": "3-5",
+        "freethrowsmade-freethrowsattempted": "3-4",
+        "rebounds": "3",
+        "assists": "6",
+        "turnovers": "1",
+        "steals": "0",
+        "blocks": "0",
+        "offensiverebounds": "0",
+        "defensiverebounds": "3",
+        "fouls": "2"
+      },
+      {
+        "player_id": "5240175",
+        "name": "Ava Heiden",
+        "jersey": "5",
+        "position": "G",
+        "starter": false,
+        "minutes": "10",
+        "points": "4",
+        "fieldgoalsmade-fieldgoalsattempted": "2-5",
+        "threepointfieldgoalsmade-threepointfieldgoalsattempted": "0-0",
+        "freethrowsmade-freethrowsattempted": "0-0",
+        "rebounds": "1",
+        "assists": "0",
+        "turnovers": "0",
+        "steals": "0",
+        "blocks": "1",
+        "offensiverebounds": "0",
+        "defensiverebounds": "1",
+        "fouls": "0"
+      },
+      {
+        "player_id": "5240178",
+        "name": "Teagan Mallegni",
+        "jersey": "55",
+        "position": "G",
+        "starter": false,
+        "minutes": "16",
+        "points": "6",
+        "fieldgoalsmade-fieldgoalsattempted": "2-5",
+        "threepointfieldgoalsmade-threepointfieldgoalsattempted": "2-5",
+        "freethrowsmade-freethrowsattempted": "0-0",
+        "rebounds": "1",
+        "assists": "1",
+        "turnovers": "2",
+        "steals": "1",
+        "blocks": "1",
+        "offensiverebounds": "0",
+        "defensiverebounds": "1",
+        "fouls": "1"
+      },
+      {
+        "player_id": "5240174",
+        "name": "Taylor Stremlow",
+        "jersey": "1",
+        "position": "G",
+        "starter": false,
+        "minutes": "18",
+        "points": "7",
+        "fieldgoalsmade-fieldgoalsattempted": "2-3",
+        "threepointfieldgoalsmade-threepointfieldgoalsattempted": "1-2",
+        "freethrowsmade-freethrowsattempted": "2-2",
+        "rebounds": "2",
+        "assists": "0",
+        "turnovers": "2",
+        "steals": "0",
+        "blocks": "0",
+        "offensiverebounds": "1",
+        "defensiverebounds": "1",
+        "fouls": "2"
+      },
+      {
+        "player_id": "4858677",
+        "name": "Taylor McCabe",
+        "jersey": "2",
+        "position": "G",
+        "starter": false,
+        "minutes": "19",
+        "points": "6",
+        "fieldgoalsmade-fieldgoalsattempted": "2-4",
+        "threepointfieldgoalsmade-threepointfieldgoalsattempted": "2-4",
+        "freethrowsmade-freethrowsattempted": "0-0",
+        "rebounds": "3",
+        "assists": "0",
+        "turnovers": "1",
+        "steals": "1",
+        "blocks": "0",
+        "offensiverebounds": "0",
+        "defensiverebounds": "3",
+        "fouls": "0"
+      },
+      {
+        "player_id": "4858658",
+        "name": "Jada Gyamfi",
+        "jersey": "23",
+        "position": "F",
+        "starter": false
+      },
+      {
+        "player_id": "4585713",
+        "name": "AJ Ediger",
+        "jersey": "34",
+        "position": "F",
+        "starter": false
+      },
+      {
+        "player_id": "5240177",
+        "name": "Callie Levin",
+        "jersey": "32",
+        "position": "G",
+        "starter": false
+      },
+      {
+        "player_id": "5240176",
+        "name": "Aaliyah Guyton",
+        "jersey": "11",
+        "position": "G",
+        "starter": false
+      },
+      {
+        "player_id": "5175682",
+        "name": "Kennise Johnson",
+        "jersey": "13",
+        "position": "G",
+        "starter": false
+      }
+    ]
+  },
+  "plays": [
+    {
+      "play_id": "401713559101905201",
+      "sequence": "101905201",
+      "period": 1,
+      "clock": "9:47",
+      "team_id": "2294",
+      "type": "LayUpShot",
+      "type_id": "572",
+      "text": "Hannah Stuelke made Layup.",
+      "scoring_play": true,
+      "score_value": 2,
+      "away_score": 0,
+      "home_score": 2,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4682968",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559101906701",
+      "sequence": "101906701",
+      "period": 1,
+      "clock": "9:32",
+      "team_id": "2305",
+      "type": "JumpShot",
+      "type_id": "558",
+      "text": "Elle Evans missed Jumper.",
+      "scoring_play": false,
+      "score_value": 2,
+      "away_score": 0,
+      "home_score": 2,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5109873",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559101907101",
+      "sequence": "101907101",
+      "period": 1,
+      "clock": "9:28",
+      "team_id": "2294",
+      "type": "Defensive Rebound",
+      "type_id": "587",
+      "text": "Sydney Affolter Defensive Rebound.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 0,
+      "home_score": 2,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4898389",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559101907501",
+      "sequence": "101907501",
+      "period": 1,
+      "clock": "9:24",
+      "team_id": "2294",
+      "type": "PersonalFoul",
+      "type_id": "519",
+      "text": "Foul on Sydney Affolter.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 0,
+      "home_score": 2,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4898389",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559101908801",
+      "sequence": "101908801",
+      "period": 1,
+      "clock": "9:11",
+      "team_id": "2305",
+      "type": "Lost Ball Turnover",
+      "type_id": "598",
+      "text": "S'Mya Nichols Turnover.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 0,
+      "home_score": 2,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5175749",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559101908802",
+      "sequence": "101908802",
+      "period": 1,
+      "clock": "9:11",
+      "team_id": "2294",
+      "type": "Steal",
+      "type_id": "607",
+      "text": "Kylie Feuerbach Steal.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 0,
+      "home_score": 2,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4433985",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559101909501",
+      "sequence": "101909501",
+      "period": 1,
+      "clock": "9:04",
+      "team_id": "2294",
+      "type": "JumpShot",
+      "type_id": "558",
+      "text": "Kylie Feuerbach missed Three Point Jumper.",
+      "scoring_play": false,
+      "score_value": 3,
+      "away_score": 0,
+      "home_score": 2,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4433985",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559101909701",
+      "sequence": "101909701",
+      "period": 1,
+      "clock": "9:02",
+      "team_id": "2294",
+      "type": "Dead Ball Rebound",
+      "type_id": "449",
+      "text": "Iowa Deadball Team Rebound.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 0,
+      "home_score": 2,
+      "wallclock": null
+    },
+    {
+      "play_id": "401713559101909702",
+      "sequence": "101909702",
+      "period": 1,
+      "clock": "9:02",
+      "team_id": "2305",
+      "type": "PersonalFoul",
+      "type_id": "519",
+      "text": "Foul on Sania Copeland.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 0,
+      "home_score": 2,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5108548",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559101914201",
+      "sequence": "101914201",
+      "period": 1,
+      "clock": "8:57",
+      "team_id": "2294",
+      "type": "JumpShot",
+      "type_id": "558",
+      "text": "Lucy Olsen made Three Point Jumper. Assisted by Sydney Affolter.",
+      "scoring_play": true,
+      "score_value": 3,
+      "away_score": 0,
+      "home_score": 5,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4433815",
+          "name": null
+        },
+        {
+          "player_id": "4898389",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559101916101",
+      "sequence": "101916101",
+      "period": 1,
+      "clock": "8:38",
+      "team_id": "2305",
+      "type": "JumpShot",
+      "type_id": "558",
+      "text": "Elle Evans missed Three Point Jumper.",
+      "scoring_play": false,
+      "score_value": 3,
+      "away_score": 0,
+      "home_score": 5,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5109873",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559101916301",
+      "sequence": "101916301",
+      "period": 1,
+      "clock": "8:36",
+      "team_id": "2294",
+      "type": "Defensive Rebound",
+      "type_id": "587",
+      "text": "Sydney Affolter Defensive Rebound.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 0,
+      "home_score": 5,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4898389",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559101917701",
+      "sequence": "101917701",
+      "period": 1,
+      "clock": "8:22",
+      "team_id": "2294",
+      "type": "JumpShot",
+      "type_id": "558",
+      "text": "Lucy Olsen missed Three Point Jumper.",
+      "scoring_play": false,
+      "score_value": 3,
+      "away_score": 0,
+      "home_score": 5,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4433815",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559101918101",
+      "sequence": "101918101",
+      "period": 1,
+      "clock": "8:18",
+      "team_id": "2305",
+      "type": "Defensive Rebound",
+      "type_id": "587",
+      "text": "Kansas Defensive Rebound.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 0,
+      "home_score": 5,
+      "wallclock": null
+    },
+    {
+      "play_id": "401713559101919801",
+      "sequence": "101919801",
+      "period": 1,
+      "clock": "8:01",
+      "team_id": "2305",
+      "type": "JumpShot",
+      "type_id": "558",
+      "text": "Regan Williams missed Jumper.",
+      "scoring_play": false,
+      "score_value": 2,
+      "away_score": 0,
+      "home_score": 5,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5239467",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559101919802",
+      "sequence": "101919802",
+      "period": 1,
+      "clock": "8:01",
+      "team_id": "2294",
+      "type": "Block Shot",
+      "type_id": "618",
+      "text": "Addison O'Grady Block.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 0,
+      "home_score": 5,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4433538",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559101924301",
+      "sequence": "101924301",
+      "period": 1,
+      "clock": "7:56",
+      "team_id": "2294",
+      "type": "Defensive Rebound",
+      "type_id": "587",
+      "text": "Addison O'Grady Defensive Rebound.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 0,
+      "home_score": 5,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4433538",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559101925701",
+      "sequence": "101925701",
+      "period": 1,
+      "clock": "7:42",
+      "team_id": "2305",
+      "type": "PersonalFoul",
+      "type_id": "519",
+      "text": "Foul on S'Mya Nichols.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 0,
+      "home_score": 5,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5175749",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559101925702",
+      "sequence": "101925702",
+      "period": 1,
+      "clock": "7:42",
+      "team_id": "2294",
+      "type": "MadeFreeThrow",
+      "type_id": "540",
+      "text": "Kylie Feuerbach missed Free Throw.",
+      "scoring_play": false,
+      "score_value": 1,
+      "away_score": 0,
+      "home_score": 5,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4433985",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559101925703",
+      "sequence": "101925703",
+      "period": 1,
+      "clock": "7:42",
+      "team_id": "2294",
+      "type": "Dead Ball Rebound",
+      "type_id": "449",
+      "text": "Iowa Deadball Team Rebound.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 0,
+      "home_score": 5,
+      "wallclock": null
+    },
+    {
+      "play_id": "401713559101925704",
+      "sequence": "101925704",
+      "period": 1,
+      "clock": "7:42",
+      "team_id": "2294",
+      "type": "MadeFreeThrow",
+      "type_id": "540",
+      "text": "Kylie Feuerbach missed Free Throw.",
+      "scoring_play": false,
+      "score_value": 1,
+      "away_score": 0,
+      "home_score": 5,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4433985",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559101925705",
+      "sequence": "101925705",
+      "period": 1,
+      "clock": "7:42",
+      "team_id": "2305",
+      "type": "Defensive Rebound",
+      "type_id": "587",
+      "text": "Regan Williams Defensive Rebound.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 0,
+      "home_score": 5,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5239467",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559101925706",
+      "sequence": "101925706",
+      "period": 1,
+      "clock": "7:42",
+      "team_id": "2305",
+      "type": "JumpShot",
+      "type_id": "558",
+      "text": "Elle Evans made Jumper.",
+      "scoring_play": true,
+      "score_value": 2,
+      "away_score": 2,
+      "home_score": 5,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5109873",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559101928201",
+      "sequence": "101928201",
+      "period": 1,
+      "clock": "7:17",
+      "team_id": "2294",
+      "type": "LayUpShot",
+      "type_id": "572",
+      "text": "Hannah Stuelke missed Layup.",
+      "scoring_play": false,
+      "score_value": 2,
+      "away_score": 2,
+      "home_score": 5,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4682968",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559101928401",
+      "sequence": "101928401",
+      "period": 1,
+      "clock": "7:15",
+      "team_id": "2305",
+      "type": "Defensive Rebound",
+      "type_id": "587",
+      "text": "Kansas Defensive Rebound.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 2,
+      "home_score": 5,
+      "wallclock": null
+    },
+    {
+      "play_id": "401713559101934201",
+      "sequence": "101934201",
+      "period": 1,
+      "clock": "6:57",
+      "team_id": "2305",
+      "type": "JumpShot",
+      "type_id": "558",
+      "text": "S'Mya Nichols missed Three Point Jumper.",
+      "scoring_play": false,
+      "score_value": 3,
+      "away_score": 2,
+      "home_score": 5,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5175749",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559101934501",
+      "sequence": "101934501",
+      "period": 1,
+      "clock": "6:54",
+      "team_id": "2294",
+      "type": "Defensive Rebound",
+      "type_id": "587",
+      "text": "Kylie Feuerbach Defensive Rebound.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 2,
+      "home_score": 5,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4433985",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559101935201",
+      "sequence": "101935201",
+      "period": 1,
+      "clock": "6:47",
+      "team_id": "2294",
+      "type": "LayUpShot",
+      "type_id": "572",
+      "text": "Sydney Affolter made Layup. Assisted by Addison O'Grady.",
+      "scoring_play": true,
+      "score_value": 2,
+      "away_score": 2,
+      "home_score": 7,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4898389",
+          "name": null
+        },
+        {
+          "player_id": "4433538",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559101937601",
+      "sequence": "101937601",
+      "period": 1,
+      "clock": "6:23",
+      "team_id": "2294",
+      "type": "PersonalFoul",
+      "type_id": "519",
+      "text": "Foul on Sydney Affolter.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 2,
+      "home_score": 7,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4898389",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559101937602",
+      "sequence": "101937602",
+      "period": 1,
+      "clock": "6:23",
+      "team_id": "2305",
+      "type": "MadeFreeThrow",
+      "type_id": "540",
+      "text": "S'Mya Nichols made Free Throw.",
+      "scoring_play": true,
+      "score_value": 1,
+      "away_score": 3,
+      "home_score": 7,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5175749",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559101937603",
+      "sequence": "101937603",
+      "period": 1,
+      "clock": "6:23",
+      "team_id": "2305",
+      "type": "MadeFreeThrow",
+      "type_id": "540",
+      "text": "S'Mya Nichols made Free Throw.",
+      "scoring_play": true,
+      "score_value": 1,
+      "away_score": 4,
+      "home_score": 7,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5175749",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559101944402",
+      "sequence": "101944402",
+      "period": 1,
+      "clock": "5:55",
+      "team_id": "2294",
+      "type": "Lost Ball Turnover",
+      "type_id": "598",
+      "text": "Taylor Stremlow Turnover.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 4,
+      "home_score": 7,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5240174",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559101944403",
+      "sequence": "101944403",
+      "period": 1,
+      "clock": "5:55",
+      "team_id": "2305",
+      "type": "Steal",
+      "type_id": "607",
+      "text": "S'Mya Nichols Steal.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 4,
+      "home_score": 7,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5175749",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559101945101",
+      "sequence": "101945101",
+      "period": 1,
+      "clock": "5:48",
+      "team_id": "2305",
+      "type": "Lost Ball Turnover",
+      "type_id": "598",
+      "text": "Nadira Eltayeb Turnover.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 4,
+      "home_score": 7,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4898993",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559101945102",
+      "sequence": "101945102",
+      "period": 1,
+      "clock": "5:48",
+      "team_id": "2294",
+      "type": "Steal",
+      "type_id": "607",
+      "text": "Addison O'Grady Steal.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 4,
+      "home_score": 7,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4433538",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559101945901",
+      "sequence": "101945901",
+      "period": 1,
+      "clock": "5:40",
+      "team_id": "2294",
+      "type": "JumpShot",
+      "type_id": "558",
+      "text": "Taylor McCabe missed Three Point Jumper.",
+      "scoring_play": false,
+      "score_value": 3,
+      "away_score": 4,
+      "home_score": 7,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4858677",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559101946201",
+      "sequence": "101946201",
+      "period": 1,
+      "clock": "5:37",
+      "team_id": "2305",
+      "type": "Defensive Rebound",
+      "type_id": "587",
+      "text": "S'Mya Nichols Defensive Rebound.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 4,
+      "home_score": 7,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5175749",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559101946202",
+      "sequence": "101946202",
+      "period": 1,
+      "clock": "5:37",
+      "team_id": "2305",
+      "type": "PersonalFoul",
+      "type_id": "519",
+      "text": "Foul on Nadira Eltayeb.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 4,
+      "home_score": 7,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4898993",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559101948901",
+      "sequence": "101948901",
+      "period": 1,
+      "clock": "5:10",
+      "team_id": "2305",
+      "type": "PersonalFoul",
+      "type_id": "519",
+      "text": "Foul on Elle Evans.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 4,
+      "home_score": 7,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5109873",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559101948902",
+      "sequence": "101948902",
+      "period": 1,
+      "clock": "5:10",
+      "team_id": "2294",
+      "type": "MadeFreeThrow",
+      "type_id": "540",
+      "text": "Taylor Stremlow made Free Throw.",
+      "scoring_play": true,
+      "score_value": 1,
+      "away_score": 4,
+      "home_score": 8,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5240174",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559101948903",
+      "sequence": "101948903",
+      "period": 1,
+      "clock": "5:10",
+      "team_id": "2294",
+      "type": "MadeFreeThrow",
+      "type_id": "540",
+      "text": "Taylor Stremlow made Free Throw.",
+      "scoring_play": true,
+      "score_value": 1,
+      "away_score": 4,
+      "home_score": 9,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5240174",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559101954501",
+      "sequence": "101954501",
+      "period": 1,
+      "clock": "4:54",
+      "team_id": "2305",
+      "type": "PersonalFoul",
+      "type_id": "519",
+      "text": "Foul on Elle Evans.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 4,
+      "home_score": 9,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5109873",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559101954502",
+      "sequence": "101954502",
+      "period": 1,
+      "clock": "4:54",
+      "team_id": "2305",
+      "type": "Lost Ball Turnover",
+      "type_id": "598",
+      "text": "Elle Evans Turnover.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 4,
+      "home_score": 9,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5109873",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559101954503",
+      "sequence": "101954503",
+      "period": 1,
+      "clock": "4:54",
+      "team_id": null,
+      "type": "OfficialTVTimeOut",
+      "type_id": "580",
+      "text": " Official TV Timeout",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 4,
+      "home_score": 9,
+      "wallclock": null
+    },
+    {
+      "play_id": "401713559101956401",
+      "sequence": "101956401",
+      "period": 1,
+      "clock": "4:35",
+      "team_id": "2294",
+      "type": "Lost Ball Turnover",
+      "type_id": "598",
+      "text": "Hannah Stuelke Turnover.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 4,
+      "home_score": 9,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4682968",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559101957301",
+      "sequence": "101957301",
+      "period": 1,
+      "clock": "4:26",
+      "team_id": "2305",
+      "type": "LayUpShot",
+      "type_id": "572",
+      "text": "S'Mya Nichols missed Layup.",
+      "scoring_play": false,
+      "score_value": 2,
+      "away_score": 4,
+      "home_score": 9,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5175749",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559101957302",
+      "sequence": "101957302",
+      "period": 1,
+      "clock": "4:26",
+      "team_id": "2294",
+      "type": "Block Shot",
+      "type_id": "618",
+      "text": "Ava Heiden Block.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 4,
+      "home_score": 9,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5240175",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559101957901",
+      "sequence": "101957901",
+      "period": 1,
+      "clock": "4:20",
+      "team_id": "2294",
+      "type": "Defensive Rebound",
+      "type_id": "587",
+      "text": "Taylor Stremlow Defensive Rebound.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 4,
+      "home_score": 9,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5240174",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559101959001",
+      "sequence": "101959001",
+      "period": 1,
+      "clock": "4:09",
+      "team_id": "2294",
+      "type": "JumpShot",
+      "type_id": "558",
+      "text": null,
+      "scoring_play": true,
+      "score_value": 0,
+      "away_score": 4,
+      "home_score": 11,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5240175",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559101965201",
+      "sequence": "101965201",
+      "period": 1,
+      "clock": "3:47",
+      "team_id": "2305",
+      "type": "Lost Ball Turnover",
+      "type_id": "598",
+      "text": "Sania Copeland Turnover.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 4,
+      "home_score": 11,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5108548",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559101967601",
+      "sequence": "101967601",
+      "period": 1,
+      "clock": "3:23",
+      "team_id": "2294",
+      "type": "JumpShot",
+      "type_id": "558",
+      "text": "Ava Heiden missed Jumper.",
+      "scoring_play": false,
+      "score_value": 2,
+      "away_score": 4,
+      "home_score": 11,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5240175",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559101967801",
+      "sequence": "101967801",
+      "period": 1,
+      "clock": "3:21",
+      "team_id": "2305",
+      "type": "Defensive Rebound",
+      "type_id": "587",
+      "text": "Nadira Eltayeb Defensive Rebound.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 4,
+      "home_score": 11,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4898993",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559101969301",
+      "sequence": "101969301",
+      "period": 1,
+      "clock": "3:06",
+      "team_id": "2305",
+      "type": "JumpShot",
+      "type_id": "558",
+      "text": "Sania Copeland missed Three Point Jumper.",
+      "scoring_play": false,
+      "score_value": 3,
+      "away_score": 4,
+      "home_score": 11,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5108548",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559101969701",
+      "sequence": "101969701",
+      "period": 1,
+      "clock": "3:02",
+      "team_id": "2294",
+      "type": "Defensive Rebound",
+      "type_id": "587",
+      "text": "Hannah Stuelke Defensive Rebound.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 4,
+      "home_score": 11,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4682968",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559101974901",
+      "sequence": "101974901",
+      "period": 1,
+      "clock": "2:50",
+      "team_id": "2294",
+      "type": "LayUpShot",
+      "type_id": "572",
+      "text": "Hannah Stuelke missed Layup.",
+      "scoring_play": false,
+      "score_value": 2,
+      "away_score": 4,
+      "home_score": 11,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4682968",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559101975201",
+      "sequence": "101975201",
+      "period": 1,
+      "clock": "2:47",
+      "team_id": "2305",
+      "type": "Defensive Rebound",
+      "type_id": "587",
+      "text": "Nadira Eltayeb Defensive Rebound.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 4,
+      "home_score": 11,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4898993",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559101975601",
+      "sequence": "101975601",
+      "period": 1,
+      "clock": "2:43",
+      "team_id": "2305",
+      "type": "LayUpShot",
+      "type_id": "572",
+      "text": "S'Mya Nichols missed Layup.",
+      "scoring_play": false,
+      "score_value": 2,
+      "away_score": 4,
+      "home_score": 11,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5175749",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559101975801",
+      "sequence": "101975801",
+      "period": 1,
+      "clock": "2:41",
+      "team_id": "2294",
+      "type": "Defensive Rebound",
+      "type_id": "587",
+      "text": "Taylor McCabe Defensive Rebound.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 4,
+      "home_score": 11,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4858677",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559101976901",
+      "sequence": "101976901",
+      "period": 1,
+      "clock": "2:30",
+      "team_id": "2294",
+      "type": "JumpShot",
+      "type_id": "558",
+      "text": "Taylor Stremlow made Three Point Jumper. Assisted by Lucy Olsen.",
+      "scoring_play": true,
+      "score_value": 3,
+      "away_score": 4,
+      "home_score": 14,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5240174",
+          "name": null
+        },
+        {
+          "player_id": "4433815",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559101977401",
+      "sequence": "101977401",
+      "period": 1,
+      "clock": "2:25",
+      "team_id": "2305",
+      "type": "ShortTimeOut",
+      "type_id": "579",
+      "text": "Kansas  Timeout",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 4,
+      "home_score": 14,
+      "wallclock": null
+    },
+    {
+      "play_id": "401713559101979601",
+      "sequence": "101979601",
+      "period": 1,
+      "clock": "2:03",
+      "team_id": "2305",
+      "type": "LayUpShot",
+      "type_id": "572",
+      "text": "Elle Evans missed Layup.",
+      "scoring_play": false,
+      "score_value": 2,
+      "away_score": 4,
+      "home_score": 14,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5109873",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559101979602",
+      "sequence": "101979602",
+      "period": 1,
+      "clock": "2:03",
+      "team_id": "2294",
+      "type": "Dead Ball Rebound",
+      "type_id": "449",
+      "text": "Iowa Deadball Team Rebound.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 4,
+      "home_score": 14,
+      "wallclock": null
+    },
+    {
+      "play_id": "401713559101985101",
+      "sequence": "101985101",
+      "period": 1,
+      "clock": "1:48",
+      "team_id": "2294",
+      "type": "LayUpShot",
+      "type_id": "572",
+      "text": "Lucy Olsen made Layup.",
+      "scoring_play": true,
+      "score_value": 2,
+      "away_score": 4,
+      "home_score": 16,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4433815",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559101986601",
+      "sequence": "101986601",
+      "period": 1,
+      "clock": "1:33",
+      "team_id": "2305",
+      "type": "JumpShot",
+      "type_id": "558",
+      "text": "Carla Osma missed Jumper.",
+      "scoring_play": false,
+      "score_value": 2,
+      "away_score": 4,
+      "home_score": 16,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5239466",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559101987101",
+      "sequence": "101987101",
+      "period": 1,
+      "clock": "1:28",
+      "team_id": "2294",
+      "type": "Defensive Rebound",
+      "type_id": "587",
+      "text": "Teagan Mallegni Defensive Rebound.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 4,
+      "home_score": 16,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5240178",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559101987601",
+      "sequence": "101987601",
+      "period": 1,
+      "clock": "1:23",
+      "team_id": "2294",
+      "type": "Lost Ball Turnover",
+      "type_id": "598",
+      "text": "Teagan Mallegni Turnover.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 4,
+      "home_score": 16,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5240178",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559101989101",
+      "sequence": "101989101",
+      "period": 1,
+      "clock": "1:08",
+      "team_id": "2305",
+      "type": "Lost Ball Turnover",
+      "type_id": "598",
+      "text": "Elle Evans Turnover.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 4,
+      "home_score": 16,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5109873",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559101989102",
+      "sequence": "101989102",
+      "period": 1,
+      "clock": "1:08",
+      "team_id": "2294",
+      "type": "Steal",
+      "type_id": "607",
+      "text": "Taylor McCabe Steal.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 4,
+      "home_score": 16,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4858677",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559101994301",
+      "sequence": "101994301",
+      "period": 1,
+      "clock": "0:56",
+      "team_id": "2294",
+      "type": "JumpShot",
+      "type_id": "558",
+      "text": "Kylie Feuerbach missed Three Point Jumper.",
+      "scoring_play": false,
+      "score_value": 3,
+      "away_score": 4,
+      "home_score": 16,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4433985",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559101994501",
+      "sequence": "101994501",
+      "period": 1,
+      "clock": "0:54",
+      "team_id": "2305",
+      "type": "Dead Ball Rebound",
+      "type_id": "449",
+      "text": "Kansas Deadball Team Rebound.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 4,
+      "home_score": 16,
+      "wallclock": null
+    },
+    {
+      "play_id": "401713559101994502",
+      "sequence": "101994502",
+      "period": 1,
+      "clock": "0:54",
+      "team_id": "2294",
+      "type": "PersonalFoul",
+      "type_id": "519",
+      "text": "Foul on Addison O'Grady.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 4,
+      "home_score": 16,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4433538",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559101995701",
+      "sequence": "101995701",
+      "period": 1,
+      "clock": "0:42",
+      "team_id": "2305",
+      "type": "JumpShot",
+      "type_id": "558",
+      "text": "Elle Evans missed Jumper.",
+      "scoring_play": false,
+      "score_value": 2,
+      "away_score": 4,
+      "home_score": 16,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5109873",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559101996001",
+      "sequence": "101996001",
+      "period": 1,
+      "clock": "0:39",
+      "team_id": "2294",
+      "type": "Defensive Rebound",
+      "type_id": "587",
+      "text": "Kylie Feuerbach Defensive Rebound.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 4,
+      "home_score": 16,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4433985",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559101996601",
+      "sequence": "101996601",
+      "period": 1,
+      "clock": "0:33",
+      "team_id": "2294",
+      "type": "LayUpShot",
+      "type_id": "572",
+      "text": "Addison O'Grady made Layup. Assisted by Teagan Mallegni.",
+      "scoring_play": true,
+      "score_value": 2,
+      "away_score": 4,
+      "home_score": 18,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4433538",
+          "name": null
+        },
+        {
+          "player_id": "5240178",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559101999101",
+      "sequence": "101999101",
+      "period": 1,
+      "clock": "0:08",
+      "team_id": "2294",
+      "type": "PersonalFoul",
+      "type_id": "519",
+      "text": "Foul on Taylor Stremlow.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 4,
+      "home_score": 18,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5240174",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559101999102",
+      "sequence": "101999102",
+      "period": 1,
+      "clock": "0:08",
+      "team_id": "2305",
+      "type": "JumpShot",
+      "type_id": "558",
+      "text": "Elle Evans missed Three Point Jumper.",
+      "scoring_play": false,
+      "score_value": 3,
+      "away_score": 4,
+      "home_score": 18,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5109873",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559101999103",
+      "sequence": "101999103",
+      "period": 1,
+      "clock": "0:08",
+      "team_id": "2294",
+      "type": "Dead Ball Rebound",
+      "type_id": "449",
+      "text": "Iowa Deadball Team Rebound.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 4,
+      "home_score": 18,
+      "wallclock": null
+    },
+    {
+      "play_id": "401713559101999901",
+      "sequence": "101999901",
+      "period": 1,
+      "clock": "0:00",
+      "team_id": null,
+      "type": "End Period",
+      "type_id": "412",
+      "text": "End of 1st Quarter",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 4,
+      "home_score": 18,
+      "wallclock": null
+    },
+    {
+      "play_id": "401713559102906101",
+      "sequence": "102906101",
+      "period": 2,
+      "clock": "9:38",
+      "team_id": "2305",
+      "type": "JumpShot",
+      "type_id": "558",
+      "text": "S'Mya Nichols made Jumper.",
+      "scoring_play": true,
+      "score_value": 2,
+      "away_score": 6,
+      "home_score": 18,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5175749",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559102908501",
+      "sequence": "102908501",
+      "period": 2,
+      "clock": "9:14",
+      "team_id": "2294",
+      "type": "JumpShot",
+      "type_id": "558",
+      "text": "Addison O'Grady missed ",
+      "scoring_play": false,
+      "score_value": 2,
+      "away_score": 6,
+      "home_score": 18,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4433538",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559102908901",
+      "sequence": "102908901",
+      "period": 2,
+      "clock": "9:10",
+      "team_id": "2305",
+      "type": "Defensive Rebound",
+      "type_id": "587",
+      "text": "Regan Williams Defensive Rebound.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 6,
+      "home_score": 18,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5239467",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559102909501",
+      "sequence": "102909501",
+      "period": 2,
+      "clock": "9:04",
+      "team_id": "2305",
+      "type": "JumpShot",
+      "type_id": "558",
+      "text": "S'Mya Nichols made Jumper.",
+      "scoring_play": true,
+      "score_value": 2,
+      "away_score": 8,
+      "home_score": 18,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5175749",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559102915801",
+      "sequence": "102915801",
+      "period": 2,
+      "clock": "8:41",
+      "team_id": "2305",
+      "type": "PersonalFoul",
+      "type_id": "519",
+      "text": "Foul on Regan Williams.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 8,
+      "home_score": 18,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5239467",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559102915802",
+      "sequence": "102915802",
+      "period": 2,
+      "clock": "8:41",
+      "team_id": "2294",
+      "type": "MadeFreeThrow",
+      "type_id": "540",
+      "text": "Addison O'Grady made Free Throw.",
+      "scoring_play": true,
+      "score_value": 1,
+      "away_score": 8,
+      "home_score": 19,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4433538",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559102915803",
+      "sequence": "102915803",
+      "period": 2,
+      "clock": "8:41",
+      "team_id": "2294",
+      "type": "MadeFreeThrow",
+      "type_id": "540",
+      "text": "Addison O'Grady made Free Throw.",
+      "scoring_play": true,
+      "score_value": 1,
+      "away_score": 8,
+      "home_score": 20,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4433538",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559102916901",
+      "sequence": "102916901",
+      "period": 2,
+      "clock": "8:30",
+      "team_id": "2305",
+      "type": "LayUpShot",
+      "type_id": "572",
+      "text": "S'Mya Nichols missed Layup.",
+      "scoring_play": false,
+      "score_value": 2,
+      "away_score": 8,
+      "home_score": 20,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5175749",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559102917201",
+      "sequence": "102917201",
+      "period": 2,
+      "clock": "8:27",
+      "team_id": "2294",
+      "type": "Defensive Rebound",
+      "type_id": "587",
+      "text": "Sydney Affolter Defensive Rebound.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 8,
+      "home_score": 20,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4898389",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559102917801",
+      "sequence": "102917801",
+      "period": 2,
+      "clock": "8:21",
+      "team_id": "2294",
+      "type": "LayUpShot",
+      "type_id": "572",
+      "text": "Hannah Stuelke missed Layup.",
+      "scoring_play": false,
+      "score_value": 2,
+      "away_score": 8,
+      "home_score": 20,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4682968",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559102918601",
+      "sequence": "102918601",
+      "period": 2,
+      "clock": "8:13",
+      "team_id": "2294",
+      "type": "Offensive Rebound",
+      "type_id": "586",
+      "text": "Hannah Stuelke Offensive Rebound.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 8,
+      "home_score": 20,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4682968",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559102918602",
+      "sequence": "102918602",
+      "period": 2,
+      "clock": "8:13",
+      "team_id": "2294",
+      "type": "TipShot",
+      "type_id": "437",
+      "text": "Hannah Stuelke made Two Point Tip Shot.",
+      "scoring_play": true,
+      "score_value": 2,
+      "away_score": 8,
+      "home_score": 22,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4682968",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559102919301",
+      "sequence": "102919301",
+      "period": 2,
+      "clock": "8:06",
+      "team_id": "2294",
+      "type": "PersonalFoul",
+      "type_id": "519",
+      "text": "Foul on Hannah Stuelke.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 8,
+      "home_score": 22,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4682968",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559102924901",
+      "sequence": "102924901",
+      "period": 2,
+      "clock": "7:50",
+      "team_id": "2305",
+      "type": "JumpShot",
+      "type_id": "558",
+      "text": "S'Mya Nichols missed Jumper.",
+      "scoring_play": false,
+      "score_value": 2,
+      "away_score": 8,
+      "home_score": 22,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5175749",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559102925201",
+      "sequence": "102925201",
+      "period": 2,
+      "clock": "7:47",
+      "team_id": "2294",
+      "type": "Defensive Rebound",
+      "type_id": "587",
+      "text": "Hannah Stuelke Defensive Rebound.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 8,
+      "home_score": 22,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4682968",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559102926301",
+      "sequence": "102926301",
+      "period": 2,
+      "clock": "7:36",
+      "team_id": "2294",
+      "type": "Lost Ball Turnover",
+      "type_id": "598",
+      "text": "Hannah Stuelke Turnover.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 8,
+      "home_score": 22,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4682968",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559102926302",
+      "sequence": "102926302",
+      "period": 2,
+      "clock": "7:36",
+      "team_id": "2305",
+      "type": "Steal",
+      "type_id": "607",
+      "text": "Regan Williams Steal.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 8,
+      "home_score": 22,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5239467",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559102927001",
+      "sequence": "102927001",
+      "period": 2,
+      "clock": "7:29",
+      "team_id": "2305",
+      "type": "JumpShot",
+      "type_id": "558",
+      "text": "Elle Evans made Three Point Jumper. Assisted by Sania Copeland.",
+      "scoring_play": true,
+      "score_value": 3,
+      "away_score": 11,
+      "home_score": 22,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5109873",
+          "name": null
+        },
+        {
+          "player_id": "5108548",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559102934101",
+      "sequence": "102934101",
+      "period": 2,
+      "clock": "6:58",
+      "team_id": "2294",
+      "type": "Lost Ball Turnover",
+      "type_id": "598",
+      "text": "Lucy Olsen Turnover.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 11,
+      "home_score": 22,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4433815",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559102934102",
+      "sequence": "102934102",
+      "period": 2,
+      "clock": "6:58",
+      "team_id": "2305",
+      "type": "Steal",
+      "type_id": "607",
+      "text": "Laia Conesa Steal.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 11,
+      "home_score": 22,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5175747",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559102934601",
+      "sequence": "102934601",
+      "period": 2,
+      "clock": "6:53",
+      "team_id": "2305",
+      "type": "Lost Ball Turnover",
+      "type_id": "598",
+      "text": "Laia Conesa Turnover.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 11,
+      "home_score": 22,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5175747",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559102934602",
+      "sequence": "102934602",
+      "period": 2,
+      "clock": "6:53",
+      "team_id": "2294",
+      "type": "Steal",
+      "type_id": "607",
+      "text": "Kylie Feuerbach Steal.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 11,
+      "home_score": 22,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4433985",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559102935401",
+      "sequence": "102935401",
+      "period": 2,
+      "clock": "6:45",
+      "team_id": "2294",
+      "type": "PersonalFoul",
+      "type_id": "519",
+      "text": "Foul on Addison O'Grady.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 11,
+      "home_score": 22,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4433538",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559102935402",
+      "sequence": "102935402",
+      "period": 2,
+      "clock": "6:45",
+      "team_id": "2294",
+      "type": "Lost Ball Turnover",
+      "type_id": "598",
+      "text": "Addison O'Grady Turnover.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 11,
+      "home_score": 22,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4433538",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559102936201",
+      "sequence": "102936201",
+      "period": 2,
+      "clock": "6:37",
+      "team_id": "2305",
+      "type": "LayUpShot",
+      "type_id": "572",
+      "text": "Wyvette Mayberry missed Layup.",
+      "scoring_play": false,
+      "score_value": 2,
+      "away_score": 11,
+      "home_score": 22,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4703707",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559102936601",
+      "sequence": "102936601",
+      "period": 2,
+      "clock": "6:33",
+      "team_id": "2305",
+      "type": "Offensive Rebound",
+      "type_id": "586",
+      "text": "Nadira Eltayeb Offensive Rebound.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 11,
+      "home_score": 22,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4898993",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559102936701",
+      "sequence": "102936701",
+      "period": 2,
+      "clock": "6:32",
+      "team_id": "2305",
+      "type": "LayUpShot",
+      "type_id": "572",
+      "text": "Nadira Eltayeb missed Layup.",
+      "scoring_play": false,
+      "score_value": 2,
+      "away_score": 11,
+      "home_score": 22,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4898993",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559102937001",
+      "sequence": "102937001",
+      "period": 2,
+      "clock": "6:29",
+      "team_id": "2294",
+      "type": "Defensive Rebound",
+      "type_id": "587",
+      "text": "Hannah Stuelke Defensive Rebound.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 11,
+      "home_score": 22,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4682968",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559102939301",
+      "sequence": "102939301",
+      "period": 2,
+      "clock": "6:06",
+      "team_id": "2294",
+      "type": "JumpShot",
+      "type_id": "558",
+      "text": "Lucy Olsen made Three Point Jumper. Assisted by Hannah Stuelke.",
+      "scoring_play": true,
+      "score_value": 3,
+      "away_score": 11,
+      "home_score": 25,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4433815",
+          "name": null
+        },
+        {
+          "player_id": "4682968",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559102945201",
+      "sequence": "102945201",
+      "period": 2,
+      "clock": "5:47",
+      "team_id": "2305",
+      "type": "Lost Ball Turnover",
+      "type_id": "598",
+      "text": "Laia Conesa Turnover.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 11,
+      "home_score": 25,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5175747",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559102948001",
+      "sequence": "102948001",
+      "period": 2,
+      "clock": "5:19",
+      "team_id": "2294",
+      "type": "JumpShot",
+      "type_id": "558",
+      "text": "Lucy Olsen missed Jumper.",
+      "scoring_play": false,
+      "score_value": 2,
+      "away_score": 11,
+      "home_score": 25,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4433815",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559102948301",
+      "sequence": "102948301",
+      "period": 2,
+      "clock": "5:16",
+      "team_id": "2305",
+      "type": "Defensive Rebound",
+      "type_id": "587",
+      "text": "Elle Evans Defensive Rebound.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 11,
+      "home_score": 25,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5109873",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559102948701",
+      "sequence": "102948701",
+      "period": 2,
+      "clock": "5:12",
+      "team_id": "2305",
+      "type": "JumpShot",
+      "type_id": "558",
+      "text": "S'Mya Nichols made Jumper.",
+      "scoring_play": true,
+      "score_value": 2,
+      "away_score": 13,
+      "home_score": 25,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5175749",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559102949701",
+      "sequence": "102949701",
+      "period": 2,
+      "clock": "5:02",
+      "team_id": "2294",
+      "type": "LayUpShot",
+      "type_id": "572",
+      "text": "Hannah Stuelke made Layup.",
+      "scoring_play": true,
+      "score_value": 2,
+      "away_score": 13,
+      "home_score": 27,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4682968",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559102949702",
+      "sequence": "102949702",
+      "period": 2,
+      "clock": "5:02",
+      "team_id": "2305",
+      "type": "PersonalFoul",
+      "type_id": "519",
+      "text": "Foul on Carla Osma.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 13,
+      "home_score": 27,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5239466",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559102949703",
+      "sequence": "102949703",
+      "period": 2,
+      "clock": "5:02",
+      "team_id": "2294",
+      "type": "MadeFreeThrow",
+      "type_id": "540",
+      "text": "Hannah Stuelke made Free Throw.",
+      "scoring_play": true,
+      "score_value": 1,
+      "away_score": 13,
+      "home_score": 28,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4682968",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559102955001",
+      "sequence": "102955001",
+      "period": 2,
+      "clock": "4:49",
+      "team_id": "2305",
+      "type": "JumpShot",
+      "type_id": "558",
+      "text": "S'Mya Nichols made Jumper.",
+      "scoring_play": true,
+      "score_value": 2,
+      "away_score": 15,
+      "home_score": 28,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5175749",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559102955801",
+      "sequence": "102955801",
+      "period": 2,
+      "clock": "4:41",
+      "team_id": "2294",
+      "type": "Lost Ball Turnover",
+      "type_id": "598",
+      "text": "Teagan Mallegni Turnover.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 15,
+      "home_score": 28,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5240178",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559102956601",
+      "sequence": "102956601",
+      "period": 2,
+      "clock": "4:33",
+      "team_id": "2305",
+      "type": "JumpShot",
+      "type_id": "558",
+      "text": "Elle Evans made Three Point Jumper. Assisted by Carla Osma.",
+      "scoring_play": true,
+      "score_value": 3,
+      "away_score": 18,
+      "home_score": 28,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5109873",
+          "name": null
+        },
+        {
+          "player_id": "5239466",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559102964001",
+      "sequence": "102964001",
+      "period": 2,
+      "clock": "3:59",
+      "team_id": "2294",
+      "type": "JumpShot",
+      "type_id": "558",
+      "text": "Teagan Mallegni missed Three Point Jumper.",
+      "scoring_play": false,
+      "score_value": 3,
+      "away_score": 18,
+      "home_score": 28,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5240178",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559102964101",
+      "sequence": "102964101",
+      "period": 2,
+      "clock": "3:58",
+      "team_id": "2305",
+      "type": "Defensive Rebound",
+      "type_id": "587",
+      "text": "Wyvette Mayberry Defensive Rebound.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 18,
+      "home_score": 28,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4703707",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559102965501",
+      "sequence": "102965501",
+      "period": 2,
+      "clock": "3:44",
+      "team_id": "2305",
+      "type": "JumpShot",
+      "type_id": "558",
+      "text": "Wyvette Mayberry missed Three Point Jumper.",
+      "scoring_play": false,
+      "score_value": 3,
+      "away_score": 18,
+      "home_score": 28,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4703707",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559102965801",
+      "sequence": "102965801",
+      "period": 2,
+      "clock": "3:41",
+      "team_id": "2294",
+      "type": "Dead Ball Rebound",
+      "type_id": "449",
+      "text": "Iowa Deadball Team Rebound.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 18,
+      "home_score": 28,
+      "wallclock": null
+    },
+    {
+      "play_id": "401713559102965802",
+      "sequence": "102965802",
+      "period": 2,
+      "clock": "3:41",
+      "team_id": "2305",
+      "type": "PersonalFoul",
+      "type_id": "519",
+      "text": "Foul on Nadira Eltayeb.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 18,
+      "home_score": 28,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4898993",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559102965803",
+      "sequence": "102965803",
+      "period": 2,
+      "clock": "3:41",
+      "team_id": null,
+      "type": "OfficialTVTimeOut",
+      "type_id": "580",
+      "text": " Official TV Timeout",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 18,
+      "home_score": 28,
+      "wallclock": null
+    },
+    {
+      "play_id": "401713559102967001",
+      "sequence": "102967001",
+      "period": 2,
+      "clock": "3:29",
+      "team_id": "2294",
+      "type": "Lost Ball Turnover",
+      "type_id": "598",
+      "text": "Taylor Stremlow Turnover.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 18,
+      "home_score": 28,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5240174",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559102967002",
+      "sequence": "102967002",
+      "period": 2,
+      "clock": "3:29",
+      "team_id": "2305",
+      "type": "Steal",
+      "type_id": "607",
+      "text": "S'Mya Nichols Steal.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 18,
+      "home_score": 28,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5175749",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559102967401",
+      "sequence": "102967401",
+      "period": 2,
+      "clock": "3:25",
+      "team_id": "2305",
+      "type": "LayUpShot",
+      "type_id": "572",
+      "text": "Elle Evans made Layup. Assisted by S'Mya Nichols.",
+      "scoring_play": true,
+      "score_value": 2,
+      "away_score": 20,
+      "home_score": 28,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5109873",
+          "name": null
+        },
+        {
+          "player_id": "5175749",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559102968801",
+      "sequence": "102968801",
+      "period": 2,
+      "clock": "3:11",
+      "team_id": "2294",
+      "type": "JumpShot",
+      "type_id": "558",
+      "text": "Taylor Stremlow missed Three Point Jumper.",
+      "scoring_play": false,
+      "score_value": 3,
+      "away_score": 20,
+      "home_score": 28,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5240174",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559102968802",
+      "sequence": "102968802",
+      "period": 2,
+      "clock": "3:11",
+      "team_id": "2305",
+      "type": "Dead Ball Rebound",
+      "type_id": "449",
+      "text": "Kansas Deadball Team Rebound.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 20,
+      "home_score": 28,
+      "wallclock": null
+    },
+    {
+      "play_id": "401713559102974001",
+      "sequence": "102974001",
+      "period": 2,
+      "clock": "2:59",
+      "team_id": "2305",
+      "type": "JumpShot",
+      "type_id": "558",
+      "text": "S'Mya Nichols missed Three Point Jumper.",
+      "scoring_play": false,
+      "score_value": 3,
+      "away_score": 20,
+      "home_score": 28,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5175749",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559102974401",
+      "sequence": "102974401",
+      "period": 2,
+      "clock": "2:55",
+      "team_id": "2294",
+      "type": "Defensive Rebound",
+      "type_id": "587",
+      "text": "Hannah Stuelke Defensive Rebound.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 20,
+      "home_score": 28,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4682968",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559102975001",
+      "sequence": "102975001",
+      "period": 2,
+      "clock": "2:49",
+      "team_id": "2294",
+      "type": "JumpShot",
+      "type_id": "558",
+      "text": "Teagan Mallegni made Three Point Jumper. Assisted by Kylie Feuerbach.",
+      "scoring_play": true,
+      "score_value": 3,
+      "away_score": 20,
+      "home_score": 31,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5240178",
+          "name": null
+        },
+        {
+          "player_id": "4433985",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559102977101",
+      "sequence": "102977101",
+      "period": 2,
+      "clock": "2:28",
+      "team_id": "2305",
+      "type": "JumpShot",
+      "type_id": "558",
+      "text": "Elle Evans made Jumper.",
+      "scoring_play": true,
+      "score_value": 2,
+      "away_score": 22,
+      "home_score": 31,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5109873",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559102978301",
+      "sequence": "102978301",
+      "period": 2,
+      "clock": "2:16",
+      "team_id": "2294",
+      "type": "LayUpShot",
+      "type_id": "572",
+      "text": "Hannah Stuelke made Layup. Assisted by Lucy Olsen.",
+      "scoring_play": true,
+      "score_value": 2,
+      "away_score": 22,
+      "home_score": 33,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4682968",
+          "name": null
+        },
+        {
+          "player_id": "4433815",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559102979501",
+      "sequence": "102979501",
+      "period": 2,
+      "clock": "2:04",
+      "team_id": "2294",
+      "type": "PersonalFoul",
+      "type_id": "519",
+      "text": "Foul on Teagan Mallegni.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 22,
+      "home_score": 33,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5240178",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559102984501",
+      "sequence": "102984501",
+      "period": 2,
+      "clock": "1:54",
+      "team_id": "2305",
+      "type": "JumpShot",
+      "type_id": "558",
+      "text": "Regan Williams made Jumper. Assisted by S'Mya Nichols.",
+      "scoring_play": true,
+      "score_value": 2,
+      "away_score": 24,
+      "home_score": 33,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5239467",
+          "name": null
+        },
+        {
+          "player_id": "5175749",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559102986801",
+      "sequence": "102986801",
+      "period": 2,
+      "clock": "1:31",
+      "team_id": "2305",
+      "type": "PersonalFoul",
+      "type_id": "519",
+      "text": "Foul on Regan Williams.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 24,
+      "home_score": 33,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5239467",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559102986802",
+      "sequence": "102986802",
+      "period": 2,
+      "clock": "1:31",
+      "team_id": "2294",
+      "type": "MadeFreeThrow",
+      "type_id": "540",
+      "text": "Hannah Stuelke missed Free Throw.",
+      "scoring_play": false,
+      "score_value": 1,
+      "away_score": 24,
+      "home_score": 33,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4682968",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559102986803",
+      "sequence": "102986803",
+      "period": 2,
+      "clock": "1:31",
+      "team_id": "2294",
+      "type": "Dead Ball Rebound",
+      "type_id": "449",
+      "text": "Iowa Deadball Team Rebound.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 24,
+      "home_score": 33,
+      "wallclock": null
+    },
+    {
+      "play_id": "401713559102986804",
+      "sequence": "102986804",
+      "period": 2,
+      "clock": "1:31",
+      "team_id": "2294",
+      "type": "MadeFreeThrow",
+      "type_id": "540",
+      "text": "Hannah Stuelke made Free Throw.",
+      "scoring_play": true,
+      "score_value": 1,
+      "away_score": 24,
+      "home_score": 34,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4682968",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559102988701",
+      "sequence": "102988701",
+      "period": 2,
+      "clock": "1:12",
+      "team_id": "2305",
+      "type": "JumpShot",
+      "type_id": "558",
+      "text": "S'Mya Nichols missed Jumper.",
+      "scoring_play": false,
+      "score_value": 2,
+      "away_score": 24,
+      "home_score": 34,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5175749",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559102989001",
+      "sequence": "102989001",
+      "period": 2,
+      "clock": "1:09",
+      "team_id": "2294",
+      "type": "Defensive Rebound",
+      "type_id": "587",
+      "text": "Kylie Feuerbach Defensive Rebound.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 24,
+      "home_score": 34,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4433985",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559102994801",
+      "sequence": "102994801",
+      "period": 2,
+      "clock": "0:51",
+      "team_id": "2294",
+      "type": "JumpShot",
+      "type_id": "558",
+      "text": "Lucy Olsen missed Jumper.",
+      "scoring_play": false,
+      "score_value": 2,
+      "away_score": 24,
+      "home_score": 34,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4433815",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559102995201",
+      "sequence": "102995201",
+      "period": 2,
+      "clock": "0:47",
+      "team_id": "2294",
+      "type": "Offensive Rebound",
+      "type_id": "586",
+      "text": "Hannah Stuelke Offensive Rebound.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 24,
+      "home_score": 34,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4682968",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559102995301",
+      "sequence": "102995301",
+      "period": 2,
+      "clock": "0:46",
+      "team_id": "2294",
+      "type": "JumpShot",
+      "type_id": "558",
+      "text": "Teagan Mallegni made Three Point Jumper. Assisted by Hannah Stuelke.",
+      "scoring_play": true,
+      "score_value": 3,
+      "away_score": 24,
+      "home_score": 37,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5240178",
+          "name": null
+        },
+        {
+          "player_id": "4682968",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559102996701",
+      "sequence": "102996701",
+      "period": 2,
+      "clock": "0:32",
+      "team_id": "2305",
+      "type": "JumpShot",
+      "type_id": "558",
+      "text": "Elle Evans made Three Point Jumper. Assisted by S'Mya Nichols.",
+      "scoring_play": true,
+      "score_value": 3,
+      "away_score": 27,
+      "home_score": 37,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5109873",
+          "name": null
+        },
+        {
+          "player_id": "5175749",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559102999501",
+      "sequence": "102999501",
+      "period": 2,
+      "clock": "0:04",
+      "team_id": "2305",
+      "type": "PersonalFoul",
+      "type_id": "519",
+      "text": "Foul on Sania Copeland.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 27,
+      "home_score": 37,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5108548",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559102999502",
+      "sequence": "102999502",
+      "period": 2,
+      "clock": "0:04",
+      "team_id": "2294",
+      "type": "MadeFreeThrow",
+      "type_id": "540",
+      "text": "Lucy Olsen made Free Throw.",
+      "scoring_play": true,
+      "score_value": 1,
+      "away_score": 27,
+      "home_score": 38,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4433815",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559102999503",
+      "sequence": "102999503",
+      "period": 2,
+      "clock": "0:04",
+      "team_id": "2294",
+      "type": "MadeFreeThrow",
+      "type_id": "540",
+      "text": "Lucy Olsen missed Free Throw.",
+      "scoring_play": false,
+      "score_value": 1,
+      "away_score": 27,
+      "home_score": 38,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4433815",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559102999701",
+      "sequence": "102999701",
+      "period": 2,
+      "clock": "0:02",
+      "team_id": "2305",
+      "type": "Defensive Rebound",
+      "type_id": "587",
+      "text": "Sania Copeland Defensive Rebound.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 27,
+      "home_score": 38,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5108548",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559102999902",
+      "sequence": "102999902",
+      "period": 2,
+      "clock": "0:00",
+      "team_id": "2305",
+      "type": "JumpShot",
+      "type_id": "558",
+      "text": "S'Mya Nichols missed Jumper.",
+      "scoring_play": false,
+      "score_value": 2,
+      "away_score": 27,
+      "home_score": 38,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5175749",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559102999903",
+      "sequence": "102999903",
+      "period": 2,
+      "clock": "0:00",
+      "team_id": "2294",
+      "type": "Dead Ball Rebound",
+      "type_id": "449",
+      "text": "Iowa Deadball Team Rebound.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 27,
+      "home_score": 38,
+      "wallclock": null
+    },
+    {
+      "play_id": "401713559102999901",
+      "sequence": "102999901",
+      "period": 2,
+      "clock": "0:00",
+      "team_id": null,
+      "type": "End Period",
+      "type_id": "412",
+      "text": "End of 2nd Quarter",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 27,
+      "home_score": 38,
+      "wallclock": null
+    },
+    {
+      "play_id": "401713559103905701",
+      "sequence": "103905701",
+      "period": 3,
+      "clock": "9:42",
+      "team_id": "2305",
+      "type": "PersonalFoul",
+      "type_id": "519",
+      "text": "Foul on Laia Conesa.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 27,
+      "home_score": 38,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5175747",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559103905702",
+      "sequence": "103905702",
+      "period": 3,
+      "clock": "9:42",
+      "team_id": "2294",
+      "type": "MadeFreeThrow",
+      "type_id": "540",
+      "text": "Lucy Olsen made Free Throw.",
+      "scoring_play": true,
+      "score_value": 1,
+      "away_score": 27,
+      "home_score": 39,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4433815",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559103905703",
+      "sequence": "103905703",
+      "period": 3,
+      "clock": "9:42",
+      "team_id": "2294",
+      "type": "MadeFreeThrow",
+      "type_id": "540",
+      "text": "Lucy Olsen made Free Throw.",
+      "scoring_play": true,
+      "score_value": 1,
+      "away_score": 27,
+      "home_score": 40,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4433815",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559103907001",
+      "sequence": "103907001",
+      "period": 3,
+      "clock": "9:29",
+      "team_id": "2294",
+      "type": "PersonalFoul",
+      "type_id": "519",
+      "text": "Foul on Lucy Olsen.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 27,
+      "home_score": 40,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4433815",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559103907002",
+      "sequence": "103907002",
+      "period": 3,
+      "clock": "9:29",
+      "team_id": "2305",
+      "type": "MadeFreeThrow",
+      "type_id": "540",
+      "text": "S'Mya Nichols made Free Throw.",
+      "scoring_play": true,
+      "score_value": 1,
+      "away_score": 28,
+      "home_score": 40,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5175749",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559103907003",
+      "sequence": "103907003",
+      "period": 3,
+      "clock": "9:29",
+      "team_id": "2305",
+      "type": "MadeFreeThrow",
+      "type_id": "540",
+      "text": "S'Mya Nichols made Free Throw.",
+      "scoring_play": true,
+      "score_value": 1,
+      "away_score": 29,
+      "home_score": 40,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5175749",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559103907901",
+      "sequence": "103907901",
+      "period": 3,
+      "clock": "9:20",
+      "team_id": "2294",
+      "type": "JumpShot",
+      "type_id": "558",
+      "text": null,
+      "scoring_play": true,
+      "score_value": 1,
+      "away_score": 29,
+      "home_score": 42,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4433538",
+          "name": null
+        },
+        {
+          "player_id": "4433985",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559103914601",
+      "sequence": "103914601",
+      "period": 3,
+      "clock": "8:53",
+      "team_id": "2305",
+      "type": "JumpShot",
+      "type_id": "558",
+      "text": "S'Mya Nichols missed Jumper.",
+      "scoring_play": false,
+      "score_value": 2,
+      "away_score": 29,
+      "home_score": 42,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5175749",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559103915101",
+      "sequence": "103915101",
+      "period": 3,
+      "clock": "8:48",
+      "team_id": "2294",
+      "type": "Defensive Rebound",
+      "type_id": "587",
+      "text": "Sydney Affolter Defensive Rebound.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 29,
+      "home_score": 42,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4898389",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559103917101",
+      "sequence": "103917101",
+      "period": 3,
+      "clock": "8:28",
+      "team_id": "2294",
+      "type": "JumpShot",
+      "type_id": "558",
+      "text": "Kylie Feuerbach missed Three Point Jumper.",
+      "scoring_play": false,
+      "score_value": 3,
+      "away_score": 29,
+      "home_score": 42,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4433985",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559103917401",
+      "sequence": "103917401",
+      "period": 3,
+      "clock": "8:25",
+      "team_id": "2305",
+      "type": "Defensive Rebound",
+      "type_id": "587",
+      "text": "Elle Evans Defensive Rebound.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 29,
+      "home_score": 42,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5109873",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559103917402",
+      "sequence": "103917402",
+      "period": 3,
+      "clock": "8:25",
+      "team_id": "2294",
+      "type": "PersonalFoul",
+      "type_id": "519",
+      "text": "Foul on Sydney Affolter.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 29,
+      "home_score": 42,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4898389",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559103918401",
+      "sequence": "103918401",
+      "period": 3,
+      "clock": "8:15",
+      "team_id": "2305",
+      "type": "JumpShot",
+      "type_id": "558",
+      "text": "Elle Evans missed Three Point Jumper.",
+      "scoring_play": false,
+      "score_value": 3,
+      "away_score": 29,
+      "home_score": 42,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5109873",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559103918701",
+      "sequence": "103918701",
+      "period": 3,
+      "clock": "8:12",
+      "team_id": "2294",
+      "type": "Defensive Rebound",
+      "type_id": "587",
+      "text": "Lucy Olsen Defensive Rebound.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 29,
+      "home_score": 42,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4433815",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559103919401",
+      "sequence": "103919401",
+      "period": 3,
+      "clock": "8:05",
+      "team_id": "2294",
+      "type": "LayUpShot",
+      "type_id": "572",
+      "text": "Hannah Stuelke made Layup. Assisted by Lucy Olsen.",
+      "scoring_play": true,
+      "score_value": 2,
+      "away_score": 29,
+      "home_score": 44,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4682968",
+          "name": null
+        },
+        {
+          "player_id": "4433815",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559103925301",
+      "sequence": "103925301",
+      "period": 3,
+      "clock": "7:46",
+      "team_id": "2305",
+      "type": "JumpShot",
+      "type_id": "558",
+      "text": "Wyvette Mayberry made Three Point Jumper. Assisted by Regan Williams.",
+      "scoring_play": true,
+      "score_value": 3,
+      "away_score": 32,
+      "home_score": 44,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4703707",
+          "name": null
+        },
+        {
+          "player_id": "5239467",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559103927701",
+      "sequence": "103927701",
+      "period": 3,
+      "clock": "7:22",
+      "team_id": "2294",
+      "type": "LayUpShot",
+      "type_id": "572",
+      "text": "Hannah Stuelke missed Layup.",
+      "scoring_play": false,
+      "score_value": 2,
+      "away_score": 32,
+      "home_score": 44,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4682968",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559103928101",
+      "sequence": "103928101",
+      "period": 3,
+      "clock": "7:18",
+      "team_id": "2305",
+      "type": "Defensive Rebound",
+      "type_id": "587",
+      "text": "S'Mya Nichols Defensive Rebound.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 32,
+      "home_score": 44,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5175749",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559103928601",
+      "sequence": "103928601",
+      "period": 3,
+      "clock": "7:13",
+      "team_id": "2305",
+      "type": "JumpShot",
+      "type_id": "558",
+      "text": "Sania Copeland missed Jumper.",
+      "scoring_play": false,
+      "score_value": 2,
+      "away_score": 32,
+      "home_score": 44,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5108548",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559103929401",
+      "sequence": "103929401",
+      "period": 3,
+      "clock": "7:05",
+      "team_id": "2305",
+      "type": "Offensive Rebound",
+      "type_id": "586",
+      "text": "Regan Williams Offensive Rebound.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 32,
+      "home_score": 44,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5239467",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559103929402",
+      "sequence": "103929402",
+      "period": 3,
+      "clock": "7:05",
+      "team_id": "2305",
+      "type": "TipShot",
+      "type_id": "437",
+      "text": "Regan Williams made Two Point Tip Shot.",
+      "scoring_play": true,
+      "score_value": 2,
+      "away_score": 34,
+      "home_score": 44,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5239467",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559103929801",
+      "sequence": "103929801",
+      "period": 3,
+      "clock": "7:01",
+      "team_id": "2294",
+      "type": "JumpShot",
+      "type_id": "558",
+      "text": "Lucy Olsen made Three Point Jumper.",
+      "scoring_play": true,
+      "score_value": 3,
+      "away_score": 34,
+      "home_score": 47,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4433815",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559103935701",
+      "sequence": "103935701",
+      "period": 3,
+      "clock": "6:42",
+      "team_id": "2305",
+      "type": "JumpShot",
+      "type_id": "558",
+      "text": "Elle Evans missed Three Point Jumper.",
+      "scoring_play": false,
+      "score_value": 3,
+      "away_score": 34,
+      "home_score": 47,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5109873",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559103936101",
+      "sequence": "103936101",
+      "period": 3,
+      "clock": "6:38",
+      "team_id": "2294",
+      "type": "Defensive Rebound",
+      "type_id": "587",
+      "text": "Kylie Feuerbach Defensive Rebound.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 34,
+      "home_score": 47,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4433985",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559103936801",
+      "sequence": "103936801",
+      "period": 3,
+      "clock": "6:31",
+      "team_id": "2294",
+      "type": "JumpShot",
+      "type_id": "558",
+      "text": "Lucy Olsen made Jumper.",
+      "scoring_play": true,
+      "score_value": 2,
+      "away_score": 34,
+      "home_score": 49,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4433815",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559103938701",
+      "sequence": "103938701",
+      "period": 3,
+      "clock": "6:12",
+      "team_id": "2305",
+      "type": "JumpShot",
+      "type_id": "558",
+      "text": "Wyvette Mayberry missed Three Point Jumper.",
+      "scoring_play": false,
+      "score_value": 3,
+      "away_score": 34,
+      "home_score": 49,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4703707",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559103938801",
+      "sequence": "103938801",
+      "period": 3,
+      "clock": "6:11",
+      "team_id": "2294",
+      "type": "Defensive Rebound",
+      "type_id": "587",
+      "text": "Sydney Affolter Defensive Rebound.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 34,
+      "home_score": 49,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4898389",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559103939401",
+      "sequence": "103939401",
+      "period": 3,
+      "clock": "6:05",
+      "team_id": "2305",
+      "type": "PersonalFoul",
+      "type_id": "519",
+      "text": "Foul on Wyvette Mayberry.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 34,
+      "home_score": 49,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4703707",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559103944601",
+      "sequence": "103944601",
+      "period": 3,
+      "clock": "5:53",
+      "team_id": "2294",
+      "type": "JumpShot",
+      "type_id": "558",
+      "text": "Lucy Olsen missed Jumper.",
+      "scoring_play": false,
+      "score_value": 2,
+      "away_score": 34,
+      "home_score": 49,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4433815",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559103945001",
+      "sequence": "103945001",
+      "period": 3,
+      "clock": "5:49",
+      "team_id": "2305",
+      "type": "Defensive Rebound",
+      "type_id": "587",
+      "text": "Elle Evans Defensive Rebound.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 34,
+      "home_score": 49,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5109873",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559103946201",
+      "sequence": "103946201",
+      "period": 3,
+      "clock": "5:37",
+      "team_id": "2305",
+      "type": "JumpShot",
+      "type_id": "558",
+      "text": "S'Mya Nichols made Three Point Jumper.",
+      "scoring_play": true,
+      "score_value": 3,
+      "away_score": 37,
+      "home_score": 49,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5175749",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559103947401",
+      "sequence": "103947401",
+      "period": 3,
+      "clock": "5:25",
+      "team_id": "2294",
+      "type": "JumpShot",
+      "type_id": "558",
+      "text": "Taylor McCabe missed Three Point Jumper.",
+      "scoring_play": false,
+      "score_value": 3,
+      "away_score": 37,
+      "home_score": 49,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4858677",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559103947701",
+      "sequence": "103947701",
+      "period": 3,
+      "clock": "5:22",
+      "team_id": "2305",
+      "type": "Defensive Rebound",
+      "type_id": "587",
+      "text": "Nadira Eltayeb Defensive Rebound.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 37,
+      "home_score": 49,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4898993",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559103948401",
+      "sequence": "103948401",
+      "period": 3,
+      "clock": "5:15",
+      "team_id": "2305",
+      "type": "JumpShot",
+      "type_id": "558",
+      "text": "Wyvette Mayberry missed Three Point Jumper.",
+      "scoring_play": false,
+      "score_value": 3,
+      "away_score": 37,
+      "home_score": 49,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4703707",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559103948701",
+      "sequence": "103948701",
+      "period": 3,
+      "clock": "5:12",
+      "team_id": "2294",
+      "type": "Defensive Rebound",
+      "type_id": "587",
+      "text": "Addison O'Grady Defensive Rebound.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 37,
+      "home_score": 49,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4433538",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559103954001",
+      "sequence": "103954001",
+      "period": 3,
+      "clock": "4:59",
+      "team_id": "2294",
+      "type": "Lost Ball Turnover",
+      "type_id": "598",
+      "text": "Addison O'Grady Turnover.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 37,
+      "home_score": 49,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4433538",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559103954002",
+      "sequence": "103954002",
+      "period": 3,
+      "clock": "4:59",
+      "team_id": "2305",
+      "type": "Steal",
+      "type_id": "607",
+      "text": "Wyvette Mayberry Steal.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 37,
+      "home_score": 49,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4703707",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559103954701",
+      "sequence": "103954701",
+      "period": 3,
+      "clock": "4:52",
+      "team_id": "2305",
+      "type": "JumpShot",
+      "type_id": "558",
+      "text": "Wyvette Mayberry missed Jumper.",
+      "scoring_play": false,
+      "score_value": 2,
+      "away_score": 37,
+      "home_score": 49,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4703707",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559103954702",
+      "sequence": "103954702",
+      "period": 3,
+      "clock": "4:52",
+      "team_id": "2294",
+      "type": "Block Shot",
+      "type_id": "618",
+      "text": "Teagan Mallegni Block.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 37,
+      "home_score": 49,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5240178",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559103955101",
+      "sequence": "103955101",
+      "period": 3,
+      "clock": "4:48",
+      "team_id": "2294",
+      "type": "Defensive Rebound",
+      "type_id": "587",
+      "text": "Taylor McCabe Defensive Rebound.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 37,
+      "home_score": 49,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4858677",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559103955301",
+      "sequence": "103955301",
+      "period": 3,
+      "clock": "4:46",
+      "team_id": "2294",
+      "type": "JumpShot",
+      "type_id": "558",
+      "text": "Teagan Mallegni missed Three Point Jumper.",
+      "scoring_play": false,
+      "score_value": 3,
+      "away_score": 37,
+      "home_score": 49,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5240178",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559103955701",
+      "sequence": "103955701",
+      "period": 3,
+      "clock": "4:42",
+      "team_id": "2305",
+      "type": "Defensive Rebound",
+      "type_id": "587",
+      "text": "Wyvette Mayberry Defensive Rebound.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 37,
+      "home_score": 49,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4703707",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559103958101",
+      "sequence": "103958101",
+      "period": 3,
+      "clock": "4:18",
+      "team_id": "2305",
+      "type": "JumpShot",
+      "type_id": "558",
+      "text": "Carla Osma missed Three Point Jumper.",
+      "scoring_play": false,
+      "score_value": 3,
+      "away_score": 37,
+      "home_score": 49,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5239466",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559103958401",
+      "sequence": "103958401",
+      "period": 3,
+      "clock": "4:15",
+      "team_id": "2294",
+      "type": "Defensive Rebound",
+      "type_id": "587",
+      "text": "Addison O'Grady Defensive Rebound.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 37,
+      "home_score": 49,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4433538",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559103959301",
+      "sequence": "103959301",
+      "period": 3,
+      "clock": "4:06",
+      "team_id": "2294",
+      "type": "JumpShot",
+      "type_id": "558",
+      "text": "Taylor McCabe made Three Point Jumper. Assisted by Lucy Olsen.",
+      "scoring_play": true,
+      "score_value": 3,
+      "away_score": 37,
+      "home_score": 52,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4858677",
+          "name": null
+        },
+        {
+          "player_id": "4433815",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559103965301",
+      "sequence": "103965301",
+      "period": 3,
+      "clock": "3:46",
+      "team_id": "2305",
+      "type": "JumpShot",
+      "type_id": "558",
+      "text": "Elle Evans missed Three Point Jumper.",
+      "scoring_play": false,
+      "score_value": 3,
+      "away_score": 37,
+      "home_score": 52,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5109873",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559103965501",
+      "sequence": "103965501",
+      "period": 3,
+      "clock": "3:44",
+      "team_id": "2294",
+      "type": "Defensive Rebound",
+      "type_id": "587",
+      "text": "Lucy Olsen Defensive Rebound.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 37,
+      "home_score": 52,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4433815",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559103966201",
+      "sequence": "103966201",
+      "period": 3,
+      "clock": "3:37",
+      "team_id": "2294",
+      "type": "LayUpShot",
+      "type_id": "572",
+      "text": "Addison O'Grady made Layup. Assisted by Lucy Olsen.",
+      "scoring_play": true,
+      "score_value": 2,
+      "away_score": 37,
+      "home_score": 54,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4433538",
+          "name": null
+        },
+        {
+          "player_id": "4433815",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559103966501",
+      "sequence": "103966501",
+      "period": 3,
+      "clock": "3:34",
+      "team_id": "2305",
+      "type": "OfficialTVTimeOut",
+      "type_id": "580",
+      "text": " Official TV Timeout",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 37,
+      "home_score": 54,
+      "wallclock": null
+    },
+    {
+      "play_id": "401713559103968401",
+      "sequence": "103968401",
+      "period": 3,
+      "clock": "3:15",
+      "team_id": "2294",
+      "type": "PersonalFoul",
+      "type_id": "519",
+      "text": "Foul on Kylie Feuerbach.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 37,
+      "home_score": 54,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4433985",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559103969901",
+      "sequence": "103969901",
+      "period": 3,
+      "clock": "3:00",
+      "team_id": "2305",
+      "type": "JumpShot",
+      "type_id": "558",
+      "text": "Elle Evans made Jumper.",
+      "scoring_play": true,
+      "score_value": 2,
+      "away_score": 39,
+      "home_score": 54,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5109873",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559103976001",
+      "sequence": "103976001",
+      "period": 3,
+      "clock": "2:39",
+      "team_id": "2294",
+      "type": "LayUpShot",
+      "type_id": "572",
+      "text": "Ava Heiden missed Layup.",
+      "scoring_play": false,
+      "score_value": 2,
+      "away_score": 39,
+      "home_score": 54,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5240175",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559103976301",
+      "sequence": "103976301",
+      "period": 3,
+      "clock": "2:36",
+      "team_id": "2294",
+      "type": "Offensive Rebound",
+      "type_id": "586",
+      "text": "Taylor Stremlow Offensive Rebound.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 39,
+      "home_score": 54,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5240174",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559103976501",
+      "sequence": "103976501",
+      "period": 3,
+      "clock": "2:34",
+      "team_id": "2294",
+      "type": "LayUpShot",
+      "type_id": "572",
+      "text": "Taylor Stremlow made Layup.",
+      "scoring_play": true,
+      "score_value": 2,
+      "away_score": 39,
+      "home_score": 56,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5240174",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559103979401",
+      "sequence": "103979401",
+      "period": 3,
+      "clock": "2:05",
+      "team_id": "2305",
+      "type": "JumpShot",
+      "type_id": "558",
+      "text": "Nadira Eltayeb missed Jumper.",
+      "scoring_play": false,
+      "score_value": 2,
+      "away_score": 39,
+      "home_score": 56,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4898993",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559103979701",
+      "sequence": "103979701",
+      "period": 3,
+      "clock": "2:02",
+      "team_id": "2294",
+      "type": "Defensive Rebound",
+      "type_id": "587",
+      "text": "Ava Heiden Defensive Rebound.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 39,
+      "home_score": 56,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5240175",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559103984601",
+      "sequence": "103984601",
+      "period": 3,
+      "clock": "1:53",
+      "team_id": "2294",
+      "type": "JumpShot",
+      "type_id": "558",
+      "text": "Ava Heiden missed Jumper.",
+      "scoring_play": false,
+      "score_value": 2,
+      "away_score": 39,
+      "home_score": 56,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5240175",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559103984901",
+      "sequence": "103984901",
+      "period": 3,
+      "clock": "1:50",
+      "team_id": "2305",
+      "type": "Defensive Rebound",
+      "type_id": "587",
+      "text": "Carla Osma Defensive Rebound.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 39,
+      "home_score": 56,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5239466",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559103985601",
+      "sequence": "103985601",
+      "period": 3,
+      "clock": "1:43",
+      "team_id": "2305",
+      "type": "JumpShot",
+      "type_id": "558",
+      "text": "Elle Evans made Three Point Jumper. Assisted by S'Mya Nichols.",
+      "scoring_play": true,
+      "score_value": 3,
+      "away_score": 42,
+      "home_score": 56,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5109873",
+          "name": null
+        },
+        {
+          "player_id": "5175749",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559103987401",
+      "sequence": "103987401",
+      "period": 3,
+      "clock": "1:25",
+      "team_id": "2294",
+      "type": "JumpShot",
+      "type_id": "558",
+      "text": "Kylie Feuerbach missed Three Point Jumper.",
+      "scoring_play": false,
+      "score_value": 3,
+      "away_score": 42,
+      "home_score": 56,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4433985",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559103987901",
+      "sequence": "103987901",
+      "period": 3,
+      "clock": "1:20",
+      "team_id": "2305",
+      "type": "Defensive Rebound",
+      "type_id": "587",
+      "text": "S'Mya Nichols Defensive Rebound.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 42,
+      "home_score": 56,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5175749",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559103988401",
+      "sequence": "103988401",
+      "period": 3,
+      "clock": "1:15",
+      "team_id": "2294",
+      "type": "PersonalFoul",
+      "type_id": "519",
+      "text": "Foul on Taylor Stremlow.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 42,
+      "home_score": 56,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5240174",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559103988402",
+      "sequence": "103988402",
+      "period": 3,
+      "clock": "1:15",
+      "team_id": "2305",
+      "type": "MadeFreeThrow",
+      "type_id": "540",
+      "text": "Sania Copeland made Free Throw.",
+      "scoring_play": true,
+      "score_value": 1,
+      "away_score": 43,
+      "home_score": 56,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5108548",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559103988403",
+      "sequence": "103988403",
+      "period": 3,
+      "clock": "1:15",
+      "team_id": "2305",
+      "type": "MadeFreeThrow",
+      "type_id": "540",
+      "text": "Sania Copeland missed Free Throw.",
+      "scoring_play": false,
+      "score_value": 1,
+      "away_score": 43,
+      "home_score": 56,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5108548",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559103988701",
+      "sequence": "103988701",
+      "period": 3,
+      "clock": "1:12",
+      "team_id": "2294",
+      "type": "Defensive Rebound",
+      "type_id": "587",
+      "text": "Sydney Affolter Defensive Rebound.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 43,
+      "home_score": 56,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4898389",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559103989601",
+      "sequence": "103989601",
+      "period": 3,
+      "clock": "1:03",
+      "team_id": "2294",
+      "type": "LayUpShot",
+      "type_id": "572",
+      "text": "Ava Heiden made Layup. Assisted by Hannah Stuelke.",
+      "scoring_play": true,
+      "score_value": 2,
+      "away_score": 43,
+      "home_score": 58,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5240175",
+          "name": null
+        },
+        {
+          "player_id": "4682968",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559103995501",
+      "sequence": "103995501",
+      "period": 3,
+      "clock": "0:44",
+      "team_id": "2305",
+      "type": "JumpShot",
+      "type_id": "558",
+      "text": "S'Mya Nichols made Three Point Jumper.",
+      "scoring_play": true,
+      "score_value": 3,
+      "away_score": 46,
+      "home_score": 58,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5175749",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559103998601",
+      "sequence": "103998601",
+      "period": 3,
+      "clock": "0:13",
+      "team_id": "2294",
+      "type": "JumpShot",
+      "type_id": "558",
+      "text": "Hannah Stuelke missed Jumper.",
+      "scoring_play": false,
+      "score_value": 2,
+      "away_score": 46,
+      "home_score": 58,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4682968",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559103999001",
+      "sequence": "103999001",
+      "period": 3,
+      "clock": "0:09",
+      "team_id": "2305",
+      "type": "Defensive Rebound",
+      "type_id": "587",
+      "text": "Regan Williams Defensive Rebound.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 46,
+      "home_score": 58,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5239467",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559103999501",
+      "sequence": "103999501",
+      "period": 3,
+      "clock": "0:04",
+      "team_id": "2305",
+      "type": "Lost Ball Turnover",
+      "type_id": "598",
+      "text": "S'Mya Nichols Turnover.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 46,
+      "home_score": 58,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5175749",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559103999901",
+      "sequence": "103999901",
+      "period": 3,
+      "clock": "0:00",
+      "team_id": null,
+      "type": "End Period",
+      "type_id": "412",
+      "text": "End of 3rd Quarter",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 46,
+      "home_score": 58,
+      "wallclock": null
+    },
+    {
+      "play_id": "401713559104904901",
+      "sequence": "104904901",
+      "period": 4,
+      "clock": "9:50",
+      "team_id": "2305",
+      "type": "JumpShot",
+      "type_id": "558",
+      "text": "S'Mya Nichols missed Three Point Jumper.",
+      "scoring_play": false,
+      "score_value": 3,
+      "away_score": 46,
+      "home_score": 58,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5175749",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559104905201",
+      "sequence": "104905201",
+      "period": 4,
+      "clock": "9:47",
+      "team_id": "2294",
+      "type": "Defensive Rebound",
+      "type_id": "587",
+      "text": "Taylor McCabe Defensive Rebound.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 46,
+      "home_score": 58,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4858677",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559104906001",
+      "sequence": "104906001",
+      "period": 4,
+      "clock": "9:39",
+      "team_id": "2294",
+      "type": "LayUpShot",
+      "type_id": "572",
+      "text": "Hannah Stuelke made Layup. Assisted by Lucy Olsen.",
+      "scoring_play": true,
+      "score_value": 2,
+      "away_score": 46,
+      "home_score": 60,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4682968",
+          "name": null
+        },
+        {
+          "player_id": "4433815",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559104908101",
+      "sequence": "104908101",
+      "period": 4,
+      "clock": "9:18",
+      "team_id": "2305",
+      "type": "Lost Ball Turnover",
+      "type_id": "598",
+      "text": "Elle Evans Turnover.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 46,
+      "home_score": 60,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5109873",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559104909001",
+      "sequence": "104909001",
+      "period": 4,
+      "clock": "9:09",
+      "team_id": "2294",
+      "type": "Lost Ball Turnover",
+      "type_id": "598",
+      "text": "Taylor McCabe Turnover.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 46,
+      "home_score": 60,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4858677",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559104914401",
+      "sequence": "104914401",
+      "period": 4,
+      "clock": "8:55",
+      "team_id": "2294",
+      "type": "PersonalFoul",
+      "type_id": "519",
+      "text": "Foul on Lucy Olsen.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 46,
+      "home_score": 60,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4433815",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559104914402",
+      "sequence": "104914402",
+      "period": 4,
+      "clock": "8:55",
+      "team_id": "2305",
+      "type": "MadeFreeThrow",
+      "type_id": "540",
+      "text": "S'Mya Nichols made Free Throw.",
+      "scoring_play": true,
+      "score_value": 1,
+      "away_score": 47,
+      "home_score": 60,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5175749",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559104914403",
+      "sequence": "104914403",
+      "period": 4,
+      "clock": "8:55",
+      "team_id": "2305",
+      "type": "MadeFreeThrow",
+      "type_id": "540",
+      "text": "S'Mya Nichols made Free Throw.",
+      "scoring_play": true,
+      "score_value": 1,
+      "away_score": 48,
+      "home_score": 60,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5175749",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559104915901",
+      "sequence": "104915901",
+      "period": 4,
+      "clock": "8:40",
+      "team_id": "2294",
+      "type": "Lost Ball Turnover",
+      "type_id": "598",
+      "text": "Hannah Stuelke Turnover.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 48,
+      "home_score": 60,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4682968",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559104917301",
+      "sequence": "104917301",
+      "period": 4,
+      "clock": "8:26",
+      "team_id": "2294",
+      "type": "PersonalFoul",
+      "type_id": "519",
+      "text": "Foul on Addison O'Grady.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 48,
+      "home_score": 60,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4433538",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559104917302",
+      "sequence": "104917302",
+      "period": 4,
+      "clock": "8:26",
+      "team_id": "2305",
+      "type": "MadeFreeThrow",
+      "type_id": "540",
+      "text": "S'Mya Nichols made Free Throw.",
+      "scoring_play": true,
+      "score_value": 1,
+      "away_score": 49,
+      "home_score": 60,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5175749",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559104917303",
+      "sequence": "104917303",
+      "period": 4,
+      "clock": "8:26",
+      "team_id": "2305",
+      "type": "MadeFreeThrow",
+      "type_id": "540",
+      "text": "S'Mya Nichols missed Free Throw.",
+      "scoring_play": false,
+      "score_value": 1,
+      "away_score": 49,
+      "home_score": 60,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5175749",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559104917304",
+      "sequence": "104917304",
+      "period": 4,
+      "clock": "8:26",
+      "team_id": "2294",
+      "type": "Defensive Rebound",
+      "type_id": "587",
+      "text": "Hannah Stuelke Defensive Rebound.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 49,
+      "home_score": 60,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4682968",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559104917901",
+      "sequence": "104917901",
+      "period": 4,
+      "clock": "8:20",
+      "team_id": "2305",
+      "type": "PersonalFoul",
+      "type_id": "519",
+      "text": "Foul on Regan Williams.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 49,
+      "home_score": 60,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5239467",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559104918601",
+      "sequence": "104918601",
+      "period": 4,
+      "clock": "8:13",
+      "team_id": "2294",
+      "type": "PersonalFoul",
+      "type_id": "519",
+      "text": "Foul on Sydney Affolter.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 49,
+      "home_score": 60,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4898389",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559104918602",
+      "sequence": "104918602",
+      "period": 4,
+      "clock": "8:13",
+      "team_id": "2294",
+      "type": "Lost Ball Turnover",
+      "type_id": "598",
+      "text": "Sydney Affolter Turnover.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 49,
+      "home_score": 60,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4898389",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559104925201",
+      "sequence": "104925201",
+      "period": 4,
+      "clock": "7:47",
+      "team_id": "2294",
+      "type": "PersonalFoul",
+      "type_id": "519",
+      "text": "Foul on Addison O'Grady.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 49,
+      "home_score": 60,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4433538",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559104925202",
+      "sequence": "104925202",
+      "period": 4,
+      "clock": "7:47",
+      "team_id": null,
+      "type": "OfficialTVTimeOut",
+      "type_id": "580",
+      "text": " Official TV Timeout",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 49,
+      "home_score": 60,
+      "wallclock": null
+    },
+    {
+      "play_id": "401713559104925203",
+      "sequence": "104925203",
+      "period": 4,
+      "clock": "7:47",
+      "team_id": "2305",
+      "type": "MadeFreeThrow",
+      "type_id": "540",
+      "text": "S'Mya Nichols made Free Throw.",
+      "scoring_play": true,
+      "score_value": 1,
+      "away_score": 50,
+      "home_score": 60,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5175749",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559104925301",
+      "sequence": "104925301",
+      "period": 4,
+      "clock": "7:46",
+      "team_id": "2305",
+      "type": "MadeFreeThrow",
+      "type_id": "540",
+      "text": "S'Mya Nichols missed Free Throw.",
+      "scoring_play": false,
+      "score_value": 1,
+      "away_score": 50,
+      "home_score": 60,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5175749",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559104925401",
+      "sequence": "104925401",
+      "period": 4,
+      "clock": "7:45",
+      "team_id": "2294",
+      "type": "Defensive Rebound",
+      "type_id": "587",
+      "text": "Hannah Stuelke Defensive Rebound.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 50,
+      "home_score": 60,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4682968",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559104926801",
+      "sequence": "104926801",
+      "period": 4,
+      "clock": "7:31",
+      "team_id": "2305",
+      "type": "PersonalFoul",
+      "type_id": "519",
+      "text": "Foul on Regan Williams.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 50,
+      "home_score": 60,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5239467",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559104926802",
+      "sequence": "104926802",
+      "period": 4,
+      "clock": "7:31",
+      "team_id": "2294",
+      "type": "MadeFreeThrow",
+      "type_id": "540",
+      "text": "Hannah Stuelke made Free Throw.",
+      "scoring_play": true,
+      "score_value": 1,
+      "away_score": 50,
+      "home_score": 61,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4682968",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559104926803",
+      "sequence": "104926803",
+      "period": 4,
+      "clock": "7:31",
+      "team_id": "2294",
+      "type": "MadeFreeThrow",
+      "type_id": "540",
+      "text": "Hannah Stuelke made Free Throw.",
+      "scoring_play": true,
+      "score_value": 1,
+      "away_score": 50,
+      "home_score": 62,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4682968",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559104927701",
+      "sequence": "104927701",
+      "period": 4,
+      "clock": "7:22",
+      "team_id": "2305",
+      "type": "JumpShot",
+      "type_id": "558",
+      "text": "S'Mya Nichols missed Jumper.",
+      "scoring_play": false,
+      "score_value": 2,
+      "away_score": 50,
+      "home_score": 62,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5175749",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559104927901",
+      "sequence": "104927901",
+      "period": 4,
+      "clock": "7:20",
+      "team_id": "2294",
+      "type": "Defensive Rebound",
+      "type_id": "587",
+      "text": "Lucy Olsen Defensive Rebound.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 50,
+      "home_score": 62,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4433815",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559104929601",
+      "sequence": "104929601",
+      "period": 4,
+      "clock": "7:03",
+      "team_id": "2294",
+      "type": "LayUpShot",
+      "type_id": "572",
+      "text": "Kylie Feuerbach made Layup.",
+      "scoring_play": true,
+      "score_value": 2,
+      "away_score": 50,
+      "home_score": 64,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4433985",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559104929602",
+      "sequence": "104929602",
+      "period": 4,
+      "clock": "7:03",
+      "team_id": "2305",
+      "type": "PersonalFoul",
+      "type_id": "519",
+      "text": "Foul on Carla Osma.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 50,
+      "home_score": 64,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5239466",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559104929603",
+      "sequence": "104929603",
+      "period": 4,
+      "clock": "7:03",
+      "team_id": "2294",
+      "type": "MadeFreeThrow",
+      "type_id": "540",
+      "text": "Kylie Feuerbach made Free Throw.",
+      "scoring_play": true,
+      "score_value": 1,
+      "away_score": 50,
+      "home_score": 65,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4433985",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559104934801",
+      "sequence": "104934801",
+      "period": 4,
+      "clock": "6:51",
+      "team_id": "2305",
+      "type": "Lost Ball Turnover",
+      "type_id": "598",
+      "text": "Nadira Eltayeb Turnover.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 50,
+      "home_score": 65,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4898993",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559104934802",
+      "sequence": "104934802",
+      "period": 4,
+      "clock": "6:51",
+      "team_id": "2294",
+      "type": "Steal",
+      "type_id": "607",
+      "text": "Teagan Mallegni Steal.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 50,
+      "home_score": 65,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5240178",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559104935701",
+      "sequence": "104935701",
+      "period": 4,
+      "clock": "6:42",
+      "team_id": "2294",
+      "type": "JumpShot",
+      "type_id": "558",
+      "text": "Lucy Olsen missed Three Point Jumper.",
+      "scoring_play": false,
+      "score_value": 3,
+      "away_score": 50,
+      "home_score": 65,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4433815",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559104936101",
+      "sequence": "104936101",
+      "period": 4,
+      "clock": "6:38",
+      "team_id": "2305",
+      "type": "Defensive Rebound",
+      "type_id": "587",
+      "text": "Carla Osma Defensive Rebound.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 50,
+      "home_score": 65,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5239466",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559104938501",
+      "sequence": "104938501",
+      "period": 4,
+      "clock": "6:14",
+      "team_id": "2305",
+      "type": "PersonalFoul",
+      "type_id": "519",
+      "text": "Foul on S'Mya Nichols.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 50,
+      "home_score": 65,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5175749",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559104938502",
+      "sequence": "104938502",
+      "period": 4,
+      "clock": "6:14",
+      "team_id": "2305",
+      "type": "Lost Ball Turnover",
+      "type_id": "598",
+      "text": "S'Mya Nichols Turnover.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 50,
+      "home_score": 65,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5175749",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559104944001",
+      "sequence": "104944001",
+      "period": 4,
+      "clock": "5:59",
+      "team_id": "2294",
+      "type": "Lost Ball Turnover",
+      "type_id": "598",
+      "text": "Kylie Feuerbach Turnover.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 50,
+      "home_score": 65,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4433985",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559104944002",
+      "sequence": "104944002",
+      "period": 4,
+      "clock": "5:59",
+      "team_id": "2305",
+      "type": "Steal",
+      "type_id": "607",
+      "text": "Carla Osma Steal.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 50,
+      "home_score": 65,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5239466",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559104944501",
+      "sequence": "104944501",
+      "period": 4,
+      "clock": "5:54",
+      "team_id": "2305",
+      "type": "LayUpShot",
+      "type_id": "572",
+      "text": "Elle Evans made Layup. Assisted by Carla Osma.",
+      "scoring_play": true,
+      "score_value": 2,
+      "away_score": 52,
+      "home_score": 65,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5109873",
+          "name": null
+        },
+        {
+          "player_id": "5239466",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559104946201",
+      "sequence": "104946201",
+      "period": 4,
+      "clock": "5:37",
+      "team_id": "2294",
+      "type": "JumpShot",
+      "type_id": "558",
+      "text": "Teagan Mallegni missed Three Point Jumper.",
+      "scoring_play": false,
+      "score_value": 3,
+      "away_score": 52,
+      "home_score": 65,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5240178",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559104946501",
+      "sequence": "104946501",
+      "period": 4,
+      "clock": "5:34",
+      "team_id": "2305",
+      "type": "Defensive Rebound",
+      "type_id": "587",
+      "text": "Laia Conesa Defensive Rebound.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 52,
+      "home_score": 65,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5175747",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559104947601",
+      "sequence": "104947601",
+      "period": 4,
+      "clock": "5:23",
+      "team_id": "2305",
+      "type": "JumpShot",
+      "type_id": "558",
+      "text": "Elle Evans missed Jumper.",
+      "scoring_play": false,
+      "score_value": 2,
+      "away_score": 52,
+      "home_score": 65,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5109873",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559104948101",
+      "sequence": "104948101",
+      "period": 4,
+      "clock": "5:18",
+      "team_id": "2294",
+      "type": "Defensive Rebound",
+      "type_id": "587",
+      "text": "Hannah Stuelke Defensive Rebound.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 52,
+      "home_score": 65,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4682968",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559104949601",
+      "sequence": "104949601",
+      "period": 4,
+      "clock": "5:03",
+      "team_id": "2294",
+      "type": "LayUpShot",
+      "type_id": "572",
+      "text": "Kylie Feuerbach made Layup.",
+      "scoring_play": true,
+      "score_value": 2,
+      "away_score": 52,
+      "home_score": 67,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4433985",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559104955901",
+      "sequence": "104955901",
+      "period": 4,
+      "clock": "4:40",
+      "team_id": "2305",
+      "type": "PersonalFoul",
+      "type_id": "519",
+      "text": "Foul on Nadira Eltayeb.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 52,
+      "home_score": 67,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4898993",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559104955902",
+      "sequence": "104955902",
+      "period": 4,
+      "clock": "4:40",
+      "team_id": "2305",
+      "type": "Lost Ball Turnover",
+      "type_id": "598",
+      "text": "Nadira Eltayeb Turnover.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 52,
+      "home_score": 67,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4898993",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559104958101",
+      "sequence": "104958101",
+      "period": 4,
+      "clock": "4:18",
+      "team_id": "2305",
+      "type": "PersonalFoul",
+      "type_id": "519",
+      "text": "Foul on Regan Williams.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 52,
+      "home_score": 67,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5239467",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559104958102",
+      "sequence": "104958102",
+      "period": 4,
+      "clock": "4:18",
+      "team_id": "2294",
+      "type": "MadeFreeThrow",
+      "type_id": "540",
+      "text": "Addison O'Grady missed Free Throw.",
+      "scoring_play": false,
+      "score_value": 1,
+      "away_score": 52,
+      "home_score": 67,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4433538",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559104958103",
+      "sequence": "104958103",
+      "period": 4,
+      "clock": "4:18",
+      "team_id": "2294",
+      "type": "Dead Ball Rebound",
+      "type_id": "449",
+      "text": "Iowa Deadball Team Rebound.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 52,
+      "home_score": 67,
+      "wallclock": null
+    },
+    {
+      "play_id": "401713559104958104",
+      "sequence": "104958104",
+      "period": 4,
+      "clock": "4:18",
+      "team_id": "2294",
+      "type": "MadeFreeThrow",
+      "type_id": "540",
+      "text": "Addison O'Grady made Free Throw.",
+      "scoring_play": true,
+      "score_value": 1,
+      "away_score": 52,
+      "home_score": 68,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4433538",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559104959601",
+      "sequence": "104959601",
+      "period": 4,
+      "clock": "4:03",
+      "team_id": "2305",
+      "type": "Lost Ball Turnover",
+      "type_id": "598",
+      "text": "Laia Conesa Turnover.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 52,
+      "home_score": 68,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5175747",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559104965501",
+      "sequence": "104965501",
+      "period": 4,
+      "clock": "3:44",
+      "team_id": "2294",
+      "type": "JumpShot",
+      "type_id": "558",
+      "text": "Sydney Affolter missed Jumper.",
+      "scoring_play": false,
+      "score_value": 2,
+      "away_score": 52,
+      "home_score": 68,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4898389",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559104965801",
+      "sequence": "104965801",
+      "period": 4,
+      "clock": "3:41",
+      "team_id": "2305",
+      "type": "Defensive Rebound",
+      "type_id": "587",
+      "text": "S'Mya Nichols Defensive Rebound.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 52,
+      "home_score": 68,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5175749",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559104967401",
+      "sequence": "104967401",
+      "period": 4,
+      "clock": "3:25",
+      "team_id": "2305",
+      "type": "PersonalFoul",
+      "type_id": "519",
+      "text": "Foul on S'Mya Nichols.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 52,
+      "home_score": 68,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5175749",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559104967402",
+      "sequence": "104967402",
+      "period": 4,
+      "clock": "3:25",
+      "team_id": "2305",
+      "type": "Lost Ball Turnover",
+      "type_id": "598",
+      "text": "S'Mya Nichols Turnover.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 52,
+      "home_score": 68,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5175749",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559104974001",
+      "sequence": "104974001",
+      "period": 4,
+      "clock": "2:59",
+      "team_id": "2294",
+      "type": "LayUpShot",
+      "type_id": "572",
+      "text": "Lucy Olsen missed Layup.",
+      "scoring_play": false,
+      "score_value": 2,
+      "away_score": 52,
+      "home_score": 68,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4433815",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559104974401",
+      "sequence": "104974401",
+      "period": 4,
+      "clock": "2:55",
+      "team_id": "2305",
+      "type": "Defensive Rebound",
+      "type_id": "587",
+      "text": "Nadira Eltayeb Defensive Rebound.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 52,
+      "home_score": 68,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4898993",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559104974501",
+      "sequence": "104974501",
+      "period": 4,
+      "clock": "2:54",
+      "team_id": "2305",
+      "type": "Lost Ball Turnover",
+      "type_id": "598",
+      "text": "Nadira Eltayeb Turnover.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 52,
+      "home_score": 68,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4898993",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559104974502",
+      "sequence": "104974502",
+      "period": 4,
+      "clock": "2:54",
+      "team_id": "2294",
+      "type": "Steal",
+      "type_id": "607",
+      "text": "Kylie Feuerbach Steal.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 52,
+      "home_score": 68,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4433985",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559104977601",
+      "sequence": "104977601",
+      "period": 4,
+      "clock": "2:23",
+      "team_id": "2294",
+      "type": "JumpShot",
+      "type_id": "558",
+      "text": "Addison O'Grady missed Jumper.",
+      "scoring_play": false,
+      "score_value": 2,
+      "away_score": 52,
+      "home_score": 68,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4433538",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559104977801",
+      "sequence": "104977801",
+      "period": 4,
+      "clock": "2:21",
+      "team_id": "2305",
+      "type": "Defensive Rebound",
+      "type_id": "587",
+      "text": "S'Mya Nichols Defensive Rebound.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 52,
+      "home_score": 68,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5175749",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559104977802",
+      "sequence": "104977802",
+      "period": 4,
+      "clock": "2:21",
+      "team_id": "2294",
+      "type": "PersonalFoul",
+      "type_id": "519",
+      "text": "Foul on Sydney Affolter.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 52,
+      "home_score": 68,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4898389",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559104977803",
+      "sequence": "104977803",
+      "period": 4,
+      "clock": "2:21",
+      "team_id": "2305",
+      "type": "MadeFreeThrow",
+      "type_id": "540",
+      "text": "S'Mya Nichols made Free Throw.",
+      "scoring_play": true,
+      "score_value": 1,
+      "away_score": 53,
+      "home_score": 68,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5175749",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559104977804",
+      "sequence": "104977804",
+      "period": 4,
+      "clock": "2:21",
+      "team_id": "2305",
+      "type": "MadeFreeThrow",
+      "type_id": "540",
+      "text": "S'Mya Nichols made Free Throw.",
+      "scoring_play": true,
+      "score_value": 1,
+      "away_score": 54,
+      "home_score": 68,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5175749",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559104984501",
+      "sequence": "104984501",
+      "period": 4,
+      "clock": "1:54",
+      "team_id": "2294",
+      "type": "LayUpShot",
+      "type_id": "572",
+      "text": "Addison O'Grady missed Layup.",
+      "scoring_play": false,
+      "score_value": 2,
+      "away_score": 54,
+      "home_score": 68,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4433538",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559104984701",
+      "sequence": "104984701",
+      "period": 4,
+      "clock": "1:52",
+      "team_id": "2305",
+      "type": "Defensive Rebound",
+      "type_id": "587",
+      "text": "Nadira Eltayeb Defensive Rebound.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 54,
+      "home_score": 68,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4898993",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559104985401",
+      "sequence": "104985401",
+      "period": 4,
+      "clock": "1:45",
+      "team_id": "2294",
+      "type": "PersonalFoul",
+      "type_id": "519",
+      "text": "Foul on Addison O'Grady.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 54,
+      "home_score": 68,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4433538",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559104985402",
+      "sequence": "104985402",
+      "period": 4,
+      "clock": "1:45",
+      "team_id": "2305",
+      "type": "MadeFreeThrow",
+      "type_id": "540",
+      "text": "S'Mya Nichols made Free Throw.",
+      "scoring_play": true,
+      "score_value": 1,
+      "away_score": 55,
+      "home_score": 68,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5175749",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559104985403",
+      "sequence": "104985403",
+      "period": 4,
+      "clock": "1:45",
+      "team_id": "2305",
+      "type": "MadeFreeThrow",
+      "type_id": "540",
+      "text": "S'Mya Nichols made Free Throw.",
+      "scoring_play": true,
+      "score_value": 1,
+      "away_score": 56,
+      "home_score": 68,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5175749",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559104988301",
+      "sequence": "104988301",
+      "period": 4,
+      "clock": "1:16",
+      "team_id": "2294",
+      "type": "LayUpShot",
+      "type_id": "572",
+      "text": "Kylie Feuerbach missed Layup.",
+      "scoring_play": false,
+      "score_value": 2,
+      "away_score": 56,
+      "home_score": 68,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4433985",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559104988601",
+      "sequence": "104988601",
+      "period": 4,
+      "clock": "1:13",
+      "team_id": "2294",
+      "type": "Offensive Rebound",
+      "type_id": "586",
+      "text": "Hannah Stuelke Offensive Rebound.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 56,
+      "home_score": 68,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4682968",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559104988701",
+      "sequence": "104988701",
+      "period": 4,
+      "clock": "1:12",
+      "team_id": "2294",
+      "type": "Lost Ball Turnover",
+      "type_id": "598",
+      "text": "Hannah Stuelke Turnover.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 56,
+      "home_score": 68,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4682968",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559104988702",
+      "sequence": "104988702",
+      "period": 4,
+      "clock": "1:12",
+      "team_id": "2305",
+      "type": "Steal",
+      "type_id": "607",
+      "text": "Nadira Eltayeb Steal.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 56,
+      "home_score": 68,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4898993",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559104988704",
+      "sequence": "104988704",
+      "period": 4,
+      "clock": "1:12",
+      "team_id": "2305",
+      "type": "Lost Ball Turnover",
+      "type_id": "598",
+      "text": "Nadira Eltayeb Turnover.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 56,
+      "home_score": 68,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4898993",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559104995201",
+      "sequence": "104995201",
+      "period": 4,
+      "clock": "0:47",
+      "team_id": "2294",
+      "type": "JumpShot",
+      "type_id": "558",
+      "text": "Taylor McCabe made Three Point Jumper. Assisted by Hannah Stuelke.",
+      "scoring_play": true,
+      "score_value": 3,
+      "away_score": 56,
+      "home_score": 71,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4858677",
+          "name": null
+        },
+        {
+          "player_id": "4682968",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559104997301",
+      "sequence": "104997301",
+      "period": 4,
+      "clock": "0:26",
+      "team_id": "2305",
+      "type": "JumpShot",
+      "type_id": "558",
+      "text": "Sania Copeland made Jumper.",
+      "scoring_play": true,
+      "score_value": 2,
+      "away_score": 58,
+      "home_score": 71,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5108548",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559104999501",
+      "sequence": "104999501",
+      "period": 4,
+      "clock": "0:04",
+      "team_id": "2294",
+      "type": "JumpShot",
+      "type_id": "558",
+      "text": "Hannah Stuelke missed Three Point Jumper.",
+      "scoring_play": false,
+      "score_value": 3,
+      "away_score": 58,
+      "home_score": 71,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "4682968",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559104999502",
+      "sequence": "104999502",
+      "period": 4,
+      "clock": "0:04",
+      "team_id": "2305",
+      "type": "Dead Ball Rebound",
+      "type_id": "449",
+      "text": "Kansas Deadball Team Rebound.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 58,
+      "home_score": 71,
+      "wallclock": null
+    },
+    {
+      "play_id": "401713559104999601",
+      "sequence": "104999601",
+      "period": 4,
+      "clock": "0:03",
+      "team_id": "2305",
+      "type": "JumpShot",
+      "type_id": "558",
+      "text": "S'Mya Nichols missed Three Point Jumper.",
+      "scoring_play": false,
+      "score_value": 3,
+      "away_score": 58,
+      "home_score": 71,
+      "wallclock": null,
+      "participants": [
+        {
+          "player_id": "5175749",
+          "name": null
+        }
+      ]
+    },
+    {
+      "play_id": "401713559104999902",
+      "sequence": "104999902",
+      "period": 4,
+      "clock": "0:00",
+      "team_id": "2294",
+      "type": "Dead Ball Rebound",
+      "type_id": "449",
+      "text": "Iowa Deadball Team Rebound.",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 58,
+      "home_score": 71,
+      "wallclock": null
+    },
+    {
+      "play_id": "401713559104999901",
+      "sequence": "104999901",
+      "period": 4,
+      "clock": "0:00",
+      "team_id": null,
+      "type": "End Period",
+      "type_id": "412",
+      "text": "End of 4th Quarter",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 58,
+      "home_score": 71,
+      "wallclock": null
+    },
+    {
+      "play_id": "401713559104999903",
+      "sequence": "104999903",
+      "period": 4,
+      "clock": "0:00",
+      "team_id": null,
+      "type": "End Game",
+      "type_id": "402",
+      "text": "End of Game",
+      "scoring_play": false,
+      "score_value": 0,
+      "away_score": 58,
+      "home_score": 71,
+      "wallclock": null
+    }
+  ],
+  "play_count": 304
+}

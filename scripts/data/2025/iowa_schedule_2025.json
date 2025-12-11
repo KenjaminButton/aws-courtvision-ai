@@ -1,0 +1,1548 @@
+{
+  "fetched_at": "2025-12-11T18:45:53.123463Z",
+  "team_id": "2294",
+  "season_year": 2025,
+  "total_games": 34,
+  "games": [
+    {
+      "game_id": "401713556",
+      "date": "2024-11-07T00:30Z",
+      "name": "Northern Illinois Huskies at Iowa Hawkeyes",
+      "short_name": "NIU @ IOWA",
+      "season_year": 2025,
+      "season_type_id": "2",
+      "season_type": "Regular Season",
+      "venue": "Carver-Hawkeye Arena",
+      "attendance": 14998,
+      "neutral_site": false,
+      "status": "Final",
+      "status_completed": true,
+      "iowa": {
+        "team_id": "2294",
+        "name": "Iowa Hawkeyes",
+        "abbreviation": "IOWA",
+        "score": "91",
+        "winner": true,
+        "home_away": "home",
+        "leaders": {
+          "pts": {
+            "player": "Lucy Olsen",
+            "value": "19"
+          },
+          "ast": {
+            "player": "Lucy Olsen",
+            "value": "7"
+          },
+          "reb": {
+            "player": "Kylie Feuerbach",
+            "value": "9"
+          }
+        }
+      },
+      "opponent": {
+        "team_id": "2459",
+        "name": "Northern Illinois Huskies",
+        "abbreviation": "NIU",
+        "score": "73",
+        "winner": false,
+        "home_away": "away",
+        "leaders": {}
+      }
+    },
+    {
+      "game_id": "401702900",
+      "date": "2024-11-10T22:30Z",
+      "name": "Virginia Tech Hokies at Iowa Hawkeyes",
+      "short_name": "VT VS IOWA",
+      "season_year": 2025,
+      "season_type_id": "2",
+      "season_type": "Regular Season",
+      "venue": "Spectrum Center",
+      "attendance": 15424,
+      "neutral_site": true,
+      "status": "Final",
+      "status_completed": true,
+      "tournament_round": "Ally Tipoff",
+      "iowa": {
+        "team_id": "2294",
+        "name": "Iowa Hawkeyes",
+        "abbreviation": "IOWA",
+        "score": "71",
+        "winner": true,
+        "home_away": "home",
+        "leaders": {
+          "pts": {
+            "player": "Lucy Olsen",
+            "value": "20"
+          },
+          "ast": {
+            "player": "Kylie Feuerbach",
+            "value": "5"
+          },
+          "reb": {
+            "player": "Hannah Stuelke",
+            "value": "7"
+          }
+        }
+      },
+      "opponent": {
+        "team_id": "259",
+        "name": "Virginia Tech Hokies",
+        "abbreviation": "VT",
+        "score": "52",
+        "winner": false,
+        "home_away": "away",
+        "leaders": {}
+      }
+    },
+    {
+      "game_id": "401713557",
+      "date": "2024-11-14T00:00Z",
+      "name": "Toledo Rockets at Iowa Hawkeyes",
+      "short_name": "TOL @ IOWA",
+      "season_year": 2025,
+      "season_type_id": "2",
+      "season_type": "Regular Season",
+      "venue": "Carver-Hawkeye Arena",
+      "attendance": 14998,
+      "neutral_site": false,
+      "status": "Final",
+      "status_completed": true,
+      "iowa": {
+        "team_id": "2294",
+        "name": "Iowa Hawkeyes",
+        "abbreviation": "IOWA",
+        "score": "94",
+        "winner": true,
+        "home_away": "home",
+        "leaders": {
+          "pts": {
+            "player": "Hannah Stuelke",
+            "value": "15"
+          },
+          "ast": {
+            "player": "Lucy Olsen",
+            "value": "4"
+          },
+          "reb": {
+            "player": "Hannah Stuelke",
+            "value": "9"
+          }
+        }
+      },
+      "opponent": {
+        "team_id": "2649",
+        "name": "Toledo Rockets",
+        "abbreviation": "TOL",
+        "score": "57",
+        "winner": false,
+        "home_away": "away",
+        "leaders": {}
+      }
+    },
+    {
+      "game_id": "401713558",
+      "date": "2024-11-17T20:00Z",
+      "name": "Iowa Hawkeyes at Drake Bulldogs",
+      "short_name": "IOWA @ DRKE",
+      "season_year": 2025,
+      "season_type_id": "2",
+      "season_type": "Regular Season",
+      "venue": "Knapp Center",
+      "attendance": 6424,
+      "neutral_site": false,
+      "status": "Final",
+      "status_completed": true,
+      "opponent": {
+        "team_id": "2181",
+        "name": "Drake Bulldogs",
+        "abbreviation": "DRKE",
+        "score": "73",
+        "winner": false,
+        "home_away": "home",
+        "leaders": {}
+      },
+      "iowa": {
+        "team_id": "2294",
+        "name": "Iowa Hawkeyes",
+        "abbreviation": "IOWA",
+        "score": "86",
+        "winner": true,
+        "home_away": "away",
+        "leaders": {
+          "pts": {
+            "player": "Addison O'Grady",
+            "value": "27"
+          },
+          "ast": {
+            "player": "Lucy Olsen",
+            "value": "6"
+          },
+          "reb": {
+            "player": "Addison O'Grady",
+            "value": "10"
+          }
+        }
+      }
+    },
+    {
+      "game_id": "401713559",
+      "date": "2024-11-21T00:00Z",
+      "name": "Kansas Jayhawks at Iowa Hawkeyes",
+      "short_name": "KU VS IOWA",
+      "season_year": 2025,
+      "season_type_id": "2",
+      "season_type": "Regular Season",
+      "venue": "Sanford Pentagon",
+      "attendance": 3347,
+      "neutral_site": true,
+      "status": "Final",
+      "status_completed": true,
+      "iowa": {
+        "team_id": "2294",
+        "name": "Iowa Hawkeyes",
+        "abbreviation": "IOWA",
+        "score": "71",
+        "winner": true,
+        "home_away": "home",
+        "leaders": {
+          "pts": {
+            "player": "Hannah Stuelke",
+            "value": "16"
+          },
+          "ast": {
+            "player": "Lucy Olsen",
+            "value": "6"
+          },
+          "reb": {
+            "player": "Hannah Stuelke",
+            "value": "10"
+          }
+        }
+      },
+      "opponent": {
+        "team_id": "2305",
+        "name": "Kansas Jayhawks",
+        "abbreviation": "KU",
+        "score": "58",
+        "winner": false,
+        "home_away": "away",
+        "leaders": {}
+      }
+    },
+    {
+      "game_id": "401713560",
+      "date": "2024-11-24T21:00Z",
+      "name": "Washington State Cougars at Iowa Hawkeyes",
+      "short_name": "WSU @ IOWA",
+      "season_year": 2025,
+      "season_type_id": "2",
+      "season_type": "Regular Season",
+      "venue": "Carver-Hawkeye Arena",
+      "attendance": 14998,
+      "neutral_site": false,
+      "status": "Final",
+      "status_completed": true,
+      "iowa": {
+        "team_id": "2294",
+        "name": "Iowa Hawkeyes",
+        "abbreviation": "IOWA",
+        "score": "72",
+        "winner": true,
+        "home_away": "home",
+        "leaders": {
+          "pts": {
+            "player": "Lucy Olsen",
+            "value": "17"
+          },
+          "ast": {
+            "player": "Lucy Olsen",
+            "value": "5"
+          },
+          "reb": {
+            "player": "Lucy Olsen",
+            "value": "8"
+          }
+        }
+      },
+      "opponent": {
+        "team_id": "265",
+        "name": "Washington State Cougars",
+        "abbreviation": "WSU",
+        "score": "43",
+        "winner": false,
+        "home_away": "away",
+        "leaders": {}
+      }
+    },
+    {
+      "game_id": "401713561",
+      "date": "2024-11-28T23:30Z",
+      "name": "Rhode Island Rams at Iowa Hawkeyes",
+      "short_name": "URI VS IOWA",
+      "season_year": 2025,
+      "season_type_id": "2",
+      "season_type": "Regular Season",
+      "venue": "Hard Rock Hotel Riviera Maya",
+      "attendance": 514,
+      "neutral_site": true,
+      "status": "Final",
+      "status_completed": true,
+      "tournament_round": "Cancun Challenge - Riviera Division",
+      "iowa": {
+        "team_id": "2294",
+        "name": "Iowa Hawkeyes",
+        "abbreviation": "IOWA",
+        "score": "69",
+        "winner": true,
+        "home_away": "home",
+        "leaders": {
+          "pts": {
+            "player": "Addison O'Grady",
+            "value": "18"
+          },
+          "ast": {
+            "player": "Taylor Stremlow",
+            "value": "4"
+          },
+          "reb": {
+            "player": "Sydney Affolter",
+            "value": "9"
+          }
+        }
+      },
+      "opponent": {
+        "team_id": "227",
+        "name": "Rhode Island Rams",
+        "abbreviation": "URI",
+        "score": "62",
+        "winner": false,
+        "home_away": "away",
+        "leaders": {}
+      }
+    },
+    {
+      "game_id": "401703029",
+      "date": "2024-11-30T02:00Z",
+      "name": "Iowa Hawkeyes at BYU Cougars",
+      "short_name": "IOWA VS BYU",
+      "season_year": 2025,
+      "season_type_id": "2",
+      "season_type": "Regular Season",
+      "venue": "Hard Rock Hotel Riviera Maya",
+      "attendance": 500,
+      "neutral_site": true,
+      "status": "Final",
+      "status_completed": true,
+      "tournament_round": "Cancun Challenge - Riviera Division",
+      "opponent": {
+        "team_id": "252",
+        "name": "BYU Cougars",
+        "abbreviation": "BYU",
+        "score": "48",
+        "winner": false,
+        "home_away": "home",
+        "leaders": {}
+      },
+      "iowa": {
+        "team_id": "2294",
+        "name": "Iowa Hawkeyes",
+        "abbreviation": "IOWA",
+        "score": "68",
+        "winner": true,
+        "home_away": "away",
+        "leaders": {
+          "pts": {
+            "player": "Hannah Stuelke",
+            "value": "16"
+          },
+          "ast": {
+            "player": "Sydney Affolter",
+            "value": "4"
+          },
+          "reb": {
+            "player": "Sydney Affolter",
+            "value": "10"
+          }
+        }
+      }
+    },
+    {
+      "game_id": "401713562",
+      "date": "2024-12-08T00:00Z",
+      "name": "Tennessee Lady Volunteers at Iowa Hawkeyes",
+      "short_name": "TENN VS IOWA",
+      "season_year": 2025,
+      "season_type_id": "2",
+      "season_type": "Regular Season",
+      "venue": "Barclays Center",
+      "attendance": 0,
+      "neutral_site": true,
+      "status": "Final",
+      "status_completed": true,
+      "tournament_round": "Champions Classic",
+      "iowa": {
+        "team_id": "2294",
+        "name": "Iowa Hawkeyes",
+        "abbreviation": "IOWA",
+        "score": "68",
+        "winner": false,
+        "home_away": "home",
+        "leaders": {
+          "pts": {
+            "player": "Lucy Olsen",
+            "value": "23"
+          },
+          "ast": {
+            "player": "Lucy Olsen",
+            "value": "5"
+          },
+          "reb": {
+            "player": "Addison O'Grady",
+            "value": "11"
+          }
+        }
+      },
+      "opponent": {
+        "team_id": "2633",
+        "name": "Tennessee Lady Volunteers",
+        "abbreviation": "TENN",
+        "score": "78",
+        "winner": true,
+        "home_away": "away",
+        "leaders": {}
+      }
+    },
+    {
+      "game_id": "401703034",
+      "date": "2024-12-12T02:00Z",
+      "name": "Iowa State Cyclones at Iowa Hawkeyes",
+      "short_name": "ISU @ IOWA",
+      "season_year": 2025,
+      "season_type_id": "2",
+      "season_type": "Regular Season",
+      "venue": "Carver-Hawkeye Arena",
+      "attendance": 14998,
+      "neutral_site": false,
+      "status": "Final",
+      "status_completed": true,
+      "tournament_round": "Iowa Corn Cy-Hawk Series",
+      "iowa": {
+        "team_id": "2294",
+        "name": "Iowa Hawkeyes",
+        "abbreviation": "IOWA",
+        "score": "75",
+        "winner": true,
+        "home_away": "home",
+        "leaders": {
+          "pts": {
+            "player": "Lucy Olsen",
+            "value": "25"
+          },
+          "ast": {
+            "player": "Lucy Olsen",
+            "value": "5"
+          },
+          "reb": {
+            "player": "Hannah Stuelke",
+            "value": "9"
+          }
+        }
+      },
+      "opponent": {
+        "team_id": "66",
+        "name": "Iowa State Cyclones",
+        "abbreviation": "ISU",
+        "score": "69",
+        "winner": false,
+        "home_away": "away",
+        "leaders": {}
+      }
+    },
+    {
+      "game_id": "401721492",
+      "date": "2024-12-15T17:00Z",
+      "name": "Iowa Hawkeyes at Michigan State Spartans",
+      "short_name": "IOWA @ MSU",
+      "season_year": 2025,
+      "season_type_id": "2",
+      "season_type": "Regular Season",
+      "venue": "Breslin Center",
+      "attendance": 5939,
+      "neutral_site": false,
+      "status": "Final",
+      "status_completed": true,
+      "opponent": {
+        "team_id": "127",
+        "name": "Michigan State Spartans",
+        "abbreviation": "MSU",
+        "score": "68",
+        "winner": true,
+        "home_away": "home",
+        "leaders": {}
+      },
+      "iowa": {
+        "team_id": "2294",
+        "name": "Iowa Hawkeyes",
+        "abbreviation": "IOWA",
+        "score": "66",
+        "winner": false,
+        "home_away": "away",
+        "leaders": {
+          "pts": {
+            "player": "Hannah Stuelke",
+            "value": "18"
+          },
+          "ast": {
+            "player": "Sydney Affolter",
+            "value": "3"
+          },
+          "reb": {
+            "player": "Hannah Stuelke",
+            "value": "8"
+          }
+        }
+      }
+    },
+    {
+      "game_id": "401713563",
+      "date": "2024-12-21T00:30Z",
+      "name": "Northern Iowa Panthers at Iowa Hawkeyes",
+      "short_name": "UNI @ IOWA",
+      "season_year": 2025,
+      "season_type_id": "2",
+      "season_type": "Regular Season",
+      "venue": "Carver-Hawkeye Arena",
+      "attendance": 14998,
+      "neutral_site": false,
+      "status": "Final",
+      "status_completed": true,
+      "iowa": {
+        "team_id": "2294",
+        "name": "Iowa Hawkeyes",
+        "abbreviation": "IOWA",
+        "score": "92",
+        "winner": true,
+        "home_away": "home",
+        "leaders": {
+          "pts": {
+            "player": "Lucy Olsen",
+            "value": "21"
+          },
+          "ast": {
+            "player": "Lucy Olsen",
+            "value": "7"
+          },
+          "reb": {
+            "player": "Sydney Affolter",
+            "value": "9"
+          }
+        }
+      },
+      "opponent": {
+        "team_id": "2460",
+        "name": "Northern Iowa Panthers",
+        "abbreviation": "UNI",
+        "score": "86",
+        "winner": false,
+        "home_away": "away",
+        "leaders": {}
+      }
+    },
+    {
+      "game_id": "401721501",
+      "date": "2024-12-29T20:00Z",
+      "name": "Purdue Boilermakers at Iowa Hawkeyes",
+      "short_name": "PUR @ IOWA",
+      "season_year": 2025,
+      "season_type_id": "2",
+      "season_type": "Regular Season",
+      "venue": "Carver-Hawkeye Arena",
+      "attendance": 14998,
+      "neutral_site": false,
+      "status": "Final",
+      "status_completed": true,
+      "iowa": {
+        "team_id": "2294",
+        "name": "Iowa Hawkeyes",
+        "abbreviation": "IOWA",
+        "score": "84",
+        "winner": true,
+        "home_away": "home",
+        "leaders": {
+          "pts": {
+            "player": "Addison O'Grady",
+            "value": "12"
+          },
+          "ast": {
+            "player": "Sydney Affolter",
+            "value": "6"
+          },
+          "reb": {
+            "player": "Ava Heiden",
+            "value": "8"
+          }
+        }
+      },
+      "opponent": {
+        "team_id": "2509",
+        "name": "Purdue Boilermakers",
+        "abbreviation": "PUR",
+        "score": "63",
+        "winner": false,
+        "home_away": "away",
+        "leaders": {}
+      }
+    },
+    {
+      "game_id": "401721505",
+      "date": "2025-01-01T18:00Z",
+      "name": "Iowa Hawkeyes at Penn State Lady Lions",
+      "short_name": "IOWA @ PSU",
+      "season_year": 2025,
+      "season_type_id": "2",
+      "season_type": "Regular Season",
+      "venue": "Bryce Jordan Center",
+      "attendance": 3417,
+      "neutral_site": false,
+      "status": "Final",
+      "status_completed": true,
+      "opponent": {
+        "team_id": "213",
+        "name": "Penn State Lady Lions",
+        "abbreviation": "PSU",
+        "score": "68",
+        "winner": false,
+        "home_away": "home",
+        "leaders": {}
+      },
+      "iowa": {
+        "team_id": "2294",
+        "name": "Iowa Hawkeyes",
+        "abbreviation": "IOWA",
+        "score": "80",
+        "winner": true,
+        "home_away": "away",
+        "leaders": {
+          "pts": {
+            "player": "Taylor McCabe",
+            "value": "17"
+          },
+          "ast": {
+            "player": "Sydney Affolter",
+            "value": "6"
+          },
+          "reb": {
+            "player": "Hannah Stuelke",
+            "value": "10"
+          }
+        }
+      }
+    },
+    {
+      "game_id": "401721513",
+      "date": "2025-01-05T23:00Z",
+      "name": "Maryland Terrapins at Iowa Hawkeyes",
+      "short_name": "MD @ IOWA",
+      "season_year": 2025,
+      "season_type_id": "2",
+      "season_type": "Regular Season",
+      "venue": "Carver-Hawkeye Arena",
+      "attendance": 14998,
+      "neutral_site": false,
+      "status": "Final",
+      "status_completed": true,
+      "iowa": {
+        "team_id": "2294",
+        "name": "Iowa Hawkeyes",
+        "abbreviation": "IOWA",
+        "score": "66",
+        "winner": false,
+        "home_away": "home",
+        "leaders": {
+          "pts": {
+            "player": "Lucy Olsen",
+            "value": "19"
+          },
+          "ast": {
+            "player": "Taylor Stremlow",
+            "value": "3"
+          },
+          "reb": {
+            "player": "Hannah Stuelke",
+            "value": "9"
+          }
+        }
+      },
+      "opponent": {
+        "team_id": "120",
+        "name": "Maryland Terrapins",
+        "abbreviation": "MD",
+        "score": "74",
+        "winner": true,
+        "home_away": "away",
+        "leaders": {}
+      }
+    },
+    {
+      "game_id": "401721524",
+      "date": "2025-01-10T00:00Z",
+      "name": "Iowa Hawkeyes at Illinois Fighting Illini",
+      "short_name": "IOWA @ ILL",
+      "season_year": 2025,
+      "season_type_id": "2",
+      "season_type": "Regular Season",
+      "venue": "State Farm Center",
+      "attendance": 4231,
+      "neutral_site": false,
+      "status": "Final",
+      "status_completed": true,
+      "opponent": {
+        "team_id": "356",
+        "name": "Illinois Fighting Illini",
+        "abbreviation": "ILL",
+        "score": "62",
+        "winner": true,
+        "home_away": "home",
+        "leaders": {}
+      },
+      "iowa": {
+        "team_id": "2294",
+        "name": "Iowa Hawkeyes",
+        "abbreviation": "IOWA",
+        "score": "57",
+        "winner": false,
+        "home_away": "away",
+        "leaders": {
+          "pts": {
+            "player": "Hannah Stuelke",
+            "value": "18"
+          },
+          "ast": {
+            "player": "Lucy Olsen",
+            "value": "5"
+          },
+          "reb": {
+            "player": "Hannah Stuelke",
+            "value": "13"
+          }
+        }
+      }
+    },
+    {
+      "game_id": "401721528",
+      "date": "2025-01-12T20:00Z",
+      "name": "Indiana Hoosiers at Iowa Hawkeyes",
+      "short_name": "IU @ IOWA",
+      "season_year": 2025,
+      "season_type_id": "2",
+      "season_type": "Regular Season",
+      "venue": "Carver-Hawkeye Arena",
+      "attendance": 14998,
+      "neutral_site": false,
+      "status": "Final",
+      "status_completed": true,
+      "iowa": {
+        "team_id": "2294",
+        "name": "Iowa Hawkeyes",
+        "abbreviation": "IOWA",
+        "score": "67",
+        "winner": false,
+        "home_away": "home",
+        "leaders": {
+          "pts": {
+            "player": "Taylor McCabe",
+            "value": "15"
+          },
+          "ast": {
+            "player": "Lucy Olsen",
+            "value": "4"
+          },
+          "reb": {
+            "player": "Taylor Stremlow",
+            "value": "8"
+          }
+        }
+      },
+      "opponent": {
+        "team_id": "84",
+        "name": "Indiana Hoosiers",
+        "abbreviation": "IU",
+        "score": "74",
+        "winner": true,
+        "home_away": "away",
+        "leaders": {}
+      }
+    },
+    {
+      "game_id": "401721541",
+      "date": "2025-01-17T00:00Z",
+      "name": "Nebraska Cornhuskers at Iowa Hawkeyes",
+      "short_name": "NEB @ IOWA",
+      "season_year": 2025,
+      "season_type_id": "2",
+      "season_type": "Regular Season",
+      "venue": "Carver-Hawkeye Arena",
+      "attendance": 14998,
+      "neutral_site": false,
+      "status": "Final",
+      "status_completed": true,
+      "iowa": {
+        "team_id": "2294",
+        "name": "Iowa Hawkeyes",
+        "abbreviation": "IOWA",
+        "score": "84",
+        "winner": false,
+        "home_away": "home",
+        "leaders": {
+          "pts": {
+            "player": "Hannah Stuelke",
+            "value": "16"
+          },
+          "ast": {
+            "player": "Lucy Olsen",
+            "value": "7"
+          },
+          "reb": {
+            "player": "Hannah Stuelke",
+            "value": "16"
+          }
+        }
+      },
+      "opponent": {
+        "team_id": "158",
+        "name": "Nebraska Cornhuskers",
+        "abbreviation": "NEB",
+        "score": "87",
+        "winner": true,
+        "home_away": "away",
+        "leaders": {}
+      }
+    },
+    {
+      "game_id": "401721545",
+      "date": "2025-01-19T22:00Z",
+      "name": "Iowa Hawkeyes at Oregon Ducks",
+      "short_name": "IOWA @ ORE",
+      "season_year": 2025,
+      "season_type_id": "2",
+      "season_type": "Regular Season",
+      "venue": "Matthew Knight Arena",
+      "attendance": 7307,
+      "neutral_site": false,
+      "status": "Final",
+      "status_completed": true,
+      "opponent": {
+        "team_id": "2483",
+        "name": "Oregon Ducks",
+        "abbreviation": "ORE",
+        "score": "50",
+        "winner": true,
+        "home_away": "home",
+        "leaders": {}
+      },
+      "iowa": {
+        "team_id": "2294",
+        "name": "Iowa Hawkeyes",
+        "abbreviation": "IOWA",
+        "score": "49",
+        "winner": false,
+        "home_away": "away",
+        "leaders": {
+          "pts": {
+            "player": "Sydney Affolter",
+            "value": "10"
+          },
+          "ast": {
+            "player": "Kylie Feuerbach",
+            "value": "5"
+          },
+          "reb": {
+            "player": "Sydney Affolter",
+            "value": "15"
+          }
+        }
+      }
+    },
+    {
+      "game_id": "401721551",
+      "date": "2025-01-23T02:00Z",
+      "name": "Iowa Hawkeyes at Washington Huskies",
+      "short_name": "IOWA @ WASH",
+      "season_year": 2025,
+      "season_type_id": "2",
+      "season_type": "Regular Season",
+      "venue": "Alaska Airlines Arena",
+      "attendance": 3380,
+      "neutral_site": false,
+      "status": "Final",
+      "status_completed": true,
+      "opponent": {
+        "team_id": "264",
+        "name": "Washington Huskies",
+        "abbreviation": "WASH",
+        "score": "61",
+        "winner": false,
+        "home_away": "home",
+        "leaders": {}
+      },
+      "iowa": {
+        "team_id": "2294",
+        "name": "Iowa Hawkeyes",
+        "abbreviation": "IOWA",
+        "score": "85",
+        "winner": true,
+        "home_away": "away",
+        "leaders": {
+          "pts": {
+            "player": "Lucy Olsen",
+            "value": "20"
+          },
+          "ast": {
+            "player": "Lucy Olsen",
+            "value": "6"
+          },
+          "reb": {
+            "player": "Ava Heiden",
+            "value": "6"
+          }
+        }
+      }
+    },
+    {
+      "game_id": "401721566",
+      "date": "2025-01-29T01:00Z",
+      "name": "Northwestern Wildcats at Iowa Hawkeyes",
+      "short_name": "NU @ IOWA",
+      "season_year": 2025,
+      "season_type_id": "2",
+      "season_type": "Regular Season",
+      "venue": "Carver-Hawkeye Arena",
+      "attendance": 14998,
+      "neutral_site": false,
+      "status": "Final",
+      "status_completed": true,
+      "iowa": {
+        "team_id": "2294",
+        "name": "Iowa Hawkeyes",
+        "abbreviation": "IOWA",
+        "score": "85",
+        "winner": true,
+        "home_away": "home",
+        "leaders": {
+          "pts": {
+            "player": "Hannah Stuelke",
+            "value": "26"
+          },
+          "ast": {
+            "player": "Lucy Olsen",
+            "value": "6"
+          },
+          "reb": {
+            "player": "Hannah Stuelke",
+            "value": "6"
+          }
+        }
+      },
+      "opponent": {
+        "team_id": "77",
+        "name": "Northwestern Wildcats",
+        "abbreviation": "NU",
+        "score": "80",
+        "winner": false,
+        "home_away": "away",
+        "leaders": {}
+      }
+    },
+    {
+      "game_id": "401721578",
+      "date": "2025-02-02T18:30Z",
+      "name": "USC Trojans at Iowa Hawkeyes",
+      "short_name": "USC @ IOWA",
+      "season_year": 2025,
+      "season_type_id": "2",
+      "season_type": "Regular Season",
+      "venue": "Carver-Hawkeye Arena",
+      "attendance": 14998,
+      "neutral_site": false,
+      "status": "Final",
+      "status_completed": true,
+      "iowa": {
+        "team_id": "2294",
+        "name": "Iowa Hawkeyes",
+        "abbreviation": "IOWA",
+        "score": "76",
+        "winner": true,
+        "home_away": "home",
+        "leaders": {
+          "pts": {
+            "player": "Lucy Olsen",
+            "value": "28"
+          },
+          "ast": {
+            "player": "Lucy Olsen",
+            "value": "4"
+          },
+          "reb": {
+            "player": "Sydney Affolter",
+            "value": "9"
+          }
+        }
+      },
+      "opponent": {
+        "team_id": "30",
+        "name": "USC Trojans",
+        "abbreviation": "USC",
+        "score": "69",
+        "winner": false,
+        "home_away": "away",
+        "leaders": {}
+      }
+    },
+    {
+      "game_id": "401721584",
+      "date": "2025-02-07T01:00Z",
+      "name": "Iowa Hawkeyes at Minnesota Golden Gophers",
+      "short_name": "IOWA @ MINN",
+      "season_year": 2025,
+      "season_type_id": "2",
+      "season_type": "Regular Season",
+      "venue": "Williams Arena",
+      "attendance": 6721,
+      "neutral_site": false,
+      "status": "Final",
+      "status_completed": true,
+      "opponent": {
+        "team_id": "135",
+        "name": "Minnesota Golden Gophers",
+        "abbreviation": "MINN",
+        "score": "60",
+        "winner": false,
+        "home_away": "home",
+        "leaders": {}
+      },
+      "iowa": {
+        "team_id": "2294",
+        "name": "Iowa Hawkeyes",
+        "abbreviation": "IOWA",
+        "score": "68",
+        "winner": true,
+        "home_away": "away",
+        "leaders": {
+          "pts": {
+            "player": "Hannah Stuelke",
+            "value": "17"
+          },
+          "ast": {
+            "player": "Lucy Olsen",
+            "value": "7"
+          },
+          "reb": {
+            "player": "Sydney Affolter",
+            "value": "14"
+          }
+        }
+      }
+    },
+    {
+      "game_id": "401721597",
+      "date": "2025-02-11T01:00Z",
+      "name": "Iowa Hawkeyes at Nebraska Cornhuskers",
+      "short_name": "IOWA @ NEB",
+      "season_year": 2025,
+      "season_type_id": "2",
+      "season_type": "Regular Season",
+      "venue": "Pinnacle Bank Arena",
+      "attendance": 6535,
+      "neutral_site": false,
+      "status": "Final",
+      "status_completed": true,
+      "opponent": {
+        "team_id": "158",
+        "name": "Nebraska Cornhuskers",
+        "abbreviation": "NEB",
+        "score": "66",
+        "winner": false,
+        "home_away": "home",
+        "leaders": {}
+      },
+      "iowa": {
+        "team_id": "2294",
+        "name": "Iowa Hawkeyes",
+        "abbreviation": "IOWA",
+        "score": "81",
+        "winner": true,
+        "home_away": "away",
+        "leaders": {
+          "pts": {
+            "player": "Lucy Olsen",
+            "value": "32"
+          },
+          "ast": {
+            "player": "Lucy Olsen",
+            "value": "7"
+          },
+          "reb": {
+            "player": "Hannah Stuelke",
+            "value": "10"
+          }
+        }
+      }
+    },
+    {
+      "game_id": "401721605",
+      "date": "2025-02-14T00:30Z",
+      "name": "Rutgers Scarlet Knights at Iowa Hawkeyes",
+      "short_name": "RUTG @ IOWA",
+      "season_year": 2025,
+      "season_type_id": "2",
+      "season_type": "Regular Season",
+      "venue": "Carver-Hawkeye Arena",
+      "attendance": 14998,
+      "neutral_site": false,
+      "status": "Final",
+      "status_completed": true,
+      "iowa": {
+        "team_id": "2294",
+        "name": "Iowa Hawkeyes",
+        "abbreviation": "IOWA",
+        "score": "55",
+        "winner": true,
+        "home_away": "home",
+        "leaders": {
+          "pts": {
+            "player": "Lucy Olsen",
+            "value": "27"
+          },
+          "ast": {
+            "player": "Lucy Olsen",
+            "value": "3"
+          },
+          "reb": {
+            "player": "Sydney Affolter",
+            "value": "14"
+          }
+        }
+      },
+      "opponent": {
+        "team_id": "164",
+        "name": "Rutgers Scarlet Knights",
+        "abbreviation": "RUTG",
+        "score": "43",
+        "winner": false,
+        "home_away": "away",
+        "leaders": {}
+      }
+    },
+    {
+      "game_id": "401721613",
+      "date": "2025-02-17T17:00Z",
+      "name": "Iowa Hawkeyes at Ohio State Buckeyes",
+      "short_name": "IOWA @ OSU",
+      "season_year": 2025,
+      "season_type_id": "2",
+      "season_type": "Regular Season",
+      "venue": "Value City Arena",
+      "attendance": 8810,
+      "neutral_site": false,
+      "status": "Final",
+      "status_completed": true,
+      "opponent": {
+        "team_id": "194",
+        "name": "Ohio State Buckeyes",
+        "abbreviation": "OSU",
+        "score": "86",
+        "winner": true,
+        "home_away": "home",
+        "leaders": {}
+      },
+      "iowa": {
+        "team_id": "2294",
+        "name": "Iowa Hawkeyes",
+        "abbreviation": "IOWA",
+        "score": "78",
+        "winner": false,
+        "home_away": "away",
+        "leaders": {
+          "pts": {
+            "player": "Lucy Olsen",
+            "value": "27"
+          },
+          "ast": {
+            "player": "Lucy Olsen",
+            "value": "7"
+          },
+          "reb": {
+            "player": "Sydney Affolter",
+            "value": "15"
+          }
+        }
+      }
+    },
+    {
+      "game_id": "401721629",
+      "date": "2025-02-23T19:00Z",
+      "name": "UCLA Bruins at Iowa Hawkeyes",
+      "short_name": "UCLA @ IOWA",
+      "season_year": 2025,
+      "season_type_id": "2",
+      "season_type": "Regular Season",
+      "venue": "Carver-Hawkeye Arena",
+      "attendance": 14998,
+      "neutral_site": false,
+      "status": "Final",
+      "status_completed": true,
+      "iowa": {
+        "team_id": "2294",
+        "name": "Iowa Hawkeyes",
+        "abbreviation": "IOWA",
+        "score": "65",
+        "winner": false,
+        "home_away": "home",
+        "leaders": {
+          "pts": {
+            "player": "Lucy Olsen",
+            "value": "17"
+          },
+          "ast": {
+            "player": "Taylor Stremlow",
+            "value": "4"
+          },
+          "reb": {
+            "player": "Sydney Affolter",
+            "value": "11"
+          }
+        }
+      },
+      "opponent": {
+        "team_id": "26",
+        "name": "UCLA Bruins",
+        "abbreviation": "UCLA",
+        "score": "67",
+        "winner": true,
+        "home_away": "away",
+        "leaders": {}
+      }
+    },
+    {
+      "game_id": "401721631",
+      "date": "2025-02-27T00:00Z",
+      "name": "Iowa Hawkeyes at Michigan Wolverines",
+      "short_name": "IOWA @ MICH",
+      "season_year": 2025,
+      "season_type_id": "2",
+      "season_type": "Regular Season",
+      "venue": "Crisler Center",
+      "attendance": 4062,
+      "neutral_site": false,
+      "status": "Final",
+      "status_completed": true,
+      "opponent": {
+        "team_id": "130",
+        "name": "Michigan Wolverines",
+        "abbreviation": "MICH",
+        "score": "66",
+        "winner": false,
+        "home_away": "home",
+        "leaders": {}
+      },
+      "iowa": {
+        "team_id": "2294",
+        "name": "Iowa Hawkeyes",
+        "abbreviation": "IOWA",
+        "score": "79",
+        "winner": true,
+        "home_away": "away",
+        "leaders": {
+          "pts": {
+            "player": "Sydney Affolter",
+            "value": "24"
+          },
+          "ast": {
+            "player": "Kylie Feuerbach",
+            "value": "4"
+          },
+          "reb": {
+            "player": "Sydney Affolter",
+            "value": "11"
+          }
+        }
+      }
+    },
+    {
+      "game_id": "401721645",
+      "date": "2025-03-02T21:00Z",
+      "name": "Wisconsin Badgers at Iowa Hawkeyes",
+      "short_name": "WIS @ IOWA",
+      "season_year": 2025,
+      "season_type_id": "2",
+      "season_type": "Regular Season",
+      "venue": "Carver-Hawkeye Arena",
+      "attendance": 14998,
+      "neutral_site": false,
+      "status": "Final",
+      "status_completed": true,
+      "iowa": {
+        "team_id": "2294",
+        "name": "Iowa Hawkeyes",
+        "abbreviation": "IOWA",
+        "score": "81",
+        "winner": true,
+        "home_away": "home",
+        "leaders": {
+          "pts": {
+            "player": "Lucy Olsen",
+            "value": "22"
+          },
+          "ast": {
+            "player": "Sydney Affolter",
+            "value": "4"
+          },
+          "reb": {
+            "player": "Hannah Stuelke",
+            "value": "15"
+          }
+        }
+      },
+      "opponent": {
+        "team_id": "275",
+        "name": "Wisconsin Badgers",
+        "abbreviation": "WIS",
+        "score": "66",
+        "winner": false,
+        "home_away": "away",
+        "leaders": {}
+      }
+    },
+    {
+      "game_id": "401743904",
+      "date": "2025-03-06T01:30Z",
+      "name": "Wisconsin Badgers at Iowa Hawkeyes",
+      "short_name": "WIS VS IOWA",
+      "season_year": 2025,
+      "season_type_id": "2",
+      "season_type": "Regular Season",
+      "venue": "Gainbridge Fieldhouse",
+      "attendance": 0,
+      "neutral_site": true,
+      "status": "Final",
+      "status_completed": true,
+      "tournament_round": "Big Ten Tournament - 1st Round",
+      "iowa": {
+        "team_id": "2294",
+        "name": "Iowa Hawkeyes",
+        "abbreviation": "IOWA",
+        "score": "81",
+        "winner": true,
+        "home_away": "home",
+        "leaders": {
+          "pts": {
+            "player": "Lucy Olsen",
+            "value": "19"
+          },
+          "ast": {
+            "player": "Kylie Feuerbach",
+            "value": "6"
+          },
+          "reb": {
+            "player": "Sydney Affolter",
+            "value": "7"
+          }
+        }
+      },
+      "opponent": {
+        "team_id": "275",
+        "name": "Wisconsin Badgers",
+        "abbreviation": "WIS",
+        "score": "54",
+        "winner": false,
+        "home_away": "away",
+        "leaders": {}
+      }
+    },
+    {
+      "game_id": "401743908",
+      "date": "2025-03-07T02:00Z",
+      "name": "Iowa Hawkeyes at Michigan State Spartans",
+      "short_name": "IOWA VS MSU",
+      "season_year": 2025,
+      "season_type_id": "2",
+      "season_type": "Regular Season",
+      "venue": "Gainbridge Fieldhouse",
+      "attendance": 7028,
+      "neutral_site": true,
+      "status": "Final",
+      "status_completed": true,
+      "tournament_round": "Big Ten Tournament - 2nd Round",
+      "opponent": {
+        "team_id": "127",
+        "name": "Michigan State Spartans",
+        "abbreviation": "MSU",
+        "score": "61",
+        "winner": false,
+        "home_away": "home",
+        "leaders": {}
+      },
+      "iowa": {
+        "team_id": "2294",
+        "name": "Iowa Hawkeyes",
+        "abbreviation": "IOWA",
+        "score": "74",
+        "winner": true,
+        "home_away": "away",
+        "leaders": {
+          "pts": {
+            "player": "Lucy Olsen",
+            "value": "21"
+          },
+          "ast": {
+            "player": "Lucy Olsen",
+            "value": "9"
+          },
+          "reb": {
+            "player": "Hannah Stuelke",
+            "value": "10"
+          }
+        }
+      }
+    },
+    {
+      "game_id": "401743912",
+      "date": "2025-03-08T02:00Z",
+      "name": "Iowa Hawkeyes at Ohio State Buckeyes",
+      "short_name": "IOWA VS OSU",
+      "season_year": 2025,
+      "season_type_id": "2",
+      "season_type": "Regular Season",
+      "venue": "Gainbridge Fieldhouse",
+      "attendance": 7500,
+      "neutral_site": true,
+      "status": "Final",
+      "status_completed": true,
+      "tournament_round": "Big Ten Tournament - Quarterfinal",
+      "opponent": {
+        "team_id": "194",
+        "name": "Ohio State Buckeyes",
+        "abbreviation": "OSU",
+        "score": "60",
+        "winner": true,
+        "home_away": "home",
+        "leaders": {}
+      },
+      "iowa": {
+        "team_id": "2294",
+        "name": "Iowa Hawkeyes",
+        "abbreviation": "IOWA",
+        "score": "59",
+        "winner": false,
+        "home_away": "away",
+        "leaders": {
+          "pts": {
+            "player": "Hannah Stuelke",
+            "value": "14"
+          },
+          "ast": {
+            "player": "Lucy Olsen",
+            "value": "7"
+          },
+          "reb": {
+            "player": "Hannah Stuelke",
+            "value": "12"
+          }
+        }
+      }
+    },
+    {
+      "game_id": "401746010",
+      "date": "2025-03-22T16:00Z",
+      "name": "Murray State Racers at Iowa Hawkeyes",
+      "short_name": "MUR VS IOWA",
+      "season_year": 2025,
+      "season_type_id": "3",
+      "season_type": "Postseason",
+      "venue": "Lloyd Noble Center",
+      "attendance": 0,
+      "neutral_site": true,
+      "status": "Final",
+      "status_completed": true,
+      "tournament_round": "NCAA Women's Championship - Regional 4 in Spokane - 1st Round",
+      "iowa": {
+        "team_id": "2294",
+        "name": "Iowa Hawkeyes",
+        "abbreviation": "IOWA",
+        "score": "92",
+        "winner": true,
+        "home_away": "home",
+        "leaders": {
+          "pts": {
+            "player": "Ava Heiden",
+            "value": "15"
+          },
+          "ast": {
+            "player": "Lucy Olsen",
+            "value": "12"
+          },
+          "reb": {
+            "player": "Sydney Affolter",
+            "value": "8"
+          }
+        }
+      },
+      "opponent": {
+        "team_id": "93",
+        "name": "Murray State Racers",
+        "abbreviation": "MUR",
+        "score": "57",
+        "winner": false,
+        "home_away": "away",
+        "leaders": {}
+      }
+    },
+    {
+      "game_id": "401746037",
+      "date": "2025-03-24T20:00Z",
+      "name": "Iowa Hawkeyes at Oklahoma Sooners",
+      "short_name": "IOWA @ OU",
+      "season_year": 2025,
+      "season_type_id": "3",
+      "season_type": "Postseason",
+      "venue": "Lloyd Noble Center",
+      "attendance": 8138,
+      "neutral_site": false,
+      "status": "Final",
+      "status_completed": true,
+      "tournament_round": "NCAA Women's Championship - Regional 4 in Spokane - 2nd Round",
+      "opponent": {
+        "team_id": "201",
+        "name": "Oklahoma Sooners",
+        "abbreviation": "OU",
+        "score": "96",
+        "winner": true,
+        "home_away": "home",
+        "leaders": {}
+      },
+      "iowa": {
+        "team_id": "2294",
+        "name": "Iowa Hawkeyes",
+        "abbreviation": "IOWA",
+        "score": "62",
+        "winner": false,
+        "home_away": "away",
+        "leaders": {
+          "pts": {
+            "player": "Lucy Olsen",
+            "value": "20"
+          },
+          "ast": {
+            "player": "Sydney Affolter",
+            "value": "5"
+          },
+          "reb": {
+            "player": "Sydney Affolter",
+            "value": "9"
+          }
+        }
+      }
+    }
+  ]
+}
