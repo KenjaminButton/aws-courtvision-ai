@@ -1,0 +1,91 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: CourtVision AI - Iowa Hawkeyes Basketball Analytics API
+
+Globals:
+  Function:
+    Timeout: 10
+    Runtime: python3.12
+    MemorySize: 256
+    Environment:
+      Variables:
+        TABLE_NAME: courtvision-games
+        REGION: us-east-1
+
+Resources:
+  # API Gateway
+  CourtVisionApi:
+    Type: AWS::Serverless::Api
+    Properties:
+      Name: courtvision-api
+      StageName: prod
+      Cors:
+        AllowMethods: "'GET,OPTIONS'"
+        AllowHeaders: "'Content-Type'"
+        AllowOrigin: "'*'"
+
+  # Lambda: Get all games for a season
+  GetGamesFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: courtvision-get-games
+      CodeUri: lambdas/get_games/
+      Handler: lambda_function.handler
+      Description: List all games for a season
+      Policies:
+        - DynamoDBReadPolicy:
+            TableName: courtvision-games
+      Events:
+        GetGames:
+          Type: Api
+          Properties:
+            RestApiId: !Ref CourtVisionApi
+            Path: /games
+            Method: get
+
+  # Lambda: Get single game details
+  GetGameDetailFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: courtvision-get-game-detail
+      CodeUri: lambdas/get_game_detail/
+      Handler: lambda_function.handler
+      Description: Get game metadata and boxscore
+      Policies:
+        - DynamoDBReadPolicy:
+            TableName: courtvision-games
+      Events:
+        GetGameDetail:
+          Type: Api
+          Properties:
+            RestApiId: !Ref CourtVisionApi
+            Path: /games/{gameId}
+            Method: get
+
+  # Lambda: Get plays for a game
+  GetPlaysFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: courtvision-get-plays
+      CodeUri: lambdas/get_plays/
+      Handler: lambda_function.handler
+      Description: Get play-by-play data for a game
+      Policies:
+        - DynamoDBReadPolicy:
+            TableName: courtvision-games
+      Events:
+        GetPlays:
+          Type: Api
+          Properties:
+            RestApiId: !Ref CourtVisionApi
+            Path: /games/{gameId}/plays
+            Method: get
+
+Outputs:
+  ApiUrl:
+    Description: API Gateway endpoint URL
+    Value: !Sub "https://${CourtVisionApi}.execute-api.${AWS::Region}.amazonaws.com/prod"
+  
+  GetGamesFunction:
+    Description: Get Games Lambda Function ARN
+    Value: !GetAtt GetGamesFunction.Arn
