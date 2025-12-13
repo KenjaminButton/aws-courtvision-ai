@@ -1,0 +1,162 @@
+/* Import Google Font - MUST come before @tailwind directives */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --iowa-gold: #FFCD00;
+    --iowa-black: #000000;
+  }
+
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply bg-iowa-black text-white antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+}
+
+@layer components {
+  /* Athletic Display Typography */
+  .font-athletic {
+    font-family: 'Bebas Neue', Impact, sans-serif;
+    letter-spacing: 0.05em;
+  }
+
+  /* Iowa-themed button */
+  .btn-iowa {
+    @apply bg-iowa-gold text-iowa-black font-bold px-6 py-3 uppercase tracking-wider;
+    @apply hover:bg-iowa-gold-light transition-all duration-200;
+    @apply border-2 border-iowa-gold;
+  }
+
+  .btn-iowa-outline {
+    @apply bg-transparent text-iowa-gold font-bold px-6 py-3 uppercase tracking-wider;
+    @apply border-2 border-iowa-gold;
+    @apply hover:bg-iowa-gold hover:text-iowa-black transition-all duration-200;
+  }
+
+  /* Game card styling */
+  .game-card {
+    @apply bg-zinc-900 border border-zinc-800 rounded-lg overflow-hidden;
+    @apply hover:border-iowa-gold/50 transition-all duration-300;
+    @apply hover:shadow-lg hover:shadow-iowa-gold/10;
+  }
+
+  /* Score display */
+  .score-display {
+    @apply font-athletic text-4xl md:text-6xl;
+    text-shadow: 2px 2px 0 rgba(0,0,0,0.3);
+  }
+
+  /* Pattern alert badge */
+  .pattern-badge {
+    @apply inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-sm font-semibold;
+    @apply bg-iowa-gold/20 text-iowa-gold border border-iowa-gold/30;
+  }
+
+  /* Win/Loss indicators */
+  .result-win {
+    @apply text-green-400 font-bold;
+  }
+
+  .result-loss {
+    @apply text-red-400 font-bold;
+  }
+
+  /* Stats table */
+  .stats-table {
+    @apply w-full text-sm;
+  }
+
+  .stats-table th {
+    @apply text-iowa-gold/80 font-semibold uppercase text-xs tracking-wider py-2 px-3 text-left;
+    @apply border-b border-zinc-700;
+  }
+
+  .stats-table td {
+    @apply py-2 px-3 border-b border-zinc-800;
+  }
+
+  .stats-table tr:hover td {
+    @apply bg-zinc-800/50;
+  }
+
+  /* Play-by-play item */
+  .play-item {
+    @apply flex items-start gap-3 py-3 px-4 border-b border-zinc-800/50;
+    @apply hover:bg-zinc-800/30 transition-colors;
+  }
+
+  .play-item-scoring {
+    @apply bg-iowa-gold/5 border-l-2 border-iowa-gold;
+  }
+
+  /* Quarter tabs */
+  .quarter-tab {
+    @apply px-4 py-2 font-semibold text-sm uppercase tracking-wider;
+    @apply text-zinc-400 hover:text-white transition-colors;
+  }
+
+  .quarter-tab-active {
+    @apply text-iowa-gold border-b-2 border-iowa-gold;
+  }
+}
+
+@layer utilities {
+  /* Gold gradient text */
+  .text-gradient-gold {
+    @apply bg-gradient-to-r from-iowa-gold via-iowa-gold-light to-iowa-gold;
+    @apply bg-clip-text text-transparent;
+  }
+
+  /* Athletic diagonal stripe background */
+  .bg-athletic-stripes {
+    background: repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 10px,
+      rgba(255, 205, 0, 0.03) 10px,
+      rgba(255, 205, 0, 0.03) 20px
+    );
+  }
+
+  /* Glow effects */
+  .glow-gold {
+    box-shadow: 0 0 20px rgba(255, 205, 0, 0.3);
+  }
+
+  .glow-gold-sm {
+    box-shadow: 0 0 10px rgba(255, 205, 0, 0.2);
+  }
+}
+
+/* Custom scrollbar for dark theme */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #18181b;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #3f3f46;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #FFCD00;
+}
+
+/* Selection color */
+::selection {
+  background: #FFCD00;
+  color: #000000;
+}
