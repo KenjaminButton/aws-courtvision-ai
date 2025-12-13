@@ -24,15 +24,23 @@ export function HomePage() {
     return { wins, losses, avgPoints, gamesPlayed: completedGames.length };
   }, [games]);
 
-  // Filter games
+  // Filter and sort games (most recent first)
   const filteredGames = useMemo(() => {
     if (!games) return [];
-    if (filterResult === 'all') return games;
+    
+    let filtered = games;
     
     // Filter by win/loss
-    if (filterResult === 'W') return games.filter(g => g.iowa_won);
-    if (filterResult === 'L') return games.filter(g => g.status_completed && !g.iowa_won);
-    return games;
+    if (filterResult === 'W') {
+      filtered = games.filter(g => g.iowa_won);
+    } else if (filterResult === 'L') {
+      filtered = games.filter(g => g.status_completed && !g.iowa_won);
+    }
+    
+    // Sort by date descending (most recent first)
+    return [...filtered].sort((a, b) => 
+      new Date(b.date).getTime() - new Date(a.date).getTime()
+    );
   }, [games, filterResult]);
 
   if (loading) {
