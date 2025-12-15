@@ -53,9 +53,17 @@ export function PlayerDetailPage() {
       <div className="bg-zinc-900 rounded-xl border border-zinc-800 p-6 mb-6">
         <div className="flex flex-col md:flex-row md:items-center gap-6">
           {/* Player Avatar */}
-          <div className="w-24 h-24 bg-zinc-800 rounded-full flex items-center justify-center
-                          text-iowa-gold font-bold text-3xl shrink-0">
-            {player.jersey || '?'}
+          <div className="w-24 h-24 rounded-full overflow-hidden bg-zinc-800 shrink-0">
+            <img 
+              src={`https://a.espncdn.com/i/headshots/womens-college-basketball/players/full/${player.player_id}.png`}
+              alt={player.player_name}
+              className="w-full h-full object-cover"
+              onError={(e) => {
+                // Fallback to jersey number if image fails
+                e.currentTarget.style.display = 'none';
+                e.currentTarget.parentElement!.innerHTML = `<span class="flex items-center justify-center w-full h-full text-iowa-gold font-bold text-3xl">${player.jersey || '?'}</span>`;
+              }}
+            />
           </div>
 
           {/* Player Info */}

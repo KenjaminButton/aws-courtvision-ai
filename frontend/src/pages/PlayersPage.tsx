@@ -194,10 +194,17 @@ function PlayerCard({ player }: PlayerCardProps) {
     >
       <div className="flex items-start justify-between mb-4">
         <div className="flex items-center gap-3">
-          {/* Player avatar placeholder */}
-          <div className="w-12 h-12 bg-zinc-800 rounded-full flex items-center justify-center
-                          text-iowa-gold font-bold text-lg">
-            {player.jersey || '?'}
+          {/* Player avatar */}
+          <div className="w-12 h-12 rounded-full overflow-hidden bg-zinc-800">
+            <img 
+              src={`https://a.espncdn.com/i/headshots/womens-college-basketball/players/full/${player.player_id}.png`}
+              alt={player.player_name}
+              className="w-full h-full object-cover"
+              onError={(e) => {
+                e.currentTarget.style.display = 'none';
+                e.currentTarget.parentElement!.innerHTML = `<span class="flex items-center justify-center w-full h-full text-iowa-gold font-bold text-lg">${player.jersey || '?'}</span>`;
+              }}
+            />
           </div>
           <div>
             <h3 className="font-semibold text-white group-hover:text-iowa-gold transition-colors">
