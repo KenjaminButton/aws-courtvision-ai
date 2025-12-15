@@ -3,12 +3,14 @@ import { Calendar, Trophy, TrendingUp, Filter } from 'lucide-react';
 import { useGames } from '../hooks/useApi';
 import { GameCard, GameCardCompact } from '../components/GameCard';
 import { LoadingSpinner, LoadingSkeleton, ErrorDisplay, EmptyState } from '../components/LoadingStates';
+import { useSeason } from '../contexts/SeasonContext';
 import type { Game } from '../types';
 
 export function HomePage() {
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
   const [filterResult, setFilterResult] = useState<'all' | 'W' | 'L'>('all');
-  const { data: games, loading, error, refetch } = useGames(2025);
+  const { season, seasonLabel } = useSeason();
+  const { data: games, loading, error, refetch } = useGames(season);
 
   // Calculate season stats
   const seasonStats = useMemo(() => {
@@ -69,7 +71,7 @@ export function HomePage() {
         <div className="flex items-center gap-3 mb-2">
           <div className="w-2 h-8 bg-iowa-gold rounded-full" />
           <h1 className="font-athletic text-4xl md:text-5xl text-white tracking-wide">
-            2024-25 SEASON
+            {seasonLabel.toUpperCase().replace(' SEASON', '')} SEASON
           </h1>
         </div>
         <p className="text-zinc-400 text-lg">

@@ -1,4 +1,7 @@
-# CourtVision AI - Data Collection Scripts
-# Install with: pip install -r requirements.txt
-boto3>=1.34.0
+# CourtVision AI - Scripts Dependencies
+
+# AWS SDK
+boto3>=1.28.0
+
+# HTTP client
 requests>=2.31.0

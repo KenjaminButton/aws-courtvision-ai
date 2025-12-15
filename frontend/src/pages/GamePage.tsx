@@ -282,60 +282,107 @@ function ReplayTab({ gameId, game }: { gameId: string; game: GameDetail }) {
 
 // Stats tab with box score
 function StatsTab({ game }: { game: GameDetail }) {
-  // Use player_stats from API if available, otherwise show placeholder
-  const iowaStats = game.player_stats?.iowa || [];
-  const opponentStats = game.player_stats?.opponent || [];
+  // Handle incomplete game data
+  if (!game?.iowa || !game?.opponent) {
+    return (
+      <div className="bg-zinc-900 rounded-xl border border-zinc-800 p-8 text-center">
+        <p className="text-zinc-500">Game data is still loading...</p>
+      </div>
+    );
+  }
+
+  // Transform API player stats to BoxScore format
+  const transformPlayer = (p: any) => {
+    // Parse "5-10" format into made/attempted
+    const parseShotStat = (stat: string) => {
+      if (!stat || stat === '--') return { made: 0, attempted: 0 };
+      const [made, attempted] = stat.split('-').map(Number);
+      return { made: made || 0, attempted: attempted || 0 };
+    };
+
+    const fg = parseShotStat(p['fieldgoalsmade-fieldgoalsattempted'] || p.field_goals);
+    const threes = parseShotStat(p['threepointfieldgoalsmade-threepointfieldgoalsattempted'] || p.three_pointers);
+    const ft = parseShotStat(p['freethrowsmade-freethrowsattempted'] || p.free_throws);
+
+    return {
+      playerId: p.player_id || p.playerId || '',
+      playerName: p.name || p.player_name || p.playerName || 'Unknown',
+      minutes: p.minutes || '0',
+      points: parseInt(p.points) || 0,
+      fieldGoalsMade: fg.made,
+      fieldGoalsAttempted: fg.attempted,
+      threePointersMade: threes.made,
+      threePointersAttempted: threes.attempted,
+      freeThrowsMade: ft.made,
+      freeThrowsAttempted: ft.attempted,
+      rebounds: parseInt(p.rebounds) || 0,
+      assists: parseInt(p.assists) || 0,
+      steals: parseInt(p.steals) || 0,
+      blocks: parseInt(p.blocks) || 0,
+      turnovers: parseInt(p.turnovers) || 0,
+      fouls: parseInt(p.fouls) || 0,
+    };
+  };
+
+  // Get and transform player stats
+  const iowaStats = (game.player_stats?.iowa || []).map(transformPlayer);
+  const opponentStats = (game.player_stats?.opponent || []).map(transformPlayer);
+
+  // Calculate totals
+  const calculateTotals = (players: any[], teamName: string) => {
+    const totals = players.reduce((acc, p) => ({
+      points: acc.points + p.points,
+      fieldGoalsMade: acc.fieldGoalsMade + p.fieldGoalsMade,
+      fieldGoalsAttempted: acc.fieldGoalsAttempted + p.fieldGoalsAttempted,
+      threePointersMade: acc.threePointersMade + p.threePointersMade,
+      threePointersAttempted: acc.threePointersAttempted + p.threePointersAttempted,
+      freeThrowsMade: acc.freeThrowsMade + p.freeThrowsMade,
+      freeThrowsAttempted: acc.freeThrowsAttempted + p.freeThrowsAttempted,
+      rebounds: acc.rebounds + p.rebounds,
+      assists: acc.assists + p.assists,
+      steals: acc.steals + p.steals,
+      blocks: acc.blocks + p.blocks,
+      turnovers: acc.turnovers + p.turnovers,
+      fouls: acc.fouls + p.fouls,
+    }), {
+      points: 0, fieldGoalsMade: 0, fieldGoalsAttempted: 0,
+      threePointersMade: 0, threePointersAttempted: 0,
+      freeThrowsMade: 0, freeThrowsAttempted: 0,
+      rebounds: 0, assists: 0, steals: 0, blocks: 0, turnovers: 0, fouls: 0,
+    });
+
+    return {
+      playerId: 'totals',
+      playerName: 'TOTALS',
+      team: teamName,
+      ...totals,
+    };
+  };
+
+  const isIowaHome = game.iowa.home_away === 'home';
 
   const boxscore = {
     homeTeam: {
-      name: game.iowa.home_away === 'home' ? game.iowa.name : game.opponent.name,
-      players: game.iowa.home_away === 'home' ? iowaStats : opponentStats,
-      totals: {
-        playerId: 'totals',
-        playerName: 'TOTALS',
-        team: game.iowa.home_away === 'home' ? game.iowa.name : game.opponent.name,
-        points: parseInt(game.iowa.home_away === 'home' ? game.iowa.score : game.opponent.score) || 0,
-        fieldGoalsMade: 0,
-        fieldGoalsAttempted: 0,
-        threePointersMade: 0,
-        threePointersAttempted: 0,
-        freeThrowsMade: 0,
-        freeThrowsAttempted: 0,
-        rebounds: 0,
-        assists: 0,
-        steals: 0,
-        blocks: 0,
-        turnovers: 0,
-        fouls: 0,
-      },
+      name: isIowaHome ? game.iowa.name : game.opponent.name,
+      players: isIowaHome ? iowaStats : opponentStats,
+      totals: calculateTotals(
+        isIowaHome ? iowaStats : opponentStats,
+        isIowaHome ? game.iowa.name : game.opponent.name
+      ),
     },
     awayTeam: {
-      name: game.iowa.home_away === 'away' ? game.iowa.name : game.opponent.name,
-      players: game.iowa.home_away === 'away' ? iowaStats : opponentStats,
-      totals: {
-        playerId: 'totals',
-        playerName: 'TOTALS',
-        team: game.iowa.home_away === 'away' ? game.iowa.name : game.opponent.name,
-        points: parseInt(game.iowa.home_away === 'away' ? game.iowa.score : game.opponent.score) || 0,
-        fieldGoalsMade: 0,
-        fieldGoalsAttempted: 0,
-        threePointersMade: 0,
-        threePointersAttempted: 0,
-        freeThrowsMade: 0,
-        freeThrowsAttempted: 0,
-        rebounds: 0,
-        assists: 0,
-        steals: 0,
-        blocks: 0,
-        turnovers: 0,
-        fouls: 0,
-      },
+      name: !isIowaHome ? game.iowa.name : game.opponent.name,
+      players: !isIowaHome ? iowaStats : opponentStats,
+      totals: calculateTotals(
+        !isIowaHome ? iowaStats : opponentStats,
+        !isIowaHome ? game.iowa.name : game.opponent.name
+      ),
     },
   };
 
   return (
     <BoxScore 
-      boxscore={game.boxscore || boxscore} 
+      boxscore={boxscore} 
       highlightIowa={true} 
     />
   );

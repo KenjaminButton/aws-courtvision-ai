@@ -28,7 +28,7 @@ def handler(event, context):
         season = params.get('season', '2025')
         
         response = table.query(
-            KeyConditionExpression=Key('pk').eq(f'SCHEDULE#{season}')
+            KeyConditionExpression=Key('pk').eq(f'SEASON#{season}')
         )
         
         items = response.get('Items', [])

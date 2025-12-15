@@ -1,8 +1,10 @@
 import { Link, useLocation } from 'react-router-dom';
 import { Activity, Calendar, Users, BarChart3 } from 'lucide-react';
+import { useSeason } from '../contexts/SeasonContext';
 
 export function Header() {
   const location = useLocation();
+  const { season, setSeason, availableSeasons } = useSeason();
 
   const navItems = [
     { path: '/', label: 'Games', icon: Calendar },
@@ -58,12 +60,16 @@ export function Header() {
           {/* Season Selector */}
           <div className="flex items-center gap-3">
             <select
+              value={season}
+              onChange={(e) => setSeason(Number(e.target.value))}
               className="bg-zinc-900 border border-zinc-700 rounded-lg px-3 py-2 text-sm
-                         text-white focus:border-iowa-gold focus:outline-none"
-              defaultValue="2025"
+                         text-white focus:border-iowa-gold focus:outline-none cursor-pointer"
             >
-              <option value="2025">2024-25 Season</option>
-              <option value="2024">2023-24 Season</option>
+              {availableSeasons.map((s) => (
+                <option key={s.value} value={s.value}>
+                  {s.label} {s.current && '(Current)'}
+                </option>
+              ))}
             </select>
           </div>
         </div>

@@ -2,24 +2,27 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Header } from './components/Header';
 import { HomePage } from './pages/HomePage';
 import { GamePage } from './pages/GamePage';
+import { SeasonProvider } from './contexts/SeasonContext';
 
 function App() {
   return (
     <BrowserRouter>
-      <div className="min-h-screen bg-iowa-black bg-athletic-stripes">
-        <Header />
-        <main>
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/game/:gameId" element={<GamePage />} />
-            {/* Future routes */}
-            <Route path="/players" element={<PlaceholderPage title="Players" />} />
-            <Route path="/player/:playerId" element={<PlaceholderPage title="Player Dashboard" />} />
-            <Route path="/stats" element={<PlaceholderPage title="Season Stats" />} />
-          </Routes>
-        </main>
-        <Footer />
-      </div>
+      <SeasonProvider>
+        <div className="min-h-screen bg-iowa-black bg-athletic-stripes">
+          <Header />
+          <main>
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/game/:gameId" element={<GamePage />} />
+              {/* Future routes */}
+              <Route path="/players" element={<PlaceholderPage title="Players" />} />
+              <Route path="/player/:playerId" element={<PlaceholderPage title="Player Dashboard" />} />
+              <Route path="/stats" element={<PlaceholderPage title="Season Stats" />} />
+            </Routes>
+          </main>
+          <Footer />
+        </div>
+      </SeasonProvider>
     </BrowserRouter>
   );
 }
