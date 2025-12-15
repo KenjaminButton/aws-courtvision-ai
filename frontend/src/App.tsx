@@ -2,6 +2,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Header } from './components/Header';
 import { HomePage } from './pages/HomePage';
 import { GamePage } from './pages/GamePage';
+import { PlayersPage } from './pages/PlayersPage';
+import { PlayerDetailPage } from './pages/PlayerDetailPage';
 import { SeasonProvider } from './contexts/SeasonContext';
 
 function App() {
@@ -14,9 +16,9 @@ function App() {
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/game/:gameId" element={<GamePage />} />
+              <Route path="/players" element={<PlayersPage />} />
+              <Route path="/players/:playerId" element={<PlayerDetailPage />} />
               {/* Future routes */}
-              <Route path="/players" element={<PlaceholderPage title="Players" />} />
-              <Route path="/player/:playerId" element={<PlaceholderPage title="Player Dashboard" />} />
               <Route path="/stats" element={<PlaceholderPage title="Season Stats" />} />
             </Routes>
           </main>

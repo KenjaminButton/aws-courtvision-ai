@@ -15,14 +15,14 @@ Globals:
 Resources:
   # API Gateway
   CourtVisionApi:
-    Type: AWS::Serverless::Api
-    Properties:
-      Name: courtvision-api
-      StageName: prod
-      Cors:
-        AllowMethods: "'GET,OPTIONS'"
-        AllowHeaders: "'Content-Type'"
-        AllowOrigin: "'*'"
+      Type: AWS::Serverless::Api
+      Properties:
+        Name: courtvision-api
+        StageName: prod
+        Cors:
+          AllowMethods: "'GET,OPTIONS'"
+          AllowHeaders: "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'"
+          AllowOrigin: "'*'"
 
   # Lambda: Get all games for a season
   GetGamesFunction:
@@ -81,6 +81,27 @@ Resources:
             Path: /games/{gameId}/plays
             Method: get
 
+  # Lambda: Get players with aggregated stats
+  GetPlayersFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: courtvision-get-players
+      CodeUri: lambdas/get_players/
+      Handler: lambda_function.handler
+      Description: Get aggregated player statistics for a season
+      Timeout: 30
+      MemorySize: 512
+      Policies:
+        - DynamoDBReadPolicy:
+            TableName: courtvision-games
+      Events:
+        GetPlayers:
+          Type: Api
+          Properties:
+            RestApiId: !Ref CourtVisionApi
+            Path: /players
+            Method: get
+
 Outputs:
   ApiUrl:
     Description: API Gateway endpoint URL
@@ -89,3 +110,7 @@ Outputs:
   GetGamesFunction:
     Description: Get Games Lambda Function ARN
     Value: !GetAtt GetGamesFunction.Arn
+
+  GetPlayersFunction:
+    Description: Get Players Lambda Function ARN
+    Value: !GetAtt GetPlayersFunction.Arn

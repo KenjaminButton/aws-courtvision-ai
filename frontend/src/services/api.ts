@@ -90,13 +90,67 @@ export const patternsAPI = {
   },
 };
 
-// Players API (if you add this endpoint)
+// Players API
 export const playersAPI = {
-  async getPlayerStats(playerId: string, season: number = 2025): Promise<PlayerStats> {
-    const data = await fetchAPI<PlayerStats>(`/players/${playerId}?season=${season}`);
+  // Get all players for a season with aggregated stats
+  async getPlayers(season: number = 2026): Promise<PlayersResponse> {
+    const data = await fetchAPI<PlayersResponse>(`/players?season=${season}`);
     return data;
   },
+
+  // Get single player stats for a season
+  async getPlayerDetail(playerId: string, season: number = 2026): Promise<PlayerSeasonStats | null> {
+    try {
+      // First get all players, then find this one
+      // (In future, could add dedicated endpoint)
+      const data = await fetchAPI<PlayersResponse>(`/players?season=${season}`);
+      const player = data.players.find(p => p.player_id === playerId);
+      return player || null;
+    } catch (error) {
+      console.error('Failed to fetch player detail:', error);
+      return null;
+    }
+  },
 };
+
+// Type for players response
+export interface PlayersResponse {
+  season: string;
+  player_count: number;
+  players: PlayerSeasonStats[];
+}
+
+// Type for aggregated player season stats
+export interface PlayerSeasonStats {
+  player_id: string;
+  player_name: string;
+  jersey: string;
+  position: string;
+  games_played: number;
+  minutes_per_game: number;
+  points_per_game: number;
+  rebounds_per_game: number;
+  assists_per_game: number;
+  steals_per_game: number;
+  blocks_per_game: number;
+  turnovers_per_game: number;
+  fouls_per_game: number;
+  field_goal_pct: number;
+  three_point_pct: number;
+  free_throw_pct: number;
+  totals: {
+    points: number;
+    rebounds: number;
+    assists: number;
+    steals: number;
+    blocks: number;
+  };
+  game_highs: {
+    points: number;
+    rebounds: number;
+    assists: number;
+  };
+}
 
 // Export all APIs
 export const api = {

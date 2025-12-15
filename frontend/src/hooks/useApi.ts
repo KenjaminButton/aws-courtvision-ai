@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
-import { api } from '../services/api';
+import { api, PlayerSeasonStats, PlayersResponse } from '../services/api';
 import type { Game, GameDetail, Play } from '../types';
 
 // Generic fetch hook
@@ -65,6 +65,25 @@ export function usePlays(
       return api.games.getPlays(gameId, options);
     },
     [gameId, options?.period, options?.scoringOnly, options?.limit]
+  );
+}
+
+// Hook for fetching players list with season stats
+export function usePlayers(season: number = 2026) {
+  return useFetch<PlayersResponse>(
+    () => api.players.getPlayers(season),
+    [season]
+  );
+}
+
+// Hook for fetching single player detail
+export function usePlayerDetail(playerId: string | undefined, season: number = 2026) {
+  return useFetch<PlayerSeasonStats | null>(
+    async () => {
+      if (!playerId) return null;
+      return api.players.getPlayerDetail(playerId, season);
+    },
+    [playerId, season]
   );
 }
 

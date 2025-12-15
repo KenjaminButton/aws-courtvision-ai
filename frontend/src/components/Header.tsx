@@ -1,10 +1,16 @@
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Activity, Calendar, Users, BarChart3 } from 'lucide-react';
 import { useSeason } from '../contexts/SeasonContext';
 
 export function Header() {
   const location = useLocation();
+  const navigate = useNavigate();
   const { season, setSeason, availableSeasons } = useSeason();
+
+  const handleSeasonChange = (newSeason: number) => {
+    setSeason(newSeason);
+    navigate('/');  // Navigate to games page
+  };
 
   const navItems = [
     { path: '/', label: 'Games', icon: Calendar },
@@ -61,7 +67,7 @@ export function Header() {
           <div className="flex items-center gap-3">
             <select
               value={season}
-              onChange={(e) => setSeason(Number(e.target.value))}
+              onChange={(e) => handleSeasonChange(Number(e.target.value))}
               className="bg-zinc-900 border border-zinc-700 rounded-lg px-3 py-2 text-sm
                          text-white focus:border-iowa-gold focus:outline-none cursor-pointer"
             >
