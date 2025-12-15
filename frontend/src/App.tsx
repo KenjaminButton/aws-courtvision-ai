@@ -12,7 +12,7 @@ function App() {
       <SeasonProvider>
         <div className="min-h-screen bg-iowa-black bg-athletic-stripes">
           <Header />
-          <main>
+          <main className="pb-20 md:pb-0">
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/game/:gameId" element={<GamePage />} />

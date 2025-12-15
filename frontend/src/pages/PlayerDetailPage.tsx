@@ -229,10 +229,7 @@ function GameLogTab({ player }: { player: any }) {
     return (
       <div className="bg-zinc-900 rounded-xl border border-zinc-800 p-8 text-center">
         <Calendar className="w-12 h-12 text-zinc-600 mx-auto mb-4" />
-        <p className="text-zinc-500">Game log coming soon</p>
-        <p className="text-sm text-zinc-600 mt-2">
-          Individual game-by-game stats will be available here.
-        </p>
+        <p className="text-zinc-500">No games played yet</p>
       </div>
     );
   }
@@ -250,26 +247,39 @@ function GameLogTab({ player }: { player: any }) {
               <th className="px-4 py-3 text-center">PTS</th>
               <th className="px-4 py-3 text-center">REB</th>
               <th className="px-4 py-3 text-center">AST</th>
+              <th className="px-4 py-3 text-center">STL</th>
+              <th className="px-4 py-3 text-center">BLK</th>
               <th className="px-4 py-3 text-center">FG</th>
               <th className="px-4 py-3 text-center">3PT</th>
+              <th className="px-4 py-3 text-center">FT</th>
             </tr>
           </thead>
           <tbody>
             {gameLog.map((game: any, index: number) => (
               <tr key={index} className="border-t border-zinc-800 hover:bg-zinc-800/50">
-                <td className="px-4 py-3 text-zinc-400">{game.date}</td>
-                <td className="px-4 py-3 text-white">{game.opponent}</td>
+                <td className="px-4 py-3 text-zinc-400">
+                  {new Date(game.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
+                </td>
+                <td className="px-4 py-3 text-white font-medium">
+                  vs {game.opponent}
+                </td>
                 <td className="px-4 py-3 text-center">
-                  <span className={game.result === 'W' ? 'text-green-500' : 'text-red-500'}>
+                  <span className={`font-medium ${game.result === 'W' ? 'text-green-500' : 'text-red-500'}`}>
                     {game.result}
                   </span>
+                  <span className="text-zinc-500 text-xs ml-1">({game.score})</span>
                 </td>
                 <td className="px-4 py-3 text-center text-zinc-400">{game.minutes}</td>
-                <td className="px-4 py-3 text-center text-white font-medium">{game.points}</td>
+                <td className={`px-4 py-3 text-center font-semibold ${game.points >= 20 ? 'text-iowa-gold' : 'text-white'}`}>
+                  {game.points}
+                </td>
                 <td className="px-4 py-3 text-center text-zinc-300">{game.rebounds}</td>
                 <td className="px-4 py-3 text-center text-zinc-300">{game.assists}</td>
+                <td className="px-4 py-3 text-center text-zinc-400">{game.steals}</td>
+                <td className="px-4 py-3 text-center text-zinc-400">{game.blocks}</td>
                 <td className="px-4 py-3 text-center text-zinc-400">{game.fg}</td>
                 <td className="px-4 py-3 text-center text-zinc-400">{game.three_pt}</td>
+                <td className="px-4 py-3 text-center text-zinc-400">{game.ft}</td>
               </tr>
             ))}
           </tbody>

@@ -1,6 +1,6 @@
 """
 CourtVision AI - Get Players Lambda
-Returns aggregated player statistics for a season.
+Returns aggregated player statistics for a season, including game logs.
 
 Query params:
   - season: Season year (e.g., 2026 for 2025-26)
@@ -38,11 +38,21 @@ def handler(event, context):
             KeyConditionExpression=Key('pk').eq(f'SEASON#{season}')
         )
         
-        game_ids = [
-            item['game_id'] 
-            for item in games_response.get('Items', [])
-            if item.get('status_completed')
-        ]
+        # Build list of completed games with metadata
+        completed_games = []
+        for item in games_response.get('Items', []):
+            if item.get('status_completed'):
+                completed_games.append({
+                    'game_id': item['game_id'],
+                    'date': item.get('date', ''),
+                    'opponent': item.get('opponent_abbrev', 'OPP'),
+                    'iowa_won': item.get('iowa_won', False),
+                    'iowa_score': item.get('iowa_score', '0'),
+                    'opponent_score': item.get('opponent_score', '0'),
+                })
+        
+        # Sort games by date
+        completed_games.sort(key=lambda x: x['date'])
         
         # Aggregate player stats across all games
         player_stats = defaultdict(lambda: {
@@ -69,11 +79,14 @@ def handler(event, context):
                 'points': 0,
                 'rebounds': 0,
                 'assists': 0
-            }
+            },
+            'game_log': []  # NEW: track individual games
         })
         
         # Fetch each game's metadata and aggregate
-        for game_id in game_ids:
+        for game_info in completed_games:
+            game_id = game_info['game_id']
+            
             game_response = table.get_item(
                 Key={'pk': f'GAME#{game_id}', 'sk': 'METADATA'}
             )
@@ -83,6 +96,8 @@ def handler(event, context):
                 continue
             
             iowa_players = game_data.get('player_stats', {}).get('iowa', [])
+            game_date = game_info['date'].split('T')[0] if game_info['date'] else ''
+            game_result = 'W' if game_info['iowa_won'] else 'L'
             
             for player in iowa_players:
                 pid = player.get('player_id', '')
@@ -109,42 +124,76 @@ def handler(event, context):
                 except (ValueError, TypeError):
                     minutes = 0
                 
+                # Get counting stats
+                points = int(player.get('points', 0)) if player.get('points') else 0
+                rebounds = int(player.get('rebounds', 0)) if player.get('rebounds') else 0
+                assists = int(player.get('assists', 0)) if player.get('assists') else 0
+                steals = int(player.get('steals', 0)) if player.get('steals') else 0
+                blocks = int(player.get('blocks', 0)) if player.get('blocks') else 0
+                turnovers = int(player.get('turnovers', 0)) if player.get('turnovers') else 0
+                fouls = int(player.get('fouls', 0)) if player.get('fouls') else 0
+                
+                # Parse shooting stats
+                fg = player.get('field_goals', '0-0')
+                fg_made, fg_att = 0, 0
+                if isinstance(fg, str) and '-' in fg:
+                    parts = fg.split('-')
+                    fg_made = int(parts[0]) if parts[0] else 0
+                    fg_att = int(parts[1]) if parts[1] else 0
+                
+                three = player.get('three_pointers', '0-0')
+                three_made, three_att = 0, 0
+                if isinstance(three, str) and '-' in three:
+                    parts = three.split('-')
+                    three_made = int(parts[0]) if parts[0] else 0
+                    three_att = int(parts[1]) if parts[1] else 0
+                
+                ft = player.get('free_throws', '0-0')
+                ft_made, ft_att = 0, 0
+                if isinstance(ft, str) and '-' in ft:
+                    parts = ft.split('-')
+                    ft_made = int(parts[0]) if parts[0] else 0
+                    ft_att = int(parts[1]) if parts[1] else 0
+                
                 # Only count if player actually played
                 if minutes > 0:
                     stats['games_played'] += 1
                     stats['total_minutes'] += minutes
+                    
+                    # Add to game log
+                    stats['game_log'].append({
+                        'game_id': game_id,
+                        'date': game_date,
+                        'opponent': game_info['opponent'],
+                        'result': game_result,
+                        'score': f"{game_info['iowa_score']}-{game_info['opponent_score']}",
+                        'minutes': round(minutes),
+                        'points': points,
+                        'rebounds': rebounds,
+                        'assists': assists,
+                        'steals': steals,
+                        'blocks': blocks,
+                        'turnovers': turnovers,
+                        'fouls': fouls,
+                        'fg': fg,
+                        'three_pt': three,
+                        'ft': ft,
+                    })
                 
-                # Aggregate counting stats
-                points = int(player.get('points', 0)) if player.get('points') else 0
-                rebounds = int(player.get('rebounds', 0)) if player.get('rebounds') else 0
-                assists = int(player.get('assists', 0)) if player.get('assists') else 0
-                
+                # Aggregate totals
                 stats['total_points'] += points
                 stats['total_rebounds'] += rebounds
                 stats['total_assists'] += assists
-                stats['total_steals'] += int(player.get('steals', 0)) if player.get('steals') else 0
-                stats['total_blocks'] += int(player.get('blocks', 0)) if player.get('blocks') else 0
-                stats['total_turnovers'] += int(player.get('turnovers', 0)) if player.get('turnovers') else 0
-                stats['total_fouls'] += int(player.get('fouls', 0)) if player.get('fouls') else 0
-                
-                # Parse shooting stats (format: "5-10")
-                fg = player.get('field_goals', '0-0')
-                if isinstance(fg, str) and '-' in fg:
-                    made, att = fg.split('-')
-                    stats['total_fg_made'] += int(made) if made else 0
-                    stats['total_fg_attempted'] += int(att) if att else 0
-                
-                three = player.get('three_pointers', '0-0')
-                if isinstance(three, str) and '-' in three:
-                    made, att = three.split('-')
-                    stats['total_3pt_made'] += int(made) if made else 0
-                    stats['total_3pt_attempted'] += int(att) if att else 0
-                
-                ft = player.get('free_throws', '0-0')
-                if isinstance(ft, str) and '-' in ft:
-                    made, att = ft.split('-')
-                    stats['total_ft_made'] += int(made) if made else 0
-                    stats['total_ft_attempted'] += int(att) if att else 0
+                stats['total_steals'] += steals
+                stats['total_blocks'] += blocks
+                stats['total_turnovers'] += turnovers
+                stats['total_fouls'] += fouls
+                stats['total_fg_made'] += fg_made
+                stats['total_fg_attempted'] += fg_att
+                stats['total_3pt_made'] += three_made
+                stats['total_3pt_attempted'] += three_att
+                stats['total_ft_made'] += ft_made
+                stats['total_ft_attempted'] += ft_att
                 
                 # Track game highs
                 if points > stats['game_highs']['points']:
@@ -191,7 +240,8 @@ def handler(event, context):
                     'steals': stats['total_steals'],
                     'blocks': stats['total_blocks'],
                 },
-                'game_highs': stats['game_highs']
+                'game_highs': stats['game_highs'],
+                'game_log': stats['game_log'],  # Include game log
             })
         
         # Sort by points per game descending
