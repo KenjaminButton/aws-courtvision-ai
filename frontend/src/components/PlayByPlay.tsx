@@ -28,10 +28,13 @@ export function PlayByPlay({
     return true;
   });
 
-  // In replay mode, only show plays up to current index
-  const visiblePlays = isReplayMode 
+// Get plays up to current index in replay mode, or all plays otherwise
+  const chronologicalPlays = isReplayMode 
     ? filteredPlays.slice(0, currentPlayIndex + 1)
     : filteredPlays;
+
+  // Reverse so newest plays appear at top (for both modes)
+  const visiblePlays = [...chronologicalPlays].reverse();
 
   return (
     <div className="bg-zinc-900 rounded-xl border border-zinc-800 overflow-hidden">

@@ -11,6 +11,9 @@ export function ScoreBoard({ game, animated = false }: ScoreBoardProps) {
   const isWin = game.iowa.winner;
   const isIowaHome = game.iowa.home_away === 'home';
 
+  // Check if venue has actual data (not just empty object)
+  const hasVenue = game.venue?.name || game.venue?.city || game.venue?.state;
+
   return (
     <div className="bg-zinc-900 rounded-xl border border-zinc-800 overflow-hidden">
       {/* Header */}
@@ -90,11 +93,11 @@ export function ScoreBoard({ game, animated = false }: ScoreBoardProps) {
         </div>
       </div>
 
-      {/* Venue Info */}
-      {game.venue && (
+      {/* Venue Info - Only show if venue has actual data */}
+      {hasVenue && (
         <div className="border-t border-zinc-800 px-6 py-4">
           <div className="text-center text-sm text-zinc-400">
-            📍 {game.venue.name}, {game.venue.city}, {game.venue.state}
+            📍 {[game.venue.name, game.venue.city, game.venue.state].filter(Boolean).join(', ')}
           </div>
         </div>
       )}

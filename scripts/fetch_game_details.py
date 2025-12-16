@@ -73,6 +73,37 @@ def get_pending_games(season_value: int) -> list:
     return games
 
 
+def get_all_completed_games(season_value: int) -> list:
+    """Get all completed games (for force re-fetch)"""
+    games = []
+    
+    try:
+        response = table.query(
+            KeyConditionExpression='pk = :pk',
+            ExpressionAttributeValues={':pk': f"SEASON#{season_value}"}
+        )
+        
+        for item in response.get('Items', []):
+            if item.get('status_completed'):
+                games.append(item)
+        
+        # Handle pagination
+        while 'LastEvaluatedKey' in response:
+            response = table.query(
+                KeyConditionExpression='pk = :pk',
+                ExpressionAttributeValues={':pk': f"SEASON#{season_value}"},
+                ExclusiveStartKey=response['LastEvaluatedKey']
+            )
+            for item in response.get('Items', []):
+                if item.get('status_completed'):
+                    games.append(item)
+                    
+    except ClientError as e:
+        print(f"⚠️  Error querying DynamoDB: {e}")
+    
+    return games
+
+
 def fetch_game_summary(game_id: str) -> dict:
     """Fetch full game summary from ESPN"""
     url = f"{ESPN_BASE_URL}/summary?event={game_id}"
@@ -96,6 +127,7 @@ def parse_plays(summary: dict, game_id: str) -> list:
             'period': play.get('period', {}).get('number', 1),
             'clock': play.get('clock', {}).get('displayValue', ''),
             'type': play.get('type', {}).get('text', ''),
+            'type_id': play.get('type', {}).get('id', ''),
             'text': play.get('text', ''),
             'scoring_play': play.get('scoringPlay', False),
             'score_value': play.get('scoreValue', 0),
@@ -103,6 +135,7 @@ def parse_plays(summary: dict, game_id: str) -> list:
             'away_score': play.get('awayScore', 0),
             'team_id': play.get('team', {}).get('id', ''),
             'wallclock': play.get('wallclock', ''),
+            'shooting_play': play.get('shootingPlay', False),
         }
         
         # Extract coordinates if available
@@ -203,6 +236,36 @@ def parse_player_stats(athlete: dict) -> dict:
     return player
 
 
+def parse_venue(summary: dict) -> dict:
+    """Extract venue information from gameInfo"""
+    game_info = summary.get('gameInfo', {})
+    venue_data = game_info.get('venue', {})
+    
+    if not venue_data:
+        return {}
+    
+    address = venue_data.get('address', {})
+    
+    venue = {
+        'id': venue_data.get('id', ''),
+        'name': venue_data.get('fullName', ''),
+        'city': address.get('city', ''),
+        'state': address.get('state', ''),
+    }
+    
+    # Add attendance if available
+    attendance = game_info.get('attendance')
+    if attendance:
+        venue['attendance'] = attendance
+    
+    # Add venue image if available
+    images = venue_data.get('images', [])
+    if images:
+        venue['image_url'] = images[0].get('href', '')
+    
+    return venue
+
+
 def build_metadata(game_id: str, season_value: int, summary: dict, plays: list, boxscore: dict) -> dict:
     """Build METADATA record in format frontend expects"""
     header = summary.get('header', {})
@@ -235,6 +298,9 @@ def build_metadata(game_id: str, season_value: int, summary: dict, plays: list, 
     # Get opponent team_id for player_stats
     opponent_team_id = opponent_data['team_id'] if opponent_data else ''
     
+    # Parse venue information
+    venue = parse_venue(summary)
+    
     return {
         'pk': f"GAME#{game_id}",
         'sk': 'METADATA',
@@ -249,7 +315,7 @@ def build_metadata(game_id: str, season_value: int, summary: dict, plays: list, 
         'play_count': str(len(plays)),
         'iowa': iowa_data,
         'opponent': opponent_data,
-        'venue': {},
+        'venue': venue,
         'boxscore': boxscore,
         'player_stats': {
             'iowa': boxscore.get('players', {}).get(IOWA_TEAM_ID, []),
@@ -284,6 +350,7 @@ def store_game_details(game_id: str, season_value: int, plays: list, boxscore: d
                 play_item = {
                     'pk': f"GAME#{game_id}",
                     'sk': f"PLAY#{int(play['sequence']):04d}",
+                    'entity_type': 'PLAY',
                     **play
                 }
                 # Convert any float coordinates to Decimal
@@ -329,6 +396,7 @@ def process_game(game_id: str, season_value: int) -> dict:
         'success': False,
         'plays': 0,
         'players': 0,
+        'venue': None,
         'error': None
     }
     
@@ -343,6 +411,10 @@ def process_game(game_id: str, season_value: int) -> dict:
         # Parse boxscore
         boxscore = parse_boxscore(summary)
         result['players'] = sum(len(p) for p in boxscore.get('players', {}).values())
+        
+        # Parse venue for result display
+        venue = parse_venue(summary)
+        result['venue'] = venue.get('name', 'Unknown')
         
         # Store in DynamoDB (now passing summary for METADATA creation)
         if store_game_details(game_id, season_value, plays, boxscore, summary):
@@ -401,19 +473,20 @@ def main():
         
         if result['success']:
             print(f"✅ Success! {result['plays']} plays, {result['players']} players")
+            if result['venue']:
+                print(f"   📍 Venue: {result['venue']}")
         else:
             print(f"❌ Failed: {result['error']}")
         return
     
-    # Get pending games
+    # Get games to process
     if args.force:
         print("⚠️  Force mode: Will re-fetch all completed games")
-        # TODO: Implement force mode - get all completed games
-        games = get_pending_games(args.season)
+        games = get_all_completed_games(args.season)
     else:
         games = get_pending_games(args.season)
     
-    print(f"📋 Found {len(games)} games needing details")
+    print(f"📋 Found {len(games)} games to process")
     
     if not games:
         print("✅ All completed games already have details!")
@@ -438,6 +511,8 @@ def main():
         
         if result['success']:
             print(f"   ✅ {result['plays']} plays, {result['players']} players")
+            if result['venue']:
+                print(f"   📍 {result['venue']}")
             success_count += 1
         else:
             print(f"   ❌ {result['error']}")

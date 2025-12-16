@@ -6,6 +6,7 @@ import { ScoreBoard, LiveScore } from '../components/ScoreBoard';
 import { PlayByPlay, ReplayControls } from '../components/PlayByPlay';
 import { PatternList } from '../components/PatternBadge';
 import { BoxScore } from '../components/BoxScore';
+import { ScoreFlowChart } from '../components/ScoreFlowChart';
 import { LoadingSpinner, ErrorDisplay } from '../components/LoadingStates';
 import type { GameDetail, Play } from '../types';
 
@@ -87,7 +88,7 @@ export function GamePage() {
       {/* Tab content */}
       <div className="min-h-[400px]">
         {activeTab === 'overview' && (
-          <OverviewTab game={game} plays={plays || []} />
+          <OverviewTab game={game} plays={plays || []} playsLoading={playsLoading} />
         )}
         {activeTab === 'plays' && (
           <PlaysTab plays={plays || []} loading={playsLoading} />
@@ -103,8 +104,8 @@ export function GamePage() {
   );
 }
 
-// Overview tab showing patterns and key stats
-function OverviewTab({ game, plays }: { game: GameDetail; plays: Play[] }) {
+// Overview tab showing score flow, patterns, and key stats
+function OverviewTab({ game, plays, playsLoading }: { game: GameDetail; plays: Play[]; playsLoading: boolean }) {
   // Mock patterns - in real app, fetch from API
   const mockPatterns = [
     {
@@ -134,56 +135,80 @@ function OverviewTab({ game, plays }: { game: GameDetail; plays: Play[] }) {
   // Calculate quick stats from plays
   const scoringPlays = plays.filter(p => p.scoring_play);
   const iowaScoring = scoringPlays.filter(p => p.team_id === game.iowa.team_id);
+
+  // Determine team names for chart
+  const isIowaHome = game.iowa.home_away === 'home';
+  const homeTeam = isIowaHome ? game.iowa.name : game.opponent.name;
+  const awayTeam = isIowaHome ? game.opponent.name : game.iowa.name;
   
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-      {/* Patterns */}
-      <div className="lg:col-span-2">
-        <PatternList patterns={mockPatterns} />
-      </div>
-
-      {/* Quick stats sidebar */}
-      <div className="space-y-4">
-        <div className="bg-zinc-900 rounded-xl border border-zinc-800 p-4">
-          <h3 className="font-semibold text-white mb-4">Quick Stats</h3>
-          <div className="space-y-3">
-            <div className="flex justify-between items-center">
-              <span className="text-zinc-400">Total Plays</span>
-              <span className="text-white font-mono">{plays.length}</span>
-            </div>
-            <div className="flex justify-between items-center">
-              <span className="text-zinc-400">Scoring Plays</span>
-              <span className="text-white font-mono">{scoringPlays.length}</span>
-            </div>
-            <div className="flex justify-between items-center">
-              <span className="text-zinc-400">Iowa Scoring</span>
-              <span className="text-iowa-gold font-mono">{iowaScoring.length}</span>
-            </div>
+    <div className="space-y-6">
+      {/* Score Flow Chart - Full Width */}
+      {playsLoading ? (
+        <div className="bg-zinc-900 rounded-xl border border-zinc-800 p-6">
+          <div className="h-64 flex items-center justify-center">
+            <LoadingSpinner message="Loading score data..." />
           </div>
         </div>
+      ) : (
+        <ScoreFlowChart
+          plays={plays}
+          homeTeam={homeTeam}
+          awayTeam={awayTeam}
+          isIowaHome={isIowaHome}
+        />
+      )}
 
-        {/* Game info */}
-        <div className="bg-zinc-900 rounded-xl border border-zinc-800 p-4">
-          <h3 className="font-semibold text-white mb-4">Game Info</h3>
-          <div className="space-y-3 text-sm">
-            <div className="flex justify-between items-center">
-              <span className="text-zinc-400">Date</span>
-              <span className="text-white">
-                {new Date(game.date).toLocaleDateString()}
-              </span>
-            </div>
-            <div className="flex justify-between items-center">
-              <span className="text-zinc-400">Location</span>
-              <span className="text-white">
-                {game.iowa.home_away === 'home' ? 'Home' : 'Away'}
-              </span>
-            </div>
-            {game.venue && (
+      {/* Patterns and Stats Grid */}
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        {/* Patterns */}
+        <div className="lg:col-span-2">
+          <PatternList patterns={mockPatterns} />
+        </div>
+
+        {/* Quick stats sidebar */}
+        <div className="space-y-4">
+          <div className="bg-zinc-900 rounded-xl border border-zinc-800 p-4">
+            <h3 className="font-semibold text-white mb-4">Quick Stats</h3>
+            <div className="space-y-3">
               <div className="flex justify-between items-center">
-                <span className="text-zinc-400">Venue</span>
-                <span className="text-white">{game.venue.name}</span>
+                <span className="text-zinc-400">Total Plays</span>
+                <span className="text-white font-mono">{plays.length}</span>
               </div>
-            )}
+              <div className="flex justify-between items-center">
+                <span className="text-zinc-400">Scoring Plays</span>
+                <span className="text-white font-mono">{scoringPlays.length}</span>
+              </div>
+              <div className="flex justify-between items-center">
+                <span className="text-zinc-400">Iowa Scoring</span>
+                <span className="text-iowa-gold font-mono">{iowaScoring.length}</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Game info */}
+          <div className="bg-zinc-900 rounded-xl border border-zinc-800 p-4">
+            <h3 className="font-semibold text-white mb-4">Game Info</h3>
+            <div className="space-y-3 text-sm">
+              <div className="flex justify-between items-center">
+                <span className="text-zinc-400">Date</span>
+                <span className="text-white">
+                  {new Date(game.date).toLocaleDateString()}
+                </span>
+              </div>
+              <div className="flex justify-between items-center">
+                <span className="text-zinc-400">Location</span>
+                <span className="text-white">
+                  {game.iowa.home_away === 'home' ? 'Home' : 'Away'}
+                </span>
+              </div>
+              {game.venue && (
+                <div className="flex justify-between items-center">
+                  <span className="text-zinc-400">Venue</span>
+                  <span className="text-white">{game.venue.name}</span>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </div>
