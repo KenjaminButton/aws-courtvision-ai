@@ -154,7 +154,7 @@ function PatternCard({ pattern }: { pattern: Pattern }) {
             <span className="text-green-400">+{pattern.pointsFor} pts</span>
           )}
           {pattern.consecutiveMakes && (
-            <span className="text-orange-400">{pattern.consecutiveMakes} straight</span>
+            <span className="text-red-400">{pattern.consecutiveMakes} straight</span>
           )}
         </div>
       </div>

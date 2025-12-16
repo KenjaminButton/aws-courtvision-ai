@@ -8,7 +8,7 @@ import { PatternList } from '../components/PatternBadge';
 import { BoxScore } from '../components/BoxScore';
 import { ScoreFlowChart } from '../components/ScoreFlowChart';
 import { LoadingSpinner, ErrorDisplay } from '../components/LoadingStates';
-import type { GameDetail, Play } from '../types';
+import type { GameDetail, Play, Pattern } from '../types';
 
 type TabType = 'overview' | 'plays' | 'replay' | 'stats';
 
@@ -106,31 +106,22 @@ export function GamePage() {
 
 // Overview tab showing score flow, patterns, and key stats
 function OverviewTab({ game, plays, playsLoading }: { game: GameDetail; plays: Play[]; playsLoading: boolean }) {
-  // Mock patterns - in real app, fetch from API
-  const mockPatterns = [
-    {
-      PK: game.game_id,
-      SK: 'PATTERN#1',
-      patternType: 'scoring_run' as const,
-      team: 'Iowa Hawkeyes',
-      description: 'Iowa 12-2 run in Q3',
-      pointsFor: 12,
-      pointsAgainst: 2,
-      quarter: 3,
-      detectedAt: new Date().toISOString(),
-    },
-    {
-      PK: game.game_id,
-      SK: 'PATTERN#2',
-      patternType: 'hot_streak' as const,
-      team: 'Iowa Hawkeyes',
-      playerName: 'Hannah Stuelke',
-      description: 'Hannah Stuelke - 4 consecutive makes',
-      consecutiveMakes: 4,
-      quarter: 2,
-      detectedAt: new Date().toISOString(),
-    },
-  ];
+  // Use real patterns from the API! (no more mock data)
+  // Transform API pattern format to what PatternList expects
+  const patterns: Pattern[] = (game.patterns || []).map((p, index) => ({
+    PK: game.game_id,
+    SK: `PATTERN#${p.pattern_type}#${index}`,
+    patternType: p.pattern_type as 'scoring_run' | 'hot_streak' | 'momentum_shift',
+    team: p.team,
+    description: p.description,
+    pointsFor: p.points_for,
+    pointsAgainst: p.points_against,
+    playerName: p.player_name,
+    playerId: p.player_id,
+    consecutiveMakes: p.consecutive_makes,
+    quarter: p.period,
+    detectedAt: new Date().toISOString(),
+  }));
 
   // Calculate quick stats from plays
   const scoringPlays = plays.filter(p => p.scoring_play);
@@ -163,7 +154,7 @@ function OverviewTab({ game, plays, playsLoading }: { game: GameDetail; plays: P
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Patterns */}
         <div className="lg:col-span-2">
-          <PatternList patterns={mockPatterns} />
+          <PatternList patterns={patterns} />
         </div>
 
         {/* Quick stats sidebar */}

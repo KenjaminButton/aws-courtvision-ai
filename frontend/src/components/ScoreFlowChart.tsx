@@ -33,10 +33,14 @@ export function ScoreFlowChart({ plays, homeTeam, awayTeam, isIowaHome }: ScoreF
   const { chartData, periodMarkers, maxScore } = useMemo(() => {
     if (!plays.length) return { chartData: [], periodMarkers: [], maxScore: 0 };
 
-    // Sort plays by sequence
+    // Sort plays by period first, then by sequence within each period
     const sortedPlays = [...plays].sort((a, b) => {
-      const seqA = parseInt(a.sequence) || 0;
-      const seqB = parseInt(b.sequence) || 0;
+      const periodA = a.period || 1;
+      const periodB = b.period || 1;
+      if (periodA !== periodB) return periodA - periodB;
+      
+      const seqA = parseInt(String(a.sequence)) || 0;
+      const seqB = parseInt(String(b.sequence)) || 0;
       return seqA - seqB;
     });
 

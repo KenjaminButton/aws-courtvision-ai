@@ -24,33 +24,65 @@ export interface GamesListResponse {
   count: number;
 }
 
+// API Pattern format (from get_game_detail Lambda)
+export interface APIPattern {
+  pattern_type: 'scoring_run' | 'hot_streak';
+  team: string;
+  team_id: string;
+  is_iowa: boolean;
+  description: string;
+  period: number;
+  // Scoring run specific
+  points_for?: number;
+  points_against?: number;
+  start_sequence?: number;
+  end_sequence?: number;
+  // Hot streak specific
+  player_id?: string;
+  player_name?: string;
+  consecutive_makes?: number;
+}
+
 // Game detail types (from /games/{gameId} endpoint)
 export interface GameDetail {
   game_id: string;
   date: string;
+  season?: number;
+  season_type?: string;
+  status?: string;
+  neutral_site?: boolean;
+  conference_competition?: boolean;
   iowa: {
     team_id: string;
     name: string;
     score: string;
     winner: boolean;
     home_away: 'home' | 'away';
+    period_scores?: string[];
   };
   opponent: {
     team_id: string;
     name: string;
     score: string;
+    winner?: boolean;
+    home_away?: 'home' | 'away';
+    period_scores?: string[];
   };
-  venue: {
+  venue?: {
+    id?: string;
     name: string;
     city: string;
     state: string;
+    attendance?: number;
   };
   boxscore?: BoxScore;
   player_stats?: {
     iowa: PlayerStats[];
     opponent: PlayerStats[];
   };
-  patterns?: Pattern[];
+  play_count?: string;
+  // Patterns from the API!
+  patterns?: APIPattern[];
 }
 
 // Play types (from /games/{gameId}/plays endpoint)
@@ -66,6 +98,10 @@ export interface Play {
   score_value: number;
   away_score: number;
   home_score: number;
+  player_id?: string;
+  player_name?: string;
+  coordinate_x?: number;
+  coordinate_y?: number;
 }
 
 // Plays response
@@ -109,7 +145,7 @@ export interface BoxScore {
   };
 }
 
-// Pattern types
+// Pattern types (for PatternList component display)
 export interface Pattern {
   PK: string;
   SK: string;
@@ -135,25 +171,73 @@ export interface SeasonSummary {
   pointsAllowedPerGame: number;
 }
 
-// Player season types
+// Player season types (from /players endpoint)
 export interface PlayerSeasonStats {
-  playerId: string;
-  playerName: string;
-  team: string;
-  season: string;
-  gamesPlayed: number;
-  totalPoints: number;
-  avgPoints: number;
-  totalFGMade: number;
-  totalFGAttempted: number;
-  fgPct: number;
-  totalThreeMade: number;
-  totalThreeAttempted: number;
-  threePct: number;
-  totalRebounds: number;
-  avgRebounds: number;
-  totalAssists: number;
-  avgAssists: number;
+  player_id: string;
+  player_name: string;
+  jersey: string;
+  position: string;
+  games_played: number;
+  minutes_per_game: number;
+  points_per_game: number;
+  rebounds_per_game: number;
+  assists_per_game: number;
+  steals_per_game: number;
+  blocks_per_game: number;
+  turnovers_per_game: number;
+  fouls_per_game: number;
+  field_goal_pct: number;
+  three_point_pct: number;
+  free_throw_pct: number;
+  totals: {
+    points: number;
+    rebounds: number;
+    assists: number;
+    steals: number;
+    blocks: number;
+  };
+  game_highs: {
+    points: number;
+    rebounds: number;
+    assists: number;
+  };
+  game_log: GameLogEntry[];
+  bio?: PlayerBio;
 }
 
-// API Response types (removed duplicates - using types above)
+export interface GameLogEntry {
+  game_id: string;
+  date: string;
+  opponent: string;
+  result: 'W' | 'L';
+  score: string;
+  minutes: number;
+  points: number;
+  rebounds: number;
+  assists: number;
+  steals: number;
+  blocks: number;
+  turnovers: number;
+  fouls: number;
+  fg: string;
+  three_pt: string;
+  ft: string;
+}
+
+export interface PlayerBio {
+  height: string;
+  hometown: string;
+  high_school: string;
+  previous_school?: string;
+  class_year: string;
+  major?: string;
+  bio_summary?: string;
+  accolades?: string[];
+}
+
+// Players response
+export interface PlayersResponse {
+  season: string;
+  player_count: number;
+  players: PlayerSeasonStats[];
+}
