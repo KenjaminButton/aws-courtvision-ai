@@ -102,6 +102,30 @@ Resources:
             Path: /players
             Method: get
 
+  GetSeasonStatsFunction:
+      Type: AWS::Serverless::Function
+      Properties:
+        FunctionName: courtvision-get-season-stats
+        CodeUri: lambdas/get_season_stats/
+        Handler: lambda_function.handler
+        Runtime: python3.11
+        Timeout: 30
+        MemorySize: 256
+        Environment:
+          Variables:
+            TABLE_NAME: courtvision-games
+            REGION: us-east-1
+        Policies:
+          - DynamoDBReadPolicy:
+              TableName: courtvision-games
+        Events:
+          GetStats:
+            Type: Api
+            Properties:
+              Path: /stats
+              Method: get
+              RestApiId: !Ref CourtVisionApi
+  
 Outputs:
   ApiUrl:
     Description: API Gateway endpoint URL

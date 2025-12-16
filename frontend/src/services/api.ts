@@ -113,6 +113,14 @@ export const playersAPI = {
   },
 };
 
+// Stats API
+export const statsAPI = {
+  async getSeasonStats(season: number = 2026): Promise<SeasonStats> {
+    const data = await fetchAPI<SeasonStats>(`/stats?season=${season}`);
+    return data;
+  },
+};
+
 // Type for players response
 export interface PlayersResponse {
   season: string;
@@ -152,11 +160,94 @@ export interface PlayerSeasonStats {
   };
 }
 
+// Type for season stats response
+export interface SeasonStats {
+  season: string;
+  games_played: number;
+  record: {
+    wins: number;
+    losses: number;
+    pct: number;
+  };
+  streak: {
+    type: 'W' | 'L' | null;
+    count: number;
+  };
+  scoring: {
+    ppg: number;
+    opp_ppg: number;
+    margin: number;
+    total_points: number;
+    total_opp_points: number;
+    high_game: {
+      points: number;
+      opponent: string;
+      game_id: string;
+      date: string;
+    } | null;
+    low_game: {
+      points: number;
+      opponent: string;
+      game_id: string;
+      date: string;
+    } | null;
+  };
+  splits: {
+    home: SplitData;
+    away: SplitData;
+    conference: SplitData;
+    non_conference: SplitData;
+  };
+  games: GameResult[];
+  patterns: PatternInsightsData;
+}
+
+export interface SplitData {
+  wins: number;
+  losses: number;
+  games: number;
+  iowa_points: number;
+  opp_points: number;
+  ppg: number;
+  opp_ppg: number;
+  margin: number;
+  win_pct: number;
+}
+
+export interface GameResult {
+  game_id: string;
+  date: string;
+  opponent: string;
+  iowa_score: number;
+  opp_score: number;
+  won: boolean;
+  home: boolean;
+  conference: boolean;
+}
+
+export interface PatternInsightsData {
+  total_scoring_runs: number;
+  iowa_runs: number;
+  opponent_runs: number;
+  total_hot_streaks: number;
+  iowa_hot_streaks: number;
+  hottest_player: {
+    player_id: string;
+    name: string;
+    count: number;
+  } | null;
+  best_quarter_for_runs: {
+    quarter: number;
+    count: number;
+  } | null;
+}
+
 // Export all APIs
 export const api = {
   games: gamesAPI,
   patterns: patternsAPI,
   players: playersAPI,
+  stats: statsAPI,
 };
 
 export default api;

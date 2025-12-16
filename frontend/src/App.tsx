@@ -5,6 +5,8 @@ import { GamePage } from './pages/GamePage';
 import { PlayersPage } from './pages/PlayersPage';
 import { PlayerDetailPage } from './pages/PlayerDetailPage';
 import { SeasonProvider } from './contexts/SeasonContext';
+import { StatsPage } from './pages/StatsPage';
+
 
 function App() {
   return (
@@ -18,8 +20,7 @@ function App() {
               <Route path="/game/:gameId" element={<GamePage />} />
               <Route path="/players" element={<PlayersPage />} />
               <Route path="/players/:playerId" element={<PlayerDetailPage />} />
-              {/* Future routes */}
-              <Route path="/stats" element={<PlaceholderPage title="Season Stats" />} />
+              <Route path="/stats" element={<StatsPage />} />
             </Routes>
           </main>
           <Footer />

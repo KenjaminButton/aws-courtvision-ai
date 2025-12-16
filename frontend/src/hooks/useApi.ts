@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
-import { api, PlayerSeasonStats, PlayersResponse } from '../services/api';
+import { api, PlayerSeasonStats, PlayersResponse, SeasonStats } from '../services/api';
 import type { Game, GameDetail, Play } from '../types';
+
 
 // Generic fetch hook
 function useFetch<T>(
@@ -120,6 +121,7 @@ export function useGameReplay(gameId: string | undefined) {
     setCurrentPlayIndex(0);
     setIsPlaying(false);
   };
+
   const seekTo = (index: number) => setCurrentPlayIndex(index);
 
   return {
@@ -137,4 +139,12 @@ export function useGameReplay(gameId: string | undefined) {
     seekTo,
     setSpeed,
   };
+}
+
+// Hook for fetching season stats
+export function useSeasonStats(season: number = 2026) {
+  return useFetch<SeasonStats>(
+    () => api.stats.getSeasonStats(season),
+    [season]
+  );
 }
