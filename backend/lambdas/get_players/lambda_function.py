@@ -1,6 +1,6 @@
 """
 CourtVision AI - Get Players Lambda
-Returns aggregated player statistics for a season, including game logs.
+Returns aggregated player statistics for a season, including game logs and bios.
 
 Query params:
   - season: Season year (e.g., 2026 for 2025-26)
@@ -25,6 +25,43 @@ class DecimalEncoder(json.JSONEncoder):
         if isinstance(obj, Decimal):
             return float(obj) if obj % 1 else int(obj)
         return super().default(obj)
+
+
+def fetch_player_bios(player_ids, season):
+    """Fetch bio data for a list of player IDs."""
+    if not player_ids:
+        return {}
+    
+    bios = {}
+    
+    # DynamoDB BatchGetItem has a limit of 100 items
+    # For our roster size (~15 players), single requests are fine
+    for pid in player_ids:
+        try:
+            response = table.get_item(
+                Key={
+                    'pk': f'PLAYER#{pid}',
+                    'sk': f'BIO#{season}'
+                }
+            )
+            item = response.get('Item')
+            if item:
+                bios[pid] = {
+                    'height': item.get('height', ''),
+                    'hometown': item.get('hometown', ''),
+                    'high_school': item.get('high_school', ''),
+                    'previous_school': item.get('previous_school', ''),
+                    'class_year': item.get('class_year', ''),
+                    'major': item.get('major', ''),
+                    'bio_summary': item.get('bio_summary', ''),
+                    'accolades': item.get('accolades', []),
+                }
+        except Exception as e:
+            # Log but don't fail if bio fetch fails
+            print(f"Error fetching bio for player {pid}: {e}")
+            continue
+    
+    return bios
 
 
 def handler(event, context):
@@ -80,7 +117,7 @@ def handler(event, context):
                 'rebounds': 0,
                 'assists': 0
             },
-            'game_log': []  # NEW: track individual games
+            'game_log': []
         })
         
         # Fetch each game's metadata and aggregate
@@ -203,6 +240,10 @@ def handler(event, context):
                 if assists > stats['game_highs']['assists']:
                     stats['game_highs']['assists'] = assists
         
+        # Fetch bios for all players
+        player_ids = [pid for pid in player_stats.keys() if player_stats[pid]['games_played'] > 0]
+        player_bios = fetch_player_bios(player_ids, season)
+        
         # Calculate averages and format response
         players_list = []
         for pid, stats in player_stats.items():
@@ -216,7 +257,7 @@ def handler(event, context):
             three_pct = (stats['total_3pt_made'] / stats['total_3pt_attempted'] * 100) if stats['total_3pt_attempted'] > 0 else 0
             ft_pct = (stats['total_ft_made'] / stats['total_ft_attempted'] * 100) if stats['total_ft_attempted'] > 0 else 0
             
-            players_list.append({
+            player_data = {
                 'player_id': stats['player_id'],
                 'player_name': stats['player_name'],
                 'jersey': stats['jersey'],
@@ -241,8 +282,14 @@ def handler(event, context):
                     'blocks': stats['total_blocks'],
                 },
                 'game_highs': stats['game_highs'],
-                'game_log': stats['game_log'],  # Include game log
-            })
+                'game_log': stats['game_log'],
+            }
+            
+            # Add bio if available
+            if pid in player_bios:
+                player_data['bio'] = player_bios[pid]
+            
+            players_list.append(player_data)
         
         # Sort by points per game descending
         players_list.sort(key=lambda x: x['points_per_game'], reverse=True)

@@ -29,6 +29,30 @@ class DecimalEncoder(json.JSONEncoder):
         return super().default(obj)
 
 
+def deduplicate_plays(plays):
+    """
+    Remove duplicate plays based on period + clock + text.
+    Keeps the first occurrence of each unique play.
+    """
+    seen = set()
+    unique_plays = []
+    
+    for play in plays:
+        # Create a unique key from play identifiers
+        # Using period, clock, and text since these should be unique per play
+        key = (
+            play.get('period', ''),
+            play.get('clock', ''),
+            play.get('text', ''),
+        )
+        
+        if key not in seen:
+            seen.add(key)
+            unique_plays.append(play)
+    
+    return unique_plays
+
+
 def handler(event, context):
     """Get play-by-play for a game."""
     try:
@@ -80,6 +104,9 @@ def handler(event, context):
             play.pop('sk', None)
             play.pop('entity_type', None)
             cleaned_plays.append(play)
+        
+        # Deduplicate plays
+        cleaned_plays = deduplicate_plays(cleaned_plays)
         
         # Apply filters
         if period_filter:

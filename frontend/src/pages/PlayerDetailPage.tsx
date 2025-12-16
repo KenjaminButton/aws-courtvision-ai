@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { ArrowLeft, TrendingUp, Target, Award, Calendar } from 'lucide-react';
+import { ArrowLeft, TrendingUp, Target, Award, Calendar, User, GraduationCap, MapPin, Trophy } from 'lucide-react';
 import { useSeason } from '../contexts/SeasonContext';
 import { usePlayerDetail } from '../hooks/useApi';
 import { LoadingSpinner, ErrorDisplay } from '../components/LoadingStates';
@@ -38,6 +38,19 @@ export function PlayerDetailPage() {
     { key: 'splits' as TabType, label: 'Splits' },
   ];
 
+  // Build the player info line with bio data
+  const infoItems = [
+    player.jersey ? `#${player.jersey}` : null,
+    player.position,
+    player.bio?.height,
+    player.bio?.class_year,
+  ].filter(Boolean);
+
+  const locationItems = [
+    player.bio?.hometown,
+    player.bio?.high_school ? `${player.bio.high_school} HS` : null,
+  ].filter(Boolean);
+
   return (
     <div className="max-w-7xl mx-auto px-4 py-8">
       {/* Back navigation */}
@@ -59,7 +72,6 @@ export function PlayerDetailPage() {
               alt={player.player_name}
               className="w-full h-full object-cover"
               onError={(e) => {
-                // Fallback to jersey number if image fails
                 e.currentTarget.style.display = 'none';
                 e.currentTarget.parentElement!.innerHTML = `<span class="flex items-center justify-center w-full h-full text-iowa-gold font-bold text-3xl">${player.jersey || '?'}</span>`;
               }}
@@ -71,10 +83,28 @@ export function PlayerDetailPage() {
             <h1 className="text-3xl font-athletic text-white mb-1">
               {player.player_name}
             </h1>
-            <p className="text-zinc-400 mb-4">
-              #{player.jersey} • {player.position || 'N/A'} • Iowa Hawkeyes
+            
+            {/* Primary info line: Jersey, Position, Height, Class */}
+            <p className="text-zinc-400 mb-1">
+              {infoItems.join(' • ')} • Iowa Hawkeyes
             </p>
-            <p className="text-sm text-zinc-500">{seasonLabel}</p>
+            
+            {/* Location line: Hometown, High School */}
+            {locationItems.length > 0 && (
+              <p className="text-zinc-500 text-sm mb-2 flex items-center gap-1">
+                <MapPin className="w-3 h-3" />
+                {locationItems.join(' • ')}
+              </p>
+            )}
+            
+            {/* Transfer badge */}
+            {player.bio?.previous_school && (
+              <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-blue-900/30 text-blue-400 text-xs rounded-full">
+                Transfer from {player.bio.previous_school}
+              </span>
+            )}
+            
+            <p className="text-sm text-zinc-500 mt-2">{seasonLabel}</p>
           </div>
 
           {/* Key Stats */}
@@ -126,94 +156,152 @@ export function PlayerDetailPage() {
 }
 
 function OverviewTab({ player }: { player: any }) {
+  const hasBio = player.bio?.bio_summary || (player.bio?.accolades?.length > 0);
+
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-      {/* Season Averages */}
-      <div className="lg:col-span-2 bg-zinc-900 rounded-xl border border-zinc-800 p-6">
-        <h3 className="font-semibold text-white mb-4 flex items-center gap-2">
-          <TrendingUp className="w-5 h-5 text-iowa-gold" />
-          Season Averages
-        </h3>
-        
-        <div className="grid grid-cols-4 sm:grid-cols-5 gap-4">
-          <StatDisplay label="PPG" value={player.points_per_game} highlight />
-          <StatDisplay label="RPG" value={player.rebounds_per_game} />
-          <StatDisplay label="APG" value={player.assists_per_game} />
-          <StatDisplay label="SPG" value={player.steals_per_game} />
-          <StatDisplay label="BPG" value={player.blocks_per_game} />
-          <StatDisplay label="MPG" value={player.minutes_per_game} />
-          <StatDisplay label="FG%" value={`${player.field_goal_pct}%`} />
-          <StatDisplay label="3P%" value={`${player.three_point_pct}%`} />
-          <StatDisplay label="FT%" value={`${player.free_throw_pct}%`} />
-          <StatDisplay label="TO" value={player.turnovers_per_game} />
-        </div>
-      </div>
-
-      {/* Season Totals & Highs */}
-      <div className="space-y-6">
-        {/* Games Played */}
+    <div className="space-y-6">
+      {/* Bio Section - Full width at top if bio exists */}
+      {hasBio && (
         <div className="bg-zinc-900 rounded-xl border border-zinc-800 p-6">
           <h3 className="font-semibold text-white mb-4 flex items-center gap-2">
-            <Calendar className="w-5 h-5 text-iowa-gold" />
-            Games Played
+            <User className="w-5 h-5 text-iowa-gold" />
+            About
           </h3>
-          <p className="text-4xl font-bold text-white">{player.games_played}</p>
+          
+          {/* Bio Summary */}
+          {player.bio?.bio_summary && (
+            <p className="text-zinc-300 leading-relaxed mb-4">
+              {player.bio.bio_summary}
+            </p>
+          )}
+          
+          {/* Quick Facts */}
+          <div className="flex flex-wrap gap-4 mb-4 text-sm">
+            {player.bio?.major && (
+              <div className="flex items-center gap-2 text-zinc-400">
+                <GraduationCap className="w-4 h-4 text-iowa-gold" />
+                <span>{player.bio.major}</span>
+              </div>
+            )}
+            {player.bio?.high_school && (
+              <div className="flex items-center gap-2 text-zinc-400">
+                <MapPin className="w-4 h-4 text-zinc-500" />
+                <span>{player.bio.high_school} ({player.bio.hometown})</span>
+              </div>
+            )}
+          </div>
+          
+          {/* Accolades */}
+          {player.bio?.accolades?.length > 0 && (
+            <div>
+              <h4 className="text-sm font-medium text-zinc-400 mb-2 flex items-center gap-2">
+                <Trophy className="w-4 h-4 text-iowa-gold" />
+                Accolades
+              </h4>
+              <div className="flex flex-wrap gap-2">
+                {player.bio.accolades.map((accolade: string, index: number) => (
+                  <span 
+                    key={index}
+                    className="px-3 py-1 bg-iowa-gold/10 text-iowa-gold text-xs rounded-full border border-iowa-gold/20"
+                  >
+                    {accolade}
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
+      )}
 
-        {/* Season Highs */}
-        <div className="bg-zinc-900 rounded-xl border border-zinc-800 p-6">
+      {/* Stats Grid */}
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        {/* Season Averages */}
+        <div className="lg:col-span-2 bg-zinc-900 rounded-xl border border-zinc-800 p-6">
           <h3 className="font-semibold text-white mb-4 flex items-center gap-2">
-            <Award className="w-5 h-5 text-iowa-gold" />
-            Season Highs
+            <TrendingUp className="w-5 h-5 text-iowa-gold" />
+            Season Averages
           </h3>
-          <div className="space-y-3">
-            <div className="flex justify-between items-center">
-              <span className="text-zinc-400">Points</span>
-              <span className="text-xl font-bold text-iowa-gold">
-                {player.game_highs?.points || 0}
-              </span>
-            </div>
-            <div className="flex justify-between items-center">
-              <span className="text-zinc-400">Rebounds</span>
-              <span className="text-xl font-bold text-white">
-                {player.game_highs?.rebounds || 0}
-              </span>
-            </div>
-            <div className="flex justify-between items-center">
-              <span className="text-zinc-400">Assists</span>
-              <span className="text-xl font-bold text-white">
-                {player.game_highs?.assists || 0}
-              </span>
-            </div>
+          
+          <div className="grid grid-cols-4 sm:grid-cols-5 gap-4">
+            <StatDisplay label="PPG" value={player.points_per_game} highlight />
+            <StatDisplay label="RPG" value={player.rebounds_per_game} />
+            <StatDisplay label="APG" value={player.assists_per_game} />
+            <StatDisplay label="SPG" value={player.steals_per_game} />
+            <StatDisplay label="BPG" value={player.blocks_per_game} />
+            <StatDisplay label="MPG" value={player.minutes_per_game} />
+            <StatDisplay label="FG%" value={`${player.field_goal_pct}%`} />
+            <StatDisplay label="3P%" value={`${player.three_point_pct}%`} />
+            <StatDisplay label="FT%" value={`${player.free_throw_pct}%`} />
+            <StatDisplay label="TO" value={player.turnovers_per_game} />
           </div>
         </div>
 
-        {/* Season Totals */}
-        <div className="bg-zinc-900 rounded-xl border border-zinc-800 p-6">
-          <h3 className="font-semibold text-white mb-4 flex items-center gap-2">
-            <Target className="w-5 h-5 text-iowa-gold" />
-            Season Totals
-          </h3>
-          <div className="space-y-2 text-sm">
-            <div className="flex justify-between">
-              <span className="text-zinc-400">Total Points</span>
-              <span className="text-white font-medium">{player.totals?.points || 0}</span>
+        {/* Season Totals & Highs */}
+        <div className="space-y-6">
+          {/* Games Played */}
+          <div className="bg-zinc-900 rounded-xl border border-zinc-800 p-6">
+            <h3 className="font-semibold text-white mb-4 flex items-center gap-2">
+              <Calendar className="w-5 h-5 text-iowa-gold" />
+              Games Played
+            </h3>
+            <p className="text-4xl font-bold text-white">{player.games_played}</p>
+          </div>
+
+          {/* Season Highs */}
+          <div className="bg-zinc-900 rounded-xl border border-zinc-800 p-6">
+            <h3 className="font-semibold text-white mb-4 flex items-center gap-2">
+              <Award className="w-5 h-5 text-iowa-gold" />
+              Season Highs
+            </h3>
+            <div className="space-y-3">
+              <div className="flex justify-between items-center">
+                <span className="text-zinc-400">Points</span>
+                <span className="text-xl font-bold text-iowa-gold">
+                  {player.game_highs?.points || 0}
+                </span>
+              </div>
+              <div className="flex justify-between items-center">
+                <span className="text-zinc-400">Rebounds</span>
+                <span className="text-xl font-bold text-white">
+                  {player.game_highs?.rebounds || 0}
+                </span>
+              </div>
+              <div className="flex justify-between items-center">
+                <span className="text-zinc-400">Assists</span>
+                <span className="text-xl font-bold text-white">
+                  {player.game_highs?.assists || 0}
+                </span>
+              </div>
             </div>
-            <div className="flex justify-between">
-              <span className="text-zinc-400">Total Rebounds</span>
-              <span className="text-white font-medium">{player.totals?.rebounds || 0}</span>
-            </div>
-            <div className="flex justify-between">
-              <span className="text-zinc-400">Total Assists</span>
-              <span className="text-white font-medium">{player.totals?.assists || 0}</span>
-            </div>
-            <div className="flex justify-between">
-              <span className="text-zinc-400">Total Steals</span>
-              <span className="text-white font-medium">{player.totals?.steals || 0}</span>
-            </div>
-            <div className="flex justify-between">
-              <span className="text-zinc-400">Total Blocks</span>
-              <span className="text-white font-medium">{player.totals?.blocks || 0}</span>
+          </div>
+
+          {/* Season Totals */}
+          <div className="bg-zinc-900 rounded-xl border border-zinc-800 p-6">
+            <h3 className="font-semibold text-white mb-4 flex items-center gap-2">
+              <Target className="w-5 h-5 text-iowa-gold" />
+              Season Totals
+            </h3>
+            <div className="space-y-2 text-sm">
+              <div className="flex justify-between">
+                <span className="text-zinc-400">Total Points</span>
+                <span className="text-white font-medium">{player.totals?.points || 0}</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-zinc-400">Total Rebounds</span>
+                <span className="text-white font-medium">{player.totals?.rebounds || 0}</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-zinc-400">Total Assists</span>
+                <span className="text-white font-medium">{player.totals?.assists || 0}</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-zinc-400">Total Steals</span>
+                <span className="text-white font-medium">{player.totals?.steals || 0}</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-zinc-400">Total Blocks</span>
+                <span className="text-white font-medium">{player.totals?.blocks || 0}</span>
+              </div>
             </div>
           </div>
         </div>
