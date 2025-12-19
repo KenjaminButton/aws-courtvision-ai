@@ -125,6 +125,66 @@ Resources:
               Path: /stats
               Method: get
               RestApiId: !Ref CourtVisionApi
+
+  # Lambda: Generate AI Game Summary
+  AIGameSummaryFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: courtvision-ai-game-summary
+      CodeUri: lambdas/ai_game_summary/
+      Handler: lambda_function.handler
+      Runtime: python3.12
+      Timeout: 30
+      MemorySize: 512
+      Environment:
+        Variables:
+          TABLE_NAME: courtvision-games
+          REGION: us-east-1
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: courtvision-games
+        - Statement:
+            - Effect: Allow
+              Action:
+                - bedrock:InvokeModel
+              Resource: "arn:aws:bedrock:us-east-1::foundation-model/anthropic.claude-3-5-sonnet-20240620-v1:0"
+      Events:
+        GetAISummary:
+          Type: Api
+          Properties:
+            RestApiId: !Ref CourtVisionApi
+            Path: /games/{gameId}/summary
+            Method: get
+
+  # Lambda: Reddit Sentiment Analysis
+  RedditSentimentFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: courtvision-reddit-sentiment
+      CodeUri: lambdas/reddit_sentiment/
+      Handler: lambda_function.handler
+      Runtime: python3.12
+      Timeout: 30
+      MemorySize: 512
+      Environment:
+        Variables:
+          TABLE_NAME: courtvision-games
+          REGION: us-east-1
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: courtvision-games
+        - Statement:
+            - Effect: Allow
+              Action:
+                - bedrock:InvokeModel
+              Resource: "arn:aws:bedrock:us-east-1::foundation-model/anthropic.claude-3-haiku-20240307-v1:0"
+      Events:
+        GetRedditSentiment:
+          Type: Api
+          Properties:
+            RestApiId: !Ref CourtVisionApi
+            Path: /games/{gameId}/sentiment
+            Method: get
   
 Outputs:
   ApiUrl:

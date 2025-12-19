@@ -1,0 +1,16 @@
+{
+  "score": 7,
+  "label": "Satisfied",
+  "summary": "Iowa fans are generally satisfied with the team's bounce-back performance after a loss to Iowa State, highlighted by strong individual efforts from Hannah Stuelke, Chazadi \"Chit Chat\" Wright, and other supporting players. There is excitement for the team's potential moving forward, but some lingering concerns about the rotation and early-season struggles.",
+  "themes": [
+    "Chazadi \"Chit Chat\" Wright's impact",
+    "Hannah Stuelke's bounce-back game",
+    "Development of supporting cast",
+    "Concerns about rotation and early-season issues",
+    "Anticipation for upcoming matchup with UConn"
+  ],
+  "notable_quotes": [
+    {"text": "We are so lucky we got Chit-Chat yall. She is so much better than Guyton. If she had more size I think she would have been a top 30 player in her class.", "context": "Praising Chazadi \"Chit Chat\" Wright's performance"},
+    {"text": "Really glad Hannah is having herself a game. We are gonna need her against the best player in the nation, Sarah Strong.", "context": "Appreciation for Hannah Stuelke's big game"}
+  ]
+}

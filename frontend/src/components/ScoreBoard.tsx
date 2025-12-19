@@ -139,3 +139,4 @@ export function LiveScore({ homeScore, awayScore, homeTeam, awayTeam, period, cl
     </div>
   );
 }
+

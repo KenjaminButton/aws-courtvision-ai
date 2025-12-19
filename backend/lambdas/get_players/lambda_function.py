@@ -1,6 +1,6 @@
 """
 CourtVision AI - Get Players Lambda
-Returns aggregated player statistics for a season, including game logs and bios.
+Returns aggregated player statistics for a season, including game logs, bios, and splits.
 
 Query params:
   - season: Season year (e.g., 2026 for 2025-26)
@@ -34,8 +34,6 @@ def fetch_player_bios(player_ids, season):
     
     bios = {}
     
-    # DynamoDB BatchGetItem has a limit of 100 items
-    # For our roster size (~15 players), single requests are fine
     for pid in player_ids:
         try:
             response = table.get_item(
@@ -57,11 +55,64 @@ def fetch_player_bios(player_ids, season):
                     'accolades': item.get('accolades', []),
                 }
         except Exception as e:
-            # Log but don't fail if bio fetch fails
             print(f"Error fetching bio for player {pid}: {e}")
             continue
     
     return bios
+
+
+def create_empty_split():
+    """Create an empty split stats bucket."""
+    return {
+        'games': 0,
+        'total_points': 0,
+        'total_rebounds': 0,
+        'total_assists': 0,
+        'total_steals': 0,
+        'total_blocks': 0,
+        'total_minutes': 0,
+        'total_fg_made': 0,
+        'total_fg_attempted': 0,
+        'total_3pt_made': 0,
+        'total_3pt_attempted': 0,
+        'total_ft_made': 0,
+        'total_ft_attempted': 0,
+    }
+
+
+def calculate_split_averages(split):
+    """Calculate averages and percentages for a split."""
+    if split['games'] == 0:
+        return {
+            'games': 0,
+            'ppg': 0,
+            'rpg': 0,
+            'apg': 0,
+            'spg': 0,
+            'bpg': 0,
+            'mpg': 0,
+            'fg_pct': 0,
+            'three_pct': 0,
+            'ft_pct': 0,
+        }
+    
+    gp = split['games']
+    fg_pct = (split['total_fg_made'] / split['total_fg_attempted'] * 100) if split['total_fg_attempted'] > 0 else 0
+    three_pct = (split['total_3pt_made'] / split['total_3pt_attempted'] * 100) if split['total_3pt_attempted'] > 0 else 0
+    ft_pct = (split['total_ft_made'] / split['total_ft_attempted'] * 100) if split['total_ft_attempted'] > 0 else 0
+    
+    return {
+        'games': gp,
+        'ppg': round(split['total_points'] / gp, 1),
+        'rpg': round(split['total_rebounds'] / gp, 1),
+        'apg': round(split['total_assists'] / gp, 1),
+        'spg': round(split['total_steals'] / gp, 1),
+        'bpg': round(split['total_blocks'] / gp, 1),
+        'mpg': round(split['total_minutes'] / gp, 1),
+        'fg_pct': round(fg_pct, 1),
+        'three_pct': round(three_pct, 1),
+        'ft_pct': round(ft_pct, 1),
+    }
 
 
 def handler(event, context):
@@ -75,7 +126,7 @@ def handler(event, context):
             KeyConditionExpression=Key('pk').eq(f'SEASON#{season}')
         )
         
-        # Build list of completed games with metadata
+        # Build list of completed games with metadata from SEASON# records
         completed_games = []
         for item in games_response.get('Items', []):
             if item.get('status_completed'):
@@ -90,6 +141,16 @@ def handler(event, context):
         
         # Sort games by date
         completed_games.sort(key=lambda x: x['date'])
+        
+        # Fetch GAME#METADATA for each game to get player_stats AND home_away/conference info
+        games_metadata = {}
+        for game_info in completed_games:
+            game_id = game_info['game_id']
+            game_response = table.get_item(
+                Key={'pk': f'GAME#{game_id}', 'sk': 'METADATA'}
+            )
+            if game_response.get('Item'):
+                games_metadata[game_id] = game_response['Item']
         
         # Aggregate player stats across all games
         player_stats = defaultdict(lambda: {
@@ -117,24 +178,31 @@ def handler(event, context):
                 'rebounds': 0,
                 'assists': 0
             },
-            'game_log': []
+            'game_log': [],
+            # Splits buckets
+            'splits': {
+                'home': create_empty_split(),
+                'away': create_empty_split(),
+                'conference': create_empty_split(),
+                'non_conference': create_empty_split(),
+            }
         })
         
-        # Fetch each game's metadata and aggregate
+        # Process each game
         for game_info in completed_games:
             game_id = game_info['game_id']
-            
-            game_response = table.get_item(
-                Key={'pk': f'GAME#{game_id}', 'sk': 'METADATA'}
-            )
-            
-            game_data = game_response.get('Item')
+            game_data = games_metadata.get(game_id)
             if not game_data:
                 continue
             
             iowa_players = game_data.get('player_stats', {}).get('iowa', [])
             game_date = game_info['date'].split('T')[0] if game_info['date'] else ''
             game_result = 'W' if game_info['iowa_won'] else 'L'
+            
+            # Get home/away and conference info from METADATA
+            iowa_info = game_data.get('iowa', {})
+            is_home = iowa_info.get('home_away', '').lower() == 'home'
+            is_conference = game_data.get('conference_competition', False)
             
             for player in iowa_players:
                 pid = player.get('player_id', '')
@@ -150,7 +218,7 @@ def handler(event, context):
                     stats['jersey'] = player.get('jersey', '')
                     stats['position'] = player.get('position', '')
                 
-                # Parse minutes (could be "25" or "25:30")
+                # Parse minutes
                 minutes_str = str(player.get('minutes', '0'))
                 try:
                     if ':' in minutes_str:
@@ -197,7 +265,7 @@ def handler(event, context):
                     stats['games_played'] += 1
                     stats['total_minutes'] += minutes
                     
-                    # Add to game log
+                    # Add to game log with home/away and conference info
                     stats['game_log'].append({
                         'game_id': game_id,
                         'date': game_date,
@@ -215,7 +283,29 @@ def handler(event, context):
                         'fg': fg,
                         'three_pt': three,
                         'ft': ft,
+                        'is_home': is_home,
+                        'is_conference': is_conference,
                     })
+                    
+                    # Update splits
+                    split_key = 'home' if is_home else 'away'
+                    conf_key = 'conference' if is_conference else 'non_conference'
+                    
+                    for key in [split_key, conf_key]:
+                        split = stats['splits'][key]
+                        split['games'] += 1
+                        split['total_points'] += points
+                        split['total_rebounds'] += rebounds
+                        split['total_assists'] += assists
+                        split['total_steals'] += steals
+                        split['total_blocks'] += blocks
+                        split['total_minutes'] += minutes
+                        split['total_fg_made'] += fg_made
+                        split['total_fg_attempted'] += fg_att
+                        split['total_3pt_made'] += three_made
+                        split['total_3pt_attempted'] += three_att
+                        split['total_ft_made'] += ft_made
+                        split['total_ft_attempted'] += ft_att
                 
                 # Aggregate totals
                 stats['total_points'] += points
@@ -257,6 +347,14 @@ def handler(event, context):
             three_pct = (stats['total_3pt_made'] / stats['total_3pt_attempted'] * 100) if stats['total_3pt_attempted'] > 0 else 0
             ft_pct = (stats['total_ft_made'] / stats['total_ft_attempted'] * 100) if stats['total_ft_attempted'] > 0 else 0
             
+            # Calculate split averages
+            splits_formatted = {
+                'home': calculate_split_averages(stats['splits']['home']),
+                'away': calculate_split_averages(stats['splits']['away']),
+                'conference': calculate_split_averages(stats['splits']['conference']),
+                'non_conference': calculate_split_averages(stats['splits']['non_conference']),
+            }
+            
             player_data = {
                 'player_id': stats['player_id'],
                 'player_name': stats['player_name'],
@@ -283,6 +381,7 @@ def handler(event, context):
                 },
                 'game_highs': stats['game_highs'],
                 'game_log': stats['game_log'],
+                'splits': splits_formatted,
             }
             
             # Add bio if available
@@ -308,6 +407,9 @@ def handler(event, context):
         }
         
     except Exception as e:
+        import traceback
+        print(f"Error: {e}")
+        print(traceback.format_exc())
         return {
             'statusCode': 500,
             'headers': {
@@ -316,3 +418,4 @@ def handler(event, context):
             },
             'body': json.dumps({'error': str(e)})
         }
+    

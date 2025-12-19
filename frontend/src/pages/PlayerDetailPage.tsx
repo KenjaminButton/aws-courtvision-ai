@@ -377,14 +377,114 @@ function GameLogTab({ player }: { player: any }) {
   );
 }
 
+// Replace the SplitsTab function in PlayerDetailPage.tsx (around line 380-389)
+// with this implementation:
+
 function SplitsTab({ player }: { player: any }) {
+  const splits = player.splits;
+  
+  // Check if splits data exists
+  if (!splits) {
+    return (
+      <div className="bg-zinc-900 rounded-xl border border-zinc-800 p-8 text-center">
+        <Target className="w-12 h-12 text-zinc-600 mx-auto mb-4" />
+        <p className="text-zinc-500">No splits data available</p>
+      </div>
+    );
+  }
+
+  const splitRows = [
+    { label: 'Home', icon: '🏠', data: splits.home },
+    { label: 'Away', icon: '✈️', data: splits.away },
+    { label: 'Conference', icon: '🏆', data: splits.conference },
+    { label: 'Non-Conference', icon: '📋', data: splits.non_conference },
+  ];
+
+  // Filter out splits with no games
+  const activeSplits = splitRows.filter(row => row.data?.games > 0);
+
+  if (activeSplits.length === 0) {
+    return (
+      <div className="bg-zinc-900 rounded-xl border border-zinc-800 p-8 text-center">
+        <Target className="w-12 h-12 text-zinc-600 mx-auto mb-4" />
+        <p className="text-zinc-500">No games played yet</p>
+      </div>
+    );
+  }
+
   return (
-    <div className="bg-zinc-900 rounded-xl border border-zinc-800 p-8 text-center">
-      <Target className="w-12 h-12 text-zinc-600 mx-auto mb-4" />
-      <p className="text-zinc-500">Splits coming soon</p>
-      <p className="text-sm text-zinc-600 mt-2">
-        Home/Away, Conference/Non-Conference splits will be available here.
-      </p>
+    <div className="bg-zinc-900 rounded-xl border border-zinc-800 overflow-hidden">
+      <div className="overflow-x-auto">
+        <table className="w-full text-sm">
+          <thead>
+            <tr className="bg-zinc-800 text-zinc-400 uppercase text-xs">
+              <th className="px-4 py-3 text-left">Split</th>
+              <th className="px-4 py-3 text-center">GP</th>
+              <th className="px-4 py-3 text-center">MPG</th>
+              <th className="px-4 py-3 text-center">PPG</th>
+              <th className="px-4 py-3 text-center">RPG</th>
+              <th className="px-4 py-3 text-center">APG</th>
+              <th className="px-4 py-3 text-center">SPG</th>
+              <th className="px-4 py-3 text-center">BPG</th>
+              <th className="px-4 py-3 text-center">FG%</th>
+              <th className="px-4 py-3 text-center">3P%</th>
+              <th className="px-4 py-3 text-center">FT%</th>
+            </tr>
+          </thead>
+          <tbody>
+            {/* Overall row */}
+            <tr className="border-t border-zinc-800 bg-zinc-800/30">
+              <td className="px-4 py-3 text-white font-semibold">
+                📊 Overall
+              </td>
+              <td className="px-4 py-3 text-center text-white">{player.games_played}</td>
+              <td className="px-4 py-3 text-center text-zinc-300">{player.minutes_per_game}</td>
+              <td className="px-4 py-3 text-center text-iowa-gold font-semibold">{player.points_per_game}</td>
+              <td className="px-4 py-3 text-center text-zinc-300">{player.rebounds_per_game}</td>
+              <td className="px-4 py-3 text-center text-zinc-300">{player.assists_per_game}</td>
+              <td className="px-4 py-3 text-center text-zinc-400">{player.steals_per_game}</td>
+              <td className="px-4 py-3 text-center text-zinc-400">{player.blocks_per_game}</td>
+              <td className="px-4 py-3 text-center text-zinc-300">{player.field_goal_pct}%</td>
+              <td className="px-4 py-3 text-center text-zinc-300">{player.three_point_pct}%</td>
+              <td className="px-4 py-3 text-center text-zinc-300">{player.free_throw_pct}%</td>
+            </tr>
+            
+            {/* Individual splits */}
+            {activeSplits.map(({ label, icon, data }) => {
+              // Highlight if better than overall
+              const ppgBetter = data.ppg > player.points_per_game;
+              const fgBetter = data.fg_pct > player.field_goal_pct;
+              
+              return (
+                <tr key={label} className="border-t border-zinc-800 hover:bg-zinc-800/50">
+                  <td className="px-4 py-3 text-white font-medium">
+                    {icon} {label}
+                  </td>
+                  <td className="px-4 py-3 text-center text-zinc-400">{data.games}</td>
+                  <td className="px-4 py-3 text-center text-zinc-400">{data.mpg}</td>
+                  <td className={`px-4 py-3 text-center font-semibold ${ppgBetter ? 'text-green-400' : 'text-zinc-300'}`}>
+                    {data.ppg}
+                  </td>
+                  <td className="px-4 py-3 text-center text-zinc-400">{data.rpg}</td>
+                  <td className="px-4 py-3 text-center text-zinc-400">{data.apg}</td>
+                  <td className="px-4 py-3 text-center text-zinc-400">{data.spg}</td>
+                  <td className="px-4 py-3 text-center text-zinc-400">{data.bpg}</td>
+                  <td className={`px-4 py-3 text-center ${fgBetter ? 'text-green-400' : 'text-zinc-400'}`}>
+                    {data.fg_pct}%
+                  </td>
+                  <td className="px-4 py-3 text-center text-zinc-400">{data.three_pct}%</td>
+                  <td className="px-4 py-3 text-center text-zinc-400">{data.ft_pct}%</td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
+      
+      {/* Legend */}
+      <div className="px-4 py-3 border-t border-zinc-800 text-xs text-zinc-500">
+        <span className="text-green-400">●</span> Better than season average
+      </div>
     </div>
   );
 }

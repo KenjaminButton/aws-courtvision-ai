@@ -138,6 +138,10 @@ def handler(event, context):
             'play_count': item.get('play_count', '0'),
             # Add patterns!
             'patterns': patterns,
+            # Media URLs
+            'reddit_thread_url': item.get('reddit_thread_url'),
+            'youtube_highlights_url': item.get('youtube_highlights_url'),
+            'youtube_postgame_url': item.get('youtube_postgame_url'),
         }
         
         return {

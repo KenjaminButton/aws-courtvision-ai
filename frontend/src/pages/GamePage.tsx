@@ -7,8 +7,12 @@ import { PlayByPlay, ReplayControls } from '../components/PlayByPlay';
 import { PatternList } from '../components/PatternBadge';
 import { BoxScore } from '../components/BoxScore';
 import { ScoreFlowChart } from '../components/ScoreFlowChart';
+import { GameMedia, YouTubeEmbed } from '../components/YouTubeEmbed';
 import { LoadingSpinner, ErrorDisplay } from '../components/LoadingStates';
 import type { GameDetail, Play, Pattern } from '../types';
+import { AISummary } from '../components/AISummary';
+import { RedditSentiment } from '../components/RedditSentiment';
+
 
 type TabType = 'overview' | 'plays' | 'replay' | 'stats';
 
@@ -106,8 +110,6 @@ export function GamePage() {
 
 // Overview tab showing score flow, patterns, and key stats
 function OverviewTab({ game, plays, playsLoading }: { game: GameDetail; plays: Play[]; playsLoading: boolean }) {
-  // Use real patterns from the API! (no more mock data)
-  // Transform API pattern format to what PatternList expects
   const patterns: Pattern[] = (game.patterns || []).map((p, index) => ({
     PK: game.game_id,
     SK: `PATTERN#${p.pattern_type}#${index}`,
@@ -123,18 +125,17 @@ function OverviewTab({ game, plays, playsLoading }: { game: GameDetail; plays: P
     detectedAt: new Date().toISOString(),
   }));
 
-  // Calculate quick stats from plays
   const scoringPlays = plays.filter(p => p.scoring_play);
   const iowaScoring = scoringPlays.filter(p => p.team_id === game.iowa.team_id);
 
-  // Determine team names for chart
   const isIowaHome = game.iowa.home_away === 'home';
   const homeTeam = isIowaHome ? game.iowa.name : game.opponent.name;
   const awayTeam = isIowaHome ? game.opponent.name : game.iowa.name;
+
+  const hasMedia = game.youtube_highlights_url || game.youtube_postgame_url;
   
   return (
     <div className="space-y-6">
-      {/* Score Flow Chart - Full Width */}
       {playsLoading ? (
         <div className="bg-zinc-900 rounded-xl border border-zinc-800 p-6">
           <div className="h-64 flex items-center justify-center">
@@ -150,14 +151,35 @@ function OverviewTab({ game, plays, playsLoading }: { game: GameDetail; plays: P
         />
       )}
 
-      {/* Patterns and Stats Grid */}
+      {/* AI Summary - Full Width */}
+      <AISummary gameId={game.game_id} />
+
+      {/* Reddit Sentiment - Full Width */}
+      <RedditSentiment gameId={game.game_id} redditUrl={game.reddit_thread_url} />
+
+      {/* Videos - Side by Side */}
+      {hasMedia && (
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          {game.youtube_highlights_url && (
+            <div className="bg-zinc-900 rounded-xl border border-zinc-800 p-4">
+              <p className="text-sm text-zinc-400 mb-2">🎬 Game Highlights</p>
+              <YouTubeEmbed url={game.youtube_highlights_url} title="Game Highlights" />
+            </div>
+          )}
+          {game.youtube_postgame_url && (
+            <div className="bg-zinc-900 rounded-xl border border-zinc-800 p-4">
+              <p className="text-sm text-zinc-400 mb-2">🎙️ Post-Game Show</p>
+              <YouTubeEmbed url={game.youtube_postgame_url} title="Post-Game Show" />
+            </div>
+          )}
+        </div>
+      )}
+
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        {/* Patterns */}
         <div className="lg:col-span-2">
           <PatternList patterns={patterns} />
         </div>
 
-        {/* Quick stats sidebar */}
         <div className="space-y-4">
           <div className="bg-zinc-900 rounded-xl border border-zinc-800 p-4">
             <h3 className="font-semibold text-white mb-4">Quick Stats</h3>
@@ -177,21 +199,16 @@ function OverviewTab({ game, plays, playsLoading }: { game: GameDetail; plays: P
             </div>
           </div>
 
-          {/* Game info */}
           <div className="bg-zinc-900 rounded-xl border border-zinc-800 p-4">
             <h3 className="font-semibold text-white mb-4">Game Info</h3>
             <div className="space-y-3 text-sm">
               <div className="flex justify-between items-center">
                 <span className="text-zinc-400">Date</span>
-                <span className="text-white">
-                  {new Date(game.date).toLocaleDateString()}
-                </span>
+                <span className="text-white">{new Date(game.date).toLocaleDateString()}</span>
               </div>
               <div className="flex justify-between items-center">
                 <span className="text-zinc-400">Location</span>
-                <span className="text-white">
-                  {game.iowa.home_away === 'home' ? 'Home' : 'Away'}
-                </span>
+                <span className="text-white">{game.iowa.home_away === 'home' ? 'Home' : 'Away'}</span>
               </div>
               {game.venue && (
                 <div className="flex justify-between items-center">
@@ -201,6 +218,19 @@ function OverviewTab({ game, plays, playsLoading }: { game: GameDetail; plays: P
               )}
             </div>
           </div>
+
+          {game.reddit_thread_url && (
+            <div className="bg-zinc-900 rounded-xl border border-zinc-800 p-4">
+              
+                <a href={game.reddit_thread_url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-orange-500 hover:text-orange-400 transition-colors"
+              >
+                📱 View Game Thread on Reddit →
+              </a>
+            </div>
+          )}
         </div>
       </div>
     </div>

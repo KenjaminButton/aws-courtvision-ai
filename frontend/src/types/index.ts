@@ -83,6 +83,10 @@ export interface GameDetail {
   play_count?: string;
   // Patterns from the API!
   patterns?: APIPattern[];
+  // Media URLs
+  reddit_thread_url?: string;
+  youtube_highlights_url?: string;
+  youtube_postgame_url?: string;
 }
 
 // Play types (from /games/{gameId}/plays endpoint)
@@ -240,4 +244,11 @@ export interface PlayersResponse {
   season: string;
   player_count: number;
   players: PlayerSeasonStats[];
+}
+
+// AI Summary response (from /games/{gameId}/summary endpoint)
+export interface AISummaryResponse {
+  summary: string;
+  generated_at: string;
+  cached: boolean;
 }
