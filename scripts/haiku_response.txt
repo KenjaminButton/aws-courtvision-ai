@@ -1,16 +1,16 @@
 {
-  "score": 7,
+  "score": 8,
   "label": "Satisfied",
-  "summary": "Iowa fans are generally satisfied with the team's bounce-back performance after a loss to Iowa State, highlighted by strong individual efforts from Hannah Stuelke, Chazadi \"Chit Chat\" Wright, and other supporting players. There is excitement for the team's potential moving forward, but some lingering concerns about the rotation and early-season struggles.",
+  "summary": "Overall, Iowa fans seem satisfied with the team's bounce-back performance after a disappointing loss to Iowa State. The standout players that fans are most excited about are Chazadi \"Chit Chat\" Wright, Hannah Stuelke, and Ava Heiden. Fans are impressed by Chit Chat's composure and efficiency running the offense, Hannah's dominant scoring game, and Ava's improved mid-range shooting. Key moments that excited fans include Teagan Mallegni draining a 3-pointer, Stuelke stepping up at the free throw line, and the team's strong rebounding effort. Looking ahead, fans are hopeful about the team's potential over the rest of the season and a potential rematch with Iowa State in the NCAA Tournament.",
   "themes": [
-    "Chazadi \"Chit Chat\" Wright's impact",
+    "Chazadi \"Chit Chat\" Wright's performance and impact",
     "Hannah Stuelke's bounce-back game",
-    "Development of supporting cast",
-    "Concerns about rotation and early-season issues",
-    "Anticipation for upcoming matchup with UConn"
+    "Ava Heiden's development and two-way play",
+    "Team's rebounding and offensive efficiency",
+    "Excitement for the team's potential this season"
   ],
   "notable_quotes": [
-    {"text": "We are so lucky we got Chit-Chat yall. She is so much better than Guyton. If she had more size I think she would have been a top 30 player in her class.", "context": "Praising Chazadi \"Chit Chat\" Wright's performance"},
-    {"text": "Really glad Hannah is having herself a game. We are gonna need her against the best player in the nation, Sarah Strong.", "context": "Appreciation for Hannah Stuelke's big game"}
+    {"text": "We are so lucky we got Chit-Chat yall. She is so much better than Guyton. If she had more size I think she would have been a top 30 player in her class.", "context": "Praising Chit Chat's impact and potential"},
+    {"text": "Really glad Hannah is having herself a game. We are gonna need her against the best player in the nation, Sarah Strong.", "context": "Highlighting Hannah Stuelke's strong performance"}
   ]
 }

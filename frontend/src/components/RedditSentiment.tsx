@@ -143,16 +143,14 @@ export function RedditSentiment({ gameId, redditUrl }: RedditSentimentProps) {
       {/* Themes */}
       <div className="mb-4">
         <p className="text-zinc-500 text-xs uppercase tracking-wider mb-2">Key Themes</p>
-        <div className="flex flex-wrap gap-2">
+        <ul className="space-y-1">
           {sentiment.themes.map((theme, index) => (
-            <span 
-              key={index}
-              className="px-2 py-1 bg-zinc-800 text-zinc-300 text-xs rounded-full"
-            >
+            <li key={index} className="text-zinc-300 text-sm flex items-start gap-2">
+              <span className="text-iowa-gold">•</span>
               {theme}
-            </span>
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
 
       {/* Notable Quotes */}

@@ -120,7 +120,7 @@ Analyze the overall fan sentiment and provide your analysis in this exact JSON f
 {{
   "score": <number 1-10, where 1=furious, 5=mixed, 10=ecstatic>,
   "label": "<one of: Ecstatic, Happy, Satisfied, Mixed, Disappointed, Frustrated, Upset>",
-  "summary": "<3-5 sentence summary of the overall fan mood and reaction to the game>",
+  "summary": "<7-10 sentence detailed summary covering: overall fan mood, standout player performances fans are discussing, key moments that excited or concerned fans, and outlook/expectations going forward>",
   "themes": [
     "<key theme 1>",
     "<key theme 2>",

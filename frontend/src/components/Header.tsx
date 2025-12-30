@@ -1,5 +1,5 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { Activity, Calendar, Users, BarChart3 } from 'lucide-react';
+import { Calendar, Users, BarChart3 } from 'lucide-react';
 import { useSeason } from '../contexts/SeasonContext';
 
 export function Header() {
@@ -24,8 +24,8 @@ export function Header() {
         <div className="flex items-center justify-between h-16">
           {/* Logo / Brand */}
           <Link to="/" className="flex items-center gap-3 group">
-            <div className="w-10 h-10 bg-iowa-gold rounded-lg flex items-center justify-center group-hover:glow-gold-sm transition-all">
-              <Activity className="w-6 h-6 text-iowa-black" />
+            <div className="w-10 h-10 rounded-lg overflow-hidden group-hover:glow-gold-sm transition-all">
+              <img src="/bluderHerky.png" alt="Herky" className="w-full h-full object-cover" />
             </div>
             <div>
               <h1 className="font-athletic text-xl text-white tracking-wide">

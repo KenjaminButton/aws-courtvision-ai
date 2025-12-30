@@ -112,7 +112,7 @@ Analyze the overall fan sentiment and provide your analysis in this exact JSON f
 {{
   "score": <number 1-10, where 1=furious, 5=mixed, 10=ecstatic>,
   "label": "<one of: Ecstatic, Happy, Satisfied, Mixed, Disappointed, Frustrated, Upset>",
-  "summary": "<3-5 sentence summary of the overall fan mood and reaction to the game>",
+  "summary": "<7-10 sentence detailed summary covering: overall fan mood, standout player performances fans are discussing, key moments that excited or concerned fans, and outlook/expectations going forward>",
   "themes": [
     "<key theme 1>",
     "<key theme 2>",
@@ -135,7 +135,7 @@ RULES:
 Respond with ONLY the JSON, no other text."""
 
     response = bedrock.invoke_model(
-        modelId='anthropic.claude-3-haiku-20240307-v1:0',
+        modelId='anthropic.claude-3-5-sonnet-20240620-v1:0',
         body=json.dumps({
             'anthropic_version': 'bedrock-2023-05-31',
             'max_tokens': 1000,

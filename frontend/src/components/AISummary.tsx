@@ -45,7 +45,7 @@ export function AISummary({ gameId }: AISummaryProps) {
       <div className="bg-zinc-900 rounded-xl border border-zinc-800 p-4">
         <h3 className="font-semibold text-white mb-4 flex items-center gap-2">
           <Sparkles className="w-5 h-5 text-iowa-gold" />
-          AI Game Summary
+          Game Summary
         </h3>
         <div className="animate-pulse space-y-2">
           <div className="h-4 bg-zinc-800 rounded w-full"></div>
@@ -62,7 +62,7 @@ export function AISummary({ gameId }: AISummaryProps) {
       <div className="bg-zinc-900 rounded-xl border border-zinc-800 p-4">
         <h3 className="font-semibold text-white mb-4 flex items-center gap-2">
           <Sparkles className="w-5 h-5 text-iowa-gold" />
-          AI Game Summary
+          Game Summary
         </h3>
         <p className="text-zinc-500 text-sm">Summary not available for this game.</p>
       </div>
@@ -82,7 +82,7 @@ export function AISummary({ gameId }: AISummaryProps) {
     <div className="bg-zinc-900 rounded-xl border border-zinc-800 p-4">
       <h3 className="font-semibold text-white mb-4 flex items-center gap-2">
         <Sparkles className="w-5 h-5 text-iowa-gold" />
-        AI Game Summary
+        Game Summary
       </h3>
       
       <p className="text-zinc-300 text-sm leading-relaxed whitespace-pre-line">
@@ -90,7 +90,7 @@ export function AISummary({ gameId }: AISummaryProps) {
       </p>
       
       <p className="text-zinc-600 text-xs mt-4">
-        Generated {generatedDate}
+        Date: {generatedDate}
       </p>
     </div>
   );
