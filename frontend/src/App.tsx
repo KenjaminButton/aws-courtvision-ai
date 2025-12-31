@@ -6,27 +6,39 @@ import { PlayersPage } from './pages/PlayersPage';
 import { PlayerDetailPage } from './pages/PlayerDetailPage';
 import { SeasonProvider } from './contexts/SeasonContext';
 import { StatsPage } from './pages/StatsPage';
-
+import { ThemeProvider } from './contexts/ThemeContext';
+import { useTheme } from './contexts/ThemeContext';
 
 function App() {
   return (
     <BrowserRouter>
-      <SeasonProvider>
-        <div className="min-h-screen bg-iowa-black bg-athletic-stripes">
-          <Header />
-          <main className="pb-20 md:pb-0">
-            <Routes>
-              <Route path="/" element={<HomePage />} />
-              <Route path="/game/:gameId" element={<GamePage />} />
-              <Route path="/players" element={<PlayersPage />} />
-              <Route path="/players/:playerId" element={<PlayerDetailPage />} />
-              <Route path="/stats" element={<StatsPage />} />
-            </Routes>
-          </main>
-          <Footer />
-        </div>
-      </SeasonProvider>
+      <ThemeProvider>
+        <SeasonProvider>
+          <AppContent />
+        </SeasonProvider>
+      </ThemeProvider>
     </BrowserRouter>
+  );
+}
+
+
+function AppContent() {
+  const { theme } = useTheme();
+
+  return (
+    <div className="min-h-screen bg-gray-100 dark:bg-iowa-black dark:bg-athletic-stripes">
+      <Header />
+      <main className="pb-20 md:pb-0">
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/game/:gameId" element={<GamePage />} />
+          <Route path="/players" element={<PlayersPage />} />
+          <Route path="/players/:playerId" element={<PlayerDetailPage />} />
+          <Route path="/stats" element={<StatsPage />} />
+        </Routes>
+      </main>
+      <Footer />
+    </div>
   );
 }
 
@@ -47,8 +59,8 @@ function Footer() {
       <div className="max-w-7xl mx-auto px-4 py-8">
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 bg-iowa-gold rounded-lg flex items-center justify-center">
-              <span className="font-athletic text-iowa-black text-sm">CV</span>
+            <div className="w-8 h-8 rounded-lg overflow-hidden">
+              <img src="/bluderHerky.png" alt="Herky" className="w-full h-full object-cover" />
             </div>
             <div>
               <p className="text-white font-semibold">CourtVision AI</p>

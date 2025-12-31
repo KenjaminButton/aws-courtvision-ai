@@ -18,6 +18,10 @@ table = dynamodb.Table(os.environ.get('TABLE_NAME', 'courtvision-games'))
 
 IOWA_TEAM_ID = "2294"
 
+# Position corrections (ESPN has some positions wrong)
+POSITION_OVERRIDES = {
+    "5240175": "C",  # Ava Heiden - Center, not Guard
+}
 
 class DecimalEncoder(json.JSONEncoder):
     """Handle Decimal types from DynamoDB."""
@@ -216,7 +220,7 @@ def handler(event, context):
                     stats['player_id'] = pid
                     stats['player_name'] = player.get('player_name', '')
                     stats['jersey'] = player.get('jersey', '')
-                    stats['position'] = player.get('position', '')
+                    stats['position'] = POSITION_OVERRIDES.get(pid, player.get('position', ''))
                 
                 # Parse minutes
                 minutes_str = str(player.get('minutes', '0'))

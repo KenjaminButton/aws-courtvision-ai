@@ -1,11 +1,13 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { Calendar, Users, BarChart3 } from 'lucide-react';
+import { Calendar, Users, BarChart3, Sun, Moon } from 'lucide-react';
 import { useSeason } from '../contexts/SeasonContext';
+import { useTheme } from '../contexts/ThemeContext';
 
 export function Header() {
   const location = useLocation();
   const navigate = useNavigate();
   const { season, setSeason, availableSeasons } = useSeason();
+  const { theme, toggleTheme } = useTheme();
 
   const handleSeasonChange = (newSeason: number) => {
     setSeason(newSeason);
@@ -87,8 +89,16 @@ export function Header() {
             </div>
           </nav>
 
-          {/* Season Selector */}
-          <div className="flex items-center gap-3">
+          {/* Theme Toggle + Season Selector */}
+          <div className="flex items-center gap-2">
+            {/* Theme Toggle Button */}
+            <button
+              className="p-2 rounded-lg bg-zinc-800 text-iowa-gold hover:bg-zinc-700 transition-colors"
+              onClick={toggleTheme}
+              title={theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode'}
+            >
+              {theme === 'light' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+            </button>
             <select
               value={season}
               onChange={(e) => handleSeasonChange(Number(e.target.value))}

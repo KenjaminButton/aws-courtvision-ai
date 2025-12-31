@@ -16,7 +16,8 @@
   }
 
   body {
-    @apply bg-iowa-black text-white antialiased;
+    @apply bg-gray-50 text-gray-900 antialiased;
+    @apply dark:bg-iowa-black dark:text-white;
     font-family: 'Inter', system-ui, sans-serif;
   }
 }

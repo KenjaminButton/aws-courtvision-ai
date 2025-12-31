@@ -70,11 +70,11 @@ export function HomePage() {
       <div className="mb-8">
         <div className="flex items-center gap-3 mb-2">
           <div className="w-2 h-8 bg-iowa-gold rounded-full" />
-          <h1 className="font-athletic text-4xl md:text-5xl text-white tracking-wide">
+          <h1 className="font-athletic text-4xl md:text-5xl text-gray-900 dark:text-white tracking-wide">
             {seasonLabel.toUpperCase().replace(' SEASON', '')} SEASON
           </h1>
         </div>
-        <p className="text-zinc-400 text-lg">
+        <p className="text-gray-600 dark:text-zinc-400 text-lg">
           Iowa Hawkeyes Women's Basketball
         </p>
       </div>
@@ -120,7 +120,7 @@ export function HomePage() {
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center gap-2">
           <Filter className="w-4 h-4 text-zinc-500" />
-          <div className="flex rounded-lg overflow-hidden border border-zinc-700">
+          <div className="flex rounded-lg overflow-hidden border border-gray-300 dark:border-zinc-700">
             {(['all', 'W', 'L'] as const).map((filter) => (
               <button
                 key={filter}
@@ -142,7 +142,7 @@ export function HomePage() {
         <div className="flex rounded-lg overflow-hidden border border-zinc-700">
           <button
             onClick={() => setViewMode('grid')}
-            className={`px-3 py-1.5 ${viewMode === 'grid' ? 'bg-zinc-700' : 'bg-zinc-900'}`}
+            className={`px-3 py-1.5 ${viewMode === 'grid' ? 'bg-gray-300 dark:bg-zinc-700' : 'bg-gray-100 dark:bg-zinc-900'}`}
             title="Grid view"
           >
             <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
@@ -151,7 +151,7 @@ export function HomePage() {
           </button>
           <button
             onClick={() => setViewMode('list')}
-            className={`px-3 py-1.5 ${viewMode === 'list' ? 'bg-zinc-700' : 'bg-zinc-900'}`}
+            className={`px-3 py-1.5 ${viewMode === 'list' ? 'bg-gray-300 dark:bg-zinc-700' : 'bg-gray-100 dark:bg-zinc-900'}`}
             title="List view"
           >
             <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
